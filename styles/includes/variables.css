@@ -1,0 +1,21 @@
+:root {
+	--font-copy: "Times New Roman", serif;
+	--font-heading: var(--font-copy);
+
+	--color-text: #444;
+	--color-primary: #1168CB;
+	--color-secondary: #F45B69;
+	--color-background: #FFF;
+	--color-background-shaded: #EBEBEB;
+
+	--speed-fast: 0.1s;
+	--speed-slow: 0.4s;
+
+	--width-site-max: 960px;
+
+	--spacing-small: 10px;
+	--spacing-medium: calc(var(--spacing-small) * 2);
+	--spacing-large: calc(var(--spacing-small) * 3);
+	--spacing-huge: calc(var(--spacing-small) * 5);
+	--spacing-section: calc(var(--spacing-small) * 10);
+}

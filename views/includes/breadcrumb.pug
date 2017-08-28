@@ -1,0 +1,8 @@
+if breadcrumb
+    nav
+        ol.breadcrumb(itemscope itemtype="http://schema.org/BreadcrumbList")
+            each item, i in breadcrumb
+                li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+                    a(href=item.href itemprop="item")
+                        span(itemprop="name")=item.label
+                    meta(itemprop="position" content=i + 1)

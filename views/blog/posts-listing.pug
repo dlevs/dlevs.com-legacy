@@ -1,0 +1,15 @@
+extends ../layouts/main
+
+block meta
+    title=`Travel Blog | Daniel Levett`
+
+block content
+    header.site-header
+        h1.site-heading Travel Blog
+
+    section.site-section
+        each post in posts
+            div
+                h2.blog-listing-heading=`${post.town}, ${post.country} - ${post.humanDate}`
+                a(href=post.href)
+                    img.blog-image(src=post.mainImage.src)

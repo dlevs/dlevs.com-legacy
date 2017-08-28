@@ -1,0 +1,49 @@
+extends ./layouts/main.pug
+
+block meta
+    title Daniel Levett
+    meta(name="description" content="London-based fullstack web developer.")
+
+block content
+    header.site-header
+        h1.site-heading Daniel Levett
+            span.site-subheading Fullstack Web Developer
+        ul.site-heading-links
+            li
+                a.site-header-link(href="https://github.com/dlevs") GitHub
+            li
+                a.site-header-link(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
+
+    section.site-section
+        h2.section-heading Projects
+        p.section-intro
+            | I'm always building fun things, some of which are on
+            = ' '
+            a.site-header-link(href="https://github.com/dlevs") GitHub
+            |. Below is a selection of projects that you won't find on GitHub that highlight my work for eCommerce websites.
+
+        ul.project-list
+            each project in projects
+                li.project-list-item
+                    h3.project-heading=project.heading
+
+                    div.project-image-wrapper
+                        picture
+                            source(srcset=project.img.srcWebp type="image/webp")
+                            source(srcset=project.img.src type="image/jpeg")
+                            img.project-image(src=project.img.src alt=project.img.alt)
+                    div.project-description(data-readmore-summary=project.shortDescription)
+                        !=project.description
+                    if project.badges
+                        ul.project-details-badges
+                            each badge in project.badges
+                                li
+                                    a.badge(href=technologies[badge].url title=`Built using ${badge}`)=badge
+
+    section.site-section
+        h2.section-heading Experience
+        ul.brand-list
+            each brand in brands
+                li.brand-list-item
+                    a(href=brand.url title=brand.title)
+                        img.brand-image(src=brand.svg)

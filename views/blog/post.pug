@@ -1,0 +1,20 @@
+extends ../layouts/main
+
+block meta
+    title=`${post.town} | Daniel Levett`
+
+block content
+    article
+        header.site-header
+            h1.site-heading=post.town
+                span.site-subheading=`${post.country} | ${post.humanDate}`
+
+        section.site-section
+            each image in post.images
+                // TODO: Add alt
+                img.blog-image(src=image.src)
+
+        if nextPost
+            div.next-post-wrapper
+                a.next-post-title(href=nextPost.href)=`Next: ${nextPost.town}`
+                    img.next-post-image(src=nextPost.mainImage.src)
