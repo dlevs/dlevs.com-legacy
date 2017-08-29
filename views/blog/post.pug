@@ -9,12 +9,18 @@ block content
             h1.site-heading=post.town
                 span.site-subheading=`${post.country} | ${post.humanDate}`
 
-        section.site-section
+        section
             each image in post.images
                 // TODO: Add alt
                 +picture(image, {className: 'blog-image'})
 
-        if nextPost
-            div.next-post-wrapper
-                a.next-post-title(href=nextPost.href)=`Next: ${nextPost.town}`
-                    img.next-post-image(src=nextPost.mainImage.src)
+        if previousPost || nextPost
+            section.next-posts-wrapper
+                if previousPost
+                    a.next-post.previous(href=previousPost.href)
+                        img.next-post-image(src=previousPost.mainImage.src)
+                        span=`Previous: ${previousPost.town}`
+                if nextPost
+                    a.next-post.next(href=nextPost.href)
+                        img.next-post-image(src=nextPost.mainImage.src)
+                        span=`Next: ${nextPost.town}`

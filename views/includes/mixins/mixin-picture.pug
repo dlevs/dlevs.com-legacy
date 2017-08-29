@@ -1,4 +1,4 @@
-mixin picture({src, alt}, {className=''} = {})
+mixin picture({src, alt}, {className} = {})
     picture
         source(srcset=src.replace(/\.[^\.]+$/, '.webp') type="image/webp")
         source(srcset=src type="image/jpeg")

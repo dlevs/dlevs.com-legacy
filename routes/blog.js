@@ -104,7 +104,7 @@ module.exports = (router) => {
 
 			await ctx.render('blog/post', {
 				post,
-				lastPost: posts[index - 1],
+				previousPost: posts[index - 1],
 				nextPost: posts[index + 1],
 				breadcrumb: breadcrumbRoot.concat([
 					{label: country, href: `/blog/${countrySlug}`},
