@@ -18,10 +18,10 @@ block content
                 if previousPost
                     article.related-post.previous-post
                         a(href=previousPost.href)
-                            img.related-post-image(src=previousPost.mainImage.src)
+                            +picture(previousPost.mainImage, {className: 'related-post-image'})
                             h2.related-post-heading=`Previous: ${previousPost.town}`
                 if nextPost
                     article.related-post.next-post
                         a(href=nextPost.href)
-                            img.related-post-image(src=nextPost.mainImage.src)
+                            +picture(nextPost.mainImage, {className: 'related-post-image'})
                             h2.related-post-heading=`Next: ${nextPost.town}`
