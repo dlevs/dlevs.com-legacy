@@ -9,18 +9,19 @@ block content
             h1.site-heading=post.town
                 span.site-subheading=`${post.country} | ${post.humanDate}`
 
-        section
-            each image in post.images
-                // TODO: Add alt
-                +picture(image, {className: 'blog-image'})
+        each image in post.images
+            // TODO: Add alt
+            +picture(image, {className: 'blog-image'})
 
         if previousPost || nextPost
-            section.next-posts-wrapper
+            aside.related-posts-wrapper
                 if previousPost
-                    a.next-post.previous(href=previousPost.href)
-                        img.next-post-image(src=previousPost.mainImage.src)
-                        span=`Previous: ${previousPost.town}`
+                    article.related-post.previous-post
+                        a(href=previousPost.href)
+                            img.related-post-image(src=previousPost.mainImage.src)
+                            h2.related-post-heading=`Previous: ${previousPost.town}`
                 if nextPost
-                    a.next-post.next(href=nextPost.href)
-                        img.next-post-image(src=nextPost.mainImage.src)
-                        span=`Next: ${nextPost.town}`
+                    article.related-post.next-post
+                        a(href=nextPost.href)
+                            img.related-post-image(src=nextPost.mainImage.src)
+                            h2.related-post-heading=`Next: ${nextPost.town}`

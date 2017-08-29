@@ -149,25 +149,29 @@ TODO: Move
 .blog-image {
 	margin-bottom: var(--spacing-section);
 }
-.next-posts-wrapper {
+.related-posts-wrapper {
 	display: flex;
 	width: 100%;
 	margin-bottom: var(--spacing-section);
 }
-.next-post {
+.related-post {
 	display: block;
 	width: 50%;
-	&.next {
+	&.next-post {
 		padding-left: var(--spacing-huge);
 		margin-left: auto;
 	}
-	&.previous {
+	&.previous-post {
 		padding-right: var(--spacing-huge);
 		margin-right: auto;
 	}
 }
-.next-post-image {
+.related-post-image {
 	display: block;
+	margin-bottom: var(--spacing-medium);
+}
+.related-post-heading {
+	font-size: 1rem;
 }
 /* END BLOG
 TODO: Move
