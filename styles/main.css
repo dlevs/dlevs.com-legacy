@@ -144,7 +144,7 @@ TODO: Move
 --------------------------------
  */
 .blog-listing-heading {
-	margin-bottom: var(--spacing-medium);
+	margin-bottom: var(--spacing-small);
 }
 .blog-image {
 	margin-bottom: var(--spacing-section);
@@ -168,7 +168,7 @@ TODO: Move
 }
 .related-post-image {
 	display: block;
-	margin-bottom: var(--spacing-medium);
+	margin-bottom: var(--spacing-small);
 }
 .related-post-heading {
 	font-size: 1rem;
