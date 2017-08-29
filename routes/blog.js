@@ -21,14 +21,16 @@ const expandPosts = (posts) => posts.map((post) => {
 		...img,
 		src: `/images/blog/${countrySlug}/${img.src}.jpg`
 	}));
+	const humanDate = moment(post.date).format('MMMM YYYY');
 
 	return {
 		countrySlug,
 		townSlug,
 		...post,
-		humanDate: moment(post.date).format('MMMM YYYY'),
 		href: `/blog/${countrySlug}/${townSlug}`,
 		images,
+		humanDate,
+		title: `${post.town}, ${post.country} - ${humanDate}`,
 		mainImage: images[0]
 	}
 });
@@ -75,7 +77,8 @@ module.exports = (router) => {
 
 	router
 		.get('/blog', async (ctx) => {
-			await ctx.render('blog/posts-listing', {
+			await ctx.render('blog/blog-post-listing', {
+				title: 'Travel Blog',
 				posts,
 				breadcrumb: breadcrumbRoot
 			});
@@ -86,8 +89,8 @@ module.exports = (router) => {
 			if (!relevantPosts.length) return;
 
 			const {country, countrySlug} = relevantPosts[0];
-			await ctx.render('blog/posts-by-country', {
-				country,
+			await ctx.render('blog/blog-post-listing', {
+				title: country,
 				posts: relevantPosts,
 				breadcrumb: breadcrumbRoot.concat([
 					{label: country, href: `/blog/${countrySlug}`}
@@ -102,7 +105,7 @@ module.exports = (router) => {
 			const post = posts[index];
 			const {country, countrySlug, town, link} = post;
 
-			await ctx.render('blog/post', {
+			await ctx.render('blog/blog-post', {
 				post,
 				previousPost: posts[index - 1],
 				nextPost: posts[index + 1],
