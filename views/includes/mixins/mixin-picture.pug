@@ -1,0 +1,5 @@
+mixin picture({src, alt}, {className=''} = {})
+    picture
+        source(srcset=src.replace(/\.[^\.]+$/, '.webp') type="image/webp")
+        source(srcset=src type="image/jpeg")
+        img(src=src alt=alt class=className)

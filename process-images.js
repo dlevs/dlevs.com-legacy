@@ -59,7 +59,7 @@ const writeFile = promisify(fs.writeFile);
 	await eachLimit(filepaths, 4, async (filepath) => {
 		console.log(`Processing ${filepath}`);
 
-		const outputFilepath = filepath.replace('/images', '/public_dist/images');
+		const outputFilepath = filepath.replace('/images', '/public-dist/images');
 		await mkdirp(path.dirname(outputFilepath));
 
 		const sharpFile = sharp(filepath)
@@ -85,7 +85,7 @@ const writeFile = promisify(fs.writeFile);
 		const file = await readFile(filepath, 'utf8');
 
 		svgo.optimize(file, async (optimisedFile) => {
-			const outputFilepath = filepath.replace('/images', '/public_dist/images');
+			const outputFilepath = filepath.replace('/images', '/public-dist/images');
 			await mkdirp(path.dirname(outputFilepath));
 			await writeFile(outputFilepath, optimisedFile.data);
 		});

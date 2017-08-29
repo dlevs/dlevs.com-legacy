@@ -9,14 +9,14 @@ const postcss = require('gulp-postcss');
 const paths = {
 	styles: {
 		src: 'styles/main.css',
-		dest: 'public_dist/styles',
+		dest: 'public-dist/styles',
 		watch: [
 			'styles/**/*.css'
 		]
 	},
 	scripts: {
 		src: 'scripts/main.js',
-		dest: 'public_dist/scripts',
+		dest: 'public-dist/scripts',
 		watch: [
 			'scripts/**/*.js'
 		]

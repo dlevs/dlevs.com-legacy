@@ -12,4 +12,4 @@ block content
             div
                 h2.blog-listing-heading=`${post.town} - ${post.humanDate}`
                 a(href=post.href)
-                    img.blog-image(src=post.mainImage.src)
+                    +picture(post.mainImage, {className: 'blog-image'})

@@ -28,10 +28,7 @@ block content
                     h3.project-heading=project.heading
 
                     div.project-image-wrapper
-                        picture
-                            source(srcset=project.img.srcWebp type="image/webp")
-                            source(srcset=project.img.src type="image/jpeg")
-                            img.project-image(src=project.img.src alt=project.img.alt)
+                        +picture(project.img, {className: 'project-image'})
                     div.project-description(data-readmore-summary=project.shortDescription)
                         !=project.description
                     if project.badges

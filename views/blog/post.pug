@@ -12,7 +12,7 @@ block content
         section.site-section
             each image in post.images
                 // TODO: Add alt
-                img.blog-image(src=image.src)
+                +picture(image, {className: 'blog-image'})
 
         if nextPost
             div.next-post-wrapper
