@@ -10,6 +10,6 @@ block content
     section.site-section
         each post in posts
             div
-                h2.blog-listing-heading=`${post.town}, ${post.country} - ${post.humanDate}`
+                h2.blog-listing-heading=post.title
                 a(href=post.href)
                     +picture(post.mainImage, {className: 'blog-image'})

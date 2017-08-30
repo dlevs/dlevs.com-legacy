@@ -93,6 +93,16 @@
         ]
     },
     {
+        "country": "Slovakia",
+        "town": "Bratislava",
+        "date": "2016-05-02",
+        "images": [
+            {"src": "20160502_015932"},
+            {"src": "20160502_124536"},
+            {"src": "IMG-20160502-WA0000"}
+        ]
+    },
+    {
         "country": "Austria",
         "town": "Vienna",
         "date": "2017-01-07",
