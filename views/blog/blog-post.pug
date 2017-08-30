@@ -9,9 +9,9 @@ block content
             h1.site-heading=post.town
                 span.site-subheading=`${post.country} | ${post.humanDate}`
 
-        each image in post.images
+        each image, i in post.images
             // TODO: Add alt
-            +picture(image, {className: 'blog-image'})
+            +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
 
         if previousPost || nextPost
             aside.related-posts-wrapper

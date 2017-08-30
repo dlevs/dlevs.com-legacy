@@ -1,0 +1,12 @@
+.breadcrumb {
+	@mixin unstyled-list;
+	list-style: none;
+
+	li {
+		display: inline;
+
+		&:not(:last-child)::after {
+			content: ' / ';
+		}
+	}
+}

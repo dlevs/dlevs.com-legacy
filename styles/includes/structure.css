@@ -48,3 +48,7 @@ p {
 	font-weight: normal;
 	margin: 0;
 }
+.site-wrapper {
+	max-width: var(--width-site-max);
+	margin: 0 auto;
+}
