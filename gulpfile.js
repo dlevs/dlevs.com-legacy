@@ -1,8 +1,12 @@
 // Dependencies
 //----------------------------------------------
+const path = require('path');
+const chalk = require('chalk');
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
+const plumber = require('gulp-plumber');
+const notifier = require('node-notifier');
 
 // Variables
 //----------------------------------------------
@@ -32,16 +36,27 @@ const postcssPlugins = [
 	})
 ];
 
+function handleStreamError({message, plugin}) {
+	console.error(chalk.red(message));
+	notifier.notify({title: `Error with ${plugin}`, message});
+
+	// Necessary to stop the task from hanging.
+	// Tells gulp.watch() the stream has ended.
+	this.emit('end');
+}
+
 // Gulp tasks
 //----------------------------------------------
 gulp.task('styles', () => {
 	return gulp.src(paths.styles.src)
+		.pipe(plumber(handleStreamError))
 		.pipe(postcss(postcssPlugins))
 		.pipe(gulp.dest(paths.styles.dest))
 });
 
 gulp.task('scripts', () => {
 	return gulp.src(paths.scripts.src)
+		.pipe(plumber(handleStreamError))
 		.pipe(uglify())
 		.pipe(gulp.dest(paths.scripts.dest))
 });
