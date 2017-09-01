@@ -3,9 +3,7 @@ const findIndex = require('lodash/findIndex');
 const groupBy = require('lodash/fp/groupBy');
 const orderBy = require('lodash/fp/orderBy');
 const map = require('lodash/fp/map');
-const pick = require('lodash/fp/pick');
 const uniqBy = require('lodash/uniqBy');
-const isEqual = require('lodash/isEqual');
 const flow = require('lodash/flow');
 const kebabCase = require('lodash/kebabCase');
 const moment = require('moment');
@@ -19,7 +17,7 @@ const expandPosts = (posts) => posts.map((post) => {
 	const townSlug = kebabCase(post.town);
 	const images = post.images.map((img) => ({
 		...img,
-		src: `/images/blog/${countrySlug}/${img.src}.jpg`
+		src: `/images/travel/${countrySlug}/${img.src}.jpg`
 	}));
 	const humanDate = moment(post.date).format('MMMM YYYY');
 
@@ -27,7 +25,7 @@ const expandPosts = (posts) => posts.map((post) => {
 		countrySlug,
 		townSlug,
 		...post,
-		href: `/blog/${countrySlug}/${townSlug}`,
+		href: `/travel/${countrySlug}/${townSlug}`,
 		images,
 		humanDate,
 		title: `${post.town}, ${post.country} - ${humanDate}`,
@@ -57,7 +55,7 @@ const groupPostsByCountry = flow(
 
 // Variables
 //------------------------------------
-const posts = processPosts(require('../data/blog-posts.json'));
+const posts = processPosts(require('../data/travel-posts.json'));
 const postsByCountry = groupPostsByCountry(posts);
 const breadcrumbRoot = [
 	{
@@ -66,7 +64,7 @@ const breadcrumbRoot = [
 	},
 	{
 		label: 'Blog',
-		href: '/blog'
+		href: '/travel'
 	}
 ];
 
@@ -76,28 +74,28 @@ const breadcrumbRoot = [
 module.exports = (router) => {
 
 	router
-		.get('/blog', async (ctx) => {
-			await ctx.render('blog/blog-post-listing', {
+		.get('/travel', async (ctx) => {
+			await ctx.render('travel/travel-post-listing', {
 				title: 'Travel Blog',
 				posts,
 				breadcrumb: breadcrumbRoot
 			});
 		})
-		.get('/blog/:countrySlug', async (ctx) => {
+		.get('/travel/:countrySlug', async (ctx) => {
 			const relevantPosts = filter(posts, ctx.params);
 
 			if (!relevantPosts.length) return;
 
 			const {country, countrySlug} = relevantPosts[0];
-			await ctx.render('blog/blog-post-listing', {
+			await ctx.render('travel/travel-post-listing', {
 				title: country,
 				posts: relevantPosts,
 				breadcrumb: breadcrumbRoot.concat([
-					{label: country, href: `/blog/${countrySlug}`}
+					{label: country, href: `/travel/${countrySlug}`}
 				])
 			});
 		})
-		.get('/blog/:countrySlug/:townSlug', async (ctx) => {
+		.get('/travel/:countrySlug/:townSlug', async (ctx) => {
 			const index = findIndex(posts, ctx.params);
 
 			if (index === -1) return;
@@ -105,12 +103,12 @@ module.exports = (router) => {
 			const post = posts[index];
 			const {country, countrySlug, town, link} = post;
 
-			await ctx.render('blog/blog-post', {
+			await ctx.render('travel/travel-post', {
 				post,
 				previousPost: posts[index - 1],
 				nextPost: posts[index + 1],
 				breadcrumb: breadcrumbRoot.concat([
-					{label: country, href: `/blog/${countrySlug}`},
+					{label: country, href: `/travel/${countrySlug}`},
 					{label: town, href: link}
 				])
 			});
