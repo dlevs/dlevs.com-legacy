@@ -19,6 +19,7 @@ const writeFile = promisify(fs.writeFile);
 
 (async () => {
 	const filepaths = await glob('./images/**/*.+(png|jpg)');
+	const fileExtRegex = /\.(png|jpg|jpeg)/;
 
 	await eachLimit(filepaths, 4, async (filepath) => {
 		console.log(`Processing ${filepath}`);
@@ -26,18 +27,29 @@ const writeFile = promisify(fs.writeFile);
 		const outputFilepath = filepath.replace('/images', '/public-dist/images');
 		await mkdirp(path.dirname(outputFilepath));
 
-		const sharpFile = sharp(filepath)
+
+		// Save compressed full-size version
+		sharp(filepath)
+			.withoutEnlargement()
+			.resize(3000)
+			.max()
+			.jpeg({quality: 80})
+			.toFile(outputFilepath.replace(fileExtRegex, '_large.jpg'));
+
+
+		// Save compressed, reduced-size versions
+		const sharpFileResized = sharp(filepath)
 			.withoutEnlargement()
 			.resize(960)
 			.max();
 
-		sharpFile
+		sharpFileResized
 			.jpeg({quality: 80})
-			.toFile(outputFilepath.replace('.png', '.jpg'));
+			.toFile(outputFilepath.replace(fileExtRegex, '.jpg'));
 
-		sharpFile
+		sharpFileResized
 			.webp({quality: 85})
-			.toFile(outputFilepath.replace(/\.(png|jpg|jpeg)/, '.webp'));
+			.toFile(outputFilepath.replace(fileExtRegex, '.webp'));
 
 	});
 })();

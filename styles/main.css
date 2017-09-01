@@ -49,6 +49,14 @@
 	border-bottom: var(--hairline-border);
 	padding-bottom: var(--spacing-medium);
 	margin-bottom: var(--spacing-medium);
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.section-heading-details {
+	flex: 1;
+	font-size: 0.6em;
+	text-align: right;
 }
 
 @media screen and (max-width: 450px) {

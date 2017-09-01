@@ -11,9 +11,11 @@ block content
 
         each image, i in post.images
             // TODO: Add alt
-            +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
+            a(href=image.srcLarge)
+                +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
 
         if previousPost || nextPost
+            h2.section-heading Other places
             aside.related-posts-wrapper
                 if previousPost
                     article.related-post.previous-post

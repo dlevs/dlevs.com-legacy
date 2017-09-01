@@ -9,7 +9,7 @@
     "build": "npm run build:clean && npm run build:assets && npm run build:images",
     "build:clean": "rimraf ./public-dist",
     "build:assets": "gulp",
-    "build:images": "node process-images.js",
+    "build:images": "node processImages.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
