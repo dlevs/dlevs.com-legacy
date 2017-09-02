@@ -6,8 +6,17 @@ mixin picture({src, alt}, {className} = {})
         style=paddingBottom ? `padding-bottom: ${paddingBottom}%;` : null
         class=`${className} ${paddingBottom ? 'image-wrapper' : ''}`.trim()
     )
-        img.lazyload(
-            data-srcset=`${src.replace(/\.[^\.]+$/, '.webp')}, ${src}`
-            src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-            alt=alt
-        )
+        picture
+            srcset(
+                data-srcset=src.replace(/.[^.]+$/, '.webp')
+                type="image/webp"
+            )
+            srcset(
+                data-srcset=src
+                type="image/jpeg"
+            )
+            img.lazyload(
+                data-src=src
+                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
+                alt=alt
+            )
