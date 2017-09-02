@@ -43,7 +43,7 @@ module.exports = (router) => {
 			if (index === -1) return;
 
 			const post = posts[index];
-			const {country, countrySlug, town, link} = post;
+			const {country, countrySlug, town, href} = post;
 
 			await ctx.render('travel/travelPost', {
 				post,
@@ -51,7 +51,7 @@ module.exports = (router) => {
 				nextPost: posts[index + 1],
 				breadcrumb: breadcrumbRoot.concat([
 					{label: country, href: `/travel/${countrySlug}`},
-					{label: town, href: link}
+					{label: town, href}
 				])
 			});
 		});
