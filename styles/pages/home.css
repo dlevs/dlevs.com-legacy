@@ -34,14 +34,10 @@
 		transition: filter var(--speed-fast);
 	}
 }
-.project-image-wrapper {
-	height: 0;
-	padding-bottom: 62.5%;
-	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
-	margin-bottom: var(--spacing-medium);
-}
 .project-image {
 	display: block;
+	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
+	margin-bottom: var(--spacing-medium);
 }
 .project-description-short {
 	display: none;

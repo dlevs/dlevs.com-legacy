@@ -16,40 +16,65 @@ const glob = promisify(require('glob'));
 const fs = require('fs');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
+const createOutputFilepath = (filepath) => {
+	const parts = path.parse(filepath);
+
+	// Remove base, so path.format will use the specified extension
+	delete parts.base;
+
+	return {
+		parts,
+		modify: (modifyParts) => path.format({...parts, ...modifyParts(parts)})
+	}
+};
 
 (async () => {
 	const filepaths = await glob('./images/**/*.+(png|jpg)');
-	const fileExtRegex = /\.(png|jpg|jpeg)/;
 
 	await eachLimit(filepaths, 4, async (filepath) => {
 		console.log(`Processing ${filepath}`);
 
-		const outputFilepath = filepath.replace('/images', '/public-dist/images');
-		await mkdirp(path.dirname(outputFilepath));
+		const outputPath = createOutputFilepath(
+			filepath.replace('/images/', '/public-dist/images/')
+		);
+		const sharpFile = sharp(filepath);
+		const sharpFileForResize = sharp(filepath);
+		const {width, height} = await sharpFile.metadata();
+		const ratio = ((height / width) * 100).toFixed(4);
 
+		await mkdirp(outputPath.parts.dir);
 
 		// Save compressed full-size version
-		sharp(filepath)
+		sharpFile
 			.withoutEnlargement()
 			.resize(3000)
 			.max()
 			.jpeg({quality: 80})
-			.toFile(outputFilepath.replace(fileExtRegex, '_large.jpg'));
+			.toFile(outputPath.modify(({name}) => ({
+				name: `${ratio}_${name}_large`,
+				ext: '.jpg'
+			})));
 
 
 		// Save compressed, reduced-size versions
-		const sharpFileResized = sharp(filepath)
+		sharpFileForResize
 			.withoutEnlargement()
 			.resize(960)
 			.max();
 
-		sharpFileResized
+		sharpFileForResize
 			.jpeg({quality: 80})
-			.toFile(outputFilepath.replace(fileExtRegex, '.jpg'));
+			.toFile(outputPath.modify(({name}) => ({
+				name: `${ratio}_${name}`,
+				ext: '.jpg'
+			})));
 
-		sharpFileResized
+		sharpFileForResize
 			.webp({quality: 85})
-			.toFile(outputFilepath.replace(fileExtRegex, '.webp'));
+			.toFile(outputPath.modify(({name}) => ({
+				name: `${ratio}_${name}`,
+				ext: '.webp'
+			})));
 
 	});
 })();

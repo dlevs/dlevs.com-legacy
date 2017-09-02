@@ -7,6 +7,10 @@ const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
 const plumber = require('gulp-plumber');
 const notifier = require('node-notifier');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const sourcemaps = require('gulp-sourcemaps');
 
 // Variables
 //----------------------------------------------
@@ -55,9 +59,18 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-	return gulp.src(paths.scripts.src)
+	const b = browserify({
+		entries: paths.scripts.src,
+		debug: true
+	});
+
+	return b.bundle()
+		.pipe(source(path.basename(paths.scripts.src)))
 		.pipe(plumber(handleStreamError))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.scripts.dest))
 });
 
