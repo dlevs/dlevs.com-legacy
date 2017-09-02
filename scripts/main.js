@@ -1,5 +1,5 @@
 require('lazysizes');
-
+var instantclick = require('instantclick');
 
 // Element.prototype.closest polyfill
 // https://github.com/jonathantneal/closest/blob/master/element-closest.js
@@ -66,4 +66,4 @@ require('lazysizes');
 	}
 })();
 
-
+document.addEventListener('DOMContentLoaded', instantclick.init);

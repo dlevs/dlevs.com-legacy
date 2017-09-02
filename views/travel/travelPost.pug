@@ -11,7 +11,7 @@ block content
 
         each image, i in post.images
             // TODO: Add alt
-            a(href=image.srcLarge)
+            a(href=image.srcLarge data-no-instant)
                 +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
 
         if previousPost || nextPost
