@@ -8,13 +8,4 @@ block content
         h1.site-heading=title
 
     section.site-section
-        each post in posts
-            div
-                h2.section-heading
-                    span=post.town
-                    span.section-heading-details=`${post.country}, ${post.humanDate}`
-                a(href=post.href)
-                    +picture(post.mainImage, {className: 'blog-image'})
-
-
-    include ../includes/pagination
+        include ./travelPostListingItems

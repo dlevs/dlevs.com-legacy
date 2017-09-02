@@ -15,15 +15,16 @@ block content
                 +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
 
         if previousPost || nextPost
-            h2.section-heading Other places
             aside.related-posts-wrapper
-                if previousPost
-                    article.related-post.previous-post
-                        a(href=previousPost.href)
-                            +picture(previousPost.mainImage, {className: 'related-post-image'})
-                            h2.related-post-heading=`Previous: ${previousPost.town}`
-                if nextPost
-                    article.related-post.next-post
-                        a(href=nextPost.href)
-                            +picture(nextPost.mainImage, {className: 'related-post-image'})
-                            h2.related-post-heading=`Next: ${nextPost.town}`
+                h2.section-heading Other places
+                div.related-posts-wrapper-inner
+                    if previousPost
+                        article.related-post.previous-post
+                            a(href=previousPost.href)
+                                +picture(previousPost.mainImage, {className: 'related-post-image'})
+                                h2.related-post-heading=`Previous: ${previousPost.town}`
+                    if nextPost
+                        article.related-post.next-post
+                            a(href=nextPost.href)
+                                +picture(nextPost.mainImage, {className: 'related-post-image'})
+                                h2.related-post-heading=`Next: ${nextPost.town}`

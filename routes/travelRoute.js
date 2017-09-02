@@ -3,18 +3,16 @@ const findIndex = require('lodash/findIndex');
 const posts = require('../data/travelPosts');
 const {getPaginatedItemsFromCtx} = require('../lib/pagination');
 
-
 const breadcrumbRoot = [
 	{
 		label: 'Home',
 		href: '/'
 	},
 	{
-		label: 'Blog',
+		label: 'Travel Blog',
 		href: '/travel'
 	}
 ];
-
 
 // Routes
 //------------------------------------
@@ -23,13 +21,17 @@ module.exports = (router) => {
 	router
 		.get('/travel', async (ctx) => {
 			const pagination = getPaginatedItemsFromCtx(posts, ctx);
-
-			await ctx.render('travel/travelPostListing', {
+			const data = {
 				title: 'Travel Blog',
 				posts: pagination.data,
-				pagination,
 				breadcrumb: breadcrumbRoot
-			});
+			};
+
+			if (ctx.query.format === 'ajax') {
+				await ctx.render('travel/travelPostListingItems', data);
+			} else {
+				await ctx.render('travel/travelPostListing', data);
+			}
 		})
 		.get('/travel/:countrySlug', async (ctx) => {
 			const relevantPosts = filter(posts, ctx.params);
@@ -41,7 +43,6 @@ module.exports = (router) => {
 			await ctx.render('travel/travelPostListing', {
 				title: country,
 				posts: pagination.data,
-				pagination,
 				breadcrumb: breadcrumbRoot.concat([
 					{label: country, href: `/travel/${countrySlug}`}
 				])

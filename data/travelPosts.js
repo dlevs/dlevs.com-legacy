@@ -25,7 +25,6 @@ const expandPosts = (posts) => posts.map((post) => {
 		href: `/travel/${countrySlug}/${townSlug}`,
 		images,
 		humanDate,
-		title: `${post.town}, ${post.country} - ${humanDate}`,
 		mainImage: images[0]
 	}
 });

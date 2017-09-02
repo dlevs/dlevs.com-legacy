@@ -1,0 +1,9 @@
+include ../includes/mixins
+
+each post in posts
+    article
+        h2.section-heading
+            span=post.town
+            span.section-heading-details=`${post.country}, ${post.humanDate}`
+        a(href=post.href)
+            +picture(post.mainImage, {className: 'blog-image'})

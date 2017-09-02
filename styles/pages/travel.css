@@ -7,11 +7,11 @@
 	}
 }
 .related-posts-wrapper {
+	margin: var(--spacing-section) 0;
+}
+.related-posts-wrapper-inner {
 	display: flex;
 	width: 100%;
-	padding-top: var(--spacing-huge);
-	border-top: var(--hairline-border);
-	margin-bottom: var(--spacing-section);
 }
 .related-post {
 	display: block;
