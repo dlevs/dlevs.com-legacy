@@ -1,5 +1,13 @@
 extends ../layouts/main
 
+mixin relatedPost(post, className)
+    if post
+        article(class=`related-post ${className}`)
+            a(href=post.href)
+                +picture(post.mainImage, {className: 'related-post-image'})
+                h2.related-post-heading=`Previous: ${post.town}`
+
+
 block meta
     title=`${post.town} | Daniel Levett`
 
@@ -18,13 +26,5 @@ block content
             aside.related-posts-wrapper
                 h2.section-heading Other places
                 div.related-posts-wrapper-inner
-                    if previousPost
-                        article.related-post.previous-post
-                            a(href=previousPost.href)
-                                +picture(previousPost.mainImage, {className: 'related-post-image'})
-                                h2.related-post-heading=`Previous: ${previousPost.town}`
-                    if nextPost
-                        article.related-post.next-post
-                            a(href=nextPost.href)
-                                +picture(nextPost.mainImage, {className: 'related-post-image'})
-                                h2.related-post-heading=`Next: ${nextPost.town}`
+                    +relatedPost(previousPost, 'previous-post')
+                    +relatedPost(nextPost, 'next-post')
