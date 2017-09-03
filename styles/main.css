@@ -11,6 +11,11 @@
 @import "./pages/home.css";
 @import "./pages/travel.css";
 
+/* Plugins */
+@import "photoswipe/dist/photoswipe.css";
+@import "photoswipe/dist/default-skin/default-skin.css";
+
+
 /* Misc */
 /* TODO: Organise */
 .site-header {

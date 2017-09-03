@@ -1,5 +1,7 @@
 require('lazysizes');
 var instantclick = require('instantclick');
+var PhotoSwipe = require('photoswipe');
+var PhotoSwipeUI_Default = require('photoswipe/dist/photoswipe-ui-default.js');
 
 // Element.prototype.closest polyfill
 // https://github.com/jonathantneal/closest/blob/master/element-closest.js
@@ -66,4 +68,48 @@ var instantclick = require('instantclick');
 	}
 })();
 
+
 document.addEventListener('DOMContentLoaded', instantclick.init);
+document.addEventListener('DOMContentLoaded', function () {
+	function getImageDimensions(filepath) {
+		var match = /_(\d+)x(\d+)\./.exec(filepath);
+
+		console.log(match)
+
+		return {
+			width: Number(match[1]),
+			height: Number(match[2])
+		}
+	}
+
+	var pswpElement = document.querySelector('.pswp');
+	var elems = Array.prototype.slice.call(
+		document.querySelectorAll('.js-photoswipe')
+	);
+
+	var items = elems.map(function (elem) {
+		var dimensions = getImageDimensions(elem.href);
+
+		return {
+			src: elem.href,
+			w: dimensions.width,
+			h: dimensions.height
+		}
+
+	});
+
+	document.addEventListener('click', function (e) {
+		var imgLink = e.target.closest('.js-photoswipe');
+
+		if (!imgLink) return;
+
+		e.preventDefault();
+
+		var options = {index: elems.indexOf(imgLink) || 0};
+
+// Initializes and opens PhotoSwipe
+		var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+		gallery.init();
+	});
+
+});

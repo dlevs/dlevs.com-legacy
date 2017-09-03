@@ -6,14 +6,16 @@
   "scripts": {
     "start": "node index.js",
     "dev": "gulp watch & nodemon index.js",
-    "build": "npm run build:clean && npm run build:assets && npm run build:images",
+    "build": "npm run build:clean && npm run build:assets && npm run build:staticresources && npm run build:images",
     "build:clean": "rimraf ./public-dist",
     "build:assets": "gulp",
     "build:images": "node processImages.js",
+    "build:staticresources": "node processStaticResources.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
+    "fs-extra": "^4.0.1",
     "instantclick": "^3.1.0",
     "koa": "^2.3.0",
     "koa-router": "^7.2.1",
@@ -24,6 +26,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "normalize.css": "^7.0.0",
+    "photoswipe": "^4.1.2",
     "pug": "^2.0.0-rc.3"
   },
   "devDependencies": {
@@ -37,7 +40,6 @@
     "gulp-postcss": "^7.0.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
-    "mkdirp": "^0.5.1",
     "node-notifier": "^5.1.2",
     "nodemon": "^1.11.0",
     "postcss-cssnext": "^3.0.2",

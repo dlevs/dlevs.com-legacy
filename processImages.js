@@ -1,8 +1,9 @@
 const {promisify} = require('util');
 const sharp = require('sharp');
 const path = require('path');
-const mkdirp = promisify(require('mkdirp'));
 const eachLimit = promisify(require('async').eachLimit);
+const glob = promisify(require('glob'));
+const fs = require('fs-extra');
 const svgo = new (require('svgo'))({
 	removeTitle: true,
 	removeXMLNS: true,
@@ -12,83 +13,103 @@ const svgo = new (require('svgo'))({
 	removeStyleElement: true,
 	removeScriptElement: true
 });
-const glob = promisify(require('glob'));
-const fs = require('fs');
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
-const createOutputFilepath = (filepath) => {
-	const parts = path.parse(filepath);
 
-	// Remove base, so path.format will use the specified extension
-	delete parts.base;
-
-	return {
-		parts,
-		modify: (modifyParts) => path.format({...parts, ...modifyParts(parts)})
-	}
+const imageData = {};
+const EXTENSIONS_BY_FORMAT = {
+	jpeg: 'jpg',
+	webp: 'webp',
+	png: 'png'
 };
 
-(async () => {
+// TODO: Move to utis file
+const stripZerosFromDecimalString = (str) => str
+	// Remove zeros after decimal place
+	.replace(/(\..*?)(0+)$/, '$1')
+	// Remove decimal place if it's now at the end
+	.replace(/\.$/, '');
+
+const addToImageData = (filepath, data) => {
+	const {width, height} = data;
+	filepath = filepath.replace(/^\./, '');
+
+	data.paddingBottom = stripZerosFromDecimalString(
+		((height / width) * 100).toFixed(4)
+	) + '%';
+
+	imageData[filepath] = imageData[filepath] || [];
+	imageData[filepath].push(data);
+};
+
+const processImage = async ({filepath, format, size, quality}) => {
+	const sharpFile = sharp(filepath);
+	const outputPathParts = path.parse(filepath.replace('/images/', '/public-dist/images/'));
+
+	// Remove base, so path.format() will use the specified extension
+	delete outputPathParts.base;
+
+	await fs.ensureDir(outputPathParts.dir);
+
+	sharpFile
+		.withoutEnlargement()
+		.resize(size)
+		.max();
+
+	const {width, height} = await sharpFile
+		.toBuffer({resolveWithObject: true})
+		.then(({info}) => info);
+
+	sharpFile
+		[format]({quality})
+		.toFile(path.format({
+			...outputPathParts,
+			ext: EXTENSIONS_BY_FORMAT[format]
+		}));
+
+	addToImageData(filepath, {width, height, format});
+};
+
+const processImages = async () => {
 	const filepaths = await glob('./images/**/*.+(png|jpg)');
 
 	await eachLimit(filepaths, 4, async (filepath) => {
-		console.log(`Processing ${filepath}`);
+		console.log(`Processing: ${filepath}`);
 
-		const outputPath = createOutputFilepath(
-			filepath.replace('/images/', '/public-dist/images/')
-		);
-		const sharpFile = sharp(filepath);
-		const sharpFileForResize = sharp(filepath);
-		const {width, height} = await sharpFile.metadata();
-		const ratio = ((height / width) * 100).toFixed(4);
-
-		await mkdirp(outputPath.parts.dir);
-
-		// Save compressed full-size version
-		sharpFile
-			.withoutEnlargement()
-			.resize(3000)
-			.max()
-			.jpeg({quality: 80})
-			.toFile(outputPath.modify(({name}) => ({
-				name: `${ratio}_${name}_large`,
-				ext: '.jpg'
-			})));
-
-
-		// Save compressed, reduced-size versions
-		sharpFileForResize
-			.withoutEnlargement()
-			.resize(960)
-			.max();
-
-		sharpFileForResize
-			.jpeg({quality: 80})
-			.toFile(outputPath.modify(({name}) => ({
-				name: `${ratio}_${name}`,
-				ext: '.jpg'
-			})));
-
-		sharpFileForResize
-			.webp({quality: 85})
-			.toFile(outputPath.modify(({name}) => ({
-				name: `${ratio}_${name}`,
-				ext: '.webp'
-			})));
-
+		await processImage({
+			filepath,
+			format: 'jpeg',
+			size: 3000,
+			quality: 80
+		});
+		await processImage({
+			filepath,
+			format: 'jpeg',
+			size: 960,
+			quality: 80
+		});
+		await processImage({
+			filepath,
+			format: 'webp',
+			size: 960,
+			quality: 85
+		});
 	});
-})();
 
-(async () => {
+	fs.writeFile('./images/meta.json', JSON.stringify(imageData, null, '\t'));
+};
+
+const processSvgs = async () => {
 	const filepaths = await glob('./images/brands/*.svg');
 
 	filepaths.forEach(async (filepath) => {
-		const file = await readFile(filepath, 'utf8');
+		const file = await fs.readFile(filepath, 'utf8');
 
 		svgo.optimize(file, async (optimisedFile) => {
 			const outputFilepath = filepath.replace('/images', '/public-dist/images');
-			await mkdirp(path.dirname(outputFilepath));
-			await writeFile(outputFilepath, optimisedFile.data);
+			await fs.ensureDir(path.dirname(outputFilepath));
+			await fs.writeFile(outputFilepath, optimisedFile.data);
 		});
 	});
-})();
+};
+
+processImages();
+processSvgs();
