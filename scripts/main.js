@@ -70,46 +70,31 @@ var PhotoSwipeUI_Default = require('photoswipe/dist/photoswipe-ui-default.js');
 
 
 document.addEventListener('DOMContentLoaded', instantclick.init);
-document.addEventListener('DOMContentLoaded', function () {
-	function getImageDimensions(filepath) {
-		var match = /_(\d+)x(\d+)\./.exec(filepath);
-
-		console.log(match)
-
-		return {
-			width: Number(match[1]),
-			height: Number(match[2])
-		}
-	}
-
+document.addEventListener('click', function (e) {
 	var pswpElement = document.querySelector('.pswp');
+	var imgLink = e.target.closest('.js-photoswipe');
+
+	if (!imgLink) return;
+
+	e.preventDefault();
+
+	// We must query elements and map on each click, in order to be compatible
+	// with instantclick plugin
 	var elems = Array.prototype.slice.call(
 		document.querySelectorAll('.js-photoswipe')
 	);
-
 	var items = elems.map(function (elem) {
-		var dimensions = getImageDimensions(elem.href);
-
 		return {
 			src: elem.href,
-			w: dimensions.width,
-			h: dimensions.height
+			w: Number(elem.dataset.width),
+			h: Number(elem.dataset.height)
 		}
-
 	});
+	console.log(items);
 
-	document.addEventListener('click', function (e) {
-		var imgLink = e.target.closest('.js-photoswipe');
-
-		if (!imgLink) return;
-
-		e.preventDefault();
-
-		var options = {index: elems.indexOf(imgLink) || 0};
+	var options = {index: elems.indexOf(imgLink)};
 
 // Initializes and opens PhotoSwipe
-		var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-		gallery.init();
-	});
-
+	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+	gallery.init();
 });

@@ -16,14 +16,14 @@ const svgo = new (require('svgo'))({
 
 const imageData = {};
 const EXTENSIONS_BY_FORMAT = {
-	jpeg: 'jpg',
-	webp: 'webp',
-	png: 'png'
+	jpeg: '.jpg',
+	webp: '.webp',
+	png: '.png'
 };
 
 // TODO: Move to utis file
 const stripZerosFromDecimalString = (str) => str
-	// Remove zeros after decimal place
+// Remove zeros after decimal place
 	.replace(/(\..*?)(0+)$/, '$1')
 	// Remove decimal place if it's now at the end
 	.replace(/\.$/, '');
@@ -40,7 +40,7 @@ const addToImageData = (filepath, data) => {
 	imageData[filepath].push(data);
 };
 
-const processImage = async ({filepath, format, size, quality}) => {
+const processImage = async ({filepath, format, size, quality, meta = {}}) => {
 	const sharpFile = sharp(filepath);
 	const outputPathParts = path.parse(filepath.replace('/images/', '/public-dist/images/'));
 
@@ -58,14 +58,23 @@ const processImage = async ({filepath, format, size, quality}) => {
 		.toBuffer({resolveWithObject: true})
 		.then(({info}) => info);
 
-	sharpFile
-		[format]({quality})
-		.toFile(path.format({
-			...outputPathParts,
-			ext: EXTENSIONS_BY_FORMAT[format]
-		}));
+	const outputPath = path.format({
+		...outputPathParts,
+		name: `${outputPathParts.name}_${width}x${height}`,
+		ext: EXTENSIONS_BY_FORMAT[format]
+	});
 
-	addToImageData(filepath, {width, height, format});
+	// Dynamically call function for file format.
+	// e.g. sharpFile.jpeg({...}).toFile(...);
+	sharpFile[format]({quality}).toFile(outputPath);
+
+	addToImageData(filepath, {
+		...meta,
+		width,
+		height,
+		format,
+		src: outputPath.replace('./public-dist', ''),
+	});
 };
 
 const processImages = async () => {
@@ -84,7 +93,8 @@ const processImages = async () => {
 			filepath,
 			format: 'jpeg',
 			size: 960,
-			quality: 80
+			quality: 80,
+			meta: {default: true}
 		});
 		await processImage({
 			filepath,

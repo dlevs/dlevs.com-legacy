@@ -30,7 +30,7 @@ block content
                     h3.project-heading=project.heading
 
                     div.project-image-wrapper
-                        a.js-photoswipe(href=project.img.srcLarge data-no-instant)
+                        +imageLink(project.img)
                            +picture(project.img, {className: 'project-image'})
 
                     div.project-description(data-readmore-summary=project.shortDescription)

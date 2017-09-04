@@ -18,8 +18,7 @@ block content
                 span.site-subheading=`${post.country} | ${post.humanDate}`
 
         each image, i in post.images
-            // TODO: Add alt
-            a.js-photoswipe(href=image.srcLarge data-no-instant)
+            +imageLink(image)
                 +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
 
         if previousPost || nextPost

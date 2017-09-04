@@ -4,13 +4,13 @@
         "town": "Hong Kong",
         "date": "2017-06-04",
         "images": [
-            {"src": "20170604_150050_960x540"},
-            {"src": "20170604_154219_960x540"},
-            {"src": "20170604_153607_960x540"},
-            {"src": "20170604_153754_960x540"},
-            {"src": "20170604_151153_960x540"},
-            {"src": "20170604_152037_960x540"},
-            {"src": "20170604_182421_960x1707"}
+            {"src": "/images/travel/hong-kong/20170604_150050.jpg"},
+            {"src": "/images/travel/hong-kong/20170604_154219.jpg"},
+            {"src": "/images/travel/hong-kong/20170604_153607.jpg"},
+            {"src": "/images/travel/hong-kong/20170604_153754.jpg"},
+            {"src": "/images/travel/hong-kong/20170604_151153.jpg"},
+            {"src": "/images/travel/hong-kong/20170604_152037.jpg"},
+            {"src": "/images/travel/hong-kong/20170604_182421.jpg"}
         ]
     },
     {
@@ -18,11 +18,11 @@
         "town": "Corsica",
         "date": "2017-06-18",
         "images": [
-            {"src": "20170623_130019_960x540"},
-            {"src": "20170618_210125_960x540"},
-            {"src": "20170618_204532_960x540"},
-            {"src": "20170620_213204_960x540"},
-            {"src": "20170620_141812_960x540"}
+            {"src": "/images/travel/france/20170623_130019.jpg"},
+            {"src": "/images/travel/france/20170618_210125.jpg"},
+            {"src": "/images/travel/france/20170618_204532.jpg"},
+            {"src": "/images/travel/france/20170620_213204.jpg"},
+            {"src": "/images/travel/france/20170620_141812.jpg"}
         ]
     },
     {
@@ -30,14 +30,14 @@
         "town": "Athens",
         "date": "2017-03-11",
         "images": [
-            {"src": "20170312_123448_960x540"},
-            {"src": "20170312_104910_960x540"},
-            {"src": "20170312_114101_960x1707"},
-            {"src": "20170312_120934_960x540"},
-            {"src": "20170312_121624_960x540"},
-            {"src": "20170312_122735_960x540"},
-            {"src": "20170312_125538_960x540"},
-            {"src": "20170313_131339_960x540"}
+            {"src": "/images/travel/greece/20170312_123448.jpg"},
+            {"src": "/images/travel/greece/20170312_104910.jpg"},
+            {"src": "/images/travel/greece/20170312_114101.jpg"},
+            {"src": "/images/travel/greece/20170312_120934.jpg"},
+            {"src": "/images/travel/greece/20170312_121624.jpg"},
+            {"src": "/images/travel/greece/20170312_122735.jpg"},
+            {"src": "/images/travel/greece/20170312_125538.jpg"},
+            {"src": "/images/travel/greece/20170313_131339.jpg"}
         ]
     },
     {
@@ -45,14 +45,14 @@
         "town": "Agra",
         "date": "2016-01-02",
         "images": [
-            {"src": "20160103_160958_960x540"},
-            {"src": "20160103_154628_960x540"},
-            {"src": "20160103_160951_960x540"},
-            {"src": "20160102_114129_960x540"},
-            {"src": "20160102_114155_960x540"},
-            {"src": "20160103_151624_960x540"},
-            {"src": "20160102_105355_960x540"},
-            {"src": "20160102_104800_960x540"}
+            {"src": "/images/travel/india/20160103_160958.jpg"},
+            {"src": "/images/travel/india/20160103_154628.jpg"},
+            {"src": "/images/travel/india/20160103_160951.jpg"},
+            {"src": "/images/travel/india/20160102_114129.jpg"},
+            {"src": "/images/travel/india/20160102_114155.jpg"},
+            {"src": "/images/travel/india/20160103_151624.jpg"},
+            {"src": "/images/travel/india/20160102_105355.jpg"},
+            {"src": "/images/travel/india/20160102_104800.jpg"}
         ]
     },
     {
@@ -60,14 +60,14 @@
         "town": "Venice",
         "date": "2017-05-19",
         "images": [
-            {"src": "20170519_124408_960x540"},
-            {"src": "20170519_111838_960x540"},
-            {"src": "20170519_112128_960x1707"},
-            {"src": "20170519_205513_960x540"},
-            {"src": "20170520_165048_960x540"},
-            {"src": "20170520_165423_960x540"},
-            {"src": "20170520_211322_960x540"},
-            {"src": "20170521_124552_960x540"}
+            {"src": "/images/travel/italy/20170519_124408.jpg"},
+            {"src": "/images/travel/italy/20170519_111838.jpg"},
+            {"src": "/images/travel/italy/20170519_112128.jpg"},
+            {"src": "/images/travel/italy/20170519_205513.jpg"},
+            {"src": "/images/travel/italy/20170520_165048.jpg"},
+            {"src": "/images/travel/italy/20170520_165423.jpg"},
+            {"src": "/images/travel/italy/20170520_211322.jpg"},
+            {"src": "/images/travel/italy/20170521_124552.jpg"}
         ]
     },
     {
@@ -75,8 +75,8 @@
         "town": "Amsterdam",
         "date": "2016-09-05",
         "images": [
-            {"src": "20160905_175431_960x540"},
-            {"src": "20160905_175442_960x540"}
+            {"src": "/images/travel/netherlands/20160905_175431.jpg"},
+            {"src": "/images/travel/netherlands/20160905_175442.jpg"}
         ]
     },
     {
@@ -84,13 +84,13 @@
         "town": "Edinburgh",
         "date": "2016-11-05",
         "images": [
-            {"src": "20161105_155042_960x540"},
-            {"src": "20161105_155459_960x540"},
-            {"src": "20161105_160038_960x540"},
-            {"src": "20161105_160542_960x540"},
-            {"src": "20161105_161320_960x1707"},
-            {"src": "20161106_115948_960x540"},
-            {"src": "20161106_123953_001_960x540"}
+            {"src": "/images/travel/scotland/20161105_155042.jpg"},
+            {"src": "/images/travel/scotland/20161105_155459.jpg"},
+            {"src": "/images/travel/scotland/20161105_160038.jpg"},
+            {"src": "/images/travel/scotland/20161105_160542.jpg"},
+            {"src": "/images/travel/scotland/20161105_161320.jpg"},
+            {"src": "/images/travel/scotland/20161106_115948.jpg"},
+            {"src": "/images/travel/scotland/20161106_123953_001.jpg"}
         ]
     },
     {
@@ -98,9 +98,9 @@
         "town": "Bratislava",
         "date": "2016-05-02",
         "images": [
-            {"src": "20160502_015932_960x540"},
-            {"src": "20160502_124536_960x540"},
-            {"src": "IMG-20160502-WA0000_960x539"}
+            {"src": "/images/travel/slovakia/20160502_015932.jpg"},
+            {"src": "/images/travel/slovakia/20160502_124536.jpg"},
+            {"src": "/images/travel/slovakia/IMG-20160502-WA0000.jpg"}
         ]
     },
     {
@@ -108,15 +108,15 @@
         "town": "Vienna",
         "date": "2017-01-07",
         "images": [
-            {"src": "20170108_144250_960x540"},
-            {"src": "20170108_150020_960x540"},
-            {"src": "20170108_150726_960x540"},
-            {"src": "20170108_152523_960x540"},
-            {"src": "20170108_160904_960x540"},
-            {"src": "20170108_161118_960x540"},
-            {"src": "20170109_153647_960x540"},
-            {"src": "20170108_173851_960x540"},
-            {"src": "20170107_172207_960x540"}
+            {"src": "/images/travel/austria/20170108_144250.jpg"},
+            {"src": "/images/travel/austria/20170108_150020.jpg"},
+            {"src": "/images/travel/austria/20170108_150726.jpg"},
+            {"src": "/images/travel/austria/20170108_152523.jpg"},
+            {"src": "/images/travel/austria/20170108_160904.jpg"},
+            {"src": "/images/travel/austria/20170108_161118.jpg"},
+            {"src": "/images/travel/austria/20170109_153647.jpg"},
+            {"src": "/images/travel/austria/20170108_173851.jpg"},
+            {"src": "/images/travel/austria/20170107_172207.jpg"}
         ]
     },
     {
@@ -124,14 +124,14 @@
         "town": "Hanoi",
         "date": "2017-06-09",
         "images": [
-            {"src": "20170609_214146_960x540"},
-            {"src": "20170610_210243_960x540"},
-            {"src": "20170611_142309_960x540"},
-            {"src": "20170611_174819_960x540"},
-            {"src": "20170611_151330_960x540"},
-            {"src": "20170611_152542_960x540"},
-            {"src": "20170616_191231_960x540"},
-            {"src": "IMG-20170616-WA0004_960x1280"}
+            {"src": "/images/travel/vietnam/20170609_214146.jpg"},
+            {"src": "/images/travel/vietnam/20170610_210243.jpg"},
+            {"src": "/images/travel/vietnam/20170611_142309.jpg"},
+            {"src": "/images/travel/vietnam/20170611_174819.jpg"},
+            {"src": "/images/travel/vietnam/20170611_151330.jpg"},
+            {"src": "/images/travel/vietnam/20170611_152542.jpg"},
+            {"src": "/images/travel/vietnam/20170616_191231.jpg"},
+            {"src": "/images/travel/vietnam/IMG-20170616-WA0004.jpg"}
         ]
     },
     {
@@ -139,12 +139,12 @@
         "town": "Hoa Lu",
         "date": "2017-06-10",
         "images": [
-            {"src": "20170610_112344_960x540"},
-            {"src": "20170610_112512_960x540"},
-            {"src": "20170610_134113_960x540"},
-            {"src": "20170610_135050_960x540"},
-            {"src": "20170610_152735_960x540"},
-            {"src": "IMG-20170613-WA0002_960x1280"}
+            {"src": "/images/travel/vietnam/20170610_112344.jpg"},
+            {"src": "/images/travel/vietnam/20170610_112512.jpg"},
+            {"src": "/images/travel/vietnam/20170610_134113.jpg"},
+            {"src": "/images/travel/vietnam/20170610_135050.jpg"},
+            {"src": "/images/travel/vietnam/20170610_152735.jpg"},
+            {"src": "/images/travel/vietnam/IMG-20170613-WA0002.jpg"}
         ]
     },
     {
@@ -152,13 +152,13 @@
         "town": "Cat Ba",
         "date": "2017-06-12",
         "images": [
-            {"src": "20170612_125616_960x540"},
-            {"src": "20170612_163058_960x540"},
-            {"src": "20170613_174624_960x540"},
-            {"src": "20170614_112521_960x540"},
-            {"src": "20170612_125910_960x540"},
-            {"src": "IMG-20170613-WA0016_960x720"},
-            {"src": "IMG-20170613-WA0023_960x720"}
+            {"src": "/images/travel/vietnam/20170612_125616.jpg"},
+            {"src": "/images/travel/vietnam/20170612_163058.jpg"},
+            {"src": "/images/travel/vietnam/20170613_174624.jpg"},
+            {"src": "/images/travel/vietnam/20170614_112521.jpg"},
+            {"src": "/images/travel/vietnam/20170612_125910.jpg"},
+            {"src": "/images/travel/vietnam/IMG-20170613-WA0016.jpg"},
+            {"src": "/images/travel/vietnam/IMG-20170613-WA0023.jpg"}
         ]
     },
     {
@@ -166,9 +166,9 @@
         "town": "Phu Quoc",
         "date": "2017-06-08",
         "images": [
-            {"src": "20170609_113201_960x540"},
-            {"src": "20170609_112202_960x540"},
-            {"src": "20170608_151231_960x540"}
+            {"src": "/images/travel/vietnam/20170609_113201.jpg"},
+            {"src": "/images/travel/vietnam/20170609_112202.jpg"},
+            {"src": "/images/travel/vietnam/20170608_151231.jpg"}
         ]
     }
 ]

@@ -78,6 +78,10 @@ img.lazyloaded {
 	opacity: 1;
 }
 
+.js-photoswipe {
+	cursor: zoom-in;
+}
+
 @media screen and (max-width: 450px) {
 	.site-header {
 		margin: var(--spacing-huge) 0;

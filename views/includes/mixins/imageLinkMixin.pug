@@ -1,0 +1,9 @@
+mixin imageLink({src})
+    - const largeImage = (new ImageManager(src)).getLargest();
+    a.js-photoswipe(
+        href=largeImage.src
+        data-width=largeImage.width
+        data-height=largeImage.height
+        data-no-instant
+    )
+        block

@@ -1,22 +1,22 @@
 mixin picture({src, alt}, {className} = {})
-    - const matches = /\/(\d+\.\d{4})_/.exec(src);
-    - const paddingBottom = matches && matches[1];
+    - const images = new ImageManager(src);
+    - const defaultImage = images.getDefault();
 
     div(
-        style=paddingBottom ? `padding-bottom: ${paddingBottom}%;` : null
-        class=`${className} ${paddingBottom ? 'image-wrapper' : ''}`.trim()
+        style=`padding-bottom: ${defaultImage.paddingBottom};`
+        class=`${className} image-wrapper`.trim()
     )
         picture
             srcset(
-                data-srcset=src.replace(/.[^.]+$/, '.webp')
+                data-srcset=images.getWebp().src
                 type="image/webp"
             )
             srcset(
-                data-srcset=src
+                data-srcset=defaultImage.src
                 type="image/jpeg"
             )
             img.lazyload(
-                data-src=src
+                data-src=defaultImage.src
                 src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
                 alt=alt
             )

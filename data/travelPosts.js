@@ -11,21 +11,15 @@ const assert = require('assert');
 const expandPosts = (posts) => posts.map((post) => {
 	const countrySlug = kebabCase(post.country);
 	const townSlug = kebabCase(post.town);
-	const images = post.images.map((img) => ({
-		...img,
-		src: `/images/travel/${countrySlug}/${img.src}.jpg`,
-		srcLarge: `/images/travel/${countrySlug}/${img.src}_large.jpg`
-	}));
 	const humanDate = moment(post.date).format('MMMM YYYY');
 
 	return {
 		countrySlug,
 		townSlug,
-		...post,
-		href: `/travel/${countrySlug}/${townSlug}`,
-		images,
 		humanDate,
-		mainImage: images[0]
+		href: `/travel/${countrySlug}/${townSlug}`,
+		mainImage: post.images[0],
+		...post
 	}
 });
 const validatePosts = (posts) => {
