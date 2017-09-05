@@ -22,25 +22,24 @@ const EXTENSIONS_BY_FORMAT = {
 };
 
 // TODO: Move to utis file
-const stripZerosFromDecimalString = (str) => str
-// Remove zeros after decimal place
+const toFixedTrimmed = (n, digits) => n
+	.toFixed(digits)
+	// Remove zeros after decimal place
 	.replace(/(\..*?)(0+)$/, '$1')
 	// Remove decimal place if it's now at the end
 	.replace(/\.$/, '');
 
-const addToImageData = (filepath, data) => {
+const addToImageData = (filepath, type, data) => {
 	const {width, height} = data;
 	filepath = filepath.replace(/^\./, '');
 
-	data.paddingBottom = stripZerosFromDecimalString(
-		((height / width) * 100).toFixed(4)
-	) + '%';
+	data.paddingBottom = toFixedTrimmed(((height / width) * 100), 4) + '%';
 
-	imageData[filepath] = imageData[filepath] || [];
-	imageData[filepath].push(data);
+	imageData[filepath] = imageData[filepath] || {};
+	imageData[filepath][type] = data;
 };
 
-const processImage = async ({filepath, format, size, quality, meta = {}}) => {
+const processImage = async ({type, filepath, format, size, quality}) => {
 	const sharpFile = sharp(filepath);
 	const outputPathParts = path.parse(filepath.replace('/images/', '/public-dist/images/'));
 
@@ -68,8 +67,7 @@ const processImage = async ({filepath, format, size, quality, meta = {}}) => {
 	// e.g. sharpFile.jpeg({...}).toFile(...);
 	sharpFile[format]({quality}).toFile(outputPath);
 
-	addToImageData(filepath, {
-		...meta,
+	addToImageData(filepath, type, {
 		width,
 		height,
 		format,
@@ -80,23 +78,25 @@ const processImage = async ({filepath, format, size, quality, meta = {}}) => {
 const processImages = async () => {
 	const filepaths = await glob('./images/**/*.+(png|jpg)');
 
-	await eachLimit(filepaths, 4, async (filepath) => {
+	await eachLimit(filepaths, 8, async (filepath) => {
 		console.log(`Processing: ${filepath}`);
 
 		await processImage({
+			type: 'large',
 			filepath,
 			format: 'jpeg',
-			size: 3000,
+			size: 2000,
 			quality: 80
 		});
 		await processImage({
+			type: 'default',
 			filepath,
 			format: 'jpeg',
 			size: 960,
-			quality: 80,
-			meta: {default: true}
+			quality: 80
 		});
 		await processImage({
+			type: 'webp',
 			filepath,
 			format: 'webp',
 			size: 960,

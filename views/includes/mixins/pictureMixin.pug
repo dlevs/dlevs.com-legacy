@@ -1,22 +1,21 @@
 mixin picture({src, alt}, {className} = {})
-    - const images = new ImageManager(src);
-    - const defaultImage = images.getDefault();
+    - const images = IMAGE_META[src];
 
     div(
-        style=`padding-bottom: ${defaultImage.paddingBottom};`
+        style=`padding-bottom: ${images.default.paddingBottom};`
         class=`${className} image-wrapper`.trim()
     )
         picture
             srcset(
-                data-srcset=images.getWebp().src
+                data-srcset=images.webp.src
                 type="image/webp"
             )
             srcset(
-                data-srcset=defaultImage.src
+                data-srcset=images.default.src
                 type="image/jpeg"
             )
             img.lazyload(
-                data-src=defaultImage.src
+                data-src=images.default.src
                 src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
                 alt=alt
             )

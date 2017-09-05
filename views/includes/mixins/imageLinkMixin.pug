@@ -1,5 +1,5 @@
 mixin imageLink({src})
-    - const largeImage = (new ImageManager(src)).getLargest();
+    - const largeImage = IMAGE_META[src].large;
     a.js-photoswipe(
         href=largeImage.src
         data-width=largeImage.width

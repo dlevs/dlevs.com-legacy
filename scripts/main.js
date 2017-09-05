@@ -69,7 +69,8 @@ var PhotoSwipeUI_Default = require('photoswipe/dist/photoswipe-ui-default.js');
 })();
 
 
-document.addEventListener('DOMContentLoaded', instantclick.init);
+instantclick.init();
+
 document.addEventListener('click', function (e) {
 	var pswpElement = document.querySelector('.pswp');
 	var imgLink = e.target.closest('.js-photoswipe');
@@ -84,15 +85,27 @@ document.addEventListener('click', function (e) {
 		document.querySelectorAll('.js-photoswipe')
 	);
 	var items = elems.map(function (elem) {
+		var thumbnail = elem.getElementsByTagName('img')[0];
 		return {
 			src: elem.href,
+			msrc: thumbnail.src,
+			thumbnail: thumbnail,
 			w: Number(elem.dataset.width),
 			h: Number(elem.dataset.height)
 		}
 	});
 	console.log(items);
 
-	var options = {index: elems.indexOf(imgLink)};
+	var options = {
+		index: elems.indexOf(imgLink),
+		getThumbBoundsFn: function (index) {
+			// See Options -> getThumbBoundsFn section of documentation for more info
+			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+			var rect = items[index].thumbnail.getBoundingClientRect();
+
+			return {x: rect.left, y: rect.top + pageYScroll, w: rect.width};
+		}
+	};
 
 // Initializes and opens PhotoSwipe
 	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
