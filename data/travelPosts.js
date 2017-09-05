@@ -11,12 +11,11 @@ const assert = require('assert');
 const expandPosts = (posts) => posts.map((post) => {
 	const countrySlug = kebabCase(post.country);
 	const townSlug = kebabCase(post.town);
-	const humanDate = moment(post.date).format('MMMM YYYY');
 
 	return {
 		countrySlug,
 		townSlug,
-		humanDate,
+		humanDate: moment(post.date).format('MMMM YYYY'),
 		href: `/travel/${countrySlug}/${townSlug}`,
 		mainImage: post.images[0],
 		...post

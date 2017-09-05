@@ -3,9 +3,9 @@ var PhotoSwipeDefaultUI = require('photoswipe/dist/photoswipe-ui-default.js');
 
 /**
  * Opens the photoswipe gallery when clicking a link with the "js-photoswipe"
- * class. All images with class "js-photoswipe: are included in the gallery.
+ * class. All images with class "js-photoswipe" are included in the gallery.
  *
- * Link should have href for larger version of the image that it wraps.
+ * The link should have a href for a larger version of the image that it wraps.
  *
  * e.g.
  * <a href="foo_large.jpg" class="js-photoswipe" data-width="1000" data-height="600">
