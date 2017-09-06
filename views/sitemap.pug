@@ -5,7 +5,8 @@ urlset(
 )
     for page in pages
         url
-            loc=page.href
-            if page.imageSrc
-                image:image
-                    image:loc=page.imageSrc
+            loc=origin + page.href
+            if page.images
+                each image in page.images
+                    image:image
+                        image:loc=origin + image.src
