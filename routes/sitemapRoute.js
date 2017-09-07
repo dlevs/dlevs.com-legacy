@@ -1,33 +1,19 @@
-const travelPosts = require('../data/travelPosts');
-
-const getParentPaths = (path) => {
-	const parent = path.split('/').slice(0, -1).join('/');
-
-	if (parent === '') {
-		return [];
-	}
-
-	return getParentPaths(parent).concat(parent);
-};
-
-const getAllParentRoutes = (items) => {
-	const paths = items.reduce((acc, item) => {
-		return acc.concat(getParentPaths(item.href));
-	}, []);
-	const uniquePaths = new Set(paths);
-
-	// TODO: Change 'href' to 'path
-	return Array.from(uniquePaths).map(href => ({href}));
-};
+const travelPosts = require('../data/travel/posts');
+const travelPostsByCountry = require('../data/travel/postsByCountry');
 
 module.exports = (router) => {
 
 	router.get('/sitemap.xml', async (ctx) => {
 		await ctx.render('sitemap', {
 			pages: []
+				// root
 				.concat({href: '/'})
-				.concat(getAllParentRoutes(travelPosts))
+
+				// travel
+				.concat({href: '/travel'})
+				.concat(travelPostsByCountry)
 				.concat(travelPosts),
+
 			origin: ctx.origin
 		});
 		ctx.type = 'text/xml';

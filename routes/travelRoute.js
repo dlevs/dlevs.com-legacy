@@ -1,6 +1,8 @@
-const filter = require('lodash/filter');
+const find = require('lodash/find');
 const findIndex = require('lodash/findIndex');
-const posts = require('../data/travelPosts');
+
+const posts = require('../data/travel/posts');
+const postsByCountry = require('../data/travel/postsByCountry');
 
 const breadcrumbRoot = [
 	{
@@ -26,14 +28,17 @@ module.exports = (router) => {
 			});
 		})
 		.get('/travel/:countrySlug', async (ctx) => {
-			const relevantPosts = filter(posts, ctx.params);
-			const {country, countrySlug} = relevantPosts[0];
+			const countryData = find(postsByCountry, ctx.params);
+
+			if (!countryData) return;
+
+			const {country, posts, href} = countryData;
 
 			await ctx.render('travel/travelPostListing', {
 				title: country,
-				posts: relevantPosts,
+				posts,
 				breadcrumb: breadcrumbRoot.concat([
-					{label: country, href: `/travel/${countrySlug}`}
+					{label: country, href}
 				])
 			});
 		})

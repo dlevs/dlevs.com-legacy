@@ -39,4 +39,4 @@ const processPosts = flow(
 
 // Exports
 //------------------------------------
-module.exports = processPosts(require('./travelPostsRaw'));
+module.exports = processPosts(require('./postsRaw.json'));
