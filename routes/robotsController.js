@@ -18,11 +18,9 @@ Sitemap: ${origin}/sitemap.xml
  * Robots text needs to have an absolute path for the sitemap, therefore,
  * it has its own route to generate this dynamically.
  */
-module.exports = (router) => {
-
-	router.get('/robots.txt', async (ctx) => {
+module.exports = () => ({
+	index: (ctx) => {
 		ctx.body = getRobotsText(ctx.origin);
 		ctx.type = 'text/plain';
-	});
-
-};
+	}
+});

@@ -5,5 +5,5 @@ each post in posts
         h2.section-heading
             span=post.town
             span.section-heading-details=`${post.country}, ${post.humanDate}`
-        a(href=post.href)
+        a(href=post.path)
             +picture(post.mainImage, {className: 'blog-image'})
