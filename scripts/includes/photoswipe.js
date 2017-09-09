@@ -46,6 +46,11 @@ function onImageLinkClick(event) {
 				y: rect.top + pageYScroll,
 				w: rect.width
 			};
+		},
+		getDoubleTapZoom: function() {
+			var scale = 1 / (window.devicePixelRatio || 1);
+			var minScale = 0.5;
+			return Math.max(minScale, scale);
 		}
 	};
 	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeDefaultUI, items, options);
