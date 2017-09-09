@@ -57,6 +57,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
+	color: var(--color-text);
 }
 .section-heading-details {
 	flex: 1;
