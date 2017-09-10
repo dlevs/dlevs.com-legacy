@@ -6,15 +6,12 @@
 @import "./includes/structure.css";
 @import "./includes/buttons.css";
 @import "./includes/breadcrumb.css";
-
 /* Pages */
 @import "./pages/home.css";
 @import "./pages/travel.css";
-
 /* Plugins */
 @import "photoswipe/dist/photoswipe.css";
 @import "photoswipe/dist/default-skin/default-skin.css";
-
 
 /* Misc */
 /* TODO: Organise */
@@ -64,25 +61,27 @@
 	font-size: 0.6em;
 	text-align: right;
 }
-
 .image-wrapper {
 	height: 0;
 	background: #f5f5f5;
 
 	img {
 		display: block;
-		opacity: 0;
-		transition: opacity var(--speed-slow);
 	}
 }
-img.lazyloaded {
-	opacity: 1;
-}
+.lazyload-wrapper {
+	img {
+		opacity: 0;
+		transition: opacity var(--speed-slow);
 
+		&.lazyloaded {
+			opacity: 1;
+		}
+	}
+}
 .js-photoswipe {
 	cursor: zoom-in;
 }
-
 @media screen and (max-width: 450px) {
 	.site-header {
 		margin: var(--spacing-huge) 0;

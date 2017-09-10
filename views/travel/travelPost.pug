@@ -19,7 +19,10 @@ block content
 
         each image, i in post.images
             +imageLink(image)
-                +picture(image, {className: 'blog-image' + (i === post.images.length - 1 ? ' last' : '')})
+                +picture(image, {
+                	className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
+                    lazyLoad: i !== 0
+                })
 
         if previousPost || nextPost
             aside.related-posts-wrapper

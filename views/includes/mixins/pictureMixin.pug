@@ -1,21 +1,25 @@
-mixin picture({src, alt}, {className} = {})
+mixin picture({src, alt}, {className, lazyLoad=true} = {})
     - const images = IMAGE_META[src];
 
     div(
         style=`padding-bottom: ${images.default.paddingBottom};`
-        class=`${className} image-wrapper`.trim()
+        class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
     )
         picture
-            srcset(
-                data-srcset=images.webp.src
-                type="image/webp"
-            )
-            srcset(
-                data-srcset=images.default.src
-                type="image/jpeg"
-            )
-            img.lazyload(
-                data-src=images.default.src
-                src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs="
-                alt=alt
+            srcset(type="image/webp")&attributes({
+                [lazyLoad ? 'data-srcset' : 'srcset']: images.webp.src
+            })
+            srcset(type="image/jpeg")&attributes({
+				[lazyLoad ? 'data-srcset' : 'srcset']: images.default.src
+			})
+            img(alt=alt)&attributes(
+			    lazyLoad
+                    ? {
+                        'class': 'lazyload',
+                        'data-src': images.default.src,
+                        'src': 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
+                    }
+                    : {
+                        'src': images.default.src
+                    }
             )

@@ -1,9 +1,12 @@
 include ../includes/mixins
 
-each post in posts
+each post, i in posts
     article
         a(href=post.path)
             h2.section-heading
                 span=post.town
                 span.section-heading-details=`${post.country}, ${post.humanDate}`
-            +picture(post.mainImage, {className: 'blog-image'})
+            +picture(post.mainImage, {
+            	className: 'blog-image',
+                lazyLoad: i !== 0
+            })

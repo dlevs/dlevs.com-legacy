@@ -25,13 +25,13 @@ block content
             |. Below is a selection of projects that you won't find on GitHub that highlight my work for eCommerce websites.
 
         ul.project-list
-            each project in projects
+            each project, i in projects
                 li.project-list-item
                     h3.project-heading=project.heading
 
                     div.project-image-wrapper
                         +imageLink(project.img)
-                           +picture(project.img, {className: 'project-image'})
+                           +picture(project.img, {className: 'project-image', lazyLoad: i !== 0})
 
                     div.project-description(data-readmore-summary=project.shortDescription)
                         !=project.description
