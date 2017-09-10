@@ -17,6 +17,6 @@ app
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.use(serve('./public'))
-	.use(serve('./public-dist'))
+	.use(serve(path.join(__dirname, './public')))
+	.use(serve(path.join(__dirname, './public-dist')))
 	.listen(3000);
