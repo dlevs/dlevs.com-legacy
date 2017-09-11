@@ -10,3 +10,5 @@ urlset(
                 each image in page.images
                     image:image
                         image:loc=origin + image.src
+                        if image.geoLocation
+                            image:geo_location=image.geoLocation

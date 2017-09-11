@@ -29,6 +29,10 @@ module.exports = ({breadcrumbRoot}) => {
 					label: post.town
 				}
 			]);
+			const images = post.images.map((image) => ({
+				...image,
+				geoLocation: `${post.town}, ${post.country}`
+			}));
 
 			return {
 				countrySlug,
@@ -36,8 +40,9 @@ module.exports = ({breadcrumbRoot}) => {
 				breadcrumb,
 				path: last(breadcrumb).path,
 				humanDate: moment(post.date).format('MMMM YYYY'),
-				mainImage: post.images[0],
-				...post
+				mainImage: images[0],
+				...post,
+				images
 			}
 		}),
 		orderBy('date', 'desc')
