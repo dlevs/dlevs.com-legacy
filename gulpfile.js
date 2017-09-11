@@ -11,6 +11,7 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
+const rev = require('gulp-rev');
 
 // Variables
 //----------------------------------------------
@@ -28,6 +29,10 @@ const paths = {
 		watch: [
 			'scripts/**/*.js'
 		]
+	},
+	manifest: {
+		dest: 'data/generated',
+		destFile: 'data/generated/assets.json'
 	}
 };
 const postcssPlugins = [
@@ -39,7 +44,13 @@ const postcssPlugins = [
 		filterPlugins: false
 	})
 ];
-
+const revManifest = () => rev.manifest(
+	paths.manifest.destFile,
+	{
+		base: paths.manifest.dest,
+		merge: true
+	}
+);
 function handleStreamError({message, plugin}) {
 	console.error(chalk.red(message));
 	notifier.notify({title: `Error with ${plugin}`, message});
@@ -55,7 +66,10 @@ gulp.task('styles', () => {
 	return gulp.src(paths.styles.src)
 		.pipe(plumber(handleStreamError))
 		.pipe(postcss(postcssPlugins))
+		.pipe(rev())
 		.pipe(gulp.dest(paths.styles.dest))
+		.pipe(revManifest())
+		.pipe(gulp.dest(paths.manifest.dest))
 });
 
 gulp.task('scripts', () => {
@@ -71,7 +85,10 @@ gulp.task('scripts', () => {
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
+		.pipe(rev())
 		.pipe(gulp.dest(paths.scripts.dest))
+		.pipe(revManifest())
+		.pipe(gulp.dest(paths.manifest.dest))
 });
 
 gulp.task('watch', ['scripts', 'styles'], () => {

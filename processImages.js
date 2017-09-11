@@ -104,7 +104,7 @@ const processImages = async () => {
 		});
 	});
 
-	fs.writeFile('./images/meta.json', JSON.stringify(imageData, null, '\t'));
+	fs.writeFile('./data/generated/images.json', JSON.stringify(imageData, null, '\t'));
 };
 
 const processSvgs = async () => {

@@ -11,7 +11,7 @@ html(lang="en-GB")
         block meta
 
         //- Styling
-        link(rel="stylesheet" href="/styles/main.css")
+        link(rel="stylesheet" href=`/styles/${ASSET_META['main.css']}`)
 
         //- Favicon
         link(rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png")
@@ -27,4 +27,4 @@ html(lang="en-GB")
         include ../includes/photoswipeDialog
 
         //- TODO: Some code relies on document ready. Refactor.
-        script(src="/scripts/main.js" data-no-instant)
+        script(src=`/scripts/${ASSET_META['main.js']}` data-no-instant)
