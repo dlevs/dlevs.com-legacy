@@ -19,4 +19,4 @@ app
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public')))
 	.use(serve(path.join(__dirname, './public-dist')))
-	.listen(3000);
+	.listen(process.env.PORT || 3000);
