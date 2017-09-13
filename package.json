@@ -6,15 +6,18 @@
   "scripts": {
     "start": "env NODE_ENV=production node index.js",
     "dev": "gulp watch & env NODE_ENV=development nodemon index.js",
-    "build": "npm run build:clean && npm run build:assets && npm run build:staticresources && npm run build:images",
-    "build:clean": "rimraf ./public-dist",
+    "build": "npm run build:clean && npm run build:assets && npm run build:staticresources",
+    "build:clean": "rimraf ./public-dist && rimraf ./data/generated/*",
     "build:assets": "gulp",
     "build:images": "node processImages.js",
     "build:staticresources": "node processStaticResources.js",
+    "postreceive": "./post-receive.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
+    "exif-reader": "^1.0.2",
+    "feather-icons": "^3.2.2",
     "fs-extra": "^4.0.1",
     "instantclick": "^3.1.0",
     "koa": "^2.3.0",
@@ -41,6 +44,7 @@
     "gulp-rev": "^8.0.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
+    "husky": "^0.14.3",
     "node-notifier": "^5.1.2",
     "nodemon": "^1.11.0",
     "postcss-cssnext": "^3.0.2",
