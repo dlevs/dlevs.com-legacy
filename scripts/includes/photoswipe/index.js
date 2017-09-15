@@ -1,5 +1,5 @@
 var PhotoSwipe = require('photoswipe');
-var PhotoSwipeDefaultUI = require('photoswipe/dist/photoswipe-ui-default.js');
+var PhotoSwipeUI = require('./photoswipe-ui');
 
 /**
  * Opens the photoswipe gallery when clicking a link with the "js-photoswipe"
@@ -53,7 +53,7 @@ function onImageLinkClick(event) {
 			return Math.max(minScale, scale);
 		}
 	};
-	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeDefaultUI, items, options);
+	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
 
 	gallery.init();
 }

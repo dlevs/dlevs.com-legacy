@@ -6,6 +6,7 @@ const slash = require('koa-slash');
 const router = require('./routes');
 const IMAGE_META = require('./data/generated/images');
 const ASSET_META = require('./data/generated/assets');
+const ICONS = require('feather-icons');
 
 const app = new Koa();
 
@@ -14,7 +15,7 @@ app
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
 		// Using "options" object to set local variables in templates
-		options: {IMAGE_META, ASSET_META}
+		options: {IMAGE_META, ASSET_META, ICONS}
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())

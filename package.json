@@ -7,11 +7,10 @@
     "start": "env NODE_ENV=production node index.js",
     "dev": "gulp watch & env NODE_ENV=development nodemon index.js",
     "build": "npm run build:assets && npm run build:staticresources",
-    "build-full": "npm run build:clean && npm run build:assets && npm run build:staticresources && npm run build:images",
+    "build-full": "npm run build:clean && npm run build:assets && npm run build:images",
     "build:clean": "rimraf ./public-dist && rimraf ./data/generated/*",
     "build:assets": "gulp",
     "build:images": "node processImages.js",
-    "build:staticresources": "node processStaticResources.js",
     "postreceive": "./post-receive.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

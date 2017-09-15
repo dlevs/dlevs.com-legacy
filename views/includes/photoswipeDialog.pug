@@ -20,9 +20,15 @@
         // Controls are self-explanatory. Order can be changed.
         .pswp__counter
         button.pswp__button.pswp__button--close(title='Close (Esc)')
+          +icon('x')
+        a.pswp__button(href="https://google.com/" title='View on map')
+          +icon('map')
         button.pswp__button.pswp__button--share(title='Share')
+          +icon('share-2')
         button.pswp__button.pswp__button--fs(title='Toggle fullscreen')
+          +icon('maximize')
         button.pswp__button.pswp__button--zoom(title='Zoom in/out')
+          +icon('zoom-in')
         // Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR
         // element will get class pswp__preloader--active when preloader is running
         .pswp__preloader
