@@ -41,6 +41,9 @@ img {
 p {
 	margin: var(--spacing-medium) 0;
 }
+figure {
+	margin: 0;
+}
 :--heading {
 	font-family: var(--font-heading);
 	letter-spacing: 0.06em;

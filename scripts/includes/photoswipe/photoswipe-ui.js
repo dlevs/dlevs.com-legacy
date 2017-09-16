@@ -51,13 +51,11 @@ module.exports = function (pswp, framework) {
 				if (!mapLinkEl) return;
 
 				if (item.mapLink) {
-					mapLinkEl.setAttribute('aria-disabled', 'false');
 					mapLinkEl.href = item.mapLink;
-					mapLinkEl.title = 'View on map';
+					framework.removeClass(mapLinkEl, 'hidden');
 				} else {
-					mapLinkEl.setAttribute('aria-disabled', 'true');
 					mapLinkEl.href = '';
-					mapLinkEl.title = 'Map not available for this image';
+					framework.addClass(mapLinkEl, 'hidden');
 				}
 			},
 

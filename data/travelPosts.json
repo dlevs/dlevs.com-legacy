@@ -18,11 +18,17 @@
         "town": "Corsica",
         "date": "2017-06-18",
         "images": [
-            {"src": "/images/travel/france/20170623_130019.jpg"},
+            {
+                "src": "/images/travel/france/20170623_130019.jpg",
+                "caption": "Place Foch"
+            },
             {"src": "/images/travel/france/20170618_210125.jpg"},
             {"src": "/images/travel/france/20170618_204532.jpg"},
             {"src": "/images/travel/france/20170620_213204.jpg"},
-            {"src": "/images/travel/france/20170620_141812.jpg"}
+            {
+                "src": "/images/travel/france/20170620_141812.jpg",
+                "caption": "The Athlete's Foot"
+            }
         ]
     },
     {

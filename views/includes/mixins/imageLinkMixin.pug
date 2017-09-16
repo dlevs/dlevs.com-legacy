@@ -1,4 +1,4 @@
-mixin imageLink({src})
+mixin imageLink({src}, attrs={})
     - const images = IMAGE_META[src];
     - const largeImage = images.large;
     a.js-photoswipe(
@@ -7,5 +7,5 @@ mixin imageLink({src})
         data-height=largeImage.height
         data-map-link=images.gps && images.gps.googleMapLink
         data-no-instant
-    )
+    )&attributes(attrs)
         block

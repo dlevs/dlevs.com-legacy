@@ -1,6 +1,57 @@
 var PhotoSwipe = require('photoswipe');
 var PhotoSwipeUI = require('./photoswipe-ui');
 
+function getSlideElements() {
+	return Array.prototype.slice.call(
+		document.querySelectorAll('.js-photoswipe')
+	);
+}
+
+function openGallery(index, disableTransitions) {
+	var pswpElement = document.querySelector('.pswp');
+	var elems = getSlideElements();
+	var items = elems.map(function (elem) {
+		var thumbnail = elem.getElementsByTagName('img')[0];
+		var caption = elem.getElementsByTagName('figcaption')[0];
+		return {
+			src: elem.href,
+			msrc: thumbnail.src,
+			thumbnail: thumbnail,
+			w: Number(elem.dataset.width),
+			h: Number(elem.dataset.height),
+			mapLink: elem.dataset.mapLink,
+			title: elem.dataset.caption || (caption && caption.textContent)
+		}
+	});
+	var options = {
+		index: index,
+		getThumbBoundsFn: function (index) {
+			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+			var rect = items[index].thumbnail.getBoundingClientRect();
+
+			return {
+				x: rect.left,
+				y: rect.top + pageYScroll,
+				w: rect.width
+			};
+		},
+		getDoubleTapZoom: function () {
+			var scale = 1 / (window.devicePixelRatio || 1);
+			var minScale = 0.5;
+			return Math.max(minScale, scale);
+		}
+	};
+
+	if (disableTransitions) {
+		options.hideAnimationDuration = 0;
+		options.showAnimationDuration = 0;
+	}
+
+	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
+
+	gallery.init();
+}
+
 /**
  * Opens the photoswipe gallery when clicking a link with the "js-photoswipe"
  * class. All images with class "js-photoswipe" are included in the gallery.
@@ -21,48 +72,26 @@ function onImageLinkClick(event) {
 
 	event.preventDefault();
 
-	var pswpElement = document.querySelector('.pswp');
-	var elems = Array.prototype.slice.call(
-		document.querySelectorAll('.js-photoswipe')
-	);
-	var items = elems.map(function (elem) {
-		var thumbnail = elem.getElementsByTagName('img')[0];
-		return {
-			src: elem.href,
-			msrc: thumbnail.src,
-			thumbnail: thumbnail,
-			w: Number(elem.dataset.width),
-			h: Number(elem.dataset.height),
-			mapLink: elem.dataset.mapLink,
-			title: 'Image Caption'
-		}
-	});
-	var options = {
-		index: elems.indexOf(imgLink),
-		getThumbBoundsFn: function (index) {
-			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-			var rect = items[index].thumbnail.getBoundingClientRect();
+	var elems = getSlideElements();
+	var index = elems.indexOf(imgLink);
 
-			return {
-				x: rect.left,
-				y: rect.top + pageYScroll,
-				w: rect.width
-			};
-		},
-		getDoubleTapZoom: function() {
-			var scale = 1 / (window.devicePixelRatio || 1);
-			var minScale = 0.5;
-			return Math.max(minScale, scale);
-		}
-	};
-	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
+	openGallery(index);
+}
 
-	gallery.init();
+function openGalleryFromHash() {
+	var matches = /pid=(\d+)/.exec(location.hash);
+
+	if (!matches) return;
+
+	var index = Number(matches[1]);
+
+	openGallery(index, true);
 }
 
 
 function init() {
 	document.addEventListener('click', onImageLinkClick);
+	openGalleryFromHash();
 }
 
 module.exports = {init: init};

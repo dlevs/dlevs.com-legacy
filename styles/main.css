@@ -6,12 +6,15 @@
 @import "./includes/structure.css";
 @import "./includes/buttons.css";
 @import "./includes/breadcrumb.css";
+
 /* Pages */
 @import "./pages/home.css";
 @import "./pages/travel.css";
 /* Plugins */
 @import "photoswipe/dist/photoswipe.css";
 @import "./includes/photoswipe-skin.css";
+
+@import "./includes/utility.css";
 
 /* Misc */
 /* TODO: Organise */

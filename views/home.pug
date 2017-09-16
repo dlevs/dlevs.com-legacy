@@ -29,12 +29,12 @@ block content
                 li.project-list-item
                     h3.project-heading=project.heading
 
-                    div.project-image-wrapper
-                        +imageLink(project.img)
-                           +picture(project.img, {className: 'project-image', lazyLoad: i !== 0})
+                    figure.project-image-wrapper
+                        +imageLink(project.img, {'data-caption': project.heading})
+                            +picture(project.img, {className: 'project-image', lazyLoad: i > 1})
 
-                    div.project-description(data-readmore-summary=project.shortDescription)
-                        !=project.description
+                        figcaption.project-description(data-readmore-summary=project.shortDescription)
+                            !=project.description
 
                     if project.badges
                         ul.project-details-badges

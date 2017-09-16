@@ -19,10 +19,13 @@ block content
 
         each image, i in post.images
             +imageLink(image)
-                +picture(image, {
-                	className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
-                    lazyLoad: i !== 0
-                })
+                figure
+                    +picture(image, {
+                        className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
+                        lazyLoad: i > 1
+                    })
+                    if image.caption
+                        figcaption.hidden=image.caption
 
         if previousPost || nextPost
             aside.related-posts-wrapper

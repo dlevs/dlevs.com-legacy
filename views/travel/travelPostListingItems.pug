@@ -8,5 +8,5 @@ each post, i in posts
                 span.section-heading-details=`${post.country}, ${post.humanDate}`
             +picture(post.mainImage, {
             	className: 'blog-image',
-                lazyLoad: i !== 0
+                lazyLoad: i > 1
             })
