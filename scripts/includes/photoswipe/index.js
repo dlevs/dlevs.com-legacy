@@ -83,7 +83,7 @@ function openGalleryFromHash() {
 
 	if (!matches) return;
 
-	var index = Number(matches[1]);
+	var index = Number(matches[1]) - 1;
 
 	openGallery(index, true);
 }
