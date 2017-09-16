@@ -38,7 +38,6 @@
 	}
 	.related-post {
 		width: 50%;
-		margin-bottom: 0;
 	}
 	.next-post {
 		order: 2;
@@ -58,16 +57,13 @@
 		margin-bottom: var(--spacing-section);
 
 		&.last {
-			margin-bottom: var(--spacing-huge);
+			margin-bottom: var(--spacing-section);
 		}
+	}
+	.related-post {
+		margin-bottom: var(--spacing-section);
 	}
 	.related-posts-wrapper {
 		margin-top: var(--spacing-huge);
-	}
-	.next-post {
-		padding-left: var(--spacing-huge);
-	}
-	.previous-post {
-		padding-right: var(--spacing-huge);
 	}
 }
