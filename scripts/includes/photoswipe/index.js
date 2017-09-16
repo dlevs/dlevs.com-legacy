@@ -32,7 +32,9 @@ function onImageLinkClick(event) {
 			msrc: thumbnail.src,
 			thumbnail: thumbnail,
 			w: Number(elem.dataset.width),
-			h: Number(elem.dataset.height)
+			h: Number(elem.dataset.height),
+			mapLink: elem.dataset.mapLink,
+			title: 'Image Caption'
 		}
 	});
 	var options = {

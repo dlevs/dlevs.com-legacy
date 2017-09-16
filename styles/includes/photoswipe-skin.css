@@ -37,7 +37,9 @@
 	box-shadow: none;
 }
 .pswp__button:focus, .pswp__button:hover {
-	opacity: 1;
+	&:not([aria-disabled=true]) {
+		opacity: 1;
+	}
 }
 .pswp__button:active {
 	outline: none;
@@ -60,6 +62,9 @@
 	width: 18px;
 	height: 44px;
 	color: #fff;
+}
+.pswp__button[aria-disabled=true] .pswp__button-icon {
+	color: #666;
 }
 .pswp__button-icon-alt {
 	display: none;

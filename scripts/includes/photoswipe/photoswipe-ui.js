@@ -45,6 +45,22 @@ module.exports = function (pswp, framework) {
 				return true;
 			},
 
+			updateMapLink: function (item) {
+				var mapLinkEl = document.querySelector('.pswp__button--map-link');
+
+				if (!mapLinkEl) return;
+
+				if (item.mapLink) {
+					mapLinkEl.setAttribute('aria-disabled', 'false');
+					mapLinkEl.href = item.mapLink;
+					mapLinkEl.title = 'View on map';
+				} else {
+					mapLinkEl.setAttribute('aria-disabled', 'true');
+					mapLinkEl.href = '';
+					mapLinkEl.title = 'Map not available for this image';
+				}
+			},
+
 			closeEl: true,
 			captionEl: true,
 			fullscreenEl: true,
@@ -672,7 +688,7 @@ module.exports = function (pswp, framework) {
 
 			if (_options.captionEl) {
 				_options.addCaptionHTMLFn(pswp.currItem, _captionContainer);
-
+				_options.updateMapLink(pswp.currItem);
 				_togglePswpClass(_captionContainer, 'caption--empty', !pswp.currItem.title);
 			}
 

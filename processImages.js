@@ -4,6 +4,7 @@ const path = require('path');
 const eachLimit = promisify(require('async').eachLimit);
 const glob = promisify(require('glob'));
 const fs = require('fs-extra');
+const readExif = require('exif-reader');
 const svgo = new (require('svgo'))({
 	removeTitle: true,
 	removeXMLNS: true,
@@ -33,10 +34,11 @@ const addToImageData = (filepath, type, data) => {
 	const {width, height} = data;
 	filepath = filepath.replace(/^\./, '');
 
-	data.paddingBottom = toFixedTrimmed(((height / width) * 100), 4) + '%';
-
 	imageData[filepath] = imageData[filepath] || {};
-	imageData[filepath][type] = data;
+	imageData[filepath][type] = {
+		...data,
+		paddingBottom: toFixedTrimmed(((height / width) * 100), 4) + '%'
+	};
 };
 
 const processImage = async ({type, filepath, format, size, quality}) => {
@@ -75,11 +77,31 @@ const processImage = async ({type, filepath, format, size, quality}) => {
 	});
 };
 
+const gpsCoordsToString = (coordinates, ref) => {
+	const [first, second, third] = coordinates;
+	return `${first}°${second}'${third}"${ref}`;
+};
+
 const processImages = async () => {
 	const filepaths = await glob('./images/**/*.+(png|jpg)');
 
 	await eachLimit(filepaths, 8, async (filepath) => {
 		console.log(`Processing: ${filepath}`);
+
+		const sharpFile = sharp(filepath);
+
+		const meta = await sharpFile.metadata();
+
+		if (meta.exif) {
+			const exif = readExif(meta.exif);
+
+			if (exif && exif.gps) {
+				addToImageData(filepath, 'gps', {
+					...exif.gps,
+					googleMapLink: `https://maps.google.com/maps?q=${gpsCoordsToString(exif.gps.GPSLatitude, exif.gps.GPSLatitudeRef)},${gpsCoordsToString(exif.gps.GPSLongitude, exif.gps.GPSLongitudeRef)}`
+				});
+			}
+		}
 
 		await processImage({
 			type: 'large',
@@ -104,7 +126,9 @@ const processImages = async () => {
 		});
 	});
 
-	fs.writeFile('./data/generated/images.json', JSON.stringify(imageData, null, '\t'));
+	const metaOutputPath = './data/generated/images.json';
+	console.log(`Writing image meta data to ${metaOutputPath}`);
+	fs.writeFile(metaOutputPath, JSON.stringify(imageData, null, '\t'));
 };
 
 const processSvgs = async () => {
