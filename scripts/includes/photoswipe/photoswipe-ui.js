@@ -117,15 +117,13 @@ module.exports = function (pswp, framework) {
 
 			var target = e.target || e.srcElement,
 				uiElement,
-				clickedClass = target.getAttribute('class') || '',
 				found;
 
 			for (var i = 0; i < _uiElements.length; i++) {
 				uiElement = _uiElements[i];
-				if (uiElement.onTap && clickedClass.indexOf('pswp__' + uiElement.name) > -1) {
+				if (uiElement.onTap && target.closest('.pswp__' + uiElement.name)) {
 					uiElement.onTap();
 					found = true;
-
 				}
 			}
 
