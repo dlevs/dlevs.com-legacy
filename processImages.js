@@ -5,6 +5,7 @@ const eachLimit = promisify(require('async').eachLimit);
 const glob = promisify(require('glob'));
 const fs = require('fs-extra');
 const readExif = require('exif-reader');
+const ProgressBar = require('progress');
 const svgo = new (require('svgo'))({
 	removeTitle: true,
 	removeXMLNS: true,
@@ -84,12 +85,12 @@ const gpsCoordsToString = (coordinates, ref) => {
 
 const processImages = async () => {
 	const filepaths = await glob('./images/**/*.+(png|jpg)');
+	const progress = new ProgressBar('[:bar] :percent%', {
+		total: filepaths.length * 4
+	});
 
 	await eachLimit(filepaths, 8, async (filepath) => {
-		console.log(`Processing: ${filepath}`);
-
 		const sharpFile = sharp(filepath);
-
 		const meta = await sharpFile.metadata();
 
 		if (meta.exif) {
@@ -102,6 +103,7 @@ const processImages = async () => {
 				});
 			}
 		}
+		progress.tick();
 
 		await processImage({
 			type: 'large',
@@ -110,6 +112,8 @@ const processImages = async () => {
 			size: 2000,
 			quality: 80
 		});
+		progress.tick();
+
 		await processImage({
 			type: 'default',
 			filepath,
@@ -117,6 +121,8 @@ const processImages = async () => {
 			size: 960,
 			quality: 80
 		});
+		progress.tick();
+
 		await processImage({
 			type: 'webp',
 			filepath,
@@ -124,6 +130,7 @@ const processImages = async () => {
 			size: 960,
 			quality: 85
 		});
+		progress.tick();
 	});
 
 	const metaOutputPath = './data/generated/images.json';
