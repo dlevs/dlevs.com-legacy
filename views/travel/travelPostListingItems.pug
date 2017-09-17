@@ -6,7 +6,11 @@ each post, i in posts
             h2.section-heading
                 span=post.town
                 span.section-heading-details=`${post.country}, ${post.humanDate}`
-            +picture(post.mainImage, {
-            	className: 'blog-image',
-                lazyLoad: i > 1
-            })
+            +picture(
+                post.mainImage,
+                {
+                    className: 'blog-image',
+                    lazyLoad: i > 1,
+                    altOverwrite: ''
+                }
+            )

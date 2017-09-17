@@ -1,4 +1,4 @@
-mixin picture({src, alt}, {className, lazyLoad=true} = {})
+mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
     - const images = IMAGE_META[src];
 
     div(
@@ -12,7 +12,9 @@ mixin picture({src, alt}, {className, lazyLoad=true} = {})
             srcset(type="image/jpeg")&attributes({
 				[lazyLoad ? 'data-srcset' : 'srcset']: images.default.src
 			})
-            img(alt=alt)&attributes(
+            img(
+                alt=altOverwrite !== undefined ? altOverwrite : alt
+            )&attributes(
 			    lazyLoad
                     ? {
                         'class': 'lazyload',

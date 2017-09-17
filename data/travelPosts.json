@@ -6,31 +6,38 @@
         "images": [
             {
                 "src": "/images/travel/hong-kong/20170604_150050.jpg",
-                "caption": "The entrance to Ngong Ping Piazza, with the Big Buddha in the background."
+                "caption": "The entrance to Ngong Ping Piazza, with the Big Buddha in the background.",
+                "alt": "A white stone gate surrounded by greenery."
             },
             {
                 "src": "/images/travel/hong-kong/20170604_154219.jpg",
-                "caption": "Po Lin Monastery"
+                "caption": "Po Lin Monastery",
+                "alt": "A colourful building"
             },
             {
                 "src": "/images/travel/hong-kong/20170604_153607.jpg",
-                "caption": "In the grounds of Po Lin Monastery"
+                "caption": "In the grounds of Po Lin Monastery",
+                "alt": "Trees and plants surrounding a traditional-looking Vietnamese building"
             },
             {
                 "src": "/images/travel/hong-kong/20170604_153754.jpg",
-                "caption": "The Grand Hall of Ten Thousand Buddhas"
+                "caption": "The Grand Hall of Ten Thousand Buddhas",
+                "alt": "A colourful, ornate temple"
             },
             {
                 "src": "/images/travel/hong-kong/20170604_151153.jpg",
-                "caption": "The Tian Tan Buddha - the bronze statue, also known as \"Big Buddha\", was built in 1993."
+                "caption": "The Tian Tan Buddha - the bronze statue, also known as \"Big Buddha\", was built in 1993.",
+                "alt": "A giant bronze Buddha statue. The Buddha's right hand is raised."
             },
             {
                 "src": "/images/travel/hong-kong/20170604_152037.jpg",
-                "caption": "The view the the Tian Tan Buddha"
+                "caption": "The view the the Tian Tan Buddha",
+                "alt": "View from a mountaintop, obscured by clouds."
             },
             {
                 "src": "/images/travel/hong-kong/20170604_182421.jpg",
-                "caption": "The streets of Mong Kok"
+                "caption": "The streets of Mong Kok",
+                "alt": "A busy urban Hong Kong street"
             }
         ]
     },
@@ -41,23 +48,28 @@
         "images": [
             {
                 "src": "/images/travel/france/20170623_130019.jpg",
-                "caption": "Place Foch"
+                "caption": "Place Foch",
+                "alt": "A water fountain surrounded by palm trees. A statue of a man sits in the centre with a sea gull on its head."
             },
             {
                 "src": "/images/travel/france/20170618_210125.jpg",
-                "caption": "The coast of Ajaccio"
+                "caption": "The coast of Ajaccio",
+                "alt": "A beach with calm sea"
             },
             {
                 "src": "/images/travel/france/20170618_204532.jpg",
-                "caption": "A ferris wheel on the coast of Ajaccio"
+                "caption": "A ferris wheel on the coast of Ajaccio",
+                "alt": "A large seaside ferris wheel"
             },
             {
                 "src": "/images/travel/france/20170620_213204.jpg",
-                "caption": "Ajaccio in the evening"
+                "caption": "Ajaccio in the evening",
+                "alt": "A road lit by street lights with a view of the sea."
             },
             {
                 "src": "/images/travel/france/20170620_141812.jpg",
-                "caption": "The Athlete's Foot"
+                "caption": "The Athlete's Foot",
+                "alt": "The front of \"The Athlete's Foot\" sportswear shop."
             }
         ]
     },
@@ -68,74 +80,97 @@
         "images": [
             {
                 "src": "/images/travel/greece/20170312_123448.jpg",
-                "caption": "The Parthenon under restoration"
+                "caption": "The Parthenon under restoration",
+                "alt": "An ancient building with many pillars has scaffolding around it."
             },
             {
                 "src": "/images/travel/greece/20170312_104910.jpg",
-                "caption": "The Acropolis seen from afar"
+                "caption": "The Acropolis seen from afar",
+                "alt": "Rooftops in Athens and ancient buildings atop a hill in the distance."
             },
             {
                 "src": "/images/travel/greece/20170312_114101.jpg",
-                "caption": "Houses near the base of the Acropolis"
+                "caption": "Houses near the base of the Acropolis",
+                "alt": "Small, white houses in a narrow street, decorated with plants."
             },
             {
                 "src": "/images/travel/greece/20170312_120934.jpg",
-                "caption": "The grounds at the base of the Acropolis"
+                "caption": "The grounds at the base of the Acropolis",
+                "alt": "A path leading up the hill to ancient buildings."
             },
             {
                 "src": "/images/travel/greece/20170312_121624.jpg",
-                "caption": "The Theatre of Dionysus"
+                "caption": "The Theatre of Dionysus",
+                "alt": "Ruins of a small outdoor theatre consisting of elevated stone steps surrounding a crescent-shaped stage."
             },
             {
                 "src": "/images/travel/greece/20170312_122735.jpg",
-                "caption": "Odeon of Herodes Atticus"
+                "caption": "Odeon of Herodes Atticus",
+                "alt": "Ruins of a grand theatre with great walls and many stone benches in a half-circle."
             },
             {
                 "src": "/images/travel/greece/20170312_125538.jpg",
-                "caption": "The Theatre of Dionysus from above"
+                "caption": "The Theatre of Dionysus from above",
+                "alt": "View of Athens from above, focusing on the ruins of an outdoor theatre."
             },
             {
                 "src": "/images/travel/greece/20170313_131339.jpg",
-                "caption": "The beach of Paleo Faliro on a windy day"
+                "caption": "The beach of Paleo Faliro on a windy day",
+                "alt": "A beach with smooth sand and blue skys. Some litter sits nearby."
+            }
+        ]
+    },
+    {
+        "country": "India",
+        "town": "Delhi",
+        "date": "2016-01-02",
+        "images": [
+            {
+                "src": "/images/travel/india/20160102_105355.jpg",
+                "caption": "Humayun's Tomb",
+                "alt": "A grand building with a dome roof."
+            },
+            {
+                "src": "/images/travel/india/20160102_114129.jpg",
+                "caption": "Goats in coats",
+                "alt": "5 goats on the street. Some wear tshirts and jackets."
+            },
+            {
+                "src": "/images/travel/india/20160102_114155.jpg",
+                "caption": "A goat styling a denim jacket",
+                "alt": "Two goats on the street, eating from the ground."
+            },
+            {
+                "src": "/images/travel/india/20160102_104800.jpg",
+                "caption": "One of the hundreds of dogs wandering around Delhi",
+                "alt": "A black puppy"
             }
         ]
     },
     {
         "country": "India",
         "town": "Agra",
-        "date": "2016-01-02",
+        "date": "2016-01-03",
         "images": [
             {
                 "src": "/images/travel/india/20160103_160958.jpg",
-                "caption": ""
+                "caption": "Thousands of people queue to go inside the Taj Mahal",
+                "alt": "Many people queue around a grand white marble mausoleum"
             },
             {
                 "src": "/images/travel/india/20160103_154628.jpg",
-                "caption": ""
+                "caption": "The Taj Mahal",
+                "alt": "The Taj Mahal from afar, showing a perfect lawn surrounding the mausoleum"
             },
             {
                 "src": "/images/travel/india/20160103_160951.jpg",
-                "caption": ""
-            },
-            {
-                "src": "/images/travel/india/20160102_114129.jpg",
-                "caption": ""
-            },
-            {
-                "src": "/images/travel/india/20160102_114155.jpg",
-                "caption": ""
+                "caption": "The Great Gate - entrance to the Taj Mahal grounds",
+                "alt": "A grand building that acts as a gate."
             },
             {
                 "src": "/images/travel/india/20160103_151624.jpg",
-                "caption": ""
-            },
-            {
-                "src": "/images/travel/india/20160102_105355.jpg",
-                "caption": ""
-            },
-            {
-                "src": "/images/travel/india/20160102_104800.jpg",
-                "caption": ""
+                "caption": "A camel looking proud while pulling a cart",
+                "alt": "A camel pulling a cart."
             }
         ]
     },
@@ -146,35 +181,43 @@
         "images": [
             {
                 "src": "/images/travel/italy/20170519_124408.jpg",
-                "caption": "The view from Ponte di Rialto"
+                "caption": "The view from Ponte di Rialto",
+                "alt": "Buildings line the sides of a large canal"
             },
             {
                 "src": "/images/travel/italy/20170519_111838.jpg",
-                "caption": "Basilica di San Marco"
+                "caption": "Basilica di San Marco",
+                "alt": "A grand church decorated with religious images and gold mosaics"
             },
             {
                 "src": "/images/travel/italy/20170519_112128.jpg",
-                "caption": "A bridge just off Piazza San Marco"
+                "caption": "A bridge just off Piazza San Marco",
+                "alt": "A small bridge over a narrow canal, decorated with flowers."
             },
             {
                 "src": "/images/travel/italy/20170519_205513.jpg",
-                "caption": "The view of Venice across the water from Lido"
+                "caption": "The view of Venice across the water from Lido",
+                "alt": "Open sea in the evening, littered with wooden posts."
             },
             {
                 "src": "/images/travel/italy/20170520_165048.jpg",
-                "caption": "A canal in Cannaregio, north Venice"
+                "caption": "A canal in Cannaregio, north Venice",
+                "alt": "A canal with small boats moored along the sides."
             },
             {
                 "src": "/images/travel/italy/20170520_165423.jpg",
-                "caption": "An alleyway in Cannaregio"
+                "caption": "An alleyway in Cannaregio",
+                "alt": "A narrow alleyway between two houses"
             },
             {
                 "src": "/images/travel/italy/20170520_211322.jpg",
-                "caption": "Giant hands rising from the Canal Grande to support the Ca’ Sagredo Hotel. The sculpture by Italian-American artist Lorenzo Quinn comments on climate change."
+                "caption": "Giant hands rising from the Canal Grande to support the Ca’ Sagredo Hotel. The sculpture by Italian-American artist Lorenzo Quinn comments on climate change.",
+                "alt": "A canal at night with giant stone hands protruding from the water."
             },
             {
                 "src": "/images/travel/italy/20170521_124552.jpg",
-                "caption": "Venice seen from the air"
+                "caption": "Venice seen from the air",
+                "alt": "Islands from above, viewed from an airplane window."
             }
         ]
     },
@@ -185,11 +228,13 @@
         "images": [
             {
                 "src": "/images/travel/netherlands/20160905_175431.jpg",
-                "caption": "An Amsterdam canal"
+                "caption": "An Amsterdam canal",
+                "alt": "Grand houses in front of a canal with colourful boats docked in front."
             },
             {
                 "src": "/images/travel/netherlands/20160905_175442.jpg",
-                "caption": "On the canal, avoiding great tourist ships in a tiny pedalo"
+                "caption": "On the canal, avoiding great tourist ships in a tiny pedalo",
+                "alt": "Boats lining a wide canal"
             }
         ]
     },
@@ -200,31 +245,38 @@
         "images": [
             {
                 "src": "/images/travel/scotland/20161105_155042.jpg",
-                "caption": "Edinburgh Castle from below"
+                "caption": "Edinburgh Castle from below",
+                "alt": "A castle viewed from below."
             },
             {
                 "src": "/images/travel/scotland/20161105_155459.jpg",
-                "caption": "Street art in Edinburgh, and a guy who looks cold"
+                "caption": "Street art in Edinburgh, and a guy who looks cold",
+                "alt": "A shipping container decorated in graffiti in the middle of a town square"
             },
             {
                 "src": "/images/travel/scotland/20161105_160038.jpg",
-                "caption": "Edinburgh Castle"
+                "caption": "Edinburgh Castle",
+                "alt": "A castle viewed from an expanse of tarmac filled with tourists."
             },
             {
                 "src": "/images/travel/scotland/20161105_160542.jpg",
-                "caption": "The view in front of Edinburgh Castle"
+                "caption": "The view in front of Edinburgh Castle",
+                "alt": "Buildings of Edinburgh town"
             },
             {
                 "src": "/images/travel/scotland/20161105_161320.jpg",
-                "caption": "The Royal Mile leading from Edinburgh Castle, with a view of The Hub"
+                "caption": "The Royal Mile leading from Edinburgh Castle, with a view of The Hub",
+                "alt": "An old-looking street with a grand, gothic building"
             },
             {
                 "src": "/images/travel/scotland/20161106_115948.jpg",
-                "caption": "Arthur's Seat"
+                "caption": "Arthur's Seat",
+                "alt": "A large, rocky hill surrounded by grass"
             },
             {
                 "src": "/images/travel/scotland/20161106_123953_001.jpg",
-                "caption": "The view from the top of Arthur's Seat"
+                "caption": "The view from the top of Arthur's Seat",
+                "alt": "View of grassy hills from the top, with a town and the sea in the distance."
             }
         ]
     },
@@ -235,15 +287,18 @@
         "images": [
             {
                 "src": "/images/travel/slovakia/20160502_015932.jpg",
-                "caption": "A street at night"
+                "caption": "A street at night",
+                "alt": "A cobbled street at night, lined with cars"
             },
             {
                 "src": "/images/travel/slovakia/20160502_124536.jpg",
-                "caption": "I saw a road out of a window. I guess I didn't really do much in Bratislava..."
+                "caption": "I saw a road out of a window. I guess I didn't really do much in Bratislava...",
+                "alt": "A dual carriageway viewed from above"
             },
             {
                 "src": "/images/travel/slovakia/IMG-20160502-WA0000.jpg",
-                "caption": "The most sexist bar in the city"
+                "caption": "The most sexist bar in the city",
+                "alt": "A sign outside a bar displays reviews, reading \"This place rocks (tripadvisor)\" and \"The hottest, most sexist and sexiest bar in the city (foursquare)\""
             }
         ]
     },
@@ -254,39 +309,48 @@
         "images": [
             {
                 "src": "/images/travel/austria/20170108_144250.jpg",
-                "caption": "Wiener Riesenrad - Viennese Giant Ferris Wheel"
+                "caption": "Wiener Riesenrad - Viennese Giant Ferris Wheel",
+                "alt": "A grand ferris wheel in snowy grounds"
             },
             {
                 "src": "/images/travel/austria/20170108_150020.jpg",
-                "caption": "On the Wiener Riesenrad"
+                "caption": "On the Wiener Riesenrad",
+                "alt": "The metal scaffolding of a grand ferris wheel, viewed from inside one of the capsules."
             },
             {
                 "src": "/images/travel/austria/20170108_150726.jpg",
-                "caption": "The view from the Wiener Riesenrad"
+                "caption": "The view from the Wiener Riesenrad",
+                "alt": "View of Vienna from above. The buildings are yellow and covered with snow."
             },
             {
                 "src": "/images/travel/austria/20170108_152523.jpg",
-                "caption": "One of those Wild Mouse rides that makes you genuinely terrified for your life."
+                "caption": "One of those Wild Mouse rides that makes you genuinely terrified for your life.",
+                "alt": "A colourful fairground rollercoaster with a sign reading \"Die Wilde Maus\""
             },
             {
                 "src": "/images/travel/austria/20170108_160904.jpg",
-                "caption": "A crane party"
+                "caption": "A crane party",
+                "alt": "11 cranes dominating the skyline at a construction site."
             },
             {
                 "src": "/images/travel/austria/20170108_161118.jpg",
-                "caption": "Wiedner Gürtel"
+                "caption": "Wiedner Gürtel",
+                "alt": "A large dual carriageway with a tram"
             },
             {
                 "src": "/images/travel/austria/20170109_153647.jpg",
-                "caption": ""
+                "caption": "Wienfluss, partially frozen over.",
+                "alt": "A river that has frozen at the sides."
             },
             {
                 "src": "/images/travel/austria/20170108_173851.jpg",
-                "caption": ""
+                "caption": "Hotel Daniel",
+                "alt": "A hotel sign in the distance reading \"Hotel Daniel\""
             },
             {
                 "src": "/images/travel/austria/20170107_172207.jpg",
-                "caption": ""
+                "caption": "A fellow tourist also taking a photo of a street off Michaelerplatz",
+                "alt": "A street lined with shops and decorated with lights."
             }
         ]
     },
@@ -297,35 +361,43 @@
         "images": [
             {
                 "src": "/images/travel/vietnam/20170609_214146.jpg",
-                "caption": ""
+                "caption": "Eating and drinking in Hanoi's Old Quarter, with beers as cheap as 5000 dong (16p)",
+                "alt": "Many people sitting on small plastic chairs and drinking in the streets."
             },
             {
                 "src": "/images/travel/vietnam/20170610_210243.jpg",
-                "caption": ""
+                "caption": "Hoan Kiem Lake at night, with the Ngoc Son Temple is lit up in the middle.",
+                "alt": "A lake at night. An island full of trees is illuminated in the middle."
             },
             {
                 "src": "/images/travel/vietnam/20170611_142309.jpg",
-                "caption": ""
+                "caption": "A street in The Old Quarter",
+                "alt": "A street crowded with people on motorbikes"
             },
             {
                 "src": "/images/travel/vietnam/20170611_174819.jpg",
-                "caption": ""
+                "caption": "Hang Dau Water Tank",
+                "alt": "A structure sitting in the centre of a roundabout, surrounded by cars and motorbikes."
             },
             {
                 "src": "/images/travel/vietnam/20170611_151330.jpg",
-                "caption": ""
+                "caption": "A road shaded by trees",
+                "alt": "A large, quiet road lined with tall trees."
             },
             {
                 "src": "/images/travel/vietnam/20170611_152542.jpg",
-                "caption": ""
+                "caption": "Ho Chi Minh Mausoleum - the resting place of Vietnamese leader Ho Chi Minh",
+                "alt": "An ornate stone mausoleum with square stone pillars and the text \"CHU TICH - HO CHI MINH\""
             },
             {
                 "src": "/images/travel/vietnam/20170616_191231.jpg",
-                "caption": ""
+                "caption": "The view from a hostel window in The Old Quarter",
+                "alt": "A home above a shopfront, with balconies."
             },
             {
                 "src": "/images/travel/vietnam/IMG-20170616-WA0004.jpg",
-                "caption": ""
+                "caption": "A train line running through the streets of Hanoi",
+                "alt": "A train track running through a narrow road lined with small buildings."
             }
         ]
     },
@@ -336,27 +408,33 @@
         "images": [
             {
                 "src": "/images/travel/vietnam/20170610_112344.jpg",
-                "caption": "Hoa Lu ancient capital"
+                "caption": "Hoa Lu ancient capital",
+                "alt": "A bridge leading to an ornate gate viewed from across a still river"
             },
             {
                 "src": "/images/travel/vietnam/20170610_112512.jpg",
-                "caption": ""
+                "caption": "Sao Khe River",
+                "alt": "A calm river surrounded by mountains"
             },
             {
                 "src": "/images/travel/vietnam/20170610_134113.jpg",
-                "caption": ""
+                "caption": "Sao Khe River",
+                "alt": "A calm river with mountains in the distance, and small green row boats"
             },
             {
                 "src": "/images/travel/vietnam/20170610_135050.jpg",
-                "caption": ""
+                "caption": "Sao Khe River",
+                "alt": "Rocky limestone mountains surround a riverbend"
             },
             {
                 "src": "/images/travel/vietnam/20170610_152735.jpg",
-                "caption": "Goats hanging out in Hoa Lu"
+                "caption": "Goats hanging out in Hoa Lu",
+                "alt": "6 goats on a dirt road, in front of an expanse of farmland"
             },
             {
                 "src": "/images/travel/vietnam/IMG-20170613-WA0002.jpg",
-                "caption": "Shameless travel bike pic"
+                "caption": "Shameless travel pic",
+                "alt": "A red bicycle propped up on a dirt road in front of a mountain."
             }
         ]
     },
@@ -367,35 +445,43 @@
         "images": [
             {
                 "src": "/images/travel/vietnam/20170612_125616.jpg",
-                "caption": "The view from the harbour in Cat Ba Town"
+                "caption": "The view from the harbour in Cat Ba Town",
+                "alt": "Many small boats, some with Vietnamese flags, docked in a harbour"
             },
             {
                 "src": "/images/travel/vietnam/20170612_163058.jpg",
-                "caption": "The route through Cat Ba Island"
+                "caption": "The route through Cat Ba Island",
+                "alt": "A mountain road with a couple of motorbikes"
             },
             {
                 "src": "/images/travel/vietnam/20170612_163707.jpg",
-                "caption": "A rental bike"
+                "caption": "A rental bike cost around 100,000 dong a day (£3.50).",
+                "alt": "The fuel and speed dials of a motor scooter"
             },
             {
                 "src": "/images/travel/vietnam/20170613_174624.jpg",
-                "caption": "Bien Dong in Cat Ba Town"
+                "caption": "Bien Dong in Cat Ba Town",
+                "alt": "A reastaurant named \"Bien Dong\""
             },
             {
                 "src": "/images/travel/vietnam/20170614_112521.jpg",
-                "caption": "Cat Ba Town"
+                "caption": "Cat Ba Town",
+                "alt": "A large body of water in Cat Ba town, with mountains covered in green foliage in the distance"
             },
             {
                 "src": "/images/travel/vietnam/20170612_125910.jpg",
-                "caption": "Cat Ba Town"
+                "caption": "Cat Ba Town",
+                "alt": "Tall, narrow hotel buildings on the waterfront"
             },
             {
                 "src": "/images/travel/vietnam/IMG-20170613-WA0022.jpg",
-                "caption": "Kayaking off the coast of Cat Ba Town"
+                "caption": "Kayaking off the coast of Cat Ba Town",
+                "alt": "A yellow kayak on the water"
             },
             {
                 "src": "/images/travel/vietnam/IMG-20170613-WA0023.jpg",
-                "caption": "At an island off the coast of Cat Ba Town"
+                "caption": "At an island off the coast of Cat Ba Town",
+                "alt": "A close up of a brown passenger boat on the water"
             }
         ]
     },
@@ -406,15 +492,18 @@
         "images": [
             {
                 "src": "/images/travel/vietnam/20170609_113201.jpg",
-                "caption": "The beach of Duong Dong Town"
+                "caption": "The beach of Duong Dong Town",
+                "alt": "Still blue sea at the beach"
             },
             {
                 "src": "/images/travel/vietnam/20170609_112202.jpg",
-                "caption": "Roof bar for the best hangovers"
+                "caption": "Roof bar for the best hangovers",
+                "alt": "A wooden sign in front of a bar reads \"roof bar - enjoy hangover & more"
             },
             {
                 "src": "/images/travel/vietnam/20170608_151231.jpg",
-                "caption": "I saw a furry catapillar"
+                "caption": "I saw a furry catapillar",
+                "alt": "A black catapillar with white fur climbing a tree"
             }
         ]
     }
