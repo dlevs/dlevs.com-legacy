@@ -5,7 +5,9 @@ mixin relatedPost(post, className, titlePrepend)
         article(class=`related-post ${className}`)
             a(href=post.path)
                 +picture(post.mainImage, {className: 'related-post-image'})
-                h2.related-post-heading=`${titlePrepend}: ${post.town}`
+                h3.related-post-heading
+                    span.related-post-heading-label=`${titlePrepend}:`
+                    span.related-post-heading-title=post.town
 
 
 block meta

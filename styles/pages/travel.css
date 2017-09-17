@@ -29,6 +29,12 @@
 	margin-bottom: var(--spacing-small);
 }
 .related-post-heading {
+	color: var(--color-text)
+}
+.related-post-heading-label {
+	display: block;
+}
+.related-post-heading-label {
 	font-size: 1rem;
 }
 
