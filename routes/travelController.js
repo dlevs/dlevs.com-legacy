@@ -1,6 +1,5 @@
 const moment = require('moment');
 const last = require('lodash/last');
-const find = require('lodash/find');
 const findIndex = require('lodash/findIndex');
 const orderBy = require('lodash/fp/orderBy');
 const flow = require('lodash/flow');
@@ -59,6 +58,7 @@ module.exports = ({breadcrumbRoot}) => {
 					label: country
 				}
 			]);
+			const images = posts.map(({mainImage}) => mainImage);
 			return {
 				country,
 				countrySlug,
@@ -66,7 +66,8 @@ module.exports = ({breadcrumbRoot}) => {
 				path: last(breadcrumb).path,
 				posts,
 				// Images for sitemap
-				images: posts.map(({mainImage}) => mainImage)
+				images,
+				mainImage: images[0]
 			}
 		}),
 		sortBy('country')
@@ -84,15 +85,17 @@ module.exports = ({breadcrumbRoot}) => {
 			})
 		},
 		renderPostsForCountry: async (ctx) => {
-			const countryData = find(postsByCountry, ctx.params);
+			const index = findIndex(postsByCountry, ctx.params);
 
-			if (!countryData) return;
+			if (index === -1) return;
 
-			const {country, posts, breadcrumb} = countryData;
+			const {country, posts, breadcrumb} = postsByCountry[index];
 
 			await ctx.render('travel/travelPostListing', {
 				title: country,
 				posts,
+				previousPost: postsByCountry[index - 1],
+				nextPost: postsByCountry[index + 1],
 				breadcrumb
 			});
 		},
