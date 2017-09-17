@@ -1,38 +1,33 @@
 var instantclick = require('instantclick');
 
+var READMORE_MAX_WIDTH = 500;
+var SELECTOR = '[data-readmore-summary]';
+
 function init() {
-	var READMORE_MAX_WIDTH = 500;
-	var SELECTOR = '[data-readmore-summary]';
+	if (window.innerWidth > READMORE_MAX_WIDTH) return;
 
-	function $(selector) {
-		var elems = document.querySelectorAll(selector);
-		return Array.prototype.slice.call(elems);
-	}
+	var elems = Array.prototype.slice.call(
+		document.querySelectorAll(SELECTOR)
+	);
 
-	function initReadmore() {
-		if (window.innerWidth > READMORE_MAX_WIDTH) {
-			return;
-		}
-
-		$(SELECTOR).forEach(function (elem) {
-			var button = '<p><button>Read more...</button></p>';
-			elem.dataset.readmoreFull = elem.innerHTML;
-			elem.innerHTML = elem.dataset.readmoreSummary + button;
-		});
-	}
-
-	document.addEventListener('click', function (event) {
-		var wrapper = event.target.closest(SELECTOR);
-		if (wrapper && wrapper.dataset.readmoreFull) {
-			wrapper.innerHTML = wrapper.dataset.readmoreFull;
-		}
-	}, false);
-
-	instantclick.on('change', function() {
-		initReadmore();
+	elems.forEach(function (elem) {
+		var button = '<p><button>Read more...</button></p>';
+		elem.dataset.readmoreFull = elem.innerHTML;
+		elem.innerHTML = elem.dataset.readmoreSummary + button;
 	});
-
-	initReadmore();
 }
 
-module.exports = {init: init};
+function showMore(event) {
+	var wrapper = event.target.closest(SELECTOR);
+	if (wrapper && wrapper.dataset.readmoreFull) {
+		wrapper.innerHTML = wrapper.dataset.readmoreFull;
+	}
+}
+
+module.exports = {
+	init: function () {
+		init();
+		document.addEventListener('click', showMore, false);
+		instantclick.on('change', init);
+	}
+};

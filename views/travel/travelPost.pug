@@ -1,9 +1,9 @@
 extends ../layouts/main
 
-mixin relatedPost(post, className, titlePrepend)
+mixin relatedPost(post, className, linkClassName, titlePrepend)
     if post
         article(class=`related-post ${className}`)
-            a(href=post.path)
+            a(href=post.path class=linkClassName)
                 +picture(post.mainImage, {className: 'related-post-image'})
                 h3.related-post-heading
                     span.related-post-heading-label=`${titlePrepend}:`
@@ -33,5 +33,5 @@ block content
             aside.related-posts-wrapper
                 h2.section-heading Other places
                 div.related-posts-wrapper-inner
-                    +relatedPost(previousPost, 'previous-post', 'Previous')
-                    +relatedPost(nextPost, 'next-post', 'Next')
+                    +relatedPost(previousPost, 'previous-post', 'js-previous-post-link', 'Previous')
+                    +relatedPost(nextPost, 'next-post', 'js-next-post-link', 'Next')
