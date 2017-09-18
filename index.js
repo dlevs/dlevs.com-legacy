@@ -10,6 +10,11 @@ const ICONS = require('feather-icons');
 
 const app = new Koa();
 
+// App sits behind an nginx server. Set proxy option to true
+// to get koa to listen to X-Forwarded-Proto headers.
+// TODO: move to env?
+app.proxy = true;
+
 app
 	.use(slash())
 	.use(views(path.join(__dirname, 'views'), {
