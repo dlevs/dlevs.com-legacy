@@ -20,7 +20,13 @@ app
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
 		// Using "options" object to set local variables in templates
-		options: {IMAGE_META, ASSET_META, ICONS}
+		options: {
+			IMAGE_META,
+			ASSET_META,
+			ICONS,
+			// TODO: Make analytics ID configurable independant of NODE_ENV
+			GOOGLE_ANALYTICS_ID: process.env.NODE_ENV === 'production' && 'UA-57421315-1'
+		}
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
