@@ -116,7 +116,7 @@
             {
                 "src": "/images/travel/greece/20170313_131339.jpg",
                 "caption": "The beach of Paleo Faliro on a windy day",
-                "alt": "A beach with smooth sand and blue skys. Some litter sits nearby."
+                "alt": "A beach with smooth sand and blue skies. Some litter sits nearby."
             }
         ]
     },
@@ -133,7 +133,7 @@
             {
                 "src": "/images/travel/india/20160102_114129.jpg",
                 "caption": "Goats in coats",
-                "alt": "5 goats on the street. Some wear tshirts and jackets."
+                "alt": "5 goats on the street. Some wear t-shirts and jackets."
             },
             {
                 "src": "/images/travel/india/20160102_114155.jpg",
@@ -266,7 +266,7 @@
             {
                 "src": "/images/travel/scotland/20161105_161320.jpg",
                 "caption": "The Royal Mile leading from Edinburgh Castle, with a view of The Hub",
-                "alt": "An old-looking street with a grand, gothic building"
+                "alt": "An old-looking street with a grand, Gothic building"
             },
             {
                 "src": "/images/travel/scotland/20161106_115948.jpg",
@@ -325,7 +325,7 @@
             {
                 "src": "/images/travel/austria/20170108_152523.jpg",
                 "caption": "One of those Wild Mouse rides that makes you genuinely terrified for your life.",
-                "alt": "A colourful fairground rollercoaster with a sign reading \"Die Wilde Maus\""
+                "alt": "A colourful fairground roller coaster with a sign reading \"Die Wilde Maus\""
             },
             {
                 "src": "/images/travel/austria/20170108_160904.jpg",
@@ -424,7 +424,7 @@
             {
                 "src": "/images/travel/vietnam/20170610_135050.jpg",
                 "caption": "Sao Khe River",
-                "alt": "Rocky limestone mountains surround a riverbend"
+                "alt": "Rocky limestone mountains surround a river bend"
             },
             {
                 "src": "/images/travel/vietnam/20170610_152735.jpg",
@@ -461,7 +461,7 @@
             {
                 "src": "/images/travel/vietnam/20170613_174624.jpg",
                 "caption": "Bien Dong in Cat Ba Town",
-                "alt": "A reastaurant named \"Bien Dong\""
+                "alt": "A restaurant named \"Bien Dong\""
             },
             {
                 "src": "/images/travel/vietnam/20170614_112521.jpg",
@@ -502,8 +502,8 @@
             },
             {
                 "src": "/images/travel/vietnam/20170608_151231.jpg",
-                "caption": "I saw a furry catapillar",
-                "alt": "A black catapillar with white fur climbing a tree"
+                "caption": "I saw a furry caterpillar",
+                "alt": "A black caterpillar with white fur climbing a tree"
             }
         ]
     }
