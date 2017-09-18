@@ -6,6 +6,7 @@
 @import "./includes/structure.css";
 @import "./includes/buttons.css";
 @import "./includes/breadcrumb.css";
+@import "./includes/instantclick.css";
 
 /* Pages */
 @import "./pages/home.css";
