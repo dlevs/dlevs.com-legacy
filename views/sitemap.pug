@@ -9,8 +9,13 @@ urlset(
             if page.images
                 each image in page.images
                     image:image
-                        image:loc=origin + image.src
+                        if IMAGE_META[image.src]
+                            image:loc=origin + IMAGE_META[image.src].large.src
+                        else
+                            image:loc=origin + image.src
+
                         if image.caption
                             image:caption=image.caption
+
                         if image.geoLocation
                             image:geo_location=image.geoLocation
