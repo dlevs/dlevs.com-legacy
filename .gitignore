@@ -1,3 +1,4 @@
 /data/generated/*
 /public-dist
 /images/travel
+/config.json

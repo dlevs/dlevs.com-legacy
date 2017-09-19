@@ -1,3 +1,12 @@
+const {
+	NODE_ENV,
+	PORT,
+	GOOGLE_ANALYTICS_ID,
+	IS_BEHIND_PROXY
+} = require('./config');
+
+process.env.NODE_ENV = NODE_ENV;
+
 const path = require('path');
 const Koa = require('koa');
 const serve = require('koa-static');
@@ -12,24 +21,17 @@ const app = new Koa();
 
 // App sits behind an nginx server. Set proxy option to true
 // to get koa to listen to X-Forwarded-Proto headers.
-// TODO: move to env?
-app.proxy = true;
+app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(slash())
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
 		// Using "options" object to set local variables in templates
-		options: {
-			IMAGE_META,
-			ASSET_META,
-			ICONS,
-			// TODO: Make analytics ID configurable independant of NODE_ENV
-			GOOGLE_ANALYTICS_ID: process.env.NODE_ENV === 'production' && 'UA-57421315-1'
-		}
+		options: {IMAGE_META, ASSET_META, ICONS, GOOGLE_ANALYTICS_ID}
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public')))
 	.use(serve(path.join(__dirname, './public-dist')))
-	.listen(process.env.PORT || 3000);
+	.listen(PORT);

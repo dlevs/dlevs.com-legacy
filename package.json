@@ -4,8 +4,8 @@
   "description": "Source code for https://dlevs.com/",
   "main": "index.js",
   "scripts": {
-    "start": "env NODE_ENV=production node index.js",
-    "dev": "gulp watch & env NODE_ENV=development nodemon index.js",
+    "start": "node index.js",
+    "dev": "gulp watch & nodemon index.js",
     "build": "npm run build:assets",
     "build-full": "npm run build:clean && npm run build:assets && npm run build:images",
     "build:clean": "rimraf ./public-dist && rimraf ./data/generated/*",

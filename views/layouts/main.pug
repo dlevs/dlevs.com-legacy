@@ -5,6 +5,7 @@ html(lang="en-GB")
     head
         //- Meta
         meta(charset="utf-8")
+        include ../includes/googleAnalytics
         meta(http-equiv="x-ua-compatible" content="ie=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1")
         meta(name="theme-color" content="#ffffff")
@@ -25,6 +26,5 @@ html(lang="en-GB")
             block content
 
         include ../includes/photoswipeDialog
-        include ../includes/googleAnalytics
 
         script(src=`/scripts/${ASSET_META['main.js']}` data-no-instant)
