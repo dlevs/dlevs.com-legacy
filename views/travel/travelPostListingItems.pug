@@ -2,7 +2,7 @@ include ../includes/mixins
 
 each post, i in posts
     article
-        a(href=post.path)
+        a.blog-link(href=post.path)
             h2.section-heading
                 span=post.town
                 span.section-heading-details=`${post.country}, ${post.humanDate}`

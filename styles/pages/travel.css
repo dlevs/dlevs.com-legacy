@@ -32,12 +32,13 @@
 .previous-post {
 	order: 2;
 }
+.blog-link,
+.related-post-link {
+	@mixin link-color var(--color-text);
+}
 .related-post-image {
 	display: block;
 	margin-bottom: var(--spacing-small);
-}
-.related-post-heading {
-	color: var(--color-text)
 }
 .related-post-heading-label {
 	display: block;

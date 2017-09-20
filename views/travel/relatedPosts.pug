@@ -1,7 +1,7 @@
 mixin relatedPost(post, type)
     if post
         article(class=`related-post ${type}-post`)
-            a(href=post.path class=`js-${type}-post-link`)
+            a(href=post.path class=`related-post-link js-${type}-post-link`)
                 +picture(post.mainImage, {className: 'related-post-image'})
                 h3.related-post-heading
                     span.related-post-heading-label=type === 'next' ? 'Next' : 'Previous'
