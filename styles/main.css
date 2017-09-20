@@ -7,7 +7,7 @@
 @import "./includes/buttons.css";
 @import "./includes/breadcrumb.css";
 @import "./includes/instantclick.css";
-@import "./includes/githubTriangle.css";
+/* @import "./includes/githubTriangle.css"; */
 
 /* Pages */
 @import "./pages/home.css";
@@ -126,5 +126,8 @@
 	}
 	.site-heading-links {
 		margin-top: var(--spacing-small);
+	}
+	&:last-child {
+		margin-bottom: var(--spacing-section);
 	}
 }
