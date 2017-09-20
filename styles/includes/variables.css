@@ -1,6 +1,6 @@
 :root {
-	--font-copy: "Times New Roman", serif;
-	--font-heading: var(--font-copy);
+	--font-copy: Arial, sans-serif;
+	--font-heading: "Times New Roman", serif;
 
 	--color-text: #444;
 	--color-primary: #1168cb;

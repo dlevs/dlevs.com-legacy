@@ -22,11 +22,11 @@
 /* TODO: Organise */
 .site-header {
 	text-align: center;
-	margin: var(--spacing-section) 0;
+	margin: var(--spacing-huge) 0;
 }
 .site-heading {
 	text-transform: uppercase;
-	font-size: 2.5rem;
+	font-size: 3rem;
 	margin: 0;
 }
 .site-heading-links {
@@ -114,8 +114,7 @@
 
 @media screen and (min-width: 500px) {
 	.site-header {
-		margin-left: 0;
-		margin-right: 0;
+		margin: var(--spacing-section) 0;
 	}
 	.site-subheading {
 		margin: 0;
