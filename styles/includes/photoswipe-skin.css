@@ -266,11 +266,11 @@ a.pswp__share--download:hover {
 	left: 0;
 	top: 0;
 	height: 44px;
-	font-size: 15px;
 	line-height: 44px;
 	color: #FFF;
 	opacity: 0.75;
 	padding: 0 10px;
+	-webkit-font-smoothing: antialiased;
 }
 /*
 	
@@ -290,9 +290,8 @@ a.pswp__share--download:hover {
 }
 .pswp__caption__center {
 	text-align: center;
-	max-width: 460px;
+	max-width: 700px;
 	margin: 0 auto;
-	font-size: 15px;
 	padding: 10px;
 	line-height: 20px;
 	color: #CCC;
