@@ -15,21 +15,20 @@ const svgo = new (require('svgo'))({
 	removeStyleElement: true,
 	removeScriptElement: true
 });
+const {toFixedTrimmed} = require('./lib/util');
 
-const imageData = {};
+let imageData;
+try {
+	imageData = require('./data/generated/images');
+} catch(err) {
+	imageData = {};
+}
+
 const EXTENSIONS_BY_FORMAT = {
 	jpeg: '.jpg',
 	webp: '.webp',
 	png: '.png'
 };
-
-// TODO: Move to utis file
-const toFixedTrimmed = (n, digits) => n
-	.toFixed(digits)
-	// Remove zeros after decimal place
-	.replace(/(\..*?)(0+)$/, '$1')
-	// Remove decimal place if it's now at the end
-	.replace(/\.$/, '');
 
 const addToImageData = (filepath, type, data) => {
 	const {width, height} = data;
@@ -84,8 +83,17 @@ const gpsCoordsToString = (coordinates, ref) => {
 };
 
 const processImages = async () => {
-	const filepaths = await glob('./images/**/*.+(png|jpg)');
-	const progress = new ProgressBar('[:bar] :percent%', {
+	const allFilepaths = await glob('./images/**/*.+(png|jpg)');
+	console.log(`${allFilepaths.length} image files found`);
+
+	const filepaths = allFilepaths.filter(
+		(filepath) => imageData[filepath.replace(/^\./, '')] === undefined
+	);
+	console.log(`${filepaths.length} images are new`);
+
+	if (!filepaths.length) return;
+
+	const progress = new ProgressBar('[:bar] :percent', {
 		total: filepaths.length * 4
 	});
 

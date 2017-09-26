@@ -6,12 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "gulp watch & nodemon index.js",
-    "build": "npm run build:assets",
-    "build-full": "npm run build:clean && npm run build:assets && npm run build:images",
-    "build:clean": "rimraf ./public-dist && rimraf ./data/generated/*",
+    "build": "npm run build:assets && npm run build:images",
     "build:assets": "gulp",
     "build:images": "node processImages.js",
-    "postreceive": "./post-receive.sh",
+    "clean": "rimraf ./public-dist && rimraf ./data/generated/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
