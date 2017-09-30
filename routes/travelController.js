@@ -1,80 +1,10 @@
-const moment = require('moment');
-const last = require('lodash/last');
 const findIndex = require('lodash/findIndex');
-const orderBy = require('lodash/fp/orderBy');
-const flow = require('lodash/flow');
-const kebabCase = require('lodash/kebabCase');
-const sortBy = require('lodash/fp/sortBy');
-const groupBy = require('lodash/fp/groupBy');
-const map = require('lodash/fp/map');
-const {expandBreadcrumb} = require('../lib/util');
-const rawPosts = require('../data/travelPosts');
+const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
+const {getPosts} = require('../data/travelPosts');
 
-
-module.exports = ({breadcrumbRoot}) => {
-
-	const expandPosts = flow(
-		(posts) => posts.map((post) => {
-			const countrySlug = kebabCase(post.country);
-			const townSlug = kebabCase(post.town);
-			const breadcrumb = expandBreadcrumb([
-				...breadcrumbRoot,
-				{
-					slug: countrySlug,
-					label: post.country
-				},
-				{
-					slug: townSlug,
-					label: post.town
-				}
-			]);
-			const images = post.images.map((image) => ({
-				...image,
-				geoLocation: `${post.town}, ${post.country}`
-			}));
-
-			return {
-				countrySlug,
-				townSlug,
-				breadcrumb,
-				path: last(breadcrumb).path,
-				humanDate: moment(post.date).format('MMMM YYYY'),
-				mainImage: images[0],
-				...post,
-				images
-			}
-		}),
-		orderBy('date', 'desc')
-	);
-
-	const groupPostsByCountry = flow(
-		groupBy('country'),
-		map((posts) => {
-			const {country, countrySlug} = posts[0];
-			const breadcrumb = expandBreadcrumb([
-				...breadcrumbRoot,
-				{
-					slug: countrySlug,
-					label: country
-				}
-			]);
-			const images = posts.map(({mainImage}) => mainImage);
-			return {
-				country,
-				countrySlug,
-				breadcrumb,
-				path: last(breadcrumb).path,
-				posts,
-				// Images for sitemap
-				images,
-				mainImage: images[0]
-			}
-		}),
-		sortBy('country')
-	);
-
-	const posts = expandPosts(rawPosts);
-	const postsByCountry = groupPostsByCountry(posts);
+module.exports = (options) => {
+	const {breadcrumbRoot} = options;
+	const {posts, postsByCountry} = getPosts(options);
 
 	return {
 		index: async (ctx) => {

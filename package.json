@@ -10,7 +10,7 @@
     "build:assets": "gulp",
     "build:images": "node processImages.js",
     "clean": "rimraf ./public-dist && rimraf ./data/generated/*",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
@@ -19,6 +19,7 @@
     "fs-extra": "^4.0.1",
     "hammerjs": "^2.0.8",
     "instantclick": "^3.1.0",
+    "jest": "^21.2.1",
     "koa": "^2.3.0",
     "koa-router": "^7.2.1",
     "koa-slash": "^0.2.0",

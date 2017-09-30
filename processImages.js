@@ -1,6 +1,7 @@
 const {promisify} = require('util');
 const sharp = require('sharp');
 const path = require('path');
+const set = require('lodash/set');
 const eachLimit = promisify(require('async').eachLimit);
 const glob = promisify(require('glob'));
 const fs = require('fs-extra');
@@ -15,31 +16,17 @@ const svgo = new (require('svgo'))({
 	removeStyleElement: true,
 	removeScriptElement: true
 });
-const {toFixedTrimmed} = require('./lib/util');
+const {toFixedTrimmed} = require('./lib/numberUtils');
+const {createGoogleMapsLink} = require('./lib/gpsUtils');
 
 let imageData;
 try {
 	imageData = require('./data/generated/images');
-} catch(err) {
+} catch (err) {
 	imageData = {};
 }
 
-const EXTENSIONS_BY_FORMAT = {
-	jpeg: '.jpg',
-	webp: '.webp',
-	png: '.png'
-};
-
-const addToImageData = (filepath, type, data) => {
-	const {width, height} = data;
-	filepath = filepath.replace(/^\./, '');
-
-	imageData[filepath] = imageData[filepath] || {};
-	imageData[filepath][type] = {
-		...data,
-		paddingBottom: toFixedTrimmed(((height / width) * 100), 4) + '%'
-	};
-};
+const stripLeadingDot = (str) => str.replace(/^\./, '');
 
 const processImage = async ({type, filepath, format, size, quality}) => {
 	const sharpFile = sharp(filepath);
@@ -62,24 +49,24 @@ const processImage = async ({type, filepath, format, size, quality}) => {
 	const outputPath = path.format({
 		...outputPathParts,
 		name: `${outputPathParts.name}_${width}x${height}`,
-		ext: EXTENSIONS_BY_FORMAT[format]
+		ext: '.' + format.replace(/^jpeg$/, 'jpg')
 	});
 
 	// Dynamically call function for file format.
 	// e.g. sharpFile.jpeg({...}).toFile(...);
 	sharpFile[format]({quality}).toFile(outputPath);
 
-	addToImageData(filepath, type, {
-		width,
-		height,
-		format,
-		src: outputPath.replace('./public-dist', ''),
-	});
-};
-
-const gpsCoordsToString = (coordinates, ref) => {
-	const [first, second, third] = coordinates;
-	return `${first}°${second}'${third}"${ref}`;
+	set(
+		imageData,
+		[stripLeadingDot(filepath), type],
+		{
+			width,
+			height,
+			format,
+			src: outputPath.replace('./public-dist', ''),
+			paddingBottom: toFixedTrimmed(((height / width) * 100), 4) + '%'
+		}
+	);
 };
 
 const processImages = async () => {
@@ -87,7 +74,7 @@ const processImages = async () => {
 	console.log(`${allFilepaths.length} image files found`);
 
 	const filepaths = allFilepaths.filter(
-		(filepath) => imageData[filepath.replace(/^\./, '')] === undefined
+		(filepath) => imageData[stripLeadingDot(filepath)] === undefined
 	);
 	console.log(`${filepaths.length} images are new`);
 
@@ -105,10 +92,11 @@ const processImages = async () => {
 			const exif = readExif(meta.exif);
 
 			if (exif && exif.gps) {
-				addToImageData(filepath, 'gps', {
-					...exif.gps,
-					googleMapLink: `https://maps.google.com/maps?q=${gpsCoordsToString(exif.gps.GPSLatitude, exif.gps.GPSLatitudeRef)},${gpsCoordsToString(exif.gps.GPSLongitude, exif.gps.GPSLongitudeRef)}`
-				});
+				set(
+					imageData,
+					[stripLeadingDot(filepath), 'mapLink'],
+					createGoogleMapsLink(exif.gps)
+				);
 			}
 		}
 		progress.tick();
