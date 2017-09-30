@@ -5,7 +5,7 @@ The app is daemonised by [pm2](https://www.npmjs.com/package/pm2), and sits behi
 
 ## First time setup
 Copy all images not committed to this repository to `/images`. Then run:
-```
+```bash
 npm install                             # Install dependencies
 npm run build                           # Compile static assets (JS, CSS, image compression)
 cp config.sample.json config.json       # Create own config. Edit for environment.
@@ -82,7 +82,7 @@ Changes can be pushed directly to the repository at `/var/repo/dlevs.com.git`. A
 
 ### Production
 Deploy from staging to production with the following:
-```
+```bash
 rm -rf /var/www/backup.dlevs.com/*
 mv /var/www/dlevs.com/* /var/www/backup.dlevs.com
 cp -R /var/www/staging.dlevs.com/* /var/www/dlevs.com
@@ -92,7 +92,7 @@ sudo rm -rf /data/nginx/cache/dlevs.com/*
 ```
 
 ### Useful commands
-```
+```bash
 # Run staging
 pm2 start /var/www/staging.dlevs.com/index.js --name staging.dlevs
 
