@@ -1,27 +1,21 @@
 mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
-    - const images = IMAGE_META[src];
+    - const image = IMAGE_META[src].default;
 
+    //- TODO: Used to serve webp images here, but it doesn't play well with current lazyload solution. Revisit.
     div(
-        style=`padding-bottom: ${images.default.paddingBottom};`
+        style=`padding-bottom: ${image.paddingBottom};`
         class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
     )
-        picture
-            srcset(type="image/webp")&attributes({
-                [lazyLoad ? 'data-srcset' : 'srcset']: images.webp.src
-            })
-            srcset(type="image/jpeg")&attributes({
-				[lazyLoad ? 'data-srcset' : 'srcset']: images.default.src
-			})
-            img(
-                alt=altOverwrite !== undefined ? altOverwrite : alt
-            )&attributes(
-			    lazyLoad
-                    ? {
-                        'class': 'lazyload',
-                        'data-src': images.default.src,
-                        'src': 'data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs='
-                    }
-                    : {
-                        'src': images.default.src
-                    }
-            )
+        img(
+            alt=altOverwrite !== undefined ? altOverwrite : alt
+        )&attributes(
+            lazyLoad
+                ? {
+                    'class': 'lazyload',
+                    'data-src': image.src,
+                    'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
+                }
+                : {
+                    'src': image.src
+                }
+        )
