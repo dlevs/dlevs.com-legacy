@@ -10,7 +10,8 @@
     "build:assets": "gulp",
     "build:images": "node processImages.js",
     "clean": "rimraf ./public-dist && rimraf ./data/generated/*",
-    "test": "jest"
+    "test": "jest",
+    "test:browser": "jest -i --testRegex=.*browsertest.js"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
@@ -24,13 +25,15 @@
     "koa-router": "^7.2.1",
     "koa-slash": "^0.2.0",
     "koa-static": "^4.0.1",
-    "koa-views": "^6.0.2",
+    "koa-views": "^6.1.0",
     "lazysizes": "^4.0.0-rc3",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "node-fetch": "^1.7.3",
     "normalize.css": "^7.0.0",
     "photoswipe": "^4.1.2",
-    "pug": "^2.0.0-rc.3"
+    "pug": "^2.0.0-rc.3",
+    "puppeteer": "^0.11.0"
   },
   "devDependencies": {
     "async": "^2.5.0",
@@ -54,5 +57,9 @@
     "svgo": "^0.7.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
   }
 }

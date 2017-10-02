@@ -29,10 +29,22 @@ app
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
 		// Using "options" object to set local variables in templates
-		options: {IMAGE_META, ASSET_META, ICONS, GOOGLE_ANALYTICS_ID, CONSTANTS}
+		options: {
+			IMAGE_META,
+			ASSET_META,
+			ICONS,
+			GOOGLE_ANALYTICS_ID,
+			CONSTANTS
+		}
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public')))
-	.use(serve(path.join(__dirname, './public-dist')))
-	.listen(PORT);
+	.use(serve(path.join(__dirname, './public-dist')));
+
+// Init if called from the commandline
+if (!module.parent) {
+	app.listen(PORT);
+}
+
+module.exports = app;
