@@ -29,12 +29,12 @@ const testPosts = [
 	},
 	{
 		// Most recent, but with last town alphabetically. To test sorting.
-		country: 'Zzz',
-		town: 'Zzz Town',
+		country: 'Vietnam',
+		town: 'Vung Tau',
 		date: '2018-09-23',
 		images: [
 			{
-				src: '/images/travel/zzz/image_1.jpg',
+				src: '/images/travel/vietnam/image_1.jpg',
 				arbitraryProp: 'foo'
 			}
 		]
@@ -62,8 +62,8 @@ describe('getPosts()', () => {
 		test('are expanded correctly', () => {
 			expect(posts.length).toBe(4);
 			expect(posts[0]).toMatchObject({
-				countrySlug: 'zzz',
-				townSlug: 'zzz-town',
+				countrySlug: 'vietnam',
+				townSlug: 'vung-tau',
 				breadcrumb: [
 					{
 						label: 'Home',
@@ -71,49 +71,55 @@ describe('getPosts()', () => {
 						path: '/'
 					},
 					{
-						label: 'Zzz',
-						slug: 'zzz',
-						path: '/zzz'
+						label: 'Vietnam',
+						slug: 'vietnam',
+						path: '/vietnam'
 					},
 					{
-						label: 'Zzz Town',
-						slug: 'zzz-town',
-						path: '/zzz/zzz-town'
+						label: 'Vung Tau',
+						slug: 'vung-tau',
+						path: '/vietnam/vung-tau'
 					}
 				],
-				path: '/zzz/zzz-town',
+				path: '/vietnam/vung-tau',
 				humanDate: 'September 2018',
 				mainImage: {
-					src: '/images/travel/zzz/image_1.jpg',
+					src: '/images/travel/vietnam/image_1.jpg',
 					arbitraryProp: 'foo',
-					geoLocation: 'Zzz Town, Zzz'
+					geoLocation: 'Vung Tau, Vietnam'
 				},
-				country: 'Zzz',
-				town: 'Zzz Town',
+				country: 'Vietnam',
+				town: 'Vung Tau',
 				date: '2018-09-23',
 				images: [
 					{
-						src: '/images/travel/zzz/image_1.jpg',
+						src: '/images/travel/vietnam/image_1.jpg',
 						arbitraryProp: 'foo',
-						geoLocation: 'Zzz Town, Zzz'
+						geoLocation: 'Vung Tau, Vietnam'
 					}
 				]
 			});
 		});
 
 		test('are sorted by most recent date', () => {
-			// TODO: See if jest has a "match" function for partial matches
-			expect(posts[0].town).toBe('Zzz Town');
-			expect(posts[0].date).toBe('2018-09-23');
-
-			expect(posts[1].town).toBe('London');
-			expect(posts[1].date).toBe('2017-09-23');
-
-			expect(posts[2].town).toBe('Agra');
-			expect(posts[2].date).toBe('2016-01-03');
-
-			expect(posts[3].town).toBe('Delhi');
-			expect(posts[3].date).toBe('2016-01-02');
+			expect(posts).toMatchObject([
+				{
+					town: 'Vung Tau',
+					date: '2018-09-23'
+				},
+				{
+					town: 'London',
+					date: '2017-09-23'
+				},
+				{
+					town: 'Agra',
+					date: '2016-01-03'
+				},
+				{
+					town: 'Delhi',
+					date: '2016-01-02'
+				}
+			]);
 		});
 	});
 
@@ -153,9 +159,11 @@ describe('getPosts()', () => {
 		});
 
 		test('are sorted in alphabetical order by country', () => {
-			expect(postsByCountry[0].country).toBe('England');
-			expect(postsByCountry[1].country).toBe('India');
-			expect(postsByCountry[2].country).toBe('Zzz');
+			expect(postsByCountry).toMatchObject([
+				{country: 'England'},
+				{country: 'India'},
+				{country: 'Vietnam'},
+			]);
 		});
 
 		test('have posts defined', () => {
