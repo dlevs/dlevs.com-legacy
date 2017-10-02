@@ -46,3 +46,18 @@ describe('Redirects', () => {
 		}
 	});
 });
+
+describe('404 page', () => {
+	const nonExistentUrl = `https://www.${process.env.TEST_HOSTNAME}/non-existent-page`;
+
+	test('has correct status code',async () => {
+		const {ok, status} = await fetch(nonExistentUrl);
+		expect(ok).toBe(false);
+		expect(status).toBe(404)
+	});
+	test('has correct text', async () => {
+		const response = await fetch(nonExistentUrl);
+		const text = await response.text();
+		expect(text.toLowerCase()).toContain('not found');
+	});
+});
