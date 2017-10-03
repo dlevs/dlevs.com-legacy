@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
 const eachSeries = promisify(require('async').eachSeries);
 
-const imageUrlRegex = /\.(jpg|webp)$/;
+const imageUrlRegex = /\.(jpg|png)$/;
 
 let links;
 
@@ -27,19 +27,6 @@ beforeAll(async (done) => {
 });
 
 describe('/sitemap.xml', () => {
-	test('has page links', async () => {
-		expect(getPageLinks().length).toBeGreaterThan(0);
-	});
-	test('has image links', async () => {
-		expect(getImageLinks().length).toBeGreaterThan(0);
-	});
-	test('image links have image extensions', async () => {
-		expect(
-			getImageLinks().every(
-				({url}) => imageUrlRegex.test(url)
-			)
-		).toBe(true);
-	});
 	test('all links are https', async () => {
 		expect(
 			links.every(
@@ -47,25 +34,44 @@ describe('/sitemap.xml', () => {
 			)
 		).toBe(true);
 	});
-	test('has no duplicate non-image links', async () => {
-		// Duplicates may not be invalid in sitemaps, but it suggests
-		// possible URL collisions in the content.
-		expect(
-			uniqBy(getPageLinks(), 'url').length
-		).toBe(
-			getPageLinks().length
-		);
+
+	describe('page links', () => {
+		test('has page links', async () => {
+			expect(getPageLinks().length).toBeGreaterThan(0);
+		});
+		test('has no duplicate page links', async () => {
+			// Duplicates may not be invalid in sitemaps, but it suggests
+			// possible URL collisions in the content.
+			expect(
+				uniqBy(getPageLinks(), 'url').length
+			).toBe(
+				getPageLinks().length
+			);
+		});
+		test('all page links work', () => {
+			return eachSeries(getPageLinks(), async ({url}) => {
+				const {ok} = await fetch(url);
+				expect(ok).toBe(true)
+			});
+		}, 20000);
 	});
-	test('all page links work', () => {
-		return eachSeries(getPageLinks(), async ({url}) => {
-			const {ok} = await fetch(url);
-			expect(ok).toBe(true)
+
+	describe('image links', () => {
+		test('has image links', async () => {
+			expect(getImageLinks().length).toBeGreaterThan(0);
 		});
-	}, 20000);
-	test('first 5 images work', () => {
-		return eachSeries(getImageLinks().slice(0, 5), async ({url}) => {
-			const {ok} = await fetch(url);
-			expect(ok).toBe(true)
+		test('image links have image extensions', async () => {
+			expect(
+				getImageLinks().every(
+					({url}) => imageUrlRegex.test(url)
+				)
+			).toBe(true);
 		});
-	}, 20000);
+		test('first 5 images work', () => {
+			return eachSeries(getImageLinks().slice(0, 5), async ({url}) => {
+				const {ok} = await fetch(url);
+				expect(ok).toBe(true)
+			});
+		}, 20000);
+	});
 });
