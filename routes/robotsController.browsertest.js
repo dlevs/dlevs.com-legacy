@@ -8,8 +8,14 @@ describe('/robots.txt', () => {
 		expect(ok).toBe(true);
 	});
 	test('links to correct sitemap', async () => {
+		// Check sitemap exists...
+		const sitemapUrl = `https://${process.env.TEST_HOSTNAME}/sitemap.xml`;
+		const {ok} = await fetch(sitemapUrl);
+		expect(ok).toBe(true);
+
+		// ...and is in robots.txt
 		const response = await fetch(url);
 		const text = await response.text();
-		expect(text).toContain(`Sitemap: https://${process.env.TEST_HOSTNAME}/sitemap.xml`);
+		expect(text).toContain(`Sitemap: ${sitemapUrl}`);
 	});
 });
