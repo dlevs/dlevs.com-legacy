@@ -1,5 +1,8 @@
 mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
     - const image = IMAGE_META[src].default;
+    - const imageLarge = IMAGE_META[src].large;
+    - const srcset = `${image.src} ${image.width}w, ${imageLarge.src} ${imageLarge.width}w`;
+    - const pageMaxWidth = 960; /* from variables.less */
 
     //- TODO: Used to serve webp images here, but it doesn't play well with current lazyload solution. Revisit.
     div(
@@ -8,14 +11,17 @@ mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
     )
         img(
             alt=altOverwrite !== undefined ? altOverwrite : alt
+            sizes=`(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`
         )&attributes(
             lazyLoad
                 ? {
                     'class': 'lazyload',
-                    'data-src': image.src,
-                    'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
+					'data-src': image.src,
+					'data-srcset': srcset,
+					'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
                 }
                 : {
-                    'src': image.src
+                    'src': image.src,
+                    'srcset': srcset
                 }
         )

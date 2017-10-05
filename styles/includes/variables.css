@@ -11,6 +11,7 @@
 	--speed-fast: 0.1s;
 	--speed-slow: 0.4s;
 
+	/* When changing max-width, check the image mixins. It is duplicated there. */
 	--width-site-max: 960px;
 
 	--spacing-small: 10px;
