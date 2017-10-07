@@ -4,6 +4,7 @@ mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
     - const srcset = createSrcset(images.default, images.large);
     - const srcsetWebp = createSrcset(images.defaultWebp, images.largeWebp);
     - const pageMaxWidth = 960; /* from variables.less */
+    - const sizes = `(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`;
 
     div(
         style=`padding-bottom: ${images.default.paddingBottom};`
@@ -11,14 +12,17 @@ mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
     )
 
         picture
-            source(type="image/webp")&attributes(
+            source(
+                type="image/webp"
+                sizes=sizes
+            )&attributes(
                 lazyLoad
                     ? {'data-srcset': srcsetWebp}
                     : {'srcset': srcsetWebp}
             )
             img(
                 alt=altOverwrite !== undefined ? altOverwrite : alt
-                sizes=`(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`
+                sizes=sizes
             )&attributes(
                 lazyLoad
                     ? {
