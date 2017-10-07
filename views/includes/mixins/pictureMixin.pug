@@ -1,27 +1,34 @@
 mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
-    - const image = IMAGE_META[src].default;
-    - const imageLarge = IMAGE_META[src].large;
-    - const srcset = `${image.src} ${image.width}w, ${imageLarge.src} ${imageLarge.width}w`;
+    - const createSrcset = (...images) => images.map(img => `${img.src} ${img.width}w`).join(', ');
+    - const images = IMAGE_META[src];
+    - const srcset = createSrcset(images.default, images.large);
+    - const srcsetWebp = createSrcset(images.defaultWebp, images.largeWebp);
     - const pageMaxWidth = 960; /* from variables.less */
 
-    //- TODO: Used to serve webp images here, but it doesn't play well with current lazyload solution. Revisit.
     div(
-        style=`padding-bottom: ${image.paddingBottom};`
+        style=`padding-bottom: ${images.default.paddingBottom};`
         class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
     )
-        img(
-            alt=altOverwrite !== undefined ? altOverwrite : alt
-            sizes=`(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`
-        )&attributes(
-            lazyLoad
-                ? {
-                    'class': 'lazyload',
-					'data-src': image.src,
-					'data-srcset': srcset,
-					'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
-                }
-                : {
-                    'src': image.src,
-                    'srcset': srcset
-                }
-        )
+
+        picture
+            source(type="image/webp")&attributes(
+                lazyLoad
+                    ? {'data-srcset': srcsetWebp}
+                    : {'srcset': srcsetWebp}
+            )
+            img(
+                alt=altOverwrite !== undefined ? altOverwrite : alt
+                sizes=`(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`
+            )&attributes(
+                lazyLoad
+                    ? {
+                        'class': 'lazyload',
+                        'data-src': images.default.src,
+                        'data-srcset': srcset,
+                        'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
+                    }
+                    : {
+                        'src': images.default.src,
+                        'srcset': srcset
+                    }
+            )

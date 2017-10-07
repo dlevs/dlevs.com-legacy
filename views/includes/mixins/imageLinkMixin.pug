@@ -1,10 +1,10 @@
 mixin imageLink({src}, attrs={})
     - const images = IMAGE_META[src];
-    - const largeImage = images.large;
     a.js-photoswipe(
-        href=largeImage.src
-        data-width=largeImage.width
-        data-height=largeImage.height
+        href=images.large.src
+        data-href-webp=images.largeWebp.src
+        data-width=images.large.width
+        data-height=images.large.height
         data-map-link=images.mapLink
         data-no-instant
     )&attributes(attrs)

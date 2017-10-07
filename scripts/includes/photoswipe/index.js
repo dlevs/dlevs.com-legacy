@@ -10,12 +10,18 @@ function getSlideElements() {
 function openGallery(index, disableTransitions) {
 	var pswpElement = document.querySelector('.pswp');
 	var elems = getSlideElements();
+	// Check first thumbnail format. First image is unlikely to be
+	// lazyloaded, so will be populated with webp/ jpg, instead of
+	// placeholder data gif src.
+	var firstThumbnail = elems[0].getElementsByTagName('img')[0];
+	var isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
 	var items = elems.map(function (elem) {
 		var thumbnail = elem.getElementsByTagName('img')[0];
 		var caption = elem.getElementsByTagName('figcaption')[0];
+
 		return {
-			src: elem.href,
-			msrc: thumbnail.src,
+			src: isWebp ? elem.dataset.hrefWebp : elem.href,
+			msrc: thumbnail.currentSrc || thumbnail.src,
 			thumbnail: thumbnail,
 			w: Number(elem.dataset.width),
 			h: Number(elem.dataset.height),

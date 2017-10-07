@@ -80,8 +80,8 @@ const processImages = async () => {
 
 	if (!filepaths.length) return;
 
-	const progress = new ProgressBar('[:bar] :percent', {
-		total: filepaths.length * 4
+	const progress = new ProgressBar('[:bar] :percent%', {
+		total: filepaths.length * 5
 	});
 
 	await eachLimit(filepaths, 8, async (filepath) => {
@@ -120,11 +120,20 @@ const processImages = async () => {
 		progress.tick();
 
 		await processImage({
-			type: 'webp',
+			type: 'largeWebp',
+			filepath,
+			format: 'webp',
+			size: 2000,
+			quality: 80
+		});
+		progress.tick();
+
+		await processImage({
+			type: 'defaultWebp',
 			filepath,
 			format: 'webp',
 			size: 960,
-			quality: 85
+			quality: 80
 		});
 		progress.tick();
 	});
