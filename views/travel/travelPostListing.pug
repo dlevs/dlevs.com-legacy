@@ -4,9 +4,9 @@ block meta
     title=`${title} | Daniel Levett`
 
 block content
-    header.blog-header
-        h1.site-heading=title
+    main.site-section
+        header.blog-header
+            h1.site-heading=title
 
-    section.site-section
-        include ./travelPostListingItems
+        include includes/travelPostListingItems
         //- include ./relatedPosts

@@ -3,6 +3,7 @@ mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
     - const images = IMAGE_META[src];
     - const srcset = createSrcset(images.default, images.large);
     - const srcsetWebp = createSrcset(images.defaultWebp, images.largeWebp);
+    - const srcsetPlaceholder = `${CONSTANTS.SINGLE_PIXEL_TRANSPARENT} 1w`;
     - const pageMaxWidth = 960; /* from variables.less */
     - const sizes = `(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`;
 
@@ -17,8 +18,13 @@ mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
                 sizes=sizes
             )&attributes(
                 lazyLoad
-                    ? {'data-srcset': srcsetWebp}
-                    : {'srcset': srcsetWebp}
+                    ? {
+                        'data-srcset': srcsetWebp,
+                        'srcset': srcsetPlaceholder
+                    }
+                    : {
+                        'srcset': srcsetWebp
+                    }
             )
             img(
                 alt=altOverwrite !== undefined ? altOverwrite : alt
@@ -29,6 +35,7 @@ mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
                         'class': 'lazyload',
                         'data-src': images.default.src,
                         'data-srcset': srcset,
+                        'srcset': srcsetPlaceholder,
                         'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
                     }
                     : {

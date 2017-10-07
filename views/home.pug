@@ -6,49 +6,49 @@ block meta
 
 block content
     //- include ./includes/githubTriangle
+    main
+        header.site-header
+            h1.site-heading Daniel Levett
+                span.site-subheading Fullstack Web Developer
+            ul.site-heading-links
+                li
+                    a.site-header-link(href="https://github.com/dlevs") GitHub
+                li
+                    a.site-header-link(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
+                li
+                    a.site-header-link(href="/travel") Travel Blog
 
-    header.site-header
-        h1.site-heading Daniel Levett
-            span.site-subheading Fullstack Web Developer
-        ul.site-heading-links
-            li
-                a.site-header-link(href="https://github.com/dlevs") GitHub
-            li
-                a.site-header-link(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
-            li
-                a.site-header-link(href="/travel") Travel Blog
+        section.site-section
+            h2.section-heading Projects
+            p.section-intro
+                = `You can find the projects I'm working on, including `
+                a.site-header-link(href="https://github.com/dlevs/dlevs.com") the source code for this site,
+                = ' on '
+                a.site-header-link(href="https://github.com/dlevs") my GitHub page
+                = `. Below is a selection of projects that you won't find on GitHub that highlight my work for eCommerce websites.`
 
-    section.site-section
-        h2.section-heading Projects
-        p.section-intro
-            = `You can find the projects I'm working on, including `
-            a.site-header-link(href="https://github.com/dlevs/dlevs.com") the source code for this site,
-            = ' on '
-            a.site-header-link(href="https://github.com/dlevs") my GitHub page
-            = `. Below is a selection of projects that you won't find on GitHub that highlight my work for eCommerce websites.`
+            ul.project-list
+                each project, i in projects
+                    li.project-list-item
+                        h3.project-heading=project.heading
 
-        ul.project-list
-            each project, i in projects
-                li.project-list-item
-                    h3.project-heading=project.heading
+                        figure.project-image-wrapper
+                            +imageLink(project.img, {'data-caption': project.heading})
+                                +picture(project.img, {className: 'project-image', lazyLoad: i > 1})
 
-                    figure.project-image-wrapper
-                        +imageLink(project.img, {'data-caption': project.heading})
-                            +picture(project.img, {className: 'project-image', lazyLoad: i > 1})
+                            figcaption.project-description(data-readmore-summary=project.shortDescription)
+                                !=project.description
 
-                        figcaption.project-description(data-readmore-summary=project.shortDescription)
-                            !=project.description
+                        if project.badges
+                            ul.project-details-badges
+                                each badge in project.badges
+                                    li
+                                        a.badge(href=technologies[badge].url title=`Built using ${badge}`)=badge
 
-                    if project.badges
-                        ul.project-details-badges
-                            each badge in project.badges
-                                li
-                                    a.badge(href=technologies[badge].url title=`Built using ${badge}`)=badge
-
-    section.site-section
-        h2.section-heading Experience
-        ul.brand-list
-            each brand in brands
-                li.brand-list-item
-                    a(href=brand.url title=brand.title rel="noreferrer")
-                        img.brand-image(src=brand.svg)
+        section.site-section
+            h2.section-heading Experience
+            ul.brand-list
+                each brand in brands
+                    li.brand-list-item
+                        a(href=brand.url title=brand.title rel="noreferrer")
+                            img.brand-image(src=brand.svg alt=brand.name)

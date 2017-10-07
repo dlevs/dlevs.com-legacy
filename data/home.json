@@ -112,16 +112,19 @@
     "brands": [
         {
             "title": "Jimmy Choo - eCommerce Website",
+            "name": "Jimmy Choo",
             "url": "http://www.jimmychoo.com/",
             "svg": "/images/brands/jimmy-choo.svg"
         },
         {
             "title": "Bally - eCommerce Website",
+            "name": "Bally",
             "url": "http://www.bally.co.uk/",
             "svg": "/images/brands/bally.svg"
         },
         {
             "title": "Belstaff - eCommerce Website",
+            "name": "Belstaff",
             "url": "https://www.belstaff.co.uk/",
             "svg": "/images/brands/belstaff.svg"
         }

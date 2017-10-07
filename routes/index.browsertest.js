@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const validator = require('html-validator');
 
 describe('Basic functionality', () => {
 	test('server responds with OK status', async () => {
@@ -59,5 +60,27 @@ describe('404 page', () => {
 		const response = await fetch(nonExistentUrl);
 		const text = await response.text();
 		expect(text.toLowerCase()).toContain('not found');
+	});
+});
+
+// TODO: These tests are getting slow. Look into a way of not making so many parallel requests.
+describe('HTML validation', () => {
+	const paths = [
+		'/',
+		'/travel',
+		'/travel/ireland',
+		'/travel/ireland/dublin'
+	];
+
+	paths.forEach((path) => {
+		test(path, async () => {
+			const {messages} = await validator({
+				url: `https://${process.env.TEST_HOSTNAME}${path}`,
+				format: 'json'
+			});
+			const errors = messages.filter(({type}) => type === 'error');
+
+			expect(errors.length).toBe(0);
+		});
 	});
 });
