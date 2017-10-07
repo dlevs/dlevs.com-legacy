@@ -13,7 +13,7 @@
 @import "./pages/home.css";
 @import "./pages/travel.css";
 /* Plugins */
-@import "photoswipe/dist/photoswipe.css";
+@import "@dlevs/photoswipe/dist/photoswipe.css";
 @import "./includes/photoswipe-skin.css";
 
 @import "./includes/utility.css";

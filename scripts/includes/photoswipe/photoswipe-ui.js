@@ -48,7 +48,7 @@ module.exports = function (pswp, framework) {
 			updateMapLink: function (item) {
 				var mapLinkEl = document.querySelector('.pswp__button--map-link');
 
-				if (!mapLinkEl) return;
+				if (!mapLinkEl || !_options.mapEl) return;
 
 				if (item.mapLink) {
 					mapLinkEl.href = item.mapLink;
@@ -67,6 +67,7 @@ module.exports = function (pswp, framework) {
 			counterEl: true,
 			arrowEl: true,
 			preloaderEl: true,
+			mapEl: true,
 
 			tapToClose: false,
 			tapToToggleControls: true,
@@ -492,6 +493,10 @@ module.exports = function (pswp, framework) {
 					_fullscrenAPI.enter();
 				}
 			}
+		},
+		{
+			name: 'button--map-link',
+			option: 'mapEl'
 		},
 		{
 			name: 'preloader',

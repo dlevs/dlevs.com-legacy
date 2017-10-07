@@ -1,4 +1,4 @@
-var PhotoSwipe = require('photoswipe');
+var PhotoSwipe = require('@dlevs/photoswipe');
 var PhotoSwipeUI = require('./photoswipe-ui');
 
 function getSlideElements() {
