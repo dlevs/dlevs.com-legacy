@@ -252,7 +252,7 @@ module.exports = function (pswp, framework) {
 					.replace('{{raw_image_url}}', image_url)
 					.replace('{{text}}', encodeURIComponent(share_text));
 
-				shareButtonOut += '<a href="' + shareURL + '" target="_blank" ' +
+				shareButtonOut += '<a href="' + shareURL + '" target="_blank" rel="noopener noreferrer" ' +
 					'class="pswp__share--' + shareButtonData.id + '"' +
 					(shareButtonData.download ? 'download' : '') + '>' +
 					shareButtonData.label + '</a>';
