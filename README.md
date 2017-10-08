@@ -89,7 +89,6 @@ Changes can be pushed directly to the repository at `/var/repo/dlevs.com.git`. A
 ### Production
 Deploy from staging to production with the following:
 ```bash
-# TODO: Run tests
 rm -rf /var/www/backup.dlevs.com/*
 mv /var/www/dlevs.com/* /var/www/backup.dlevs.com
 cp -R /var/www/staging.dlevs.com/* /var/www/dlevs.com

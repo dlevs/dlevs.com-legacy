@@ -20,5 +20,6 @@
 	--spacing-huge: calc(var(--spacing-small) * 5);
 	--spacing-section: calc(var(--spacing-small) * 10);
 
-	--hairline-border: 1px solid #eee;
+	--hairline-border-color: #eee;
+	--hairline-border: 1px solid var(--hairline-border-color);
 }
