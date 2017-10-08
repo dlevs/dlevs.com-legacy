@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "async": "^2.5.0",
+    "babel-preset-stage-3": "^6.24.1",
     "chalk": "^2.1.0",
     "cssnano": "^3.10.0",
     "glob": "^7.1.2",

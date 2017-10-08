@@ -7,8 +7,7 @@ module.exports = {
 	entry: root('./scripts/main.js'),
 	output: {
 		path: root('./public-dist/scripts'),
-		filename: '[name]-[hash].js',
-		sourceMapFilename: '[name]-[hash].js.map'
+		filename: '[name]-[hash:10].js'
 	},
 	module: {
 		rules: [

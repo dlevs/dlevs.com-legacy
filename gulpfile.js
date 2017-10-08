@@ -1,3 +1,5 @@
+// TODO: This is a lot of script just to compile CSS. See if it can be done via an npm script
+
 // Dependencies
 //----------------------------------------------
 const chalk = require('chalk');

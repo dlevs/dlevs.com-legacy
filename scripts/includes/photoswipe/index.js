@@ -1,5 +1,10 @@
 import PhotoSwipe from '@dlevs/photoswipe';
 import PhotoSwipeUI from './photoswipe-ui';
+import {
+	trackGalleryOpen,
+	trackGalleryNavigation,
+	trackShare
+} from '../googleAnalytics';
 
 const getSlideElements = () => Array.prototype.slice.call(
 	document.querySelectorAll('.js-photoswipe')
@@ -55,22 +60,23 @@ const openGallery = (index, disableTransitions) => {
 
 	gallery.init();
 
-	window.gtag('event', 'gallery_view', {
-		page_path: location.pathname + location.search + location.hash,
-		event_category: 'engagement',
-		event_label: 'open',
-		image_src: items[index].src,
-		gallery_index: index
+	trackGalleryOpen({
+		title: items[index].title,
+		index: index
 	});
-	gallery.listen('shareLinkClick', function (e, target) {
-		console.log()
-		window.gtag('event', 'share', {
+	gallery.listen('afterChange', () => {
+		trackGalleryNavigation({
+			title: gallery.currItem.title,
+			index: gallery.currItem.index
+		});
+	});
+	gallery.listen('shareLinkClick', (e, target) => {
+		trackShare({
 			content_type: 'image',
 			method: target.dataset.method,
-			index: gallery.currItem.index,
 			title: gallery.currItem.title
 		});
-	})
+	});
 };
 
 /**
