@@ -1,9 +1,10 @@
 if GOOGLE_ANALYTICS_ID
   //- Global Site Tag (gtag.js) - Google Analytics
   script(async src=`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`)
-  script.
-    window.isGoogleAnalyticsActive = true;
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)};
-    gtag('js', new Date());
-    gtag('config', '#[=GOOGLE_ANALYTICS_ID]');
+
+script.
+  window.GOOGLE_ANALYTICS_ID = '#[=GOOGLE_ANALYTICS_ID]';
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', '#[=GOOGLE_ANALYTICS_ID]');

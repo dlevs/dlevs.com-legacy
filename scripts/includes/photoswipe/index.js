@@ -1,23 +1,21 @@
-var PhotoSwipe = require('@dlevs/photoswipe');
-var PhotoSwipeUI = require('./photoswipe-ui');
+import PhotoSwipe from '@dlevs/photoswipe';
+import PhotoSwipeUI from './photoswipe-ui';
 
-function getSlideElements() {
-	return Array.prototype.slice.call(
-		document.querySelectorAll('.js-photoswipe')
-	);
-}
+const getSlideElements = () => Array.prototype.slice.call(
+	document.querySelectorAll('.js-photoswipe')
+);
 
-function openGallery(index, disableTransitions) {
-	var pswpElement = document.querySelector('.pswp');
-	var elems = getSlideElements();
+const openGallery = (index, disableTransitions) => {
+	const pswpElement = document.querySelector('.pswp');
+	const elems = getSlideElements();
 	// Check first thumbnail format. First image is unlikely to be
 	// lazyloaded, so will be populated with webp/ jpg, instead of
 	// placeholder data gif src.
-	var firstThumbnail = elems[0].getElementsByTagName('img')[0];
-	var isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
-	var items = elems.map(function (elem) {
-		var thumbnail = elem.getElementsByTagName('img')[0];
-		var caption = elem.getElementsByTagName('figcaption')[0];
+	const firstThumbnail = elems[0].getElementsByTagName('img')[0];
+	const isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
+	const items = elems.map(function (elem) {
+		const thumbnail = elem.getElementsByTagName('img')[0];
+		const caption = elem.getElementsByTagName('figcaption')[0];
 
 		return {
 			src: isWebp ? elem.dataset.hrefWebp : elem.href,
@@ -29,11 +27,11 @@ function openGallery(index, disableTransitions) {
 			title: elem.dataset.caption || (caption && caption.textContent)
 		}
 	});
-	var options = {
+	const options = {
 		index: index,
-		getThumbBoundsFn: function (index) {
-			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-			var rect = items[index].thumbnail.getBoundingClientRect();
+		getThumbBoundsFn: (index) => {
+			const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+			const rect = items[index].thumbnail.getBoundingClientRect();
 
 			return {
 				x: rect.left,
@@ -41,9 +39,9 @@ function openGallery(index, disableTransitions) {
 				w: rect.width
 			};
 		},
-		getDoubleTapZoom: function () {
-			var scale = 1 / (window.devicePixelRatio || 1);
-			var minScale = 0.5;
+		getDoubleTapZoom: () => {
+			const scale = 1 / (window.devicePixelRatio || 1);
+			const minScale = 0.5;
 			return Math.max(minScale, scale);
 		}
 	};
@@ -53,10 +51,27 @@ function openGallery(index, disableTransitions) {
 		options.showAnimationDuration = 0;
 	}
 
-	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
+	const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
 
 	gallery.init();
-}
+
+	window.gtag('event', 'gallery_view', {
+		page_path: location.pathname + location.search + location.hash,
+		event_category: 'engagement',
+		event_label: 'open',
+		image_src: items[index].src,
+		gallery_index: index
+	});
+	gallery.listen('shareLinkClick', function (e, target) {
+		console.log()
+		window.gtag('event', 'share', {
+			content_type: 'image',
+			method: target.dataset.method,
+			index: gallery.currItem.index,
+			title: gallery.currItem.title
+		});
+	})
+};
 
 /**
  * Opens the photoswipe gallery when clicking a link with the "js-photoswipe"
@@ -71,33 +86,30 @@ function openGallery(index, disableTransitions) {
  *
  * @param {Object} event
  */
-function onImageLinkClick(event) {
-	var imgLink = event.target.closest('.js-photoswipe');
+const onImageLinkClick = (event) => {
+	const imgLink = event.target.closest('.js-photoswipe');
 
 	if (!imgLink) return;
 
 	event.preventDefault();
 
-	var elems = getSlideElements();
-	var index = elems.indexOf(imgLink);
+	const elems = getSlideElements();
+	const index = elems.indexOf(imgLink);
 
 	openGallery(index);
-}
+};
 
-function openGalleryFromHash() {
-	var matches = /pid=(\d+)/.exec(location.hash);
+const openGalleryFromHash = () => {
+	const matches = /pid=(\d+)/.exec(location.hash);
 
 	if (!matches) return;
 
-	var index = Number(matches[1]) - 1;
+	const index = Number(matches[1]) - 1;
 
 	openGallery(index, true);
-}
+};
 
-
-function init() {
+export const init = () => {
 	document.addEventListener('click', onImageLinkClick);
 	openGalleryFromHash();
-}
-
-module.exports = {init: init};
+};

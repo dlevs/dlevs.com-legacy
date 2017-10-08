@@ -76,23 +76,23 @@ module.exports = function (pswp, framework) {
 
 			shareButtons: [
 				{
-					id: 'facebook',
+					id: 'Facebook',
 					label: 'Share on Facebook',
 					url: 'https://www.facebook.com/sharer/sharer.php?u={{url}}'
 				},
 				{
-					id: 'twitter',
+					id: 'Twitter',
 					label: 'Tweet',
 					url: 'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'
 				},
 				{
-					id: 'pinterest',
+					id: 'Pinterest',
 					label: 'Pin it',
 					url: 'http://www.pinterest.com/pin/create/button/' +
 					'?url={{url}}&media={{image_url}}&description={{text}}'
 				},
 				{
-					id: 'download',
+					id: 'Download',
 					label: 'Download image',
 					url: '{{raw_image_url}}',
 					download: true
@@ -253,7 +253,8 @@ module.exports = function (pswp, framework) {
 					.replace('{{text}}', encodeURIComponent(share_text));
 
 				shareButtonOut += '<a href="' + shareURL + '" target="_blank" rel="noopener noreferrer" ' +
-					'class="pswp__share--' + shareButtonData.id + '"' +
+					'class="pswp__share--' + shareButtonData.id + '" ' +
+					'data-method="' + shareButtonData.id + '" ' +
 					(shareButtonData.download ? 'download' : '') + '>' +
 					shareButtonData.label + '</a>';
 

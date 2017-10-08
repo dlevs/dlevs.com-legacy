@@ -1,17 +1,17 @@
-var Hammer = require('hammerjs');
-var instantclick = require('instantclick');
+import Hammer from 'hammerjs';
+import instantclick from 'instantclick';
 
 function canSwipe() {
-	var isGalleryOpen = !!document.querySelector('.pswp--open');
+	const isGalleryOpen = !!document.querySelector('.pswp--open');
 	return !isGalleryOpen;
 }
 
-function init() {
-	var hammer = new Hammer(document.body);
+function registerEvents() {
+	const hammer = new Hammer(document.body);
 	hammer.on('swipe', function (e) {
 		if (!canSwipe()) return;
 
-		var link;
+		let link;
 
 		if (e.direction === Hammer.DIRECTION_LEFT) {
 			link = document.querySelector('.js-next-post-link');
@@ -25,9 +25,7 @@ function init() {
 	});
 }
 
-module.exports = {
-	init: function () {
-		init();
-		instantclick.on('change', init);
-	}
+export const init = () => {
+	registerEvents();
+	instantclick.on('change', registerEvents);
 };
