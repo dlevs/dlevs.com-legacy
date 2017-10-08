@@ -9,6 +9,7 @@ const map = require('lodash/fp/map');
 const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
 const rawPostsData = require('../data/travelPostsRaw');
 const {PRODUCTION_ORIGIN} = require('../lib/constants');
+const IMAGES = require('./generated/images');
 
 const expandPosts = ({breadcrumbRoot}) => flow(
 	(posts) => posts.map((post) => {
@@ -42,7 +43,7 @@ const expandPosts = ({breadcrumbRoot}) => flow(
 				'@context': 'http://schema.org',
 				'@type': 'BlogPosting',
 				headline: `${post.town} - ${post.country}`,
-				image: `${PRODUCTION_ORIGIN}${images[0].src}`,
+				image: `${PRODUCTION_ORIGIN}${IMAGES[images[0].src].large.src}`,
 				genre: 'travel',
 				url: `${PRODUCTION_ORIGIN}${path}`,
 				datePublished: post.date,
