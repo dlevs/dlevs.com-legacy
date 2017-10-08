@@ -4,6 +4,9 @@ block meta
     title Daniel Levett
     meta(name="description" content="London-based fullstack web developer.")
 
+    each json in jsonLd
+        script(type="application/ld+json")!=JSON.stringify(json)
+
 block content
     //- include ./includes/githubTriangle
     main

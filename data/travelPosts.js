@@ -8,6 +8,7 @@ const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
 const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
 const rawPostsData = require('../data/travelPostsRaw');
+const {PRODUCTION_ORIGIN} = require('../lib/constants');
 
 const expandPosts = ({breadcrumbRoot}) => flow(
 	(posts) => posts.map((post) => {
@@ -28,14 +29,24 @@ const expandPosts = ({breadcrumbRoot}) => flow(
 			...image,
 			geoLocation: `${post.town}, ${post.country}`
 		}));
+		const path = last(breadcrumb).path;
 
 		return {
 			countrySlug,
 			townSlug,
 			breadcrumb,
-			path: last(breadcrumb).path,
+			path,
 			humanDate: moment(post.date).format('MMMM YYYY'),
 			mainImage: images[0],
+			jsonLd: {
+				'@type': 'BlogPosting',
+				headline: `${post.town} - ${post.country}`,
+				image: images[0].src,
+				genre: 'travel',
+				url: `${PRODUCTION_ORIGIN}${path}`,
+				dateCreated: post.date,
+				author: PRODUCTION_ORIGIN
+			},
 			...post,
 			images
 		}
