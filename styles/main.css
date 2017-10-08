@@ -59,12 +59,7 @@
 	margin-bottom: var(--spacing-huge);
 }
 .section-heading {
-	/* Must set border color to prevent heading inside a link from
-	 * taking the color from the default a:visited styling in Safari.
-	 */
-	border-color: var(--hairline-border-color);
 	border-bottom: var(--hairline-border);
-
 	padding-bottom: var(--spacing-small);
 	margin-bottom: var(--spacing-small);
 	display: flex;

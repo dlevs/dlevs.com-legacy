@@ -6,6 +6,12 @@
 		font-size: 2rem;
 	}
 }
+.blog-heading {
+	margin-bottom: var(--spacing-medium);
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
 .blog-image {
 	margin-bottom: var(--spacing-huge);
 	display: block;
