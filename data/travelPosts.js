@@ -39,13 +39,15 @@ const expandPosts = ({breadcrumbRoot}) => flow(
 			humanDate: moment(post.date).format('MMMM YYYY'),
 			mainImage: images[0],
 			jsonLd: {
+				'@context': 'http://schema.org',
 				'@type': 'BlogPosting',
 				headline: `${post.town} - ${post.country}`,
-				image: images[0].src,
+				image: `${PRODUCTION_ORIGIN}${images[0].src}`,
 				genre: 'travel',
 				url: `${PRODUCTION_ORIGIN}${path}`,
-				dateCreated: post.date,
-				author: PRODUCTION_ORIGIN
+				datePublished: post.date,
+				author: PRODUCTION_ORIGIN,
+				publisher: PRODUCTION_ORIGIN
 			},
 			...post,
 			images

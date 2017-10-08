@@ -3,9 +3,6 @@ extends ../layouts/main
 block meta
     title=`${post.town} | Daniel Levett`
 
-    if post.jsonLd
-        script(type="application/ld+json")!=JSON.stringify(post.jsonLd)
-
 block content
     main
         article
@@ -24,3 +21,6 @@ block content
                             figcaption.hidden=image.caption
 
             include includes/relatedPosts
+
+            if post.jsonLd
+                script(type="application/ld+json" data-no-instant)!=JSON.stringify(post.jsonLd)
