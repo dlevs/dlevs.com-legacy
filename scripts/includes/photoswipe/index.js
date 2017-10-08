@@ -44,10 +44,14 @@ const openGallery = (index, disableTransitions) => {
 				w: rect.width
 			};
 		},
-		getDoubleTapZoom: () => {
-			const scale = 1 / (window.devicePixelRatio || 1);
-			const minScale = 0.5;
-			return Math.max(minScale, scale);
+		getDoubleTapZoom: (isMouseClick, item) => {
+			const fullSizeScale = 1 / (window.devicePixelRatio || 1);
+
+			// If screen has high pixel density, we don't want to shrink the
+			// image on "zooming", so check this.
+			return fullSizeScale < item.initialZoomLevel
+				? item.initialZoomLevel * 1.5
+				: fullSizeScale;
 		}
 	};
 
