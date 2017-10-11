@@ -40,7 +40,11 @@ app
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public')))
-	.use(serve(path.join(__dirname, './public-dist')));
+	.use(serve(path.join(__dirname, './public-dist')))
+	.use(async (ctx) => {
+		ctx.status = 404;
+		await ctx.render('404');
+	});
 
 // Init if called from the commandline
 if (!module.parent) {
