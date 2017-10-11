@@ -1,6 +1,0 @@
-{
-	"NODE_ENV": "development",
-	"PORT": 3000,
-	"GOOGLE_ANALYTICS_ID": "UA-XXXXXXXX-X",
-	"IS_BEHIND_PROXY": false
-}

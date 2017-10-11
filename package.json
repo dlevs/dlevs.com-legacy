@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "npm run build:styles -- watch & npm run build:scripts -- --watch -d & nodemon index.js",
     "build": "npm run build:scripts && npm run build:styles && npm run build:images",
-    "build:scripts": "webpack",
+    "build:scripts": "webpack -p",
     "build:styles": "gulp",
     "build:images": "node processImages.js",
     "clean": "rimraf ./public-dist && rimraf ./data/generated/*",

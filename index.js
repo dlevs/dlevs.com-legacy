@@ -1,11 +1,11 @@
 const {
-	NODE_ENV,
+	setProcessEnv,
 	PORT,
 	GOOGLE_ANALYTICS_ID,
 	IS_BEHIND_PROXY
 } = require('./config');
 
-process.env.NODE_ENV = NODE_ENV;
+setProcessEnv();
 
 const path = require('path');
 const Koa = require('koa');
