@@ -28,7 +28,7 @@ try {
 
 const stripLeadingDot = (str) => str.replace(/^\./, '');
 
-const processImage = async ({type, filepath, format, size, quality}) => {
+const processImage = async ({type, filepath, format, size, quality, isDefault}) => {
 	const sharpFile = sharp(filepath);
 	const outputPathParts = path.parse(filepath.replace('/images/', '/public-dist/images/'));
 
@@ -48,7 +48,9 @@ const processImage = async ({type, filepath, format, size, quality}) => {
 
 	const outputPath = path.format({
 		...outputPathParts,
-		name: `${outputPathParts.name}_${width}x${height}`,
+		name: isDefault
+			? outputPathParts.name
+			: `${outputPathParts.name}_${width}x${height}`,
 		ext: '.' + format.replace(/^jpeg$/, 'jpg')
 	});
 
@@ -106,7 +108,8 @@ const processImages = async () => {
 			filepath,
 			format: 'jpeg',
 			size: 2000,
-			quality: 80
+			quality: 80,
+			isDefault: true
 		});
 		progress.tick();
 

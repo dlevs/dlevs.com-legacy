@@ -9,7 +9,6 @@ const map = require('lodash/fp/map');
 const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
 const rawPostsData = require('../data/travelPostsRaw');
 const {PRODUCTION_ORIGIN} = require('../lib/constants');
-const IMAGES = require('./generated/images');
 
 const expandPosts = ({breadcrumbRoot}) => flow(
 	(posts) => posts.map((post) => {
@@ -44,7 +43,7 @@ const expandPosts = ({breadcrumbRoot}) => flow(
 				'@type': 'BlogPosting',
 				headline: `${post.town} - ${post.country}`,
 				// TODO: this breaks in tests and is a pain. Make the plain URL point to the main image by default
-				image: `${PRODUCTION_ORIGIN}${IMAGES[images[0].src].large.src}`,
+				image: `${PRODUCTION_ORIGIN}${images[0].src}`,
 				genre: 'travel',
 				url: `${PRODUCTION_ORIGIN}${path}`,
 				datePublished: post.date,
