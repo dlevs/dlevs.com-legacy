@@ -2,13 +2,13 @@ doctype html
 html(lang="en-GB")
     head
         include ./includes/meta
-        title 404 - Page not found
+        title=`Error - ${message}`
         link(rel="stylesheet" href=`/styles/${ASSET_META['main.css']}`)
         include ./includes/googleAnalytics
         include ./includes/favicons
         style.
             html, body {
-                height: 100%;
+                min-height: 100vh;
                 margin: 0 20px;
                 padding: 0;
             }
@@ -19,17 +19,28 @@ html(lang="en-GB")
             h1 {
                 margin: 0 0 20px;
             }
-            .not-found-wrapper {
+            pre {
+                text-align: left;
+                max-width: 960px;
+                margin: 50px auto;
+                overflow: auto;
+                padding: 20px;
+                background: #eee;
+            }
+            .error-heading-wrapper {
                 width: 100%;
                 text-align: center;
                 margin: 40px 0;
             }
-            .not-found-heading-status {
+            .error-heading-status {
                 font-size: 2em;
             }
     body
-        .not-found-wrapper
+        .error-heading-wrapper
             h1
-                div.not-found-heading-status 404
-                div Page not found
+                div.error-heading-status=status
+                div=message
             a(href="/") take me back home
+            if DEBUG && error
+                pre=error.stack
+                

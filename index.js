@@ -12,6 +12,7 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const views = require('koa-views');
 const slash = require('koa-slash');
+const errorMiddleware = require('./lib/middleware/errorMiddleware');
 const router = require('./routes');
 const IMAGE_META = require('./data/generated/images');
 const ASSET_META = require('./data/generated/assets');
@@ -25,6 +26,7 @@ const app = new Koa();
 app.proxy = IS_BEHIND_PROXY;
 
 app
+	.use(errorMiddleware)
 	.use(slash())
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
@@ -34,17 +36,14 @@ app
 			ASSET_META,
 			ICONS,
 			GOOGLE_ANALYTICS_ID,
-			CONSTANTS
+			CONSTANTS,
+			DEBUG: process.env.NODE_ENV !== 'production'
 		}
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public')))
-	.use(serve(path.join(__dirname, './public-dist')))
-	.use(async (ctx) => {
-		ctx.status = 404;
-		await ctx.render('404');
-	});
+	.use(serve(path.join(__dirname, './public-dist')));
 
 // Init if called from the commandline
 if (!module.parent) {
