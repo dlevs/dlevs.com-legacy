@@ -36,8 +36,10 @@ block content
                             +imageLink(project.img, {'data-caption': project.heading})
                                 +picture(project.img, {className: 'project-image', lazyLoad: i > 1})
 
-                            figcaption.project-description(data-readmore-summary=project.shortDescription)
-                                !=project.description
+                            figcaption.project-description
+                                .js-readmore-short!=project.shortDescription
+                                .js-readmore-long!=project.description
+                                button.js-readmore-button Read more...
 
                         if project.badges
                             ul.project-details-badges

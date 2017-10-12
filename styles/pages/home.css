@@ -39,20 +39,6 @@
 	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
 	margin-bottom: var(--spacing-medium);
 }
-.project-description-short {
-	display: none;
-}
-.js-project-read-more {
-	background: none;
-	border: none;
-	padding: 0;
-	color: var(--color-primary);
-}
-.read-more-active {
-	.project-description-long {
-		display: none;
-	}
-	.project-description-short {
-		display: block;
-	}
+.project-description {
+	margin-bottom: var(--spacing-medium);
 }
