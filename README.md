@@ -8,8 +8,8 @@ Copy all images not committed to this repository to `/images`. Then run:
 ```bash
 npm install                             # Install dependencies
 npm run build                           # Compile static assets (JS, CSS, image compression)
-cp config.sample.json config.json       # Create own config. Edit for environment.
-npm start                               # Start the app on port specified in config.json
+cp config.sample.js config.js           # Create own config. Edit for environment.
+npm start                               # Start the app on port specified in config.js
 ```
 
 ### Other commands
@@ -92,7 +92,7 @@ Deploy from staging to production with the following:
 rm -rf /var/www/backup.dlevs.com/*
 mv /var/www/dlevs.com/* /var/www/backup.dlevs.com
 cp -R /var/www/staging.dlevs.com/* /var/www/dlevs.com
-cp /var/www/backup.dlevs.com/config.json /var/www/dlevs.com/config.json 
+cp /var/www/backup.dlevs.com/config.js /var/www/dlevs.com/config.js 
 pm2 restart prod.dlevs
 sudo rm -rf /data/nginx/cache/dlevs.com/*
 ```
