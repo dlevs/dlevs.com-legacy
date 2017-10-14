@@ -42,7 +42,6 @@ const expandPosts = ({breadcrumbRoot}) => flow(
 				'@context': 'http://schema.org',
 				'@type': 'BlogPosting',
 				headline: `${post.town} - ${post.country}`,
-				// TODO: this breaks in tests and is a pain. Make the plain URL point to the main image by default
 				image: `${PRODUCTION_ORIGIN}${images[0].src}`,
 				genre: 'travel',
 				url: `${PRODUCTION_ORIGIN}${path}`,

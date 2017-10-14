@@ -51,8 +51,8 @@ describe('/sitemap.xml', () => {
 			let i = pages.length;
 
 			while (i--) {
-				const {ok} = await fetch(pages[i].url);
-				expect(ok).toBe(true);
+				const response = await fetch(pages[i].url);
+				expect(response).toMatchObject({ok: true});
 			}
 		}, 20000);
 	});
@@ -73,8 +73,8 @@ describe('/sitemap.xml', () => {
 			let i = images.length;
 
 			while (i--) {
-				const {ok} = await fetch(images[i].url);
-				expect(ok).toBe(true);
+				const response = await fetch(images[i].url);
+				expect(response).toMatchObject({ok: true});
 			}
 		}, 20000);
 	});
