@@ -1,8 +1,6 @@
-const {promisify} = require('util');
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
-const eachSeries = promisify(require('async').eachSeries);
 
 const imageUrlRegex = /\.(jpg|png)$/;
 
@@ -48,11 +46,14 @@ describe('/sitemap.xml', () => {
 				getPageLinks().length
 			);
 		});
-		test('all page links work', () => {
-			return eachSeries(getPageLinks(), async ({url}) => {
-				const {ok} = await fetch(url);
-				expect(ok).toBe(true)
-			});
+		test('all page links work', async () => {
+			const pages = getPageLinks();
+			let i = pages.length;
+
+			while (i--) {
+				const {ok} = await fetch(pages[i].url);
+				expect(ok).toBe(true);
+			}
 		}, 20000);
 	});
 
@@ -67,11 +68,14 @@ describe('/sitemap.xml', () => {
 				)
 			).toBe(true);
 		});
-		test('first 5 images work', () => {
-			return eachSeries(getImageLinks().slice(0, 5), async ({url}) => {
-				const {ok} = await fetch(url);
-				expect(ok).toBe(true)
-			});
+		test('first 5 images work', async () => {
+			const images = getImageLinks().slice(0, 5);
+			let i = images.length;
+
+			while (i--) {
+				const {ok} = await fetch(images[i].url);
+				expect(ok).toBe(true);
+			}
 		}, 20000);
 	});
 });

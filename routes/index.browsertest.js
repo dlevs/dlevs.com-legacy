@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const puppeteer = require('puppeteer');
 const validator = require('html-validator');
 
 describe('Basic functionality', () => {
@@ -51,15 +52,31 @@ describe('Redirects', () => {
 describe('404 page', () => {
 	const nonExistentUrl = `https://www.${process.env.TEST_HOSTNAME}/non-existent-page`;
 
-	test('has correct status code',async () => {
+	test('has correct status code', async () => {
 		const {ok, status} = await fetch(nonExistentUrl);
 		expect(ok).toBe(false);
 		expect(status).toBe(404)
 	});
 	test('has correct text', async () => {
-		const response = await fetch(nonExistentUrl);
-		const text = await response.text();
-		expect(text.toLowerCase()).toContain('not found');
+		const browser = await puppeteer.launch();
+		const page = await browser.newPage();
+		await page.goto(nonExistentUrl);
+		const {
+			title,
+			body,
+			isDebugTextShowing
+		} = await page.evaluate(() => {
+			return {
+				title: document.title,
+				body: document.body.innerHTML,
+				isDebugTextShowing: document.getElementsByTagName('pre').length > 0
+			}
+		});
+		await browser.close();
+
+		expect(isDebugTextShowing).toBe(false);
+		expect(title.toLowerCase()).toContain('not found');
+		expect(body.toLowerCase()).toContain('not found');
 	});
 });
 
