@@ -27,6 +27,13 @@ app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(errorMiddleware)
+	.use(async(ctx, next) => {
+		await next();
+
+		if (ctx.type === 'text/html') {
+			ctx.set('Link', `</styles/${ASSET_META['main.css']}>; rel=preload; as=style`);
+		}
+	})
 	.use(slash())
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
