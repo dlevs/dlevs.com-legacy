@@ -4,6 +4,7 @@ doctype html
 html(lang="en-GB")
     head
         include ../includes/meta
+        script(src=`/scripts/${ASSET_META['main.js']}` defer data-no-instant)
         link(rel="stylesheet" href=`/styles/${ASSET_META['main.css']}`)
         include ../includes/googleAnalytics
         include ../includes/favicons
@@ -15,5 +16,3 @@ html(lang="en-GB")
             block content
 
         include ../includes/photoswipeDialog
-
-        script(src=`/scripts/${ASSET_META['main.js']}` data-no-instant)

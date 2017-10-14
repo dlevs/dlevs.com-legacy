@@ -13,6 +13,7 @@ const serve = require('koa-static');
 const views = require('koa-views');
 const slash = require('koa-slash');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
+const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
 const router = require('./routes');
 const IMAGE_META = require('./data/generated/images');
 const ASSET_META = require('./data/generated/assets');
@@ -27,13 +28,7 @@ app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(errorMiddleware)
-	.use(async(ctx, next) => {
-		await next();
-
-		if (ctx.type === 'text/html') {
-			ctx.set('Link', `</styles/${ASSET_META['main.css']}>; rel=preload; as=style`);
-		}
-	})
+	.use(serverPushMiddleware)
 	.use(slash())
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
