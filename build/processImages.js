@@ -7,21 +7,13 @@ const glob = promisify(require('glob'));
 const fs = require('fs-extra');
 const readExif = require('exif-reader');
 const ProgressBar = require('progress');
-const svgo = new (require('svgo'))({
-	removeTitle: true,
-	removeXMLNS: true,
-	removeViewBox: true,
-	transformsWithOnePath: true,
-	removeAttrs: true,
-	removeStyleElement: true,
-	removeScriptElement: true
-});
-const {toFixedTrimmed} = require('./lib/numberUtils');
-const {createGoogleMapsLink} = require('./lib/gpsUtils');
+
+const {toFixedTrimmed} = require('../lib/numberUtils');
+const {createGoogleMapsLink} = require('../lib/gpsUtils');
 
 let imageData;
 try {
-	imageData = require('./data/generated/images');
+	imageData = require('../data/generated/images');
 } catch (err) {
 	imageData = {};
 }
@@ -72,7 +64,7 @@ const processImage = async ({type, filepath, format, size, quality, isDefault}) 
 };
 
 const processImages = async () => {
-	const allFilepaths = await glob('./images/**/*.+(png|jpg)');
+	const allFilepaths = await glob('../images/**/*.+(png|jpg)');
 	console.log(`${allFilepaths.length} image files found`);
 
 	const filepaths = allFilepaths.filter(
@@ -141,24 +133,10 @@ const processImages = async () => {
 		progress.tick();
 	});
 
-	const metaOutputPath = './data/generated/images.json';
+	const metaOutputPath = '../data/generated/images.json';
 	console.log(`Writing image meta data to ${metaOutputPath}`);
 	fs.writeFile(metaOutputPath, JSON.stringify(imageData, null, '\t'));
 };
 
-const processSvgs = async () => {
-	const filepaths = await glob('./images/brands/*.svg');
-
-	filepaths.forEach(async (filepath) => {
-		const file = await fs.readFile(filepath, 'utf8');
-
-		svgo.optimize(file, async (optimisedFile) => {
-			const outputFilepath = filepath.replace('/images', '/public-dist/images');
-			await fs.ensureDir(path.dirname(outputFilepath));
-			await fs.writeFile(outputFilepath, optimisedFile.data);
-		});
-	});
-};
 
 processImages();
-processSvgs();

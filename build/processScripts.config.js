@@ -1,10 +1,15 @@
-require('./config').setProcessEnv();
+// This file exports a webpack config for compiling the
+// frontend JS into a single file.
+//
+// Usage:
+// webpack --config <path-to-this-file>
+
+require('../config').setProcessEnv();
 
 const path = require('path');
 const assert = require('assert');
 const webpack = require('webpack');
-const WebpackAssetsManifest = require('webpack-assets-manifest');
-const root = (...args) => path.resolve(__dirname, ...args);
+const root = (...args) => path.resolve(__dirname, '../', ...args);
 
 assert(
 	typeof process.env.NODE_ENV === 'string',
@@ -15,7 +20,7 @@ module.exports = {
 	entry: root('./scripts/main.js'),
 	output: {
 		path: root('./public-dist/scripts'),
-		filename: '[name]-[hash:10].js'
+		filename: '[name].js'
 	},
 	module: {
 		rules: [
@@ -30,10 +35,6 @@ module.exports = {
 			'process.env': {
 				NODE_ENV: JSON.stringify(process.env.NODE_ENV)
 			}
-		}),
-		new WebpackAssetsManifest({
-			output: root('./data/generated/assets.json'),
-			merge: true
 		})
 	]
 };

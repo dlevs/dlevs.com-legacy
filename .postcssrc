@@ -1,0 +1,13 @@
+{
+	"plugins": {
+		"precss": {},
+		"postcss-cssnext": {},
+		"cssnano": {
+			"autoprefixer": false,
+			"filterPlugins": false,
+			"discardComments": {
+				"removeAll": true
+			}
+		}
+	}
+}

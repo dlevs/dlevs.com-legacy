@@ -1,10 +1,10 @@
 {
-  "sourceMaps": true,
-  "presets": [
-    ["env", {
-      "loose": true,
-      "modules": false
-    }],
-    "stage-3"
-  ]
+	"sourceMaps": true,
+	"presets": [
+		["env", {
+			"loose": true,
+			"modules": false
+		}],
+		"stage-3"
+	]
 }
