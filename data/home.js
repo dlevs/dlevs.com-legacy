@@ -1,4 +1,4 @@
-const {PRODUCTION_ORIGIN} = require('../lib/constants');
+const {ORIGIN} = require('../config');
 const title = 'Daniel Levett';
 const description = 'London-based fullstack web developer.';
 
@@ -144,7 +144,7 @@ module.exports = {
 			"alumniOf": "University of Hertfordshire",
 			"gender": "male",
 			"nationality": "British",
-			"url": PRODUCTION_ORIGIN,
+			"url": ORIGIN,
 			"sameAs": [
 				"https://www.linkedin.com/in/daniellevett/",
 				"https://github.com/dlevs",
@@ -154,9 +154,9 @@ module.exports = {
 		{
 			"@context": "http://schema.org",
 			"@type": "WebSite",
-			"url": PRODUCTION_ORIGIN,
+			"url": ORIGIN,
 			"name": title,
-			"author": PRODUCTION_ORIGIN,
+			"author": ORIGIN,
 			"description": description
 		}
 	]
