@@ -7,9 +7,9 @@ const glob = promisify(require('glob'));
 const fs = require('fs-extra');
 const readExif = require('exif-reader');
 const ProgressBar = require('progress');
-
 const {toFixedTrimmed} = require('../lib/numberUtils');
 const {createGoogleMapsLink} = require('../lib/gpsUtils');
+const {root, relativeToRoot} = require('../lib/pathUtils');
 
 let imageData;
 try {
@@ -18,7 +18,36 @@ try {
 	imageData = {};
 }
 
-const stripLeadingDot = (str) => str.replace(/^\./, '');
+const imageFormats = [
+	{
+		type: 'large',
+		format: 'jpeg',
+		size: 2000,
+		quality: 80,
+		isDefault: true
+	},
+	{
+		type: 'default',
+		format: 'jpeg',
+		size: 960,
+		quality: 80
+	},
+	{
+		type: 'largeWebp',
+		format: 'webp',
+		size: 2000,
+		quality: 80
+	},
+	{
+		type: 'defaultWebp',
+		format: 'webp',
+		size: 960,
+		quality: 80
+	}
+];
+
+
+const createWebPath = (filepath) => `/${relativeToRoot(filepath)}`;
 
 const processImage = async ({type, filepath, format, size, quality, isDefault}) => {
 	const sharpFile = sharp(filepath);
@@ -52,30 +81,30 @@ const processImage = async ({type, filepath, format, size, quality, isDefault}) 
 
 	set(
 		imageData,
-		[stripLeadingDot(filepath), type],
+		[createWebPath(filepath), type],
 		{
 			width,
 			height,
 			format,
-			src: outputPath.replace('./public-dist', ''),
+			src: createWebPath(outputPath.replace('/public-dist', '')),
 			paddingBottom: toFixedTrimmed(((height / width) * 100), 4) + '%'
 		}
 	);
 };
 
-const processImages = async () => {
-	const allFilepaths = await glob('../images/**/*.+(png|jpg)');
+const processImages = async (pattern) => {
+	const allFilepaths = await glob(pattern);
 	console.log(`${allFilepaths.length} image files found`);
 
 	const filepaths = allFilepaths.filter(
-		(filepath) => imageData[stripLeadingDot(filepath)] === undefined
+		(filepath) => imageData[createWebPath(filepath)] === undefined
 	);
 	console.log(`${filepaths.length} images are new`);
 
 	if (!filepaths.length) return;
 
 	const progress = new ProgressBar('[:bar] :percent%', {
-		total: filepaths.length * 5
+		total: filepaths.length * (1 + imageFormats.length)
 	});
 
 	await eachLimit(filepaths, 8, async (filepath) => {
@@ -88,55 +117,24 @@ const processImages = async () => {
 			if (exif && exif.gps) {
 				set(
 					imageData,
-					[stripLeadingDot(filepath), 'mapLink'],
+					[createWebPath(filepath), 'mapLink'],
 					createGoogleMapsLink(exif.gps)
 				);
 			}
 		}
 		progress.tick();
 
-		await processImage({
-			type: 'large',
-			filepath,
-			format: 'jpeg',
-			size: 2000,
-			quality: 80,
-			isDefault: true
-		});
-		progress.tick();
-
-		await processImage({
-			type: 'default',
-			filepath,
-			format: 'jpeg',
-			size: 960,
-			quality: 80
-		});
-		progress.tick();
-
-		await processImage({
-			type: 'largeWebp',
-			filepath,
-			format: 'webp',
-			size: 2000,
-			quality: 80
-		});
-		progress.tick();
-
-		await processImage({
-			type: 'defaultWebp',
-			filepath,
-			format: 'webp',
-			size: 960,
-			quality: 80
-		});
-		progress.tick();
+		let i = imageFormats.length;
+		while (i--) {
+			await processImage({...imageFormats[i], filepath});
+			progress.tick();
+		}
 	});
 
-	const metaOutputPath = '../data/generated/images.json';
+	const metaOutputPath = root('./data/generated/images.json');
 	console.log(`Writing image meta data to ${metaOutputPath}`);
 	fs.writeFile(metaOutputPath, JSON.stringify(imageData, null, '\t'));
 };
 
 
-processImages();
+processImages(root('./images/**/*.+(png|jpg)'));

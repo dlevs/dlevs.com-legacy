@@ -6,15 +6,8 @@
 
 require('../config').setProcessEnv();
 
-const path = require('path');
-const assert = require('assert');
 const webpack = require('webpack');
-const root = (...args) => path.resolve(__dirname, '../', ...args);
-
-assert(
-	typeof process.env.NODE_ENV === 'string',
-	'process.env.NODE_ENV must be defined'
-);
+const {root} = require('../lib/pathUtils');
 
 module.exports = {
 	entry: root('./scripts/main.js'),

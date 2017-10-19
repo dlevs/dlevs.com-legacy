@@ -11,9 +11,11 @@ const svgo = new (require('svgo'))({
 	removeStyleElement: true,
 	removeScriptElement: true
 });
+const {root} = require('../lib/pathUtils');
 
-const processSvgs = async () => {
-	const filepaths = await glob('../images/brands/*.svg');
+
+const processSvgs = async (pattern) => {
+	const filepaths = await glob(pattern);
 
 	filepaths.forEach(async (filepath) => {
 		const file = await fs.readFile(filepath, 'utf8');
@@ -26,4 +28,5 @@ const processSvgs = async () => {
 	});
 };
 
-processSvgs();
+
+processSvgs(root('./images/brands/*.svg'));
