@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "npm run build:styles -- --watch & npm run build:scripts -- --watch -d & nodemon index.js",
+    "start:watch": "nodemon --ignore scripts/ --ignore public-dist/ index.js",
+    "dev": "npm run build:styles -- --w & npm run build:scripts -- -wd & npm run start:watch",
     "build": "npm run build:scripts && npm run build:styles && npm run build:images && npm run build:manifest",
     "build:scripts": "webpack -p --config build/processScripts.config.js",
     "build:styles": "postcss styles/main.css -o public-dist/styles/main.css",

@@ -4,8 +4,8 @@ doctype html
 html(lang="en-GB")
     head
         include ../includes/meta
-        script(src=`/scripts/${ASSET_META['main.js']}` defer data-no-instant)
-        link(rel="stylesheet" href=`/styles/${ASSET_META['main.css']}`)
+        script(src=GET_REVVED_PATH('/scripts/main.js') defer data-no-instant)
+        link(rel="stylesheet" href=GET_REVVED_PATH('/styles/main.css'))
         include ../includes/googleAnalytics
         include ../includes/favicons
         block meta
