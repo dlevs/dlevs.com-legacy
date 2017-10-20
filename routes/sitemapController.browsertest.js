@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
+const {ORIGIN} = require('../tests/testConstants');
 
 const imageUrlRegex = /\.(jpg|png)$/;
 
@@ -12,7 +13,7 @@ const getImageLinks = () => links.filter(({type}) => type === 'image');
 beforeAll(async (done) => {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
-	await page.goto(`https://${process.env.TEST_HOSTNAME}/sitemap.xml`);
+	await page.goto(`${ORIGIN}/sitemap.xml`);
 	links = await page.evaluate(() => Array
 		.from(document.querySelectorAll('loc'))
 		.map(({prefix, textContent}) => ({

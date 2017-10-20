@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
+const {ORIGIN} = require('../../tests/testConstants');
+
 
 const getStats = async (viewportOptions) => {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
-	await page.goto(`https://${process.env.TEST_HOSTNAME}/`);
+	await page.goto(ORIGIN);
 	await page.setViewport(viewportOptions);
 	const stats = await page.evaluate(() => {
 		const isVisible = (el) => el.offsetParent !== null;
