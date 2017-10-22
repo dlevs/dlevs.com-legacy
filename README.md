@@ -96,9 +96,9 @@ Changes can be pushed directly to the repository at `/var/repo/dlevs.com.git`. A
 ### Production
 Deploy from staging to production with the following:
 ```bash
-rm -rf /var/www/backup.dlevs.com/*
-mv /var/www/dlevs.com/* /var/www/backup.dlevs.com
-cp -R /var/www/staging.dlevs.com/* /var/www/dlevs.com
+rm -rf /var/www/backup.dlevs.com
+mv /var/www/dlevs.com /var/www/backup.dlevs.com
+cp -r /var/www/staging.dlevs.com /var/www/dlevs.com
 cp /var/www/backup.dlevs.com/config.js /var/www/dlevs.com/config.js 
 pm2 restart prod.dlevs
 sudo rm -rf /data/nginx/cache/dlevs.com/*
