@@ -14,6 +14,7 @@ const UNIQUE_PAGE_PATHS = [
 
 exports.HOSTNAME = process.env.TEST_HOSTNAME;
 exports.ORIGIN = `https://${exports.HOSTNAME}`;
+// TODO: Make protocol part of config
 exports.UNIQUE_PAGE_URLS = UNIQUE_PAGE_PATHS.map(
 	(path) => `${exports.ORIGIN}${path}`
 );
