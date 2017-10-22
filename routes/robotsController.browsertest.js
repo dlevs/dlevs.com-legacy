@@ -9,6 +9,14 @@ describe('/robots.txt', () => {
 		const response = await fetch(url);
 		expect(response).toMatchObject({ok: true});
 	});
+
+	test('response has correct MIME type', async () => {
+		const response = await fetch(`${ORIGIN}/robots.txt`);
+		const type = response.headers.get('content-type');
+
+		expect(type).toContain('text/plain');
+	});
+
 	test('links to correct sitemap', async () => {
 		// Check sitemap exists...
 		const sitemapUrl = `${ORIGIN}/sitemap.xml`;

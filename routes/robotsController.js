@@ -21,6 +21,5 @@ Sitemap: ${origin}/sitemap.xml
 module.exports = () => ({
 	index: (ctx) => {
 		ctx.body = getRobotsText(ctx.origin);
-		ctx.type = 'text/plain';
 	}
 });

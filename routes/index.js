@@ -30,6 +30,7 @@ const sitemapController = require('./sitemapController')({
 		...travelController.sitemap
 	]
 });
+const infoController = require('./infoController')();
 
 
 // Routes
@@ -44,6 +45,7 @@ router
 	.get(`/${TRAVEL_BLOG_SLUG}/:countrySlug/:townSlug`, travelController.renderPost)
 
 	// Meta
+	.get('/info.json', infoController.index)
 	.get('/robots.txt', robotsController.index)
 	.get('/sitemap.xml', sitemapController.index);
 

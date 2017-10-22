@@ -19,6 +19,7 @@
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
     "@dlevs/photoswipe": "^4.1.3",
+    "child-process-promise": "^2.2.1",
     "feather-icons": "^3.2.2",
     "fs-extra": "^4.0.1",
     "hammerjs": "^2.0.8",

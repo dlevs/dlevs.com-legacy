@@ -26,6 +26,13 @@ beforeAll(async (done) => {
 });
 
 describe('/sitemap.xml', () => {
+	test('response has correct MIME type', async () => {
+		const response = await fetch(`${ORIGIN}/sitemap.xml`);
+		const type = response.headers.get('content-type');
+
+		expect(type).toBe('application/xml');
+	});
+
 	test('all links are https', async () => {
 		expect(
 			links.every(
