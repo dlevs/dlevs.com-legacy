@@ -29,7 +29,7 @@ describe('/info.json', () => {
 
 	describe('lastCommit', () => {
 		test('branch is correct', () => {
-			expect(info.lastCommit.ref).toBe('HEAD -> master, origin/master');
+			expect(info.lastCommit.ref).toMatch(/^HEAD -> master/);
 		});
 
 		test('is up to date with last commit on github', async () => {
