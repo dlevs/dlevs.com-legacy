@@ -1,8 +1,7 @@
-const {UNIQUE_PAGE_URLS} = require('./testConstants');
+const {UNIQUE_PAGE_URLS, ORIGIN} = require('./testConstants');
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
 const {URL} = require('url');
-const {ORIGIN} = require('./testConstants');
 
 
 describe('Links and static resources', () => {

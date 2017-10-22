@@ -1,3 +1,4 @@
+import './includes/recordErrors';
 import './includes/elementClosestPolyfill';
 import 'lazysizes';
 import { init as initInstantclick } from 'instantclick';
