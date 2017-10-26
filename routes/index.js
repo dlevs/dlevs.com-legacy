@@ -31,6 +31,7 @@ const sitemapController = require('./sitemapController')({
 	]
 });
 const infoController = require('./infoController')();
+const reportingController = require('./reportingController')();
 
 
 // Routes
@@ -47,7 +48,10 @@ router
 	// Meta
 	.get('/info.json', infoController.index)
 	.get('/robots.txt', robotsController.index)
-	.get('/sitemap.xml', sitemapController.index);
+	.get('/sitemap.xml', sitemapController.index)
+
+	// Reporting
+	.post('/report-csp-violation', reportingController.reportCSPViolation);
 
 
 // Exports

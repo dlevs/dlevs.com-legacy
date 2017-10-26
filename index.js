@@ -12,6 +12,8 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const views = require('koa-views');
 const slash = require('koa-slash');
+const helmet = require('koa-helmet');
+const bodyParser = require('koa-bodyparser');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
 const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
 const router = require('./routes');
@@ -29,6 +31,38 @@ app.proxy = IS_BEHIND_PROXY;
 app
 	.use(errorMiddleware)
 	.use(serverPushMiddleware)
+	.use(bodyParser())
+	.use(helmet({
+		contentSecurityPolicy: {
+			directives: {
+				defaultSrc: ["'self'"],
+				scriptSrc: [
+					"'self'",
+					// It would be nice to block inline scripts / styles, but
+					// it's more likely to introduce bugs than prevent a real
+					// XSS threat on this site.
+					"'unsafe-inline'",
+					// Analytics scripts
+					'https://www.googletagmanager.com',
+					'https://www.google-analytics.com'
+				],
+				styleSrc: [
+					"'self'",
+					"'unsafe-inline'"
+				],
+				imgSrc: [
+					"'self'",
+					'data:',
+					// Analytics scripts
+					'https://www.google-analytics.com'
+				],
+				reportUri: '/report-csp-violation'
+			},
+			// Requests are cached. Don't base anything off browser.
+			browserSniff: false
+		},
+		referrerPolicy: {policy: 'same-origin'}
+	}))
 	.use(slash())
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
