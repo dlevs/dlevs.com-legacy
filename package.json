@@ -7,7 +7,7 @@
     "start": "node index.js",
     "start:watch": "nodemon --ignore scripts/ --ignore public-dist/ index.js",
     "dev": "npm run build:styles -- --w & npm run build:scripts -- -w & npm run start:watch",
-    "build": "npm run build:scripts -- -p && npm run build:styles && npm run build:images && npm run build:manifest",
+    "build": "npm run build:scripts && npm run build:styles && npm run build:images && npm run build:manifest",
     "build:scripts": "webpack --config build/processScripts.webpack.config.js",
     "build:styles": "postcss styles/main.css -o public-dist/styles/main.css",
     "build:images": "node build/processImages.js && node build/processSvgs.js",

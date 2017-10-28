@@ -8,8 +8,9 @@ require('../config').setProcessEnv();
 
 const webpack = require('webpack');
 const {root} = require('../lib/pathUtils');
+const isDebug = process.env.NODE_ENV !== 'production';
 
-module.exports = {
+const config = {
 	entry: root('./scripts/main.js'),
 	output: {
 		path: root('./public-dist/scripts'),
@@ -23,7 +24,7 @@ module.exports = {
 			}
 		]
 	},
-	devtool: 'module-inline-source-map',
+	devtool: isDebug ? 'module-inline-source-map' : false,
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env': {
@@ -32,3 +33,11 @@ module.exports = {
 		})
 	]
 };
+
+if (!isDebug) {
+	config.plugins = config.plugins.concat([
+		new webpack.optimize.UglifyJsPlugin()
+	]);
+}
+
+module.exports = config;
