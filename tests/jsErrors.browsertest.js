@@ -1,10 +1,11 @@
-const {UNIQUE_PAGE_URLS} = require('./testConstants');
+const {UNIQUE_PAGE_URLS, CREDENTIALS} = require('./testLib/testConstants');
 const puppeteer = require('puppeteer');
 
 describe('JavaScript errors', () => {
 	test('are not detected', async () => {
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
+		await page.authenticate(CREDENTIALS);
 
 		let i = UNIQUE_PAGE_URLS.length;
 		while (i--) {

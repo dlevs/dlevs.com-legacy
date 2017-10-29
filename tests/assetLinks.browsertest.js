@@ -1,22 +1,24 @@
-const {UNIQUE_PAGE_URLS, ORIGIN} = require('./testConstants');
-const fetch = require('node-fetch');
+const {UNIQUE_PAGE_URLS, ORIGIN, CREDENTIALS} = require('./testLib/testConstants');
+const {fetch} = require('./testLib/testUtils');
 const puppeteer = require('puppeteer');
 const {URL} = require('url');
 
 
 describe('Links and static resources', () => {
 	test('exist and return an OK status code', async () => {
-		// Some sites have auth issues
 		const ignoreList = [
+			// LinkedIn returns status 999 "Request denied" for non-browser
 			'https://www.linkedin.com/in/daniellevett/'
 		];
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
-		let assets = [];
+		await page.authenticate(CREDENTIALS);
 
+		let assets = [];
 		let i = UNIQUE_PAGE_URLS.length;
 		while (i--) {
 			await page.goto(UNIQUE_PAGE_URLS[i]);
+
 			const newAssets = await page.evaluate(() => {
 				const $ = (selector) => Array.from(document.querySelectorAll(selector));
 				return []

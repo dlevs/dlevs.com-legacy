@@ -1,4 +1,5 @@
-const {UNIQUE_PAGE_URLS} = require('./testConstants');
+const {UNIQUE_PAGE_URLS} = require('./testLib/testConstants');
+const {fetch} = require('./testLib/testUtils');
 const validator = require('html-validator');
 
 describe('HTML validation', () => {
@@ -7,8 +8,10 @@ describe('HTML validation', () => {
 		const url = UNIQUE_PAGE_URLS[i];
 
 		test(url, async () => {
-			const {messages} = await validator({url, format: 'json'});
-			const errors = messages.filter(({type}) => type === 'error');
+			const response = await fetch(url);
+			const data = await response.text();
+			const {messages} = await validator({data, format: 'json'});
+			const errors = messages.filter(({type}) => type.includes('error'));
 
 			expect(errors.length).toBe(0);
 		});

@@ -45,6 +45,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "cssnano": "^3.10.0",
     "exif-reader": "^1.0.2",
+    "fetch-cookie": "^0.7.0",
     "glob": "^7.1.2",
     "hashlink": "0.0.1",
     "html-validator": "^2.2.3",
@@ -58,6 +59,7 @@
     "rimraf": "^2.6.1",
     "sharp": "^0.18.2",
     "svgo": "^0.7.2",
+    "tough-cookie": "^2.3.3",
     "webpack": "^3.6.0"
   },
   "jest": {

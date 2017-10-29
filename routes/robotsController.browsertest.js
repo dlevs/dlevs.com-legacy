@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const {ORIGIN} = require('../tests/testConstants');
+const {fetch} = require('../tests/testLib/testUtils');
+const {ORIGIN} = require('../tests/testLib/testConstants');
 
 
 describe('/robots.txt', () => {
