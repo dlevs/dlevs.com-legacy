@@ -6,28 +6,11 @@ describe('Redirects', () => {
 
 	const expectedHomeUrl = `https://${HOSTNAME}/`;
 
+	// Home
 	test('redirects http to https', async () => {
 		const {url} = await fetch(`http://${HOSTNAME}`);
 		expect(url).toBe(expectedHomeUrl);
 	});
-
-	test('Strips trailing slashes on normal navigation', async () => {
-		{
-			const {url} = await fetch(`${ORIGIN}/travel/`);
-			expect(url).toBe(`${ORIGIN}/travel`);
-		}
-		{
-			const {url} = await fetch(`${ORIGIN}/something/non-existent/`);
-			expect(url).toBe(`${ORIGIN}/something/non-existent`);
-		}
-	});
-
-	if (!IS_PRODUCTION) {
-		console.log('Is not production site. Skipping subdomain redirect tests.');
-		return;
-	}
-
-	// Home
 	test('strips www subdomain', async () => {
 		const {url} = await fetch(`https://www.${HOSTNAME}`);
 		expect(url).toBe(expectedHomeUrl);
@@ -60,6 +43,16 @@ describe('Redirects', () => {
 	});
 
 	// Slashes
+	test('Strips trailing slashes on normal navigation', async () => {
+		{
+			const {url} = await fetch(`${ORIGIN}/travel/`);
+			expect(url).toBe(`${ORIGIN}/travel`);
+		}
+		{
+			const {url} = await fetch(`${ORIGIN}/something/non-existent/`);
+			expect(url).toBe(`${ORIGIN}/something/non-existent`);
+		}
+	});
 	test('Strips trailing slashes on redirect', async () => {
 		{
 			const {url} = await fetch(`http://www.${HOSTNAME}/travel/`);
