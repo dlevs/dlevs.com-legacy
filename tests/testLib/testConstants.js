@@ -1,4 +1,6 @@
 const assert = require('assert');
+const mapValues = require('lodash/mapValues');
+
 
 // Environment variables
 //------------------------------
@@ -18,17 +20,31 @@ const IS_PRODUCTION = !IS_STAGING && !IS_LOCALHOST;
 //------------------------------
 const PROTOCOL = IS_LOCALHOST ? 'http' : 'https';
 const ORIGIN = `${PROTOCOL}://${HOSTNAME}`;
+const absolute = (path) => `${ORIGIN}${path}`;
 
 
 // Page URLs
 //------------------------------
-const UNIQUE_PAGE_PATHS = [
-	'/',
-	'/travel',
-	'/travel/ireland',
-	'/travel/ireland/dublin'
-];
-const UNIQUE_PAGE_URLS = UNIQUE_PAGE_PATHS.map((path) => `${ORIGIN}${path}`);
+const PAGES = mapValues(
+	{
+		// Pages that represent an instance of each template.
+		UNIQUE: [
+			'/',
+			'/travel',
+			'/travel/ireland',
+			'/travel/ireland/dublin'
+		],
+		// Pages on which to test JS features.
+		WITH_READMORE: [
+			'/',
+		],
+		WITH_PHOTOSWIPE: [
+			'/',
+			'/travel/ireland/dublin'
+		]
+	},
+	(paths) => paths.map(absolute)
+);
 
 
 // Credentials
@@ -46,10 +62,10 @@ const AUTH_HEADER = PASSWORD
 module.exports = {
 	HOSTNAME,
 	ORIGIN,
-	UNIQUE_PAGE_URLS,
 	CREDENTIALS,
 	AUTH_HEADER,
-	IS_PRODUCTION
+	IS_PRODUCTION,
+	PAGES
 };
 
 assert(

@@ -1,4 +1,4 @@
-const {UNIQUE_PAGE_URLS, ORIGIN, CREDENTIALS} = require('./testLib/testConstants');
+const {PAGES, ORIGIN, CREDENTIALS} = require('./testLib/testConstants');
 const {fetch} = require('./testLib/testUtils');
 const puppeteer = require('puppeteer');
 const {URL} = require('url');
@@ -15,9 +15,9 @@ describe('Links and static resources', () => {
 		await page.authenticate(CREDENTIALS);
 
 		let assets = [];
-		let i = UNIQUE_PAGE_URLS.length;
+		let i = PAGES.UNIQUE.length;
 		while (i--) {
-			await page.goto(UNIQUE_PAGE_URLS[i]);
+			await page.goto(PAGES.UNIQUE[i]);
 
 			const newAssets = await page.evaluate(() => {
 				const $ = (selector) => Array.from(document.querySelectorAll(selector));

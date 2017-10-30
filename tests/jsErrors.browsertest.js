@@ -1,4 +1,4 @@
-const {UNIQUE_PAGE_URLS, CREDENTIALS} = require('./testLib/testConstants');
+const {PAGES, CREDENTIALS} = require('./testLib/testConstants');
 const puppeteer = require('puppeteer');
 
 describe('JavaScript errors', () => {
@@ -7,9 +7,9 @@ describe('JavaScript errors', () => {
 		const page = await browser.newPage();
 		await page.authenticate(CREDENTIALS);
 
-		let i = UNIQUE_PAGE_URLS.length;
+		let i = PAGES.UNIQUE.length;
 		while (i--) {
-			await page.goto(UNIQUE_PAGE_URLS[i]);
+			await page.goto(PAGES.UNIQUE[i]);
 			const errors = await page.evaluate(() => {
 				// Setup
 				const photoswipe = document.querySelector('.js-photoswipe');

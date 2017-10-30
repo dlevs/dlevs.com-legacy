@@ -1,11 +1,11 @@
-const {UNIQUE_PAGE_URLS} = require('./testLib/testConstants');
+const {PAGES} = require('./testLib/testConstants');
 const {fetch} = require('./testLib/testUtils');
 const validator = require('html-validator');
 
 describe('HTML validation', () => {
-	let i = UNIQUE_PAGE_URLS.length;
+	let i = PAGES.UNIQUE.length;
 	while (i--) {
-		const url = UNIQUE_PAGE_URLS[i];
+		const url = PAGES.UNIQUE[i];
 
 		test(url, async () => {
 			const response = await fetch(url);
