@@ -47,3 +47,22 @@ exports.fetch = (url, options = {}) =>
 	url.includes(HOSTNAME)
 		? internalFetch(url, options)
 		: externalFetch(url, options);
+
+/**
+ * Helper to remove need for lots of boilerplate loops when repeating tests for
+ * multiple URLs.
+ *
+ * The keys in the `tests` object describe what the tests are for.
+ *
+ * @param {String} urls
+ * @param {Object} tests
+ */
+exports.testUrls = (urls, tests) => {
+	Object.entries(tests).forEach(([testDescription, testFn]) => {
+		describe(testDescription, () => {
+			urls.forEach((url) => {
+				test(url, testFn(url))
+			});
+		});
+	});
+};
