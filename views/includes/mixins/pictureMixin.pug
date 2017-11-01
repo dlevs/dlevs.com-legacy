@@ -1,45 +1,51 @@
+mixin pictureNonLazyload(args)
+    - const {src, srcset, srcsetWebp, alt} = args;
+    picture
+        source(
+            type="image/webp"
+            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+            srcset=srcsetWebp
+        )
+        img.picture-img(
+            alt=alt
+            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+            srcset=srcset
+            src=src
+        )
+
+mixin pictureLazyload(args)
+    - const {src, srcset, srcsetWebp, alt} = args;
+    picture.lazyload-picture
+        source(
+            type="image/webp"
+            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+            srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
+            data-srcset=srcsetWebp
+        )
+        img.picture-img.lazyload(
+            alt=alt
+            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+            src=CONSTANTS.IMG_SRC_PLACEHOLDER
+            srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
+            data-src=src
+            data-srcset=srcset
+        )
+    noscript
+        +pictureNonLazyload(args)
+
+
 mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
-    - const createSrcset = (...images) => images.map(img => `${img.src} ${img.width}w`).join(', ');
     - const images = IMAGE_META[src];
-    - const srcset = createSrcset(images.default, images.large);
-    - const srcsetWebp = createSrcset(images.defaultWebp, images.largeWebp);
-    - const srcsetPlaceholder = `${CONSTANTS.SINGLE_PIXEL_TRANSPARENT} 1w`;
-    - const pageMaxWidth = 960; /* from variables.less */
-    - const sizes = `(min-width: ${pageMaxWidth}px) ${pageMaxWidth}px, 100vw`;
+    - const srcset = HELPERS.createImgSrcset(images.default, images.large);
+    - const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
+    - const args = {src: images.default.src, srcset, srcsetWebp, alt}
 
     div(
         style=`padding-bottom: ${images.default.paddingBottom};`
         class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
     )
+        if lazyLoad
+            +pictureLazyload(args)
+        else
+            +pictureNonLazyload(args)
 
-        picture
-            source(
-                type="image/webp"
-                sizes=sizes
-            )&attributes(
-                lazyLoad
-                    ? {
-                        'data-srcset': srcsetWebp,
-                        'srcset': srcsetPlaceholder
-                    }
-                    : {
-                        'srcset': srcsetWebp
-                    }
-            )
-            img(
-                alt=altOverwrite !== undefined ? altOverwrite : alt
-                sizes=sizes
-            )&attributes(
-                lazyLoad
-                    ? {
-                        'class': 'lazyload',
-                        'data-src': images.default.src,
-                        'data-srcset': srcset,
-                        'srcset': srcsetPlaceholder,
-                        'src': CONSTANTS.SINGLE_PIXEL_TRANSPARENT
-                    }
-                    : {
-                        'src': images.default.src,
-                        'srcset': srcset
-                    }
-            )

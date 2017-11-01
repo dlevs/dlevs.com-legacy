@@ -22,7 +22,6 @@
     "child-process-promise": "^2.2.1",
     "feather-icons": "^3.2.2",
     "fs-extra": "^4.0.1",
-    "instantclick": "^3.1.0",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-helmet": "^3.2.0",

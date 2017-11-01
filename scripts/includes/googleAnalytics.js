@@ -1,4 +1,4 @@
-import instantclick from 'instantclick';
+import instantclick from './vendor/instantclick';
 
 const GOOGLE_ANALYTICS_ID = window.GOOGLE_ANALYTICS_ID;
 const BASE_CONFIG = window.GOOGLE_ANALYTICS_CONFIG;

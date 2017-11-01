@@ -1,11 +1,11 @@
 include ../includes/mixins
 
 doctype html
-html(lang="en-GB")
+html(lang="en-GB" class="no-js")
     head
         include ../includes/meta
-        script(src=GET_REVVED_PATH('/scripts/main.js') defer data-no-instant)
-        link(rel="stylesheet" href=GET_REVVED_PATH('/styles/main.css'))
+        script(src=HELPERS.getRevvedPath('/scripts/main.js') defer data-no-instant)
+        link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
         include ../includes/googleAnalytics
         include ../includes/favicons
         block meta

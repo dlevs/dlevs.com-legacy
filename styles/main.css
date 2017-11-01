@@ -81,7 +81,8 @@
 		display: block;
 	}
 }
-.lazyload-wrapper {
+
+html:not(.no-js) .lazyload-wrapper {
 	img {
 		opacity: 0;
 		transition: opacity var(--speed-slow);
@@ -91,6 +92,13 @@
 		}
 	}
 }
+
+.no-js {
+	.lazyload-picture {
+		display: none;
+	}
+}
+
 .js-photoswipe {
 	cursor: zoom-in;
 }
