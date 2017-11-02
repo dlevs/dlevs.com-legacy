@@ -3,11 +3,6 @@ if GOOGLE_ANALYTICS_ID
   script(async src=`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`)
 
 script.
-  // TODO: Move this
-  document.documentElement.classList.remove('no-js');
-
-
-
   window.GOOGLE_ANALYTICS_ID = '#[=GOOGLE_ANALYTICS_ID]';
   window.GOOGLE_ANALYTICS_CONFIG = {
     custom_map: {

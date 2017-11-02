@@ -13,6 +13,7 @@
 /* Pages */
 @import "./pages/home.css";
 @import "./pages/travel.css";
+
 /* Plugins */
 @import "@dlevs/photoswipe/dist/photoswipe.css";
 @import "./includes/photoswipe-skin.css";
@@ -82,7 +83,7 @@
 	}
 }
 
-html:not(.no-js) .lazyload-wrapper {
+.js .lazyload-wrapper {
 	img {
 		opacity: 0;
 		transition: opacity var(--speed-slow);
@@ -93,13 +94,11 @@ html:not(.no-js) .lazyload-wrapper {
 	}
 }
 
-.no-js {
-	.lazyload-picture {
-		display: none;
-	}
+.no-js .lazyload-picture {
+	display: none;
 }
 
-.js-photoswipe {
+.js .js-photoswipe {
 	cursor: zoom-in;
 }
 

@@ -1,7 +1,0 @@
-if pagination.totalPages > 1
-    - let i = 0;
-    ul
-        while i < pagination.totalPages
-            - i++
-            li
-                a(href=i === 1 ? pagination.rootPath : `?page=${i}`)= i

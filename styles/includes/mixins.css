@@ -3,7 +3,7 @@
 	padding: 0;
 	list-style: none;
 }
-@define-mixin hidden {
+@define-mixin visually-hidden {
 	position: absolute;
 	overflow: hidden;
 	clip: rect(0 0 0 0);
@@ -17,6 +17,7 @@
 	color: $color;
 	text-decoration: none;
 	transition: color var(--speed-slow);
+	cursor: pointer;
 
 	&:--active {
 		color: color($color lightness(-20%));

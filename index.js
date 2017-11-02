@@ -12,6 +12,7 @@ const bodyParser = require('koa-bodyparser');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
 const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
 const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddleware');
+const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
 const router = require('./routes');
 const viewGlobals = require('./lib/viewGlobals');
 
@@ -23,10 +24,11 @@ app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(errorMiddleware)
-	.use(serverPushMiddleware)
 	.use(bodyParser())
-	.use(securityHeadersMiddleware)
 	.use(slash())
+	.use(serverPushMiddleware)
+	.use(securityHeadersMiddleware)
+	.use(setCtxStateMiddleware)
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
 		options: viewGlobals

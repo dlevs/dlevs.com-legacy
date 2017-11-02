@@ -13,12 +13,12 @@ block content
             each image, i in post.images
                 +imageLink(image)
                     figure
-                        +picture(image, {
+                        +picture(HELPERS.immutableExtend(image, {
                             className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
                             lazyLoad: i > 1
-                        })
+                        }))
                         if image.caption
-                            figcaption.hidden=image.caption
+                            figcaption.visually-hidden=image.caption
 
             include includes/relatedPosts
 

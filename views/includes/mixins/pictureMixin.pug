@@ -1,3 +1,19 @@
+mixin picture({src, alt, className, lazyLoad=true})
+    - const images = IMAGE_META[src];
+    - const srcset = HELPERS.createImgSrcset(images.default, images.large);
+    - const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
+    - const args = {src: images.default.src, srcset, srcsetWebp, alt}
+
+    div(
+        style=`padding-bottom: ${images.default.paddingBottom};`
+        class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
+    )
+        if lazyLoad
+            +pictureLazyload(args)
+        else
+            +pictureNonLazyload(args)
+
+
 mixin pictureNonLazyload(args)
     - const {src, srcset, srcsetWebp, alt} = args;
     picture
@@ -12,6 +28,7 @@ mixin pictureNonLazyload(args)
             srcset=srcset
             src=src
         )
+
 
 mixin pictureLazyload(args)
     - const {src, srcset, srcsetWebp, alt} = args;
@@ -32,20 +49,3 @@ mixin pictureLazyload(args)
         )
     noscript
         +pictureNonLazyload(args)
-
-
-mixin picture({src, alt}, {className, lazyLoad=true, altOverwrite} = {})
-    - const images = IMAGE_META[src];
-    - const srcset = HELPERS.createImgSrcset(images.default, images.large);
-    - const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
-    - const args = {src: images.default.src, srcset, srcsetWebp, alt}
-
-    div(
-        style=`padding-bottom: ${images.default.paddingBottom};`
-        class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
-    )
-        if lazyLoad
-            +pictureLazyload(args)
-        else
-            +pictureNonLazyload(args)
-

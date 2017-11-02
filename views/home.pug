@@ -5,7 +5,6 @@ block meta
     meta(name="description" content="London-based fullstack web developer.")
 
 block content
-    //- include ./includes/githubTriangle
     main
         header.site-header
             h1.site-heading Daniel Levett
@@ -34,12 +33,13 @@ block content
 
                         figure.project-image-wrapper
                             +imageLink(project.img, {'data-caption': project.heading})
-                                +picture(project.img, {className: 'project-image', lazyLoad: i > 1})
+                                +picture(HELPERS.immutableExtend(project.img, {
+                                    className: 'project-image',
+                                    lazyLoad: i > 1
+                                }))
 
                             figcaption.project-description
-                                .js-readmore-short!=project.shortDescription
-                                .js-readmore-long!=project.description
-                                button.js-readmore-button Read more...
+                                +readMore(project.shortDescription, project.description)
 
                         if project.badges
                             ul.project-details-badges

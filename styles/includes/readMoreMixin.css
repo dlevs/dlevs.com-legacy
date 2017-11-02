@@ -1,0 +1,36 @@
+.readmore__label {
+	@mixin link-color var(--color-primary);
+}
+.readmore__checkbox,
+.readmore__label-hidden {
+	@mixin visually-hidden;
+}
+.readmore__long {
+	display: none;
+}
+.readmore__checkbox:focus {
+	& ~ .readmore__label {
+		text-decoration: underline;
+	}
+}
+.readmore__checkbox:checked {
+	&,
+	& ~ .readmore__label,
+	& ~ .readmore__short {
+		display: none;
+	}
+	& ~ .readmore__long {
+		display: block;
+	}
+}
+@media screen and (min-width: 500px) {
+	.readmore__checkbox,
+	.readmore__label,
+	.readmore__short {
+		display: none;
+
+	}
+	.readmore__long {
+		display: block;
+	}
+}

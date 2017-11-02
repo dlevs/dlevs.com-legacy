@@ -2,7 +2,27 @@ const {PAGES, CREDENTIALS} = require('./testLib/testConstants');
 const puppeteer = require('puppeteer');
 
 describe('JavaScript errors', () => {
-	test('are not detected', async () => {
+	test('are detected when they occur', async () => {
+		const browser = await puppeteer.launch();
+		const page = await browser.newPage();
+		await page.authenticate(CREDENTIALS);
+
+		let i = PAGES.UNIQUE.length;
+		while (i--) {
+			await page.goto(PAGES.UNIQUE[i]);
+			await page.evaluate(() => {
+				const script = document.createElement('script');
+				script.innerHTML = `SOMETHING_NON_EXISTENT`;
+				document.body.appendChild(script);
+			});
+			const errors = await page.evaluate(() => window.ERRORS);
+			expect(errors.length).toBeGreaterThan(0);
+		}
+
+		await browser.close();
+	}, 40000);
+
+	test('are not detected unexpectedly', async () => {
 		const browser = await puppeteer.launch();
 		const page = await browser.newPage();
 		await page.authenticate(CREDENTIALS);
@@ -13,7 +33,7 @@ describe('JavaScript errors', () => {
 			const errors = await page.evaluate(() => {
 				// Setup
 				const photoswipe = document.querySelector('.js-photoswipe');
-				const readmore = document.querySelector('.js-readmore-button');
+				const readmore = document.querySelector('.readmore__checkbox');
 
 				// If features exist on page, trigger them to check they do not
 				// cause errors.

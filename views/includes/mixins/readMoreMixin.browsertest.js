@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
-const {PAGES, CREDENTIALS} = require('../../tests/testLib/testConstants');
-const {testUrls} = require('../../tests/testLib/testUtils');
+const {PAGES, CREDENTIALS} = require('../../../tests/testLib/testConstants');
+const {testUrls} = require('../../../tests/testLib/testUtils');
 
 const getStats = async (url, viewportOptions) => {
 	const browser = await puppeteer.launch();
@@ -14,14 +14,14 @@ const getStats = async (url, viewportOptions) => {
 			.from(document.querySelectorAll(selector))
 			.filter(isVisible);
 		const getVisibleElemCounts = () => ({
-			buttonCount: $('.js-readmore-button').length,
-			shortTextCount: $('.js-readmore-short').length,
-			longTextCount: $('.js-readmore-long').length
+			buttonCount: $('.readmore__checkbox').length,
+			shortTextCount: $('.readmore__short').length,
+			longTextCount: $('.readmore__long').length
 		});
 
 		const beforeClick = getVisibleElemCounts();
 
-		document.querySelector('.js-readmore-button').click();
+		document.querySelector('.readmore__checkbox').click();
 
 		const afterClick = getVisibleElemCounts();
 

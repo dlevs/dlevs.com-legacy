@@ -6,11 +6,8 @@ each post, i in posts
             h2.blog-heading
                 span=post.town
                 span.section-heading-details=`${post.country}, ${post.humanDate}`
-            +picture(
-                post.mainImage,
-                {
-                    className: 'blog-image',
-                    lazyLoad: i > 1,
-                    altOverwrite: ''
-                }
-            )
+            +picture(HELPERS.immutableExtend(post.mainImage, {
+                className: 'blog-image',
+                lazyLoad: i > 1,
+                alt: ''
+            }))
