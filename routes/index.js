@@ -31,7 +31,8 @@ const patternLibraryController = require('./patternLibraryController')({
 			label: 'Pattern Library',
 			slug: PATTERN_LIBRARY_SLUG
 		}
-	]
+	],
+	rootPath: `/${PATTERN_LIBRARY_SLUG}`
 });
 const sitemapController = require('./sitemapController')({
 	pages: [

@@ -1,30 +1,27 @@
-extends ../layouts/main
+extends ../layouts/patternLibrary
 
-block meta
-    title=`${title} | Daniel Levett`
-    meta(name="robots" content="noindex")
-
-block content
+block contentInner
     - const img1 = {src: '/images/travel/vietnam/20170612_125616.jpg', alt: 'An image'};
     - const img2 = {src: '/images/travel/vietnam/20170610_112344.jpg', alt: 'An image'};
 
-    h1 Images
-    .flex.flex--spacing-small
-        div.col-6
-            h3 Normal
-            +picture(HELPERS.immutableExtend(img1, {lazyLoad: false}))
+    .baseline-section
+        h2 Images
+        .flex.flex--spacing-small
+            div.col-6
+                +picture(HELPERS.immutableExtend(img1, {lazyLoad: false}))
+                h3 Normal
 
-        div.col-6
-            h3 Lazy Loaded
-            +picture(HELPERS.immutableExtend(img2, {lazyLoad: true}))
+            div.col-6
+                +picture(HELPERS.immutableExtend(img2, {lazyLoad: true}))
+                h3 Lazy Loaded
 
-    h2 Images with link (no JS) / Photoswipe gallery (JS)
-    .flex.flex--spacing-small
-        div.col-6
-            +imageLink(img1)
-                +picture(img1)
+    .baseline-section
+        h2 Images with link (no JS) / Photoswipe gallery (JS)
+        .flex.flex--spacing-small
+            div.col-6
+                +imageLink(img1)
+                    +picture(img1)
 
-        div.col-6
-            +imageLink(img2)
-                +picture(img2)
-
+            div.col-6
+                +imageLink(img2)
+                    +picture(img2)

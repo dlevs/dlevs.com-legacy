@@ -3,27 +3,27 @@ const camelCase = require('lodash/camelCase');
 const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
 
 module.exports = (options) => {
-	const {breadcrumbRoot} = options;
+	const {breadcrumbRoot, rootPath} = options;
 
 	return {
 		index: async (ctx) => {
 			const {slug = 'index'} = ctx.params;
+			let title = 'Pattern Library';
+			let breadcrumb = breadcrumbRoot;
 
-			const breadcrumb = slug === 'index'
-				? breadcrumbRoot
-				: breadcrumbRoot.concat({
-					slug,
-					label: startCase(slug),
-					path: ctx.path
-				});
+			if (slug !== 'index') {
+				const label = startCase(slug);
+				title = `${label} - ${title}`;
+				breadcrumb = breadcrumb.concat({slug, label, path: ctx.path})
+			}
 
 			try {
 				await ctx.render(
 					`patternLibrary/${camelCase(slug)}`,
 					{
-						title: 'Pattern Library',
+						title,
 						breadcrumb: expandBreadcrumb(breadcrumb),
-						path: ctx.path
+						rootPath
 					}
 				)
 			} catch (err) {

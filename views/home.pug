@@ -29,7 +29,7 @@ block content
             ul.project-list
                 each project, i in projects
                     li.project-list-item
-                        h3.project-heading=project.heading
+                        h3=project.heading
 
                         figure.project-image-wrapper
                             +imageLink(project.img, {'data-caption': project.heading})

@@ -32,14 +32,9 @@
 	margin: 0;
 }
 .site-heading-links {
-	@mixin unstyled-list;
+	@mixin list-horizontal;
 	margin-top: var(--spacing-medium);
 	font-size: 0.9em;
-
-	li {
-		display: inline-block;
-		margin: 0 var(--spacing-small);
-	}
 }
 .site-subheading {
 	display: block;

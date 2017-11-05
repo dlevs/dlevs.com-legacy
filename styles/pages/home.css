@@ -1,17 +1,14 @@
 .project-details-badges {
 	display: flex;
 	flex-wrap: wrap;
-	@mixin unstyled-list;
+	@mixin list-unstyled;
 	margin-bottom: calc(var(--spacing-small) * -1);
 }
 .project-list {
-	@mixin unstyled-list;
-}
-.project-heading {
-	margin-bottom: var(--spacing-medium);
+	@mixin list-unstyled;
 }
 .brand-list {
-	@mixin unstyled-list;
+	@mixin list-unstyled;
 	display: flex;
 	flex-wrap: wrap;
 	margin: var(--spacing-huge) 0;

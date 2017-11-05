@@ -1,7 +1,26 @@
-@define-mixin unstyled-list {
-	margin: 0;
-	padding: 0;
+@define-mixin horizontal-spacing-small {
+	margin-left: var(--spacing-small);
+	margin-right: var(--spacing-small);
+
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+}
+@define-mixin list-unstyled {
+	margin-left: 0;
+	padding-left: 0;
 	list-style: none;
+}
+@define-mixin list-horizontal {
+	@mixin list-unstyled;
+
+	& > li {
+		display: inline-block;
+		@mixin horizontal-spacing-small;
+	}
 }
 @define-mixin visually-hidden {
 	position: absolute;

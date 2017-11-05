@@ -1,0 +1,16 @@
+extends main
+
+block meta
+    title=`${title} | Daniel Levett`
+    meta(name="robots" content="noindex")
+
+block content
+    header.text-center.baseline-large
+        h1 Pattern Library
+        ul.list-horizontal
+            li
+                a(href=`${rootPath}/typography`) Typography
+            li
+                a(href=`${rootPath}/images`) Images
+
+    block contentInner
