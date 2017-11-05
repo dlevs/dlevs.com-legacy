@@ -10,6 +10,10 @@
 .text-center {
 	text-align: center;
 }
+.align-center {
+	margin-left: auto;
+	margin-right: auto;
+}
 .baseline-small {
 	margin-bottom: var(--spacing-small);
 }
@@ -74,4 +78,12 @@
 }
 .col-12 {
 	width: 100%;
+}
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
 }

@@ -3,14 +3,17 @@ extends main
 block meta
     title=`${title} | Daniel Levett`
     meta(name="robots" content="noindex")
+    link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/patternLibrary.css'))
 
 block content
-    header.text-center.baseline-large
+    header.text-center.baseline-huge
         h1 Pattern Library
         ul.list-horizontal
             li
                 a(href=`${rootPath}/typography`) Typography
             li
                 a(href=`${rootPath}/images`) Images
+            li
+                a(href=`${rootPath}/alignment`) Alignment
 
     block contentInner

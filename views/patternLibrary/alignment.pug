@@ -1,0 +1,39 @@
+extends ../layouts/patternLibrary
+
+block contentInner
+    .baseline-section
+        h2 Spacing under elements
+        ul.list-unstyled.demo-alignment-spacing-wrapper.clearfix
+            li
+                .demo-alignment-spacer.baseline-small baseline-small
+            li
+                .demo-alignment-spacer.baseline-medium baseline-medium
+            li
+                .demo-alignment-spacer.baseline-large baseline-large
+            li
+                .demo-alignment-spacer.baseline-huge baseline-huge
+            li
+                .demo-alignment-spacer.baseline-section baseline-section
+
+    .baseline-section
+        h2 Grid
+        .flex.demo-alignment-grid
+            +repeat(2)
+                .col-6 col-6
+
+            .col-5 col-5
+            .col-2 col-2
+            .col-5 col-5
+
+            +repeat(3)
+                .col-4 col-4
+
+            +repeat(4)
+
+                .col-3 col-3
+
+            +repeat(6)
+                .col-2 col-2
+
+            +repeat(12)
+                .col-1 col-1

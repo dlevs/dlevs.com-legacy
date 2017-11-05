@@ -1,0 +1,5 @@
+/* Base (no output) */
+@import "includes/variables.css";
+
+/* Styles per pattern library page */
+@import "includes/patternLibrary/alignment.css";

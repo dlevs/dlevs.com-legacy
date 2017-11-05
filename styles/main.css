@@ -1,14 +1,13 @@
 /* Base */
 @import "normalize.css/normalize.css";
 @import "./includes/variables.css";
-@import "./includes/custom-selectors.css";
+@import "./includes/customSelectors.css";
 @import "./includes/mixins.css";
 @import "./includes/structure.css";
 @import "./includes/buttons.css";
 @import "./includes/breadcrumb.css";
 @import "./includes/instantclick.css";
 @import "./includes/readMoreMixin.css";
-/* @import "./includes/githubTriangle.css"; */
 
 /* Pages */
 @import "./pages/home.css";
@@ -16,7 +15,7 @@
 
 /* Plugins */
 @import "@dlevs/photoswipe/dist/photoswipe.css";
-@import "./includes/photoswipe-skin.css";
+@import "./includes/photoswipeSkin.css";
 
 @import "./includes/utility.css";
 

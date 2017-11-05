@@ -1,5 +1,5 @@
 import PhotoSwipe from '@dlevs/photoswipe';
-import PhotoSwipeUI from './photoswipe-ui';
+import PhotoSwipeUI from './photoswipeUi';
 import {
 	trackGalleryOpen,
 	trackGalleryNavigation,
