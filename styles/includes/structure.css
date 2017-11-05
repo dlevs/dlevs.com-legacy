@@ -42,7 +42,6 @@ figure {
 	letter-spacing: 0.06em;
 	line-height: 1.1;
 	font-weight: normal;
-	margin: 0;
 }
 .site-wrapper {
 	max-width: var(--width-site-max);

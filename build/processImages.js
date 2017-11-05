@@ -77,7 +77,7 @@ const processImage = async ({type, filepath, format, size, quality, isDefault}) 
 
 	// Dynamically call function for file format.
 	// e.g. sharpFile.jpeg({...}).toFile(...);
-	sharpFile[format]({quality}).toFile(outputPath);
+	await sharpFile[format]({quality}).toFile(outputPath);
 
 	set(
 		imageData,
@@ -103,7 +103,7 @@ const processImages = async (pattern) => {
 
 	if (!filepaths.length) return;
 
-	const progress = new ProgressBar('[:bar] :percent%', {
+	const progress = new ProgressBar('[:bar] :percent', {
 		total: filepaths.length * (1 + imageFormats.length)
 	});
 

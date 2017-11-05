@@ -1,0 +1,36 @@
+extends ../layouts/main
+
+block meta
+    title=`${title} | Daniel Levett`
+    meta(name="robots" content="noindex")
+
+block content
+    h1.site-heading Site Heading
+    h2.section-heading Section Heading
+    h2.section-heading
+        span Section Heading
+        span with text here
+    h2.project-heading Project Heading
+    h1 Heading 1
+    h2 Heading 2
+    h3 Heading 3
+    h4 Heading 4
+    h5 Heading 5
+    h6 Heading 6
+
+    h2 Copy
+        h3 Heading
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum a, nam nobis eum praesentium mollitia nostrum voluptates eius facilis facere beatae molestiae, deleniti obcaecati, possimus. Cupiditate cumque, accusamus aliquid labore.
+        p Deserunt voluptas alias, assumenda vel ratione doloribus et vero dolorum excepturi distinctio adipisci maiores sit inventore laboriosam, tempore in culpa nihil provident reiciendis temporibus iusto magnam earum vitae. Distinctio, neque.
+        p Quaerat in odit quo eos tempore facilis doloremque aspernatur accusamus harum. Distinctio eaque nisi ipsam ex laudantium, explicabo provident quos quod? Rem ipsum, nihil veniam libero magni quis. Minus, dolor!
+
+    h2 Links
+
+    a(href="/") Plain link
+
+    div
+        a.badge(href="/") Badge 1
+        a.badge(href="/") Badge 2
+
+    h2 "Read more…" toggle (mobile)
+    +readMore('Short text', 'Short text has been expanded. This will happen on desktop, or on mobile when the "Read more…" button has been clicked.')

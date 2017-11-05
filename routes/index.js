@@ -8,6 +8,7 @@ const router = new Router();
 //------------------------------------
 const BREADCRUMB_ROOT = [{label: 'Home'}];
 const TRAVEL_BLOG_SLUG = 'travel';
+const PATTERN_LIBRARY_SLUG = 'pattern-library';
 
 
 // Controllers
@@ -20,6 +21,15 @@ const travelController = require('./travelController')({
 		{
 			label: 'Travel',
 			slug: TRAVEL_BLOG_SLUG
+		}
+	]
+});
+const patternLibraryController = require('./patternLibraryController')({
+	breadcrumbRoot: [
+		...BREADCRUMB_ROOT,
+		{
+			label: 'Pattern Library',
+			slug: PATTERN_LIBRARY_SLUG
 		}
 	]
 });
@@ -46,6 +56,8 @@ router
 	.get(`/${TRAVEL_BLOG_SLUG}/:countrySlug/:townSlug`, travelController.renderPost)
 
 	// Meta
+	.get(`/${PATTERN_LIBRARY_SLUG}`, patternLibraryController.index)
+	.get(`/${PATTERN_LIBRARY_SLUG}/:slug`, patternLibraryController.index)
 	.get('/info.json', infoController.index)
 	.get('/robots.txt', robotsController.index)
 	.get('/sitemap.xml', sitemapController.index)
