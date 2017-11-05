@@ -21,7 +21,7 @@ const processSvgs = async (pattern) => {
 		const file = await fs.readFile(filepath, 'utf8');
 
 		svgo.optimize(file, async (optimisedFile) => {
-			const outputFilepath = filepath.replace('/images', '/public-dist/images');
+			const outputFilepath = filepath.replace('/images', '/publicDist/images');
 			await fs.ensureDir(path.dirname(outputFilepath));
 			await fs.writeFile(outputFilepath, optimisedFile.data);
 		});

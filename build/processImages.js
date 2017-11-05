@@ -51,7 +51,7 @@ const createWebPath = (filepath) => `/${relativeToRoot(filepath)}`;
 
 const processImage = async ({type, filepath, format, size, quality, isDefault}) => {
 	const sharpFile = sharp(filepath);
-	const outputPathParts = path.parse(filepath.replace('/images/', '/public-dist/images/'));
+	const outputPathParts = path.parse(filepath.replace('/images/', '/publicDist/images/'));
 
 	// Remove base, so path.format() will use the specified extension
 	delete outputPathParts.base;
@@ -86,7 +86,7 @@ const processImage = async ({type, filepath, format, size, quality, isDefault}) 
 			width,
 			height,
 			format,
-			src: createWebPath(outputPath.replace('/public-dist', '')),
+			src: createWebPath(outputPath.replace('/publicDist', '')),
 			paddingBottom: toFixedTrimmed(((height / width) * 100), 4) + '%'
 		}
 	);

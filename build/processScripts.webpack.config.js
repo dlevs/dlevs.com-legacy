@@ -13,7 +13,7 @@ const isDebug = process.env.NODE_ENV !== 'production';
 const config = {
 	entry: root('./scripts/main.js'),
 	output: {
-		path: root('./public-dist/scripts'),
+		path: root('./publicDist/scripts'),
 		filename: '[name].js'
 	},
 	module: {

@@ -36,5 +36,5 @@ app
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public')))
-	.use(serve(path.join(__dirname, './public-dist')))
+	.use(serve(path.join(__dirname, './publicDist')))
 	.listen(PORT);
