@@ -1,5 +1,6 @@
 .breadcrumb {
 	@mixin list-unstyled;
+
 	list-style: none;
 
 	li {

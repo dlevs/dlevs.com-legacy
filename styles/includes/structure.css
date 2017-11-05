@@ -1,9 +1,11 @@
 * {
 	box-sizing: border-box;
 }
+
 a {
 	@mixin link-color var(--color-primary);
 }
+
 html {
 	font-size: 18px;
 	line-height: 1.5;
@@ -11,6 +13,7 @@ html {
 	font-family: var(--font-copy);
 	-webkit-font-smoothing: antialiased;
 }
+
 button {
 	font-family: var(--font-copy);
 	cursor: pointer;
@@ -25,18 +28,23 @@ button {
 		transition: color var(--speed-fast);
 	}
 }
+
 body {
 	margin: 20px;
 }
+
 img {
 	max-width: 100%;
 }
+
 p {
 	margin: var(--spacing-medium) 0;
 }
+
 figure {
 	margin: 0;
 }
+
 :--heading {
 	font-family: var(--font-heading);
 	letter-spacing: 0.06em;
@@ -44,6 +52,7 @@ figure {
 	font-weight: normal;
 	margin: var(--spacing-medium) 0;
 }
+
 .site-wrapper {
 	max-width: var(--width-site-max);
 	margin: 0 auto;

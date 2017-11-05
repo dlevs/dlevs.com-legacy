@@ -1,26 +1,33 @@
 .project-details-badges {
+	@mixin list-unstyled;
+
 	display: flex;
 	flex-wrap: wrap;
-	@mixin list-unstyled;
 	margin-bottom: calc(var(--spacing-small) * -1);
 }
+
 .project-list {
 	@mixin list-unstyled;
 }
+
 .brand-list {
 	@mixin list-unstyled;
+
 	display: flex;
 	flex-wrap: wrap;
 	margin: var(--spacing-huge) 0;
 }
+
 .project-list-item {
 	margin-bottom: var(--spacing-section);
 }
+
 .brand-list-item {
 	flex: 1 1 auto;
 	text-align: center;
 	margin: var(--spacing-large);
 }
+
 .brand-image {
 	height: 1.25rem;
 	filter: grayscale(100%);
@@ -31,11 +38,13 @@
 		transition: filter var(--speed-fast);
 	}
 }
+
 .project-image {
 	display: block;
 	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
 	margin-bottom: var(--spacing-medium);
 }
+
 .project-description {
 	margin-bottom: var(--spacing-medium);
 }

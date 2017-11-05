@@ -1,24 +1,29 @@
 :root {
-	--font-copy: Arial, sans-serif;
+	/* Fonts */
+	--font-copy: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	--font-heading: "Times New Roman", serif;
 
+	/* Colors */
 	--color-text: #444;
 	--color-primary: #1168cb;
 	--color-secondary: #f45b69;
 	--color-background: #fff;
 	--color-background-shaded: #ebebeb;
 
+	/* Transition speeds */
 	--speed-fast: 0.1s;
 	--speed-slow: 0.4s;
 
 	/* When changing max-width, check the image mixins. It is duplicated there. */
 	--width-site-max: 960px;
 
+	/* Spacing */
 	--spacing-small: 10px;
 	--spacing-medium: calc(var(--spacing-small) * 2);
 	--spacing-large: calc(var(--spacing-small) * 3);
 	--spacing-huge: calc(var(--spacing-small) * 5);
 	--spacing-section: calc(var(--spacing-small) * 10);
 
+	/* Borders */
 	--hairline-border: 1px solid #eee;
 }

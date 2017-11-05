@@ -5,23 +5,28 @@
 	&:first-child {
 		margin-left: 0;
 	}
+
 	&:last-child {
 		margin-right: 0;
 	}
 }
+
 @define-mixin list-unstyled {
 	margin-left: 0;
 	padding-left: 0;
 	list-style: none;
 }
+
 @define-mixin list-horizontal {
 	@mixin list-unstyled;
 
 	& > li {
-		display: inline-block;
 		@mixin horizontal-spacing-small;
+
+		display: inline-block;
 	}
 }
+
 @define-mixin visually-hidden {
 	position: absolute;
 	overflow: hidden;
@@ -32,6 +37,7 @@
 	padding: 0;
 	border: 0;
 }
+
 @define-mixin link-color $color {
 	color: $color;
 	text-decoration: none;

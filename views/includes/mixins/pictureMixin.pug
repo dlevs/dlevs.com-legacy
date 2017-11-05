@@ -6,7 +6,7 @@ mixin picture({src, alt, className, lazyLoad=true})
 
     div(
         style=`padding-bottom: ${images.default.paddingBottom};`
-        class=`${className} image-wrapper ${lazyLoad ? 'lazyload-wrapper' : ''}`.trim()
+        class=HELPERS.classnames(className, 'image-wrapper', {'lazyload-wrapper': lazyLoad})
     )
         if lazyLoad
             +pictureLazyload(args)

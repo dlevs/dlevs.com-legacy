@@ -2,10 +2,11 @@
 	background: none;
 	border: none;
 }
+
 .badge {
 	display: inline-block;
 	background: var(--color-primary);
-	font-family: Helvetica, sans-serif;
+	font-family: var(--font-copy);
 	font-size: 0.8em;
 	color: #fff;
 	padding: 5px var(--spacing-small);
@@ -16,6 +17,6 @@
 
 	&:--active {
 		color: #fff;
-		background: color(var(--color-primary) lightness(-5%))
+		background: color(var(--color-primary) lightness(-5%));
 	}
 }

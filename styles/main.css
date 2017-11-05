@@ -16,34 +16,40 @@
 /* Plugins */
 @import "@dlevs/photoswipe/dist/photoswipe.css";
 @import "./includes/photoswipeSkin.css";
-
 @import "./includes/utility.css";
 
 /* Misc */
+
 /* TODO: Organise */
 .site-header {
 	text-align: center;
 	margin: var(--spacing-huge) 0;
 }
+
 .site-heading {
 	text-transform: uppercase;
 	font-size: 3rem;
 	margin: 0;
 }
+
 .site-heading-links {
 	@mixin list-horizontal;
+
 	margin-top: var(--spacing-medium);
 	font-size: 0.9em;
 }
+
 .site-subheading {
 	display: block;
 	margin: var(--spacing-small) 0;
 	line-height: 1.2;
 	font-size: 1rem;
 }
+
 .section-subheading {
 	text-align: center;
 }
+
 .site-section {
 	margin-bottom: var(--spacing-section);
 
@@ -51,9 +57,11 @@
 		margin-bottom: 0;
 	}
 }
+
 .section-intro {
 	margin-bottom: var(--spacing-huge);
 }
+
 .section-heading {
 	border-bottom: var(--hairline-border);
 	padding-bottom: var(--spacing-small);
@@ -62,12 +70,14 @@
 	justify-content: space-between;
 	align-items: baseline;
 }
+
 .section-heading-details {
 	flex: 1;
 	font-size: 0.6em;
 	text-align: right;
 	margin-left: 20px;
 }
+
 .image-wrapper {
 	height: 0;
 	background: #f5f5f5;
@@ -108,6 +118,7 @@
 		margin-left: 80px;
 		margin-right: 80px;
 	}
+
 	.site-heading {
 		font-size: 3em;
 	}
@@ -117,16 +128,20 @@
 	.site-header {
 		margin: var(--spacing-section) 0;
 	}
+
 	.site-subheading {
 		margin: 0;
 	}
+
 	.section-heading {
 		padding-bottom: var(--spacing-medium);
 		margin-bottom: var(--spacing-medium);
 	}
+
 	.site-heading-links {
 		margin-top: var(--spacing-small);
 	}
+
 	.site-section {
 		&:last-child {
 			margin-bottom: var(--spacing-section);
