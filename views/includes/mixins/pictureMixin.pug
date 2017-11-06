@@ -1,51 +1,49 @@
 mixin picture({src, alt, className, lazyLoad=true})
-    - const images = IMAGE_META[src];
-    - const srcset = HELPERS.createImgSrcset(images.default, images.large);
-    - const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
-    - const args = {src: images.default.src, srcset, srcsetWebp, alt}
+	- const images = IMAGE_META[src];
+	- const srcset = HELPERS.createImgSrcset(images.default, images.large);
+	- const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
+	- const args = {src: images.default.src, srcset, srcsetWebp, alt}
 
-    div(
-        style=`padding-bottom: ${images.default.paddingBottom};`
-        class=HELPERS.classnames(className, 'image-wrapper', {'lazyload-wrapper': lazyLoad})
-    )
-        if lazyLoad
-            +pictureLazyload(args)
-        else
-            +pictureNonLazyload(args)
-
+	div(
+		style=`padding-bottom: ${images.default.paddingBottom};`
+		class=HELPERS.classnames(className, 'image-wrapper', {'lazyload-wrapper': lazyLoad})
+	)
+		if lazyLoad
+			+pictureLazyload(args)
+		else
+			+pictureNonLazyload(args)
 
 mixin pictureNonLazyload(args)
-    - const {src, srcset, srcsetWebp, alt} = args;
-    picture
-        source(
-            type="image/webp"
-            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-            srcset=srcsetWebp
-        )
-        img.picture-img(
-            alt=alt
-            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-            srcset=srcset
-            src=src
-        )
-
+	- const {src, srcset, srcsetWebp, alt} = args;
+	picture
+		source(
+			type="image/webp"
+			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+			srcset=srcsetWebp
+		)
+		img.picture-img(
+			alt=alt
+			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+			srcset=srcset
+			src=src
+		)
 
 mixin pictureLazyload(args)
-    - const {src, srcset, srcsetWebp, alt} = args;
-    picture.lazyload-picture
-        source(
-            type="image/webp"
-            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-            srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
-            data-srcset=srcsetWebp
-        )
-        img.picture-img.lazyload(
-            alt=alt
-            sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-            src=CONSTANTS.IMG_SRC_PLACEHOLDER
-            srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
-            data-src=src
-            data-srcset=srcset
-        )
-    noscript
-        +pictureNonLazyload(args)
+	- const {src, srcset, srcsetWebp, alt} = args;
+	picture.lazyload-picture
+		source(
+			type="image/webp"
+			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+			srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
+			data-srcset=srcsetWebp
+		)
+		img.picture-img.lazyload(
+			alt=alt
+			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+			src=CONSTANTS.IMG_SRC_PLACEHOLDER
+			srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
+			data-src=src
+			data-srcset=srcset
+		)
+	noscript
+		+pictureNonLazyload(args)

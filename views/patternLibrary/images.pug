@@ -1,27 +1,27 @@
-extends ../layouts/patternLibrary
+extends ../layouts/patternLibrary.pug
 
 block contentInner
-    - const img1 = {src: '/images/travel/vietnam/20170612_125616.jpg', alt: 'An image'};
-    - const img2 = {src: '/images/travel/vietnam/20170610_112344.jpg', alt: 'An image'};
+	- const img1 = {src: '/images/travel/vietnam/20170612_125616.jpg', alt: 'An image'};
+	- const img2 = {src: '/images/travel/vietnam/20170610_112344.jpg', alt: 'An image'};
 
-    .baseline-section
-        h2 Images
-        .flex.flex--spacing-small
-            div.col-6
-                +picture(HELPERS.immutableExtend(img1, {lazyLoad: false}))
-                h3 Normal
+	.baseline-section
+		h2 Images
+		.flex.flex--spacing-small
+			.col-6
+				+picture(HELPERS.immutableExtend(img1, {lazyLoad: false}))
+				h3 Normal
 
-            div.col-6
-                +picture(HELPERS.immutableExtend(img2, {lazyLoad: true}))
-                h3 Lazy Loaded
+			.col-6
+				+picture(HELPERS.immutableExtend(img2, {lazyLoad: true}))
+				h3 Lazy Loaded
 
-    .baseline-section
-        h2 Images with link (no JS) / Photoswipe gallery (JS)
-        .flex.flex--spacing-small
-            div.col-6
-                +imageLink(img1)
-                    +picture(img1)
+	.baseline-section
+		h2 Images with link (no JS) / Photoswipe gallery (JS)
+		.flex.flex--spacing-small
+			.col-6
+				+imageLink(img1)
+					+picture(img1)
 
-            div.col-6
-                +imageLink(img2)
-                    +picture(img2)
+			.col-6
+				+imageLink(img2)
+					+picture(img2)

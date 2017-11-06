@@ -1,18 +1,18 @@
 doctype xml
 urlset(
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 )
-    for page in pages
-        url
-            loc=origin + page.path
-            if page.images
-                each image in page.images
-                    image:image
-                        image:loc=origin + image.src
+	for page in pages
+		url
+			loc= origin + page.path
+			if page.images
+				each image in page.images
+					image:image
+						image:loc= origin + image.src
 
-                        if image.caption
-                            image:caption=image.caption
+						if image.caption
+							image:caption= image.caption
 
-                        if image.geoLocation
-                            image:geo_location=image.geoLocation
+						if image.geoLocation
+							image:geo_location= image.geoLocation

@@ -1,19 +1,19 @@
-extends main
+extends main.pug
 
 block meta
-    title=`${title} | Daniel Levett`
-    meta(name="robots" content="noindex")
-    link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/patternLibrary.css'))
+	title= `${title} | Daniel Levett`
+	meta(name="robots" content="noindex")
+	link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/patternLibrary.css'))
 
 block content
-    header.text-center.baseline-huge
-        h1 Pattern Library
-        ul.list-horizontal
-            li
-                a(href=`${rootPath}/typography`) Typography
-            li
-                a(href=`${rootPath}/images`) Images
-            li
-                a(href=`${rootPath}/alignment`) Alignment
+	header.text-center.baseline-huge
+		h1 Pattern Library
+		ul.list-horizontal
+			li
+				a(href=`${rootPath}/typography`) Typography
+			li
+				a(href=`${rootPath}/images`) Images
+			li
+				a(href=`${rootPath}/alignment`) Alignment
 
-    block contentInner
+	block contentInner

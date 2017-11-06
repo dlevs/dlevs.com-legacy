@@ -1,6 +1,6 @@
 mixin readMore(shortText, longText)
 	- const id = `readmore__checkbox-${COUNTER++}`;
 	input.readmore__checkbox(id=id type="checkbox" role="button")
-	.readmore__short!=shortText
-	.readmore__long!=longText
+	.readmore__short!= shortText
+	.readmore__long!= longText
 	label.readmore__label(for=id) Read more…

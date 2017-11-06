@@ -1,26 +1,26 @@
-extends ../layouts/main
+extends ../layouts/main.pug
 
 block meta
-    title=`${post.town} | Daniel Levett`
+	title= `${post.town} | Daniel Levett`
 
 block content
-    main
-        article
-            header.blog-header
-                h1.site-heading=post.town
-                    span.site-subheading=`${post.country} | ${post.humanDate}`
+	main
+		article
+			header.blog-header
+				h1.site-heading= post.town
+					span.site-subheading= `${post.country} | ${post.humanDate}`
 
-            each image, i in post.images
-                +imageLink(image)
-                    figure
-                        +picture(HELPERS.immutableExtend(image, {
-                            className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
-                            lazyLoad: i > 1
-                        }))
-                        if image.caption
-                            figcaption.visually-hidden=image.caption
+			each image, i in post.images
+				+imageLink(image)
+					figure
+						+picture(HELPERS.immutableExtend(image, {
+							className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
+							lazyLoad: i > 1
+						}))
+						if image.caption
+							figcaption.visually-hidden= image.caption
 
-            include includes/relatedPosts
+			include includes/relatedPosts.pug
 
-            if post.jsonLd
-                script(type="application/ld+json" data-no-instant)!=JSON.stringify(post.jsonLd)
+			if post.jsonLd
+				script(type="application/ld+json" data-no-instant)!= JSON.stringify(post.jsonLd)

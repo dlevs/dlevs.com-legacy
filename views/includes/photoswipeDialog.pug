@@ -1,61 +1,61 @@
 //- Root element of PhotoSwipe. Must have class pswp.
-.pswp(tabindex='-1', role='dialog', aria-hidden='true')
-  //-
-    Background of PhotoSwipe.
-    It's a separate element as animating opacity is faster than rgba().
-  .pswp__bg
-  //- Slides wrapper with overflow:hidden.
-  .pswp__scroll-wrap
-    //-
-      Container that holds slides.
-      PhotoSwipe keeps only 3 of them in the DOM to save memory.
-      Don't modify these 3 pswp__item elements, data is added later on.
-    .pswp__container
-      .pswp__item
-      .pswp__item
-      .pswp__item
-    //- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.
-    .pswp__ui.pswp__ui--hidden
-      .pswp__top-bar
-        //- Controls are self-explanatory. Order can be changed.
-        .pswp__counter
-        button.pswp__button.pswp__button--close(title='Close (Esc)')
-          +icon('x', {class: 'pswp__button-icon'})
+.pswp(tabindex="-1" role="dialog" aria-hidden="true")
+	//-
+		Background of PhotoSwipe.
+		It"s a separate element as animating opacity is faster than rgba().
+	.pswp__bg
+	//- Slides wrapper with overflow:hidden.
+	.pswp__scroll-wrap
+		//-
+			Container that holds slides.
+			PhotoSwipe keeps only 3 of them in the DOM to save memory.
+			Don"t modify these 3 pswp__item elements, data is added later on.
+		.pswp__container
+			.pswp__item
+			.pswp__item
+			.pswp__item
+		//- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.
+		.pswp__ui.pswp__ui--hidden
+			.pswp__top-bar
+				//- Controls are self-explanatory. Order can be changed.
+				.pswp__counter
+				button.pswp__button.pswp__button--close(title="Close (Esc)")
+					+icon("x", {class: "pswp__button-icon"})
 
-        button.pswp__button.pswp__button--share(title='Share')
-          +icon('share-2', {class: 'pswp__button-icon'})
+				button.pswp__button.pswp__button--share(title="Share")
+					+icon("share-2", {class: "pswp__button-icon"})
 
-        button.pswp__button.pswp__button--fs(title='Toggle fullscreen')
-          +icon('maximize', {class: 'pswp__button-icon'})
-          +icon('minimize', {class: 'pswp__button-icon pswp__button-icon-alt'})
+				button.pswp__button.pswp__button--fs(title="Toggle fullscreen")
+					+icon("maximize", {class: "pswp__button-icon"})
+					+icon("minimize", {class: "pswp__button-icon pswp__button-icon-alt"})
 
-        button.pswp__button.pswp__button--zoom(title='Zoom in/out')
-          +icon('zoom-in', {class: 'pswp__button-icon'})
-          +icon('zoom-out', {class: 'pswp__button-icon pswp__button-icon-alt'})
+				button.pswp__button.pswp__button--zoom(title="Zoom in/out")
+					+icon("zoom-in", {class: "pswp__button-icon"})
+					+icon("zoom-out", {class: "pswp__button-icon pswp__button-icon-alt"})
 
-        a.pswp__button.pswp__button--map-link(
-          title="View on map"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-no-instant
-        )
-          +icon('map', {class: 'pswp__button-icon'})
+				a.pswp__button.pswp__button--map-link(
+					title="View on map"
+					target="_blank"
+					rel="noopener noreferrer"
+					data-no-instant
+				)
+					+icon("map", {class: "pswp__button-icon"})
 
-        //- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR
-        //- element will get class pswp__preloader--active when preloader is running
-        .pswp__preloader
-          .pswp__preloader__icn
-            .pswp__preloader__cut
-              .pswp__preloader__donut
-      .pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
-        .pswp__share-tooltip
-      button.pswp__button.pswp__button--arrow--left(title='Previous (arrow left)')
-        span.pswp__button--arrow--backdrop
-          +icon('arrow-left', {class: 'pswp__button-icon'})
+				//- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR
+				//- element will get class pswp__preloader--active when preloader is running
+				.pswp__preloader
+					.pswp__preloader__icn
+						.pswp__preloader__cut
+							.pswp__preloader__donut
+			.pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+				.pswp__share-tooltip
+			button.pswp__button.pswp__button--arrow--left(title="Previous (arrow left)")
+				span.pswp__button--arrow--backdrop
+					+icon("arrow-left", {class: "pswp__button-icon"})
 
-      button.pswp__button.pswp__button--arrow--right(title='Next (arrow right)')
-        span.pswp__button--arrow--backdrop
-          +icon('arrow-right', {class: 'pswp__button-icon'})
+			button.pswp__button.pswp__button--arrow--right(title="Next (arrow right)")
+				span.pswp__button--arrow--backdrop
+					+icon("arrow-right", {class: "pswp__button-icon"})
 
-      .pswp__caption
-        .pswp__caption__center
+			.pswp__caption
+				.pswp__caption__center

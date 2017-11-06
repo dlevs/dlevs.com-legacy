@@ -1,13 +1,13 @@
-include ../../includes/mixins
+include ../../includes/mixins.pug
 
 each post, i in posts
-    article
-        a.blog-link(href=post.path)
-            h2.blog-heading
-                span=post.town
-                span.section-heading-details=`${post.country}, ${post.humanDate}`
-            +picture(HELPERS.immutableExtend(post.mainImage, {
-                className: 'blog-image',
-                lazyLoad: i > 1,
-                alt: ''
-            }))
+	article
+		a.blog-link(href=post.path)
+			h2.blog-heading
+				span= post.town
+				span.section-heading-details= `${post.country}, ${post.humanDate}`
+			+picture(HELPERS.immutableExtend(post.mainImage, {
+				className: 'blog-image',
+				lazyLoad: i > 1,
+				alt: ''
+			}))

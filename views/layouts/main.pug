@@ -1,18 +1,18 @@
-include ../includes/mixins
+include ../includes/mixins.pug
 
 doctype html
-html(lang="en-GB" class="no-js")
-    head
-        include ../includes/meta
-        script(src=HELPERS.getRevvedPath('/scripts/main.js') defer data-no-instant)
-        link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
-        include ../includes/headScripts
-        include ../includes/favicons
-        block meta
+html.no-js(lang="en-GB")
+	head
+		include ../includes/meta.pug
+		script(src=HELPERS.getRevvedPath('/scripts/main.js') defer data-no-instant)
+		link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
+		include ../includes/headScripts.pug
+		include ../includes/favicons.pug
+		block meta
 
-    body
-        .site-wrapper
-            include ../includes/breadcrumb
-            block content
+	body
+		.site-wrapper
+			include ../includes/breadcrumb.pug
+			block content
 
-        include ../includes/photoswipeDialog
+		include ../includes/photoswipeDialog.pug
