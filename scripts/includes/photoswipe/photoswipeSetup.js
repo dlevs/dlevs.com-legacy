@@ -1,14 +1,14 @@
+// Not sure why, but eslint doesn't like the scoped module @dlevs/photoswipe.
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PhotoSwipe from '@dlevs/photoswipe';
 import PhotoSwipeUI from './photoswipeUi';
 import {
 	trackGalleryOpen,
 	trackGalleryNavigation,
-	trackShare
+	trackShare,
 } from '../googleAnalytics';
 
-const getSlideElements = () => Array.prototype.slice.call(
-	document.querySelectorAll('.js-photoswipe')
-);
+const getSlideElements = () => Array.prototype.slice.call(document.querySelectorAll('.js-photoswipe'));
 
 const openGallery = (index, disableTransitions) => {
 	const pswpElement = document.querySelector('.pswp');
@@ -18,30 +18,30 @@ const openGallery = (index, disableTransitions) => {
 	// placeholder data gif src.
 	const firstThumbnail = elems[0].getElementsByTagName('img')[0];
 	const isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
-	const items = elems.map(function (elem) {
+	const items = elems.map((elem) => {
 		const thumbnail = elem.getElementsByTagName('img')[0];
 		const caption = elem.getElementsByTagName('figcaption')[0];
 
 		return {
 			src: isWebp ? elem.dataset.hrefWebp : elem.href,
 			msrc: thumbnail.currentSrc || thumbnail.src,
-			thumbnail: thumbnail,
+			thumbnail,
 			w: Number(elem.dataset.width),
 			h: Number(elem.dataset.height),
 			mapLink: elem.dataset.mapLink,
-			title: elem.dataset.caption || (caption && caption.textContent)
-		}
+			title: elem.dataset.caption || (caption && caption.textContent),
+		};
 	});
 	const options = {
-		index: index,
-		getThumbBoundsFn: (index) => {
+		index,
+		getThumbBoundsFn: (currentIndex) => {
 			const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-			const rect = items[index].thumbnail.getBoundingClientRect();
+			const rect = items[currentIndex].thumbnail.getBoundingClientRect();
 
 			return {
 				x: rect.left,
 				y: rect.top + pageYScroll,
-				w: rect.width
+				w: rect.width,
 			};
 		},
 		getDoubleTapZoom: (isMouseClick, item) => {
@@ -52,7 +52,7 @@ const openGallery = (index, disableTransitions) => {
 			return fullSizeScale < item.initialZoomLevel
 				? item.initialZoomLevel * 1.5
 				: fullSizeScale;
-		}
+		},
 	};
 
 	if (disableTransitions) {
@@ -66,19 +66,19 @@ const openGallery = (index, disableTransitions) => {
 
 	trackGalleryOpen({
 		title: items[index].title,
-		index: index
+		index,
 	});
 	gallery.listen('afterChange', () => {
 		trackGalleryNavigation({
 			title: gallery.currItem.title,
-			index: gallery.currItem.index
+			index: gallery.currItem.index,
 		});
 	});
 	gallery.listen('shareLinkClick', (e, target) => {
 		trackShare({
 			content_type: 'image',
 			method: target.dataset.method,
-			title: gallery.currItem.title
+			title: gallery.currItem.title,
 		});
 	});
 };
@@ -110,7 +110,7 @@ const onImageLinkClick = (event) => {
 };
 
 const openGalleryFromHash = () => {
-	const matches = /pid=(\d+)/.exec(location.hash);
+	const matches = /pid=(\d+)/.exec(document.location.hash);
 
 	if (!matches) return;
 
@@ -119,7 +119,9 @@ const openGalleryFromHash = () => {
 	openGallery(index, true);
 };
 
-export const init = () => {
+const init = () => {
 	document.addEventListener('click', onImageLinkClick);
 	openGalleryFromHash();
 };
+
+export default init;

@@ -1,6 +1,6 @@
 const tough = require('tough-cookie');
 const rawFetch = require('node-fetch');
-const {HOSTNAME, AUTH_HEADER} = require('./testConstants');
+const { HOSTNAME, AUTH_HEADER } = require('./testConstants');
 
 /**
  * When testing external links, some set cookies in redirects. node-fetch
@@ -14,8 +14,8 @@ const externalFetch = require('fetch-cookie/node-fetch')(
 	rawFetch,
 	new tough.CookieJar(undefined, {
 		rejectPublicSuffixes: false,
-		looseMode: true
-	})
+		looseMode: true,
+	}),
 );
 
 /**
@@ -32,9 +32,9 @@ const internalFetch = (url, options) =>
 			...options,
 			headers: {
 				...options.headers,
-				Authorization: AUTH_HEADER
-			}
-		}
+				Authorization: AUTH_HEADER,
+			},
+		},
 	);
 
 /**
@@ -44,9 +44,9 @@ const internalFetch = (url, options) =>
  * @param {Object} [options]
  */
 exports.fetch = (url, options = {}) =>
-	url.includes(HOSTNAME)
+	(url.includes(HOSTNAME)
 		? internalFetch(url, options)
-		: externalFetch(url, options);
+		: externalFetch(url, options));
 
 /**
  * Helper to remove need for lots of boilerplate loops when repeating tests for
@@ -61,7 +61,7 @@ exports.testUrls = (urls, tests) => {
 	Object.entries(tests).forEach(([testDescription, testFn]) => {
 		describe(testDescription, () => {
 			urls.forEach((url) => {
-				test(url, testFn(url))
+				test(url, testFn(url));
 			});
 		});
 	});

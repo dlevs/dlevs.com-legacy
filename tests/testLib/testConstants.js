@@ -20,7 +20,7 @@ const IS_PRODUCTION = !IS_STAGING && !IS_LOCALHOST;
 //------------------------------
 const PROTOCOL = IS_LOCALHOST ? 'http' : 'https';
 const ORIGIN = `${PROTOCOL}://${HOSTNAME}`;
-const absolute = (path) => `${ORIGIN}${path}`;
+const absolute = path => `${ORIGIN}${path}`;
 
 
 // Page URLs
@@ -32,7 +32,7 @@ const PAGES = mapValues(
 			'/',
 			'/travel',
 			'/travel/ireland',
-			'/travel/ireland/dublin'
+			'/travel/ireland/dublin',
 		],
 		// Pages on which to test JS features.
 		WITH_READMORE: [
@@ -40,20 +40,20 @@ const PAGES = mapValues(
 		],
 		WITH_PHOTOSWIPE: [
 			'/',
-			'/travel/ireland/dublin'
-		]
+			'/travel/ireland/dublin',
+		],
 	},
-	(paths) => paths.map(absolute)
+	paths => paths.map(absolute),
 );
 
 
 // Credentials
 //------------------------------
 const CREDENTIALS = PASSWORD
-	? {username: USERNAME, password: PASSWORD}
+	? { username: USERNAME, password: PASSWORD }
 	: null;
 const AUTH_HEADER = PASSWORD
-	? 'Basic ' + new Buffer(`${USERNAME}:${PASSWORD}`).toString('base64')
+	? `Basic ${Buffer.from(`${USERNAME}:${PASSWORD}`).toString('base64')}`
 	: undefined;
 
 
@@ -65,10 +65,10 @@ module.exports = {
 	CREDENTIALS,
 	AUTH_HEADER,
 	IS_PRODUCTION,
-	PAGES
+	PAGES,
 };
 
 assert(
 	process.env.TEST_HOSTNAME,
-	'TEST_HOSTNAME environment variable must be defined'
+	'TEST_HOSTNAME environment variable must be defined',
 );

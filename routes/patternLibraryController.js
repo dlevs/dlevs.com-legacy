@@ -1,20 +1,20 @@
 const startCase = require('lodash/startCase');
 const camelCase = require('lodash/camelCase');
-const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
+const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 
 module.exports = (options) => {
-	const {breadcrumbRoot, rootPath} = options;
+	const { breadcrumbRoot, rootPath } = options;
 
 	return {
 		index: async (ctx) => {
-			const {slug = 'index'} = ctx.params;
+			const { slug = 'index' } = ctx.params;
 			let title = 'Pattern Library';
 			let breadcrumb = breadcrumbRoot;
 
 			if (slug !== 'index') {
 				const label = startCase(slug);
 				title = `${label} - ${title}`;
-				breadcrumb = breadcrumb.concat({slug, label, path: ctx.path})
+				breadcrumb = breadcrumb.concat({ slug, label, path: ctx.path });
 			}
 
 			try {
@@ -23,9 +23,9 @@ module.exports = (options) => {
 					{
 						title,
 						breadcrumb: expandBreadcrumb(breadcrumb),
-						rootPath
-					}
-				)
+						rootPath,
+					},
+				);
 			} catch (err) {
 				// If template was not found, do nothing.
 				// This will fallback to 404 error page.
@@ -33,6 +33,6 @@ module.exports = (options) => {
 					throw err;
 				}
 			}
-		}
-	}
+		},
+	};
 };

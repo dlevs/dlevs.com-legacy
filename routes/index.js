@@ -1,12 +1,13 @@
 // Dependencies
 //------------------------------------
 const Router = require('koa-router');
+
 const router = new Router();
 
 
 // Variables
 //------------------------------------
-const BREADCRUMB_ROOT = [{label: 'Home'}];
+const BREADCRUMB_ROOT = [{ label: 'Home' }];
 const TRAVEL_BLOG_SLUG = 'travel';
 const PATTERN_LIBRARY_SLUG = 'pattern-library';
 
@@ -20,26 +21,26 @@ const travelController = require('./travelController')({
 		...BREADCRUMB_ROOT,
 		{
 			label: 'Travel',
-			slug: TRAVEL_BLOG_SLUG
-		}
-	]
+			slug: TRAVEL_BLOG_SLUG,
+		},
+	],
 });
 const patternLibraryController = require('./patternLibraryController')({
 	breadcrumbRoot: [
 		...BREADCRUMB_ROOT,
 		{
 			label: 'Pattern Library',
-			slug: PATTERN_LIBRARY_SLUG
-		}
+			slug: PATTERN_LIBRARY_SLUG,
+		},
 	],
-	rootPath: `/${PATTERN_LIBRARY_SLUG}`
+	rootPath: `/${PATTERN_LIBRARY_SLUG}`,
 });
 const sitemapController = require('./sitemapController')({
 	pages: [
-		{path: '/'},
-		{path: `/${TRAVEL_BLOG_SLUG}`},
-		...travelController.sitemap
-	]
+		{ path: '/' },
+		{ path: `/${TRAVEL_BLOG_SLUG}` },
+		...travelController.sitemap,
+	],
 });
 const infoController = require('./infoController')();
 const reportingController = require('./reportingController')();

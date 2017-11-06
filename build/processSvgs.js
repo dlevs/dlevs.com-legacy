@@ -1,18 +1,19 @@
-const {promisify} = require('util');
+const { promisify } = require('util');
 const fs = require('fs-extra');
 const path = require('path');
 const glob = promisify(require('glob'));
-const svgo = new (require('svgo'))({
+const Svgo = require('svgo');
+const { root } = require('../lib/pathUtils');
+
+const svgo = new Svgo({
 	removeTitle: true,
 	removeXMLNS: true,
 	removeViewBox: true,
 	transformsWithOnePath: true,
 	removeAttrs: true,
 	removeStyleElement: true,
-	removeScriptElement: true
+	removeScriptElement: true,
 });
-const {root} = require('../lib/pathUtils');
-
 
 const processSvgs = async (pattern) => {
 	const filepaths = await glob(pattern);
@@ -27,6 +28,5 @@ const processSvgs = async (pattern) => {
 		});
 	});
 };
-
 
 processSvgs(root('./images/brands/*.svg'));

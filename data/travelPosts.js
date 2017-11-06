@@ -6,30 +6,30 @@ const kebabCase = require('lodash/kebabCase');
 const sortBy = require('lodash/fp/sortBy');
 const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
-const {expandBreadcrumb} = require('../lib/breadcrumbUtils');
+const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 const rawPostsData = require('../data/travelPostsRaw');
-const {ORIGIN} = require('../config');
+const { ORIGIN } = require('../config');
 
-const expandPosts = ({breadcrumbRoot}) => flow(
-	(posts) => posts.map((post) => {
+const expandPosts = ({ breadcrumbRoot }) => flow(
+	posts => posts.map((post) => {
 		const countrySlug = kebabCase(post.country);
 		const townSlug = kebabCase(post.town);
 		const breadcrumb = expandBreadcrumb([
 			...breadcrumbRoot,
 			{
 				slug: countrySlug,
-				label: post.country
+				label: post.country,
 			},
 			{
 				slug: townSlug,
-				label: post.town
-			}
+				label: post.town,
+			},
 		]);
-		const images = post.images.map((image) => ({
+		const images = post.images.map(image => ({
 			...image,
-			geoLocation: `${post.town}, ${post.country}`
+			geoLocation: `${post.town}, ${post.country}`,
 		}));
-		const path = last(breadcrumb).path;
+		const { path } = last(breadcrumb);
 
 		return {
 			countrySlug,
@@ -47,27 +47,27 @@ const expandPosts = ({breadcrumbRoot}) => flow(
 				url: `${ORIGIN}${path}`,
 				datePublished: post.date,
 				author: ORIGIN,
-				publisher: ORIGIN
+				publisher: ORIGIN,
 			},
 			...post,
-			images
-		}
+			images,
+		};
 	}),
-	orderBy('date', 'desc')
+	orderBy('date', 'desc'),
 );
 
-const groupPostsByCountry = ({breadcrumbRoot}) => flow(
+const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
 	groupBy('country'),
 	map((posts) => {
-		const {country, countrySlug} = posts[0];
+		const { country, countrySlug } = posts[0];
 		const breadcrumb = expandBreadcrumb([
 			...breadcrumbRoot,
 			{
 				slug: countrySlug,
-				label: country
-			}
+				label: country,
+			},
 		]);
-		const images = posts.map(({mainImage}) => mainImage);
+		const images = posts.map(({ mainImage }) => mainImage);
 		return {
 			country,
 			countrySlug,
@@ -76,10 +76,10 @@ const groupPostsByCountry = ({breadcrumbRoot}) => flow(
 			posts,
 			// Images for sitemap
 			images,
-			mainImage: images[0]
-		}
+			mainImage: images[0],
+		};
 	}),
-	sortBy('country')
+	sortBy('country'),
 );
 
 /**
@@ -99,5 +99,5 @@ exports.getPosts = (options, rawPosts = rawPostsData) => {
 	const posts = expandPosts(options)(rawPosts);
 	const postsByCountry = groupPostsByCountry(options)(posts);
 
-	return {posts, postsByCountry};
+	return { posts, postsByCountry };
 };

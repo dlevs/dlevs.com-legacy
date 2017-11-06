@@ -1,4 +1,4 @@
-const {getPosts} = require('./travelPosts');
+const { getPosts } = require('./travelPosts');
 
 const testPosts = [
 	{
@@ -8,13 +8,13 @@ const testPosts = [
 		images: [
 			{
 				src: '/images/travel/india/image_1.jpg',
-				arbitraryProp: 'foo'
+				arbitraryProp: 'foo',
 			},
 			{
 				src: '/images/travel/india/image_2.jpg',
-				arbitraryProp: 'foo'
-			}
-		]
+				arbitraryProp: 'foo',
+			},
+		],
 	},
 	{
 		country: 'England',
@@ -23,9 +23,9 @@ const testPosts = [
 		images: [
 			{
 				src: '/images/travel/england/image_1.jpg',
-				arbitraryProp: 'foo'
-			}
-		]
+				arbitraryProp: 'foo',
+			},
+		],
 	},
 	{
 		// Most recent, but with last town alphabetically. To test sorting.
@@ -35,9 +35,9 @@ const testPosts = [
 		images: [
 			{
 				src: '/images/travel/vietnam/image_1.jpg',
-				arbitraryProp: 'foo'
-			}
-		]
+				arbitraryProp: 'foo',
+			},
+		],
 	},
 	{
 		country: 'India',
@@ -46,16 +46,16 @@ const testPosts = [
 		images: [
 			{
 				src: '/images/travel/india/image_3.jpg',
-				arbitraryProp: 'foo'
-			}
-		]
-	}
+				arbitraryProp: 'foo',
+			},
+		],
+	},
 ];
 
 describe('getPosts()', () => {
-	const {posts, postsByCountry} = getPosts(
-		{breadcrumbRoot: [{label: 'Home'}]},
-		testPosts
+	const { posts, postsByCountry } = getPosts(
+		{ breadcrumbRoot: [{ label: 'Home' }] },
+		testPosts,
 	);
 
 	describe('posts', () => {
@@ -68,25 +68,25 @@ describe('getPosts()', () => {
 					{
 						label: 'Home',
 						slug: '',
-						path: '/'
+						path: '/',
 					},
 					{
 						label: 'Vietnam',
 						slug: 'vietnam',
-						path: '/vietnam'
+						path: '/vietnam',
 					},
 					{
 						label: 'Vung Tau',
 						slug: 'vung-tau',
-						path: '/vietnam/vung-tau'
-					}
+						path: '/vietnam/vung-tau',
+					},
 				],
 				path: '/vietnam/vung-tau',
 				humanDate: 'September 2018',
 				mainImage: {
 					src: '/images/travel/vietnam/image_1.jpg',
 					arbitraryProp: 'foo',
-					geoLocation: 'Vung Tau, Vietnam'
+					geoLocation: 'Vung Tau, Vietnam',
 				},
 				country: 'Vietnam',
 				town: 'Vung Tau',
@@ -95,9 +95,9 @@ describe('getPosts()', () => {
 					{
 						src: '/images/travel/vietnam/image_1.jpg',
 						arbitraryProp: 'foo',
-						geoLocation: 'Vung Tau, Vietnam'
-					}
-				]
+						geoLocation: 'Vung Tau, Vietnam',
+					},
+				],
 			});
 		});
 
@@ -105,20 +105,20 @@ describe('getPosts()', () => {
 			expect(posts).toMatchObject([
 				{
 					town: 'Vung Tau',
-					date: '2018-09-23'
+					date: '2018-09-23',
 				},
 				{
 					town: 'London',
-					date: '2017-09-23'
+					date: '2017-09-23',
 				},
 				{
 					town: 'Agra',
-					date: '2016-01-03'
+					date: '2016-01-03',
 				},
 				{
 					town: 'Delhi',
-					date: '2016-01-02'
-				}
+					date: '2016-01-02',
+				},
 			]);
 		});
 	});
@@ -133,36 +133,35 @@ describe('getPosts()', () => {
 					{
 						label: 'Home',
 						slug: '',
-						path: '/'
+						path: '/',
 					},
 					{
 						label: 'England',
 						slug: 'england',
-						path: '/england'
-					}
+						path: '/england',
+					},
 				],
 				path: '/england',
 				images: [
 					{
 						src: '/images/travel/england/image_1.jpg',
 						arbitraryProp: 'foo',
-						geoLocation: 'London, England'
-					}
+						geoLocation: 'London, England',
+					},
 				],
 				mainImage: {
 					src: '/images/travel/england/image_1.jpg',
 					arbitraryProp: 'foo',
-					geoLocation: 'London, England'
-				}
+					geoLocation: 'London, England',
+				},
 			});
-
 		});
 
 		test('are sorted in alphabetical order by country', () => {
 			expect(postsByCountry).toMatchObject([
-				{country: 'England'},
-				{country: 'India'},
-				{country: 'Vietnam'},
+				{ country: 'England' },
+				{ country: 'India' },
+				{ country: 'Vietnam' },
 			]);
 		});
 

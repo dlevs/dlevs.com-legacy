@@ -1,5 +1,5 @@
-const {PAGES, CREDENTIALS} = require('./testLib/testConstants');
 const puppeteer = require('puppeteer');
+const { PAGES, CREDENTIALS } = require('./testLib/testConstants');
 
 describe('JavaScript errors', () => {
 	test('are detected when they occur', async () => {
@@ -12,7 +12,7 @@ describe('JavaScript errors', () => {
 			await page.goto(PAGES.UNIQUE[i]);
 			await page.evaluate(() => {
 				const script = document.createElement('script');
-				script.innerHTML = `SOMETHING_NON_EXISTENT`;
+				script.innerHTML = 'SOMETHING_NON_EXISTENT';
 				document.body.appendChild(script);
 			});
 			const errors = await page.evaluate(() => window.ERRORS);

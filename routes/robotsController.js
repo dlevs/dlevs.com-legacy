@@ -3,7 +3,7 @@
  *
  * @param {String} origin
  */
-const getRobotsText = (origin) => `
+const getRobotsText = origin => `
 
 # Allow crawling of all content
 User-agent: *
@@ -21,5 +21,5 @@ Sitemap: ${origin}/sitemap.xml
 module.exports = () => ({
 	index: (ctx) => {
 		ctx.body = getRobotsText(ctx.origin);
-	}
+	},
 });

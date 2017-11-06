@@ -7,36 +7,37 @@
 require('../config').setProcessEnv();
 
 const webpack = require('webpack');
-const {root} = require('../lib/pathUtils');
+const { root } = require('../lib/pathUtils');
+
 const isDebug = process.env.NODE_ENV !== 'production';
 
 const config = {
 	entry: root('./scripts/main.js'),
 	output: {
 		path: root('./publicDist/scripts'),
-		filename: '[name].js'
+		filename: '[name].js',
 	},
 	module: {
 		rules: [
 			{
 				test: /\.jsx?$/,
-				use: 'babel-loader'
-			}
-		]
+				use: 'babel-loader',
+			},
+		],
 	},
 	devtool: isDebug ? 'module-inline-source-map' : false,
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env': {
-				NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-			}
-		})
-	]
+				NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+			},
+		}),
+	],
 };
 
 if (!isDebug) {
 	config.plugins = config.plugins.concat([
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack.optimize.UglifyJsPlugin(),
 	]);
 }
 

@@ -1,5 +1,5 @@
-const {getLastCommit} = require('../lib/gitUtils');
-const {version} = require('../package');
+const { getLastCommit } = require('../lib/gitUtils');
+const { version } = require('../package');
 
 module.exports = () => {
 	// Get last commit data only once, on server init, so we can be sure that
@@ -14,9 +14,9 @@ module.exports = () => {
 				date: new Date().toString(),
 				serverStartDate,
 				environment: process.env.NODE_ENV,
-				lastCommit: await lastCommitPromise
+				lastCommit: await lastCommitPromise,
 			}, null, '\t');
 			ctx.type = 'json';
-		}
-	}
+		},
+	};
 };

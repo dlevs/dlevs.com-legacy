@@ -1,4 +1,4 @@
-const {setProcessEnv, PORT, IS_BEHIND_PROXY} = require('./config');
+const { setProcessEnv, PORT, IS_BEHIND_PROXY } = require('./config');
 
 setProcessEnv();
 
@@ -31,7 +31,7 @@ app
 	.use(setCtxStateMiddleware)
 	.use(views(path.join(__dirname, 'views'), {
 		extension: 'pug',
-		options: viewGlobals
+		options: viewGlobals,
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())

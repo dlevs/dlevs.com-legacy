@@ -1,5 +1,5 @@
-const {fetch} = require('../tests/testLib/testUtils');
-const {ORIGIN} = require('../tests/testLib/testConstants');
+const { fetch } = require('../tests/testLib/testUtils');
+const { ORIGIN } = require('../tests/testLib/testConstants');
 
 
 describe('/robots.txt', () => {
@@ -7,7 +7,7 @@ describe('/robots.txt', () => {
 
 	test('exists', async () => {
 		const response = await fetch(url);
-		expect(response).toMatchObject({ok: true});
+		expect(response).toMatchObject({ ok: true });
 	});
 
 	test('response has correct MIME type', async () => {
@@ -21,7 +21,7 @@ describe('/robots.txt', () => {
 		// Check sitemap exists...
 		const sitemapUrl = `${ORIGIN}/sitemap.xml`;
 		const sitemapResponse = await fetch(sitemapUrl);
-		expect(sitemapResponse).toMatchObject({ok: true});
+		expect(sitemapResponse).toMatchObject({ ok: true });
 
 		// ...and is in robots.txt
 		const response = await fetch(url);

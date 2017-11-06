@@ -1,14 +1,14 @@
 const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
-const {fetch} = require('../tests/testLib/testUtils');
-const {ORIGIN, CREDENTIALS} = require('../tests/testLib/testConstants');
+const { fetch } = require('../tests/testLib/testUtils');
+const { ORIGIN, CREDENTIALS } = require('../tests/testLib/testConstants');
 
 const imageUrlRegex = /\.(jpg|png)$/;
 
 let links;
 
-const getPageLinks = () => links.filter(({type}) => type === 'page');
-const getImageLinks = () => links.filter(({type}) => type === 'image');
+const getPageLinks = () => links.filter(({ type }) => type === 'page');
+const getImageLinks = () => links.filter(({ type }) => type === 'image');
 
 beforeAll(async (done) => {
 	const browser = await puppeteer.launch();
@@ -17,11 +17,10 @@ beforeAll(async (done) => {
 	await page.goto(`${ORIGIN}/sitemap.xml`);
 	links = await page.evaluate(() => Array
 		.from(document.querySelectorAll('loc'))
-		.map(({prefix, textContent}) => ({
+		.map(({ prefix, textContent }) => ({
 			url: textContent,
-			type: prefix || 'page'
-		}))
-	);
+			type: prefix || 'page',
+		})));
 	await browser.close();
 	done();
 });
@@ -35,11 +34,7 @@ describe('/sitemap.xml', () => {
 	});
 
 	test('all links are https', async () => {
-		expect(
-			links.every(
-				({url}) => url.startsWith('https://')
-			)
-		).toBe(true);
+		expect(links.every(({ url }) => url.startsWith('https://'))).toBe(true);
 	});
 
 	describe('page links', () => {
@@ -49,11 +44,7 @@ describe('/sitemap.xml', () => {
 		test('has no duplicate page links', async () => {
 			// Duplicates may not be invalid in sitemaps, but it suggests
 			// possible URL collisions in the content.
-			expect(
-				uniqBy(getPageLinks(), 'url').length
-			).toBe(
-				getPageLinks().length
-			);
+			expect(uniqBy(getPageLinks(), 'url').length).toBe(getPageLinks().length);
 		});
 		test('all page links work', async () => {
 			const pages = getPageLinks();
@@ -61,7 +52,7 @@ describe('/sitemap.xml', () => {
 
 			while (i--) {
 				const response = await fetch(pages[i].url);
-				expect(response).toMatchObject({ok: true});
+				expect(response).toMatchObject({ ok: true });
 			}
 		}, 20000);
 	});
@@ -71,11 +62,7 @@ describe('/sitemap.xml', () => {
 			expect(getImageLinks().length).toBeGreaterThan(0);
 		});
 		test('image links have image extensions', async () => {
-			expect(
-				getImageLinks().every(
-					({url}) => imageUrlRegex.test(url)
-				)
-			).toBe(true);
+			expect(getImageLinks().every(({ url }) => imageUrlRegex.test(url))).toBe(true);
 		});
 		test('first 5 images work', async () => {
 			const images = getImageLinks().slice(0, 5);
@@ -83,7 +70,7 @@ describe('/sitemap.xml', () => {
 
 			while (i--) {
 				const response = await fetch(images[i].url);
-				expect(response).toMatchObject({ok: true});
+				expect(response).toMatchObject({ ok: true });
 			}
 		}, 20000);
 	});

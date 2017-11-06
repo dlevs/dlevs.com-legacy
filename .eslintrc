@@ -1,0 +1,25 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "indent": ["error", "tab"],
+        "no-tabs": "off",
+        "no-plusplus": "off",
+        "import/no-extraneous-dependencies": ["error", {
+            "devDependencies": [
+                "**/*.test.js",
+                "**/*.browsertest.js",
+                "build/**",
+                "tests/**"
+            ]
+        }]
+    },
+    "globals": {
+        "document": true,
+        "window": true,
+        "describe": true,
+        "expect": true,
+        "test": true,
+        "beforeAll": true,
+        "afterAll": true
+    }
+}

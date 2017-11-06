@@ -6,10 +6,12 @@ module.exports = () => ({
 	 */
 	reportCSPViolation: (ctx) => {
 		if (ctx.request.body) {
-			console.error('CSP Violation: ', ctx.request.body)
+			// eslint-disable-next-line no-console
+			console.error('CSP Violation: ', ctx.request.body);
 		} else {
-			console.error('CSP Violation: No data received!')
+			// eslint-disable-next-line no-console
+			console.error('CSP Violation: No data received!');
 		}
 		ctx.status = 204;
-	}
+	},
 });

@@ -1,6 +1,6 @@
-const {fetch} = require('../tests/testLib/testUtils');
-const {ORIGIN} = require('../tests/testLib/testConstants');
-const {version} = require('../package');
+const { fetch } = require('../tests/testLib/testUtils');
+const { ORIGIN } = require('../tests/testLib/testConstants');
+const { version } = require('../package');
 
 let response;
 let info;
@@ -33,10 +33,8 @@ describe('/info.json', () => {
 		});
 
 		test('is up to date with last commit on github', async () => {
-			const githubResponse = await fetch(
-				'https://api.github.com/repos/dlevs/dlevs.com/git/refs/heads/master'
-			);
-			const {object} = await githubResponse.json();
+			const githubResponse = await fetch('https://api.github.com/repos/dlevs/dlevs.com/git/refs/heads/master');
+			const { object } = await githubResponse.json();
 
 			expect(info.lastCommit.sha).toBe(object.sha);
 		});
