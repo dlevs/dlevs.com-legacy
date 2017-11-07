@@ -1,5 +1,3 @@
-// Not sure why, but eslint doesn't like the scoped module @dlevs/photoswipe.
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PhotoSwipe from '@dlevs/photoswipe';
 import PhotoSwipeUI from './photoswipeUi';
 import {
