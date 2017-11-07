@@ -18,7 +18,8 @@
     "lint": "npm run lint:lint:scripts && npm run lint:styles && npm run lint:views",
     "lint:scripts": "eslint .",
     "lint:styles": "stylelint 'styles/**/*.css'",
-    "lint:views": "pug-lint views"
+    "lint:views": "pug-lint views",
+    "precommit": "lint-staged"
   },
   "engines": {
     "node": "^8.9.0"
@@ -59,7 +60,9 @@
     "glob": "^7.1.2",
     "hashlink": "0.0.1",
     "html-validator": "^2.2.3",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
+    "lint-staged": "^4.3.0",
     "nodemon": "^1.11.0",
     "postcss-cli": "^4.1.1",
     "postcss-cssnext": "^3.0.2",

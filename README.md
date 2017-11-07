@@ -21,6 +21,7 @@ npm start                               # Start the app on port specified in con
 | `npm run build` | Compile static assets and compress images. |
 | `npm test` | Run code tests. Includes all files ending with `.test.js`. |
 | `npm run test:browser` | Run server tests. Includes all files ending with `.browsertest.js`. A `TEST_HOSTNAME` environment variable must be defined. For example, `env TEST_HOSTNAME=dlevs.com npm run test:browser`. Optionally, run individual test files by specifying them in the command: `env TEST_HOSTNAME=dlevs.com npm run test:browser -- sitemap`. For sites that require authentication, specify credentials:  `env TEST_HOSTNAME=staging.dlevs.com TEST_USERNAME=foo TEST_PASSWORD=bar npm run test:browser` |
+| `npm run lint` | Lint files. Runs automatically on commit. |
 
 ## Directory structure
 
