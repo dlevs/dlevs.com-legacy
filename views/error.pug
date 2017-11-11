@@ -6,19 +6,23 @@ html(lang="en-GB")
 		link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
 		include ./includes/headScripts.pug
 		include ./includes/favicons.pug
+	body
 		style.
 			html, body {
 				min-height: 100vh;
 				margin: 0 20px;
 				padding: 0;
 			}
+
 			body {
 				display: flex;
 				align-items: center;
 			}
+
 			h1 {
 				margin: 0 0 20px;
 			}
+
 			pre {
 				text-align: left;
 				max-width: 960px;
@@ -27,15 +31,16 @@ html(lang="en-GB")
 				padding: 20px;
 				background: #eee;
 			}
+
 			.error-heading-wrapper {
 				width: 100%;
 				text-align: center;
 				margin: 40px 0;
 			}
+
 			.error-heading-status {
 				font-size: 2em;
 			}
-	body
 		.error-heading-wrapper
 			h1
 				.error-heading-status= status

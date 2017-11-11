@@ -15,7 +15,7 @@
     "clean": "rimraf ./publicDist && rimraf ./data/generated/*",
     "test": "jest",
     "test:browser": "jest -i --testRegex=.*browsertest.js",
-    "lint": "npm run lint:lint:scripts && npm run lint:styles && npm run lint:views",
+    "lint": "npm run lint:scripts && npm run lint:styles && npm run lint:views",
     "lint:scripts": "eslint .",
     "lint:styles": "stylelint 'styles/**/*.css'",
     "lint:views": "pug-lint views",
