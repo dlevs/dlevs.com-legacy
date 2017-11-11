@@ -3,7 +3,8 @@ mixin relatedPost(post, type)
 		article(class=`related-post ${type}-post`)
 			a(href=post.path class=`related-post-link js-${type}-post-link`)
 				+picture(HELPERS.immutableExtend(post.mainImage, {
-					className: 'related-post-image'
+					className: 'related-post-image',
+					alt: ''
 				}))
 				h3.related-post-heading
 					span.related-post-heading-label= type === 'next' ? 'Next' : 'Previous'
