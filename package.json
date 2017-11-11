@@ -22,11 +22,12 @@
     "precommit": "lint-staged"
   },
   "engines": {
-    "node": "^8.9.0"
+    "node": "^8.9.1"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
     "@dlevs/photoswipe": "^4.1.4",
+    "bluebird": "^3.5.1",
     "child-process-promise": "^2.2.1",
     "classnames": "^2.2.5",
     "feather-icons": "^3.2.2",

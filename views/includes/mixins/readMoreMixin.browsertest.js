@@ -18,6 +18,7 @@ const getStats = async (url, viewportOptions) => {
 	await page.authenticate(CREDENTIALS);
 	await page.goto(url);
 	await page.setViewport(viewportOptions);
+	await page.setJavaScriptEnabled(false);
 	const stats = await page.evaluate(() => {
 		const isVisible = el => el.offsetParent !== null;
 		const $ = selector => Array

@@ -3,10 +3,7 @@ const { fetch } = require('./testLib/testUtils');
 const validator = require('html-validator');
 
 describe('HTML validation', () => {
-	let i = PAGES.UNIQUE.length;
-	while (i--) {
-		const url = PAGES.UNIQUE[i];
-
+	PAGES.UNIQUE.forEach((url) => {
 		test(url, async () => {
 			const response = await fetch(url);
 			const data = await response.text();
@@ -15,5 +12,5 @@ describe('HTML validation', () => {
 
 			expect(errors.length).toBe(0);
 		});
-	}
+	});
 });

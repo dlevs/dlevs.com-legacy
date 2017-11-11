@@ -2,7 +2,7 @@ const { promisify } = require('util');
 const tough = require('tough-cookie');
 const rawFetch = require('node-fetch');
 const eachLimit = promisify(require('async').eachLimit);
-const { HOSTNAME, AUTH_HEADER } = require('./testConstants');
+const { ORIGIN, HOSTNAME, AUTH_HEADER } = require('./testConstants');
 
 /**
  * When testing external links, some set cookies in redirects. node-fetch
@@ -76,3 +76,17 @@ exports.testUrls = (urls, tests) => {
  * @param {Function<Promise>} cb
  */
 exports.eachLimited = (items, cb) => eachLimit(items, 8, cb);
+
+/**
+ * Prepend URL paths with origin if it does not already exist.
+ *
+ * @param {String} path
+ * @returns {String}
+ */
+exports.normalizePathToAbsolute = (path) => {
+	if (path.startsWith('http')) {
+		return path;
+	}
+
+	return `${ORIGIN}${path}`;
+};

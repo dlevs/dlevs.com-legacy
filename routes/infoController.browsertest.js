@@ -1,3 +1,4 @@
+const { delay } = require('bluebird');
 const { fetch } = require('../tests/testLib/testUtils');
 const { ORIGIN } = require('../tests/testLib/testConstants');
 const { version, engines } = require('../package');
@@ -29,6 +30,15 @@ describe('/info.json', () => {
 
 	test('environment is production', () => {
 		expect(info.environment).toBe('production');
+	});
+
+	test('server-side caching is on', async () => {
+		// TODO: using bluebird here - can it replace "async" module?
+		await delay(4000);
+		const response2 = await fetch(`${ORIGIN}/info.json`);
+		const info2 = await response2.json();
+		expect(info.date).toBeDefined();
+		expect(info.date).toBe(info2.date);
 	});
 
 	describe('lastCommit', () => {

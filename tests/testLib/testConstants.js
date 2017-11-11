@@ -20,7 +20,6 @@ const IS_PRODUCTION = !IS_STAGING && !IS_LOCALHOST;
 //------------------------------
 const PROTOCOL = IS_LOCALHOST ? 'http' : 'https';
 const ORIGIN = `${PROTOCOL}://${HOSTNAME}`;
-const absolute = path => `${ORIGIN}${path}`;
 
 
 // Page URLs
@@ -43,7 +42,7 @@ const PAGES = mapValues(
 			'/travel/ireland/dublin',
 		],
 	},
-	paths => paths.map(absolute),
+	paths => paths.map(path => `${ORIGIN}${path}`),
 );
 
 
@@ -57,6 +56,11 @@ const AUTH_HEADER = PASSWORD
 	: undefined;
 
 
+// Misc
+//------------------------------
+const MIN_STATIC_MAX_AGE = 2500000;
+
+
 // Exports
 //------------------------------
 module.exports = {
@@ -66,6 +70,7 @@ module.exports = {
 	AUTH_HEADER,
 	IS_PRODUCTION,
 	PAGES,
+	MIN_STATIC_MAX_AGE,
 };
 
 assert(
