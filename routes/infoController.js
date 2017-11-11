@@ -10,7 +10,8 @@ module.exports = () => {
 	return {
 		index: async (ctx) => {
 			ctx.body = JSON.stringify({
-				version,
+				appVersion: version,
+				nodeVersion: process.version,
 				date: new Date().toString(),
 				serverStartDate,
 				environment: process.env.NODE_ENV,

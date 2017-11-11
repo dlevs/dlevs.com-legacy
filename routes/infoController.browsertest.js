@@ -1,6 +1,6 @@
 const { fetch } = require('../tests/testLib/testUtils');
 const { ORIGIN } = require('../tests/testLib/testConstants');
-const { version } = require('../package');
+const { version, engines } = require('../package');
 
 let response;
 let info;
@@ -19,8 +19,12 @@ describe('/info.json', () => {
 		expect(type).toContain('application/json');
 	});
 
-	test('version is correct', () => {
-		expect(info.version).toBe(version);
+	test('app version is correct', () => {
+		expect(info.appVersion).toBe(version);
+	});
+
+	test('node version is correct', () => {
+		expect(engines.node).toMatch(info.nodeVersion.replace(/^v/, ''));
 	});
 
 	test('environment is production', () => {
