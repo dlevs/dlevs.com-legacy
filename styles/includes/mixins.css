@@ -1,7 +1,4 @@
-@define-mixin horizontal-spacing-small {
-	margin-right: var(--spacing-small);
-	margin-left: var(--spacing-small);
-
+@define-mixin flush-margin-edge-children {
 	&:first-child {
 		margin-left: 0;
 	}
@@ -9,6 +6,11 @@
 	&:last-child {
 		margin-right: 0;
 	}
+}
+
+@define-mixin horizontal-spacing-small {
+	margin-right: var(--spacing-small);
+	margin-left: var(--spacing-small);
 }
 
 @define-mixin list-unstyled {

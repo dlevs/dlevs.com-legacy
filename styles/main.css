@@ -1,8 +1,10 @@
-/* Base */
-@import "normalize.css/normalize.css";
+/* Base (no output) */
 @import "./includes/variables.css";
 @import "./includes/customSelectors.css";
 @import "./includes/mixins.css";
+
+/* Base */
+@import "normalize.css/normalize.css";
 @import "./includes/structure.css";
 @import "./includes/buttons.css";
 @import "./includes/breadcrumb.css";

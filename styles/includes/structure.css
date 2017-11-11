@@ -12,6 +12,15 @@ html {
 	font-size: 18px;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: var(--spacing-medium);
+}
+
+img {
+	max-width: 100%;
 }
 
 button {
@@ -27,14 +36,6 @@ button {
 		color: color(var(--color-primary) lightness(-20%));
 		transition: color var(--speed-fast);
 	}
-}
-
-body {
-	margin: 20px;
-}
-
-img {
-	max-width: 100%;
 }
 
 p {
