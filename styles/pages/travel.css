@@ -8,15 +8,15 @@
 }
 
 .blog-heading {
-	margin-bottom: var(--spacing-medium);
 	display: flex;
-	justify-content: space-between;
 	align-items: baseline;
+	justify-content: space-between;
+	margin-bottom: var(--spacing-medium);
 }
 
 .blog-image {
-	margin-bottom: var(--spacing-huge);
 	display: block;
+	margin-bottom: var(--spacing-huge);
 
 	&.last {
 		margin-bottom: var(--spacing-large);
@@ -72,15 +72,15 @@
 
 	.next-post {
 		order: 2;
-		padding-left: var(--spacing-large);
 		margin-left: auto;
+		padding-left: var(--spacing-large);
 		text-align: right;
 	}
 
 	.previous-post {
 		order: 1;
-		padding-right: var(--spacing-large);
 		margin-right: auto;
+		padding-right: var(--spacing-large);
 	}
 }
 

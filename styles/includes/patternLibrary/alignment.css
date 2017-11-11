@@ -1,13 +1,13 @@
 /* Grid */
 .demo-alignment-grid {
-	border: 1px solid var(--color-text);
 	flex-wrap: wrap;
+	border: 1px solid var(--color-text);
 }
 
 .demo-alignment-grid > * {
+	padding: var(--spacing-small);
 	border: 1px solid var(--color-text);
 	text-align: center;
-	padding: var(--spacing-small);
 }
 
 /* Backgrounds to demonstrate margin sizes */

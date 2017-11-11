@@ -1,22 +1,22 @@
 .text-button {
-	background: none;
 	border: none;
+	background: none;
 }
 
 .badge {
 	display: inline-block;
-	background: var(--color-primary);
-	font-family: var(--font-copy);
-	font-size: 0.8em;
-	color: #fff;
-	padding: 5px var(--spacing-small);
-	border-radius: 2px;
 	margin-right: var(--spacing-small);
 	margin-bottom: var(--spacing-small);
+	padding: 5px var(--spacing-small);
+	border-radius: 2px;
+	background: var(--color-primary);
+	color: #fff;
+	font-family: var(--font-copy);
+	font-size: 0.8em;
 	transition: color var(--speed-slow);
 
 	&:--active {
-		color: #fff;
 		background: color(var(--color-primary) lightness(-5%));
+		color: #fff;
 	}
 }

@@ -24,25 +24,25 @@
 
 .brand-list-item {
 	flex: 1 1 auto;
-	text-align: center;
 	margin: var(--spacing-large);
+	text-align: center;
 }
 
 .brand-image {
 	height: 1.25rem;
-	filter: grayscale(100%);
 	transition: filter var(--speed-slow);
+	filter: grayscale(100%);
 
 	&:hover {
-		filter: grayscale(0);
 		transition: filter var(--speed-fast);
+		filter: grayscale(0);
 	}
 }
 
 .project-image {
 	display: block;
-	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
 	margin-bottom: var(--spacing-medium);
+	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
 }
 
 .project-description {

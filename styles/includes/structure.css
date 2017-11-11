@@ -7,20 +7,20 @@ a {
 }
 
 html {
-	font-size: 18px;
-	line-height: 1.5;
 	color: var(--color-text);
 	font-family: var(--font-copy);
+	font-size: 18px;
+	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 }
 
 button {
+	padding: 0;
+	border: none;
+	background: none;
+	color: var(--color-primary);
 	font-family: var(--font-copy);
 	cursor: pointer;
-	background: none;
-	border: none;
-	padding: 0;
-	color: var(--color-primary);
 	transition: color var(--speed-slow);
 
 	&:hover {
@@ -46,11 +46,11 @@ figure {
 }
 
 :--heading {
+	margin: var(--spacing-medium) 0;
 	font-family: var(--font-heading);
+	font-weight: normal;
 	letter-spacing: 0.06em;
 	line-height: 1.1;
-	font-weight: normal;
-	margin: var(--spacing-medium) 0;
 }
 
 .site-wrapper {
