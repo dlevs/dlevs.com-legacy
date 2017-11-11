@@ -1,5 +1,7 @@
+import keycode from 'keycode';
 import PhotoSwipe from '@dlevs/photoswipe';
 import PhotoSwipeUI from './photoswipeUi';
+import { getLastKeyCode, getLastInputDevice, focusWithoutScrolling } from '../utils';
 import {
 	trackGalleryOpen,
 	trackGalleryNavigation,
@@ -9,6 +11,7 @@ import {
 const getSlideElements = () => Array.prototype.slice.call(document.querySelectorAll('.js-photoswipe'));
 
 const openGallery = (index, disableTransitions) => {
+	const focusedElementBeforeOpening = document.activeElement;
 	const pswpElement = document.querySelector('.pswp');
 	const elems = getSlideElements();
 	// Check first thumbnail format. First image is unlikely to be
@@ -62,6 +65,7 @@ const openGallery = (index, disableTransitions) => {
 
 	gallery.init();
 
+	// Tracking
 	trackGalleryOpen({
 		title: items[index].title,
 		index,
@@ -78,6 +82,16 @@ const openGallery = (index, disableTransitions) => {
 			method: target.dataset.method,
 			title: gallery.currItem.title,
 		});
+	});
+
+	// Refocus last element on gallery close for accessibility
+	gallery.listen('close', () => {
+		if (
+			getLastInputDevice() === 'keyboard' &&
+			getLastKeyCode() === keycode('esc')
+		) {
+			focusWithoutScrolling(focusedElementBeforeOpening);
+		}
 	});
 };
 
