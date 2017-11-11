@@ -19,7 +19,7 @@ module.exports = (options) => {
 
 			try {
 				await ctx.render(
-					`patternLibrary/${camelCase(slug)}`,
+					`patternLibrary/${camelCase(slug)}.pug`,
 					{
 						title,
 						breadcrumb: expandBreadcrumb(breadcrumb),

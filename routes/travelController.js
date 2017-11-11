@@ -8,7 +8,7 @@ module.exports = (options) => {
 
 	return {
 		index: async (ctx) => {
-			await ctx.render('travel/travelPostListing', {
+			await ctx.render('travel/travelPostListing.pug', {
 				title: 'Travel Blog',
 				posts,
 				breadcrumb: expandBreadcrumb(breadcrumbRoot),
@@ -22,7 +22,7 @@ module.exports = (options) => {
 			// eslint-disable-next-line no-shadow
 			const { country, posts, breadcrumb } = postsByCountry[index];
 
-			await ctx.render('travel/travelPostListing', {
+			await ctx.render('travel/travelPostListing.pug', {
 				title: country,
 				posts,
 				previousPost: postsByCountry[index - 1],
@@ -37,7 +37,7 @@ module.exports = (options) => {
 
 			const post = posts[index];
 
-			await ctx.render('travel/travelPost', {
+			await ctx.render('travel/travelPost.pug', {
 				post,
 				previousPost: posts[index - 1],
 				nextPost: posts[index + 1],
