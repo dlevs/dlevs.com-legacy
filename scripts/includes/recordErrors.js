@@ -1,5 +1,3 @@
-// @flow
-
 // This module needs to be imported first in order to catch errors.
 window.ERRORS = [];
 window.addEventListener('error', ({

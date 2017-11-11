@@ -1,12 +1,5 @@
 {
-    "parser": "babel-eslint",
-    "extends": [
-        "airbnb-base",
-        "plugin:flowtype/recommended"
-    ],
-    "plugins": [
-        "flowtype"
-    ],
+    "extends": "airbnb-base",
     "rules": {
         "indent": ["error", "tab"],
         "no-tabs": "off",
@@ -19,14 +12,11 @@
                 "tests/**"
             ],
             "packageDir": "./"
-        }],
-        "flowtype/delimiter-dangle": ["error", "always"],
-        "flowtype/semi": ["error", "always"]
+        }]
     },
     "globals": {
         "document": true,
         "window": true,
-        "HTMLElement": true,
         "describe": true,
         "expect": true,
         "test": true,

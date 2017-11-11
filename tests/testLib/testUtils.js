@@ -1,7 +1,5 @@
-const { promisify } = require('util');
 const tough = require('tough-cookie');
 const rawFetch = require('node-fetch');
-const eachLimit = promisify(require('async').eachLimit);
 const { HOSTNAME, AUTH_HEADER } = require('./testConstants');
 
 /**
@@ -68,11 +66,3 @@ exports.testUrls = (urls, tests) => {
 		});
 	});
 };
-
-/**
- * Like Promise.all, but limited to reduce parallel tasks/ network requests.
- *
- * @param {Array} items
- * @param {Function<Promise>} cb
- */
-exports.eachLimited = (items, cb) => eachLimit(items, 8, cb);

@@ -1,7 +1,7 @@
-// @flow
 const { setProcessEnv, PORT, IS_BEHIND_PROXY } = require('./config');
 
 setProcessEnv();
+
 
 const path = require('path');
 const Koa = require('koa');

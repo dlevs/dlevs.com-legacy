@@ -1,17 +1,7 @@
 const puppeteer = require('puppeteer');
 const { URL } = require('url');
 const { PAGES, ORIGIN, CREDENTIALS } = require('./testLib/testConstants');
-const { fetch, eachLimited } = require('./testLib/testUtils');
-
-let browser;
-beforeAll(async (done) => {
-	browser = await puppeteer.launch();
-	done();
-});
-afterAll(async (done) => {
-	await browser.close();
-	done();
-});
+const { fetch } = require('./testLib/testUtils');
 
 
 describe('Links and static resources', () => {
@@ -20,12 +10,15 @@ describe('Links and static resources', () => {
 			// LinkedIn returns status 999 "Request denied" for non-browser
 			'https://www.linkedin.com/in/daniellevett/',
 		];
-		let assets = [];
+		const browser = await puppeteer.launch();
+		const page = await browser.newPage();
+		await page.authenticate(CREDENTIALS);
 
-		await Promise.all(PAGES.UNIQUE.map(async (url) => {
-			const page = await browser.newPage();
-			await page.authenticate(CREDENTIALS);
-			await page.goto(url);
+		let assets = [];
+		let i = PAGES.UNIQUE.length;
+		while (i--) {
+			await page.goto(PAGES.UNIQUE[i]);
+
 			const newAssets = await page.evaluate(() => {
 				const $ = selector => Array.from(document.querySelectorAll(selector));
 				return []
@@ -34,7 +27,8 @@ describe('Links and static resources', () => {
 					.concat($('[data-href-webp]').map(({ dataset }) => dataset.hrefWebp));
 			});
 			assets = assets.concat(newAssets);
-		}));
+		}
+		await browser.close();
 
 		assets = Array
 			// Remove duplicates
@@ -54,9 +48,11 @@ describe('Links and static resources', () => {
 		expect(assets.length).toBeGreaterThan(0);
 		expect(assets.every(value => typeof value === 'string')).toBe(true);
 
-		eachLimited(assets, async (url) => {
-			const response = await fetch(url);
+
+		let a = assets.length;
+		while (a--) {
+			const response = await fetch(assets[a]);
 			expect(response).toMatchObject({ ok: true });
-		});
+		}
 	}, 60000);
 });
