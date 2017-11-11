@@ -49,12 +49,12 @@ module.exports = {
 	},
 	projects: [
 		{
-			heading: 'JSON Content Editor',
+			heading: 'Content Creation Tool',
 			shortDescription: '<p>A web application for editing content on <a href="http://www.demandware.com/">Demandware sites</a>.</p>',
-			description: "<p>A web application for editing content on <a href=\"http://www.demandware.com/\">Demandware sites</a>, making use of Demandware's REST API to load and save content directly from a site's business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>",
+			description: '<p>A web application for editing content on <a href="http://www.demandware.com/">Demandware sites</a>, making use of Demandware’s REST API to load and save content directly from a site’s business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>',
 			img: {
 				src: '/images/projects/json-tool.png',
-				alt: 'A screenshot of the JSON content editor being used to edit a web article.',
+				alt: 'A screenshot of the content creation tool being used to edit a web article.',
 			},
 			badges: [
 				'ES6',
@@ -71,7 +71,7 @@ module.exports = {
 			description: '<p>A Node.js framework for building marketing emails. The tool <a href="https://www.npmjs.com/package/xlsx" title="The xlsx package on npm, used to to parse spreadsheets">parses text and links directly from spreadsheet specifications</a> and provides an easy way to stitch them together into HTML files, ready to send.</p><p>Translations are automatically compiled along with the English; build an email in one language and all the others are built for you! Automatic validation ensures quality. This brought my average build time for emails down from about 2 hours to just 15 minutes.</p>',
 			img: {
 				src: '/images/projects/email-build.png',
-				alt: "A screenshot of the email builder's web interface.",
+				alt: 'A screenshot of the email builder’s web interface.',
 			},
 			badges: [
 				'Node.js',

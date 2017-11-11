@@ -2,8 +2,8 @@
 	"extends": "clock",
 	"validateIndentation": "\t",
 	"validateAttributeSeparator": {
-	    "separator": " ",
-	    "multiLineSeparator": "\n\t"
-    },
+		"separator": " ",
+		"multiLineSeparator": "\n\t"
+	},
 	"validateAttributeQuoteMarks": "\""
 }

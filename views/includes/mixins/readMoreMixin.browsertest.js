@@ -43,7 +43,7 @@ const getStats = async (url, viewportOptions) => {
 	return stats;
 };
 
-describe('"Read more..." functionality', () => {
+describe('"Read more…" functionality', () => {
 	testUrls(PAGES.WITH_READMORE, {
 		'works as expected on mobile': url => async () => {
 			const { beforeClick, afterClick } = await getStats(url, {
