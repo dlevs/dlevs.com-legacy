@@ -1,8 +1,46 @@
+// @flow
+
 import instantclick from './vendor/instantclick';
+import type { ErrorEvent } from '../../lib/types';
 
-const { GOOGLE_ANALYTICS_ID, BASE_CONFIG, gtag } = window;
+type GaGalleryEvent = {
+	event_category: string,
+	event_label: string,
+	title: string,
+	index: number,
+};
 
-export const trackPageView = () => {
+type GaGalleryEventPartial = {
+	title: string,
+	index: number,
+};
+
+type GaSocialEvent = {
+	event_action: string,
+	content_id: string,
+	content_type: string,
+	method: string,
+	title: string,
+};
+
+type GaSocialEventPartial = {
+	content_type: string,
+	method: string,
+	title: string,
+};
+
+type GaExceptionEvent = {
+	description: string,
+	file: string,
+};
+
+const {
+	GOOGLE_ANALYTICS_ID,
+	BASE_CONFIG,
+	gtag,
+} = window;
+
+export const trackPageView = (): void => {
 	const { pathname, search } = document.location;
 
 	gtag('config', GOOGLE_ANALYTICS_ID, {
@@ -12,40 +50,51 @@ export const trackPageView = () => {
 };
 
 export const trackException = ({
-	message, filename, lineno, colno,
-}) =>
-	gtag('event', 'exception', {
+	message,
+	filename,
+	lineno,
+	colno,
+}: ErrorEvent): void => {
+	const params: GaExceptionEvent = {
 		description: message,
 		file: `${filename} ${lineno}:${colno}`,
-	});
+	};
 
-const trackGalleryEvent = ({ title, index, event_label }) =>
-	gtag('event', 'gallery_view', {
+	gtag('event', 'exception', params);
+};
+
+const trackGalleryEvent = ({ title, index, event_label }): void => {
+	const params: GaGalleryEvent = {
 		event_category: 'engagement',
 		title,
 		index,
 		event_label,
-	});
+	};
+	gtag('event', 'gallery_view', params);
+};
 
-export const trackGalleryOpen = data =>
+export const trackGalleryOpen = (data: GaGalleryEventPartial): void => {
 	trackGalleryEvent({ ...data, event_label: 'open' });
+};
 
-export const trackGalleryNavigation = data =>
+export const trackGalleryNavigation = (data: GaGalleryEventPartial): void => {
 	trackGalleryEvent({ ...data, event_label: 'navigation' });
+};
 
-export const trackShare = ({ content_type, method, title }) => {
+export const trackShare = ({ content_type, method, title }: GaSocialEventPartial): void => {
 	const { pathname, search, hash } = document.location;
-
-	gtag('event', 'share', {
+	const params: GaSocialEvent = {
 		content_id: pathname + search + hash,
 		event_action: 'share_url',
 		content_type,
 		method,
 		title,
-	});
+	};
+
+	gtag('event', 'share', params);
 };
 
-const init = () => {
+const init = (): void => {
 	window.addEventListener('error', trackException);
 	instantclick.on('change', (isInitialLoad) => {
 		if (!isInitialLoad) {

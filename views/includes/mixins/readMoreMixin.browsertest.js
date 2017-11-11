@@ -2,8 +2,18 @@ const puppeteer = require('puppeteer');
 const { PAGES, CREDENTIALS } = require('../../../tests/testLib/testConstants');
 const { testUrls } = require('../../../tests/testLib/testUtils');
 
+let browser;
+beforeAll(async (done) => {
+	browser = await puppeteer.launch();
+	done();
+});
+afterAll(async (done) => {
+	await browser.close();
+	done();
+});
+
+
 const getStats = async (url, viewportOptions) => {
-	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.authenticate(CREDENTIALS);
 	await page.goto(url);
@@ -30,7 +40,6 @@ const getStats = async (url, viewportOptions) => {
 			afterClick,
 		};
 	});
-	await browser.close();
 	return stats;
 };
 

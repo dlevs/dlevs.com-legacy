@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
-const { fetch } = require('../tests/testLib/testUtils');
+const { fetch, eachLimited } = require('../tests/testLib/testUtils');
 const { ORIGIN, CREDENTIALS } = require('../tests/testLib/testConstants');
 
 const imageUrlRegex = /\.(jpg|png)$/;
@@ -48,12 +48,11 @@ describe('/sitemap.xml', () => {
 		});
 		test('all page links work', async () => {
 			const pages = getPageLinks();
-			let i = pages.length;
 
-			while (i--) {
-				const response = await fetch(pages[i].url);
+			eachLimited(pages, async ({ url }) => {
+				const response = await fetch(url);
 				expect(response).toMatchObject({ ok: true });
-			}
+			});
 		}, 20000);
 	});
 
@@ -66,12 +65,11 @@ describe('/sitemap.xml', () => {
 		});
 		test('first 5 images work', async () => {
 			const images = getImageLinks().slice(0, 5);
-			let i = images.length;
 
-			while (i--) {
-				const response = await fetch(images[i].url);
+			eachLimited(images, async ({ url }) => {
+				const response = await fetch(url);
 				expect(response).toMatchObject({ ok: true });
-			}
+			});
 		}, 20000);
 	});
 });

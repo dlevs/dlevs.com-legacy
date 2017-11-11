@@ -1,15 +1,23 @@
 const puppeteer = require('puppeteer');
 const { PAGES, CREDENTIALS } = require('./testLib/testConstants');
 
+let browser;
+beforeAll(async (done) => {
+	browser = await puppeteer.launch();
+	done();
+});
+afterAll(async (done) => {
+	await browser.close();
+	done();
+});
+
+
 describe('JavaScript errors', () => {
 	test('are detected when they occur', async () => {
-		const browser = await puppeteer.launch();
-		const page = await browser.newPage();
-		await page.authenticate(CREDENTIALS);
-
-		let i = PAGES.UNIQUE.length;
-		while (i--) {
-			await page.goto(PAGES.UNIQUE[i]);
+		await Promise.all(PAGES.UNIQUE.map(async (url) => {
+			const page = await browser.newPage();
+			await page.authenticate(CREDENTIALS);
+			await page.goto(url);
 			await page.evaluate(() => {
 				const script = document.createElement('script');
 				script.innerHTML = 'SOMETHING_NON_EXISTENT';
@@ -17,19 +25,14 @@ describe('JavaScript errors', () => {
 			});
 			const errors = await page.evaluate(() => window.ERRORS);
 			expect(errors.length).toBeGreaterThan(0);
-		}
-
-		await browser.close();
+		}));
 	}, 40000);
 
 	test('are not detected unexpectedly', async () => {
-		const browser = await puppeteer.launch();
-		const page = await browser.newPage();
-		await page.authenticate(CREDENTIALS);
-
-		let i = PAGES.UNIQUE.length;
-		while (i--) {
-			await page.goto(PAGES.UNIQUE[i]);
+		await Promise.all(PAGES.UNIQUE.map(async (url) => {
+			const page = await browser.newPage();
+			await page.authenticate(CREDENTIALS);
+			await page.goto(url);
 			const errors = await page.evaluate(() => {
 				// Setup
 				const photoswipe = document.querySelector('.js-photoswipe');
@@ -43,8 +46,6 @@ describe('JavaScript errors', () => {
 				return window.ERRORS;
 			});
 			expect(errors.length).toBe(0);
-		}
-
-		await browser.close();
+		}));
 	}, 40000);
 });

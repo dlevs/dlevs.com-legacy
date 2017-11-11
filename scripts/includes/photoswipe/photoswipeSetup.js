@@ -1,3 +1,5 @@
+// @flow
+
 import PhotoSwipe from '@dlevs/photoswipe';
 import PhotoSwipeUI from './photoswipeUi';
 import {
@@ -6,9 +8,18 @@ import {
 	trackShare,
 } from '../googleAnalytics';
 
-const getSlideElements = () => Array.prototype.slice.call(document.querySelectorAll('.js-photoswipe'));
+type PhotoSwipeOptions = {
+	index: number,
+	getThumbBoundsFn: Function,
+	getDoubleTapZoom: Function,
+	hideAnimationDuration?: number,
+	showAnimationDuration?: number,
+};
 
-const openGallery = (index, disableTransitions) => {
+const getSlideElements = (): Array<HTMLAnchorElement> =>
+	Array.prototype.slice.call(document.querySelectorAll('.js-photoswipe'));
+
+const openGallery = (index: number, disableTransitions?: boolean): void => {
 	const pswpElement = document.querySelector('.pswp');
 	const elems = getSlideElements();
 	// Check first thumbnail format. First image is unlikely to be
@@ -30,19 +41,18 @@ const openGallery = (index, disableTransitions) => {
 			title: elem.dataset.caption || (caption && caption.textContent),
 		};
 	});
-	const options = {
+	const options: PhotoSwipeOptions = {
 		index,
-		getThumbBoundsFn: (currentIndex) => {
-			const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+		getThumbBoundsFn: (currentIndex: number) => {
 			const rect = items[currentIndex].thumbnail.getBoundingClientRect();
 
 			return {
 				x: rect.left,
-				y: rect.top + pageYScroll,
+				y: rect.top + window.pageYOffset,
 				w: rect.width,
 			};
 		},
-		getDoubleTapZoom: (isMouseClick, item) => {
+		getDoubleTapZoom: (isMouseClick: boolean, item) => {
 			const fullSizeScale = 1 / (window.devicePixelRatio || 1);
 
 			// If screen has high pixel density, we don't want to shrink the
@@ -94,20 +104,21 @@ const openGallery = (index, disableTransitions) => {
  *
  * @param {Object} event
  */
-const onImageLinkClick = (event) => {
+const onImageLinkClick = (event: Event): void => {
+	if (!(event.target instanceof HTMLElement)) return;
+
 	const imgLink = event.target.closest('.js-photoswipe');
 
-	if (!imgLink) return;
-
-	event.preventDefault();
+	if (!(imgLink instanceof HTMLAnchorElement)) return;
 
 	const elems = getSlideElements();
 	const index = elems.indexOf(imgLink);
 
+	event.preventDefault();
 	openGallery(index);
 };
 
-const openGalleryFromHash = () => {
+const openGalleryFromHash = (): void => {
 	const matches = /pid=(\d+)/.exec(document.location.hash);
 
 	if (!matches) return;

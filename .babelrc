@@ -1,6 +1,7 @@
 {
 	"sourceMaps": true,
 	"presets": [
+		"flow",
 		["env", {
 			"loose": true,
 			"modules": false
