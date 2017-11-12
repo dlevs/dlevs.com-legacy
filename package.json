@@ -32,7 +32,6 @@
     "classnames": "^2.2.5",
     "feather-icons": "^3.2.2",
     "fs-extra": "^4.0.1",
-    "keycode": "^2.1.9",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-helmet": "^3.2.0",

@@ -108,7 +108,7 @@ module.exports = function (pswp, framework) {
 				return pswp.currItem.title || '';
 			},
 
-			indexIndicatorSep: ' / ',
+			indexIndicatorSep: ' <span class="visually-hidden">of</span><span role="presentation" aria-hidden="true">/</span> ',
 			fitControlsWidth: 1200
 
 		},
@@ -725,7 +725,8 @@ module.exports = function (pswp, framework) {
 
 	ui.updateIndexIndicator = function () {
 		if (_options.counterEl) {
-			_indexIndicator.innerHTML = (pswp.getCurrentIndex() + 1) +
+			_indexIndicator.innerHTML = '<span class="visually-hidden">Slide </span>' +
+				(pswp.getCurrentIndex() + 1) +
 				_options.indexIndicatorSep +
 				_options.getNumItemsFn();
 		}

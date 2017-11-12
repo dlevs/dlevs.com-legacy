@@ -1,7 +1,6 @@
-import keycode from 'keycode';
 import PhotoSwipe from '@dlevs/photoswipe';
 import PhotoSwipeUI from './photoswipeUi';
-import { getLastKeyCode, getLastInputDevice, focusWithoutScrolling } from '../utils';
+import { getLastInputDevice, focusWithoutScrolling } from '../utils';
 import {
 	trackGalleryOpen,
 	trackGalleryNavigation,
@@ -86,10 +85,7 @@ const openGallery = (index, disableTransitions) => {
 
 	// Refocus last element on gallery close for accessibility
 	gallery.listen('close', () => {
-		if (
-			getLastInputDevice() === 'keyboard' &&
-			getLastKeyCode() === keycode('esc')
-		) {
+		if (getLastInputDevice() === 'keyboard') {
 			focusWithoutScrolling(focusedElementBeforeOpening);
 		}
 	});
@@ -131,9 +127,21 @@ const openGalleryFromHash = () => {
 	openGallery(index, true);
 };
 
+const applyTitlesToLinks = () => {
+	getSlideElements().forEach((link) => {
+		const textToAppend = 'View in gallery (opens dialog)';
+
+		// eslint-disable-next-line no-param-reassign
+		link.title = link.title
+			? `${link.title} - ${textToAppend}`
+			: textToAppend;
+	});
+};
+
 const init = () => {
 	document.addEventListener('click', onImageLinkClick);
 	openGalleryFromHash();
+	applyTitlesToLinks();
 };
 
 export default init;
