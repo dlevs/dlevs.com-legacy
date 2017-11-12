@@ -10,6 +10,7 @@ const views = require('koa-views');
 const slash = require('koa-slash');
 const bodyParser = require('koa-bodyparser');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
+const cacheControlHeadersMiddleware = require('./lib/middleware/cacheControlHeadersMiddleware');
 const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
 const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddleware');
 const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
@@ -24,6 +25,7 @@ app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(errorMiddleware)
+	.use(cacheControlHeadersMiddleware)
 	.use(bodyParser())
 	.use(slash())
 	.use(serverPushMiddleware)
