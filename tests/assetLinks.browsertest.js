@@ -28,10 +28,22 @@ describe('Links and static resources', () => {
 			await page.goto(url);
 			const newAssets = await page.evaluate(() => {
 				const $ = selector => Array.from(document.querySelectorAll(selector));
-				return []
+				const links = []
 					.concat($('[href]').map(({ href }) => href))
 					.concat($('[src]').map(({ src }) => src))
 					.concat($('[data-href-webp]').map(({ dataset }) => dataset.hrefWebp));
+
+				$('script[type="application/ld+json"]').forEach(({ innerHTML }) => {
+					const regex = /"(https?:\/\/.*?)"/g;
+					let match;
+
+					// eslint-disable-next-line no-cond-assign
+					while (match = regex.exec(innerHTML)) {
+						links.push(match[0]);
+					}
+				});
+
+				return links;
 			});
 			assets = assets.concat(newAssets);
 		}));
