@@ -13,20 +13,18 @@ afterAll(async (done) => {
 });
 
 const pageSetup = () => {
-	const getSlide = () => {
-		const elem = document.querySelector('.pswp__counter');
-		const [currentSlide, totalSlides] = elem.textContent.split(' / ');
+	window.getState = () => {
+		const {
+			currentSlide,
+			totalSlides,
+		} = document.querySelector('.pswp__counter').dataset;
+
 		return {
+			isGalleryOpen: !!document.querySelector('.pswp--open'),
 			currentSlide: Number(currentSlide),
 			totalSlides: Number(totalSlides),
 		};
 	};
-	window.getState = () => Object.assign(
-		{
-			isGalleryOpen: !!document.querySelector('.pswp--open'),
-		},
-		getSlide(),
-	);
 	window.getThumbnails = () => document.querySelectorAll('.js-photoswipe');
 	window.wait = delay => new Promise((resolve) => {
 		setTimeout(resolve, delay);

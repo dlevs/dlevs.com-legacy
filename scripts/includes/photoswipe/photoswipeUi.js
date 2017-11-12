@@ -725,10 +725,19 @@ module.exports = function (pswp, framework) {
 
 	ui.updateIndexIndicator = function () {
 		if (_options.counterEl) {
-			_indexIndicator.innerHTML = '<span class="visually-hidden">Slide </span>' +
-				(pswp.getCurrentIndex() + 1) +
+			const currentSlide = pswp.getCurrentIndex() + 1;
+			const totalSlides = _options.getNumItemsFn();
+
+			_indexIndicator.innerHTML = (
+				'<span class="visually-hidden">Slide </span>' +
+				currentSlide +
 				_options.indexIndicatorSep +
-				_options.getNumItemsFn();
+				totalSlides
+			);
+			
+			// Expose these for testing purposes
+			_indexIndicator.dataset.currentSlide = currentSlide;
+			_indexIndicator.dataset.totalSlides = totalSlides;			
 		}
 	};
 
