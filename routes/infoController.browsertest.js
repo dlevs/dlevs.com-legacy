@@ -39,7 +39,7 @@ describe('/info.json', () => {
 		const info2 = await response2.json();
 		expect(info.date).toBeDefined();
 		expect(info.date).toBe(info2.date);
-	});
+	}, 20000);
 
 	describe('lastCommit', () => {
 		test('branch is correct', () => {
