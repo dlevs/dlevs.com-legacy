@@ -25,6 +25,13 @@ const config = {
 			},
 		],
 	},
+	performance: {
+		maxEntrypointSize: isDebug
+			// 1MB for development, including sourcemaps
+			? 1000000
+			// 80KB for production, after compression
+			: 80000,
+	},
 	devtool: isDebug ? 'module-inline-source-map' : false,
 	plugins: [
 		new webpack.DefinePlugin({
