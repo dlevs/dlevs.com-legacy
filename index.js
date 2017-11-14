@@ -10,14 +10,19 @@ const views = require('koa-views');
 const slash = require('koa-slash');
 const bodyParser = require('koa-bodyparser');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
-const cacheControlHeadersMiddleware = require('./lib/middleware/cacheControlHeadersMiddleware');
 const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
 const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddleware');
 const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
 const router = require('./routes');
 const viewGlobals = require('./lib/viewGlobals');
+const { STATIC_ASSET_MAX_AGE } = require('./lib/constants');
+
 
 const app = new Koa();
+const staticAssetsOptions = process.env.NODE_ENV === 'production'
+	? { maxage: STATIC_ASSET_MAX_AGE }
+	: {};
+
 
 // App sits behind an nginx server. Set proxy option to true
 // to get koa to listen to X-Forwarded-Proto headers.
@@ -25,7 +30,6 @@ app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(errorMiddleware)
-	.use(cacheControlHeadersMiddleware)
 	.use(bodyParser())
 	.use(slash())
 	.use(serverPushMiddleware)
@@ -37,6 +41,6 @@ app
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.use(serve(path.join(__dirname, './public')))
-	.use(serve(path.join(__dirname, './publicDist')))
+	.use(serve(path.join(__dirname, './public'), staticAssetsOptions))
+	.use(serve(path.join(__dirname, './publicDist'), staticAssetsOptions))
 	.listen(PORT);
