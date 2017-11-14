@@ -18,10 +18,22 @@ const viewGlobals = require('./lib/viewGlobals');
 const { STATIC_ASSET_MAX_AGE } = require('./lib/constants');
 
 
+/**
+ * Get options for koa-static.
+ *
+ * A new object is needed for each usage until
+ * https://github.com/koajs/static/pull/117 is merged.
+ *
+ * returns {Object}
+ */
+const getStaticAssetOptions = () => {
+	if (process.env.NODE_ENV === 'production') {
+		return { maxage: STATIC_ASSET_MAX_AGE };
+	}
+	return {};
+};
+
 const app = new Koa();
-const staticAssetsOptions = process.env.NODE_ENV === 'production'
-	? { maxage: STATIC_ASSET_MAX_AGE }
-	: {};
 
 
 // App sits behind an nginx server. Set proxy option to true
@@ -41,6 +53,6 @@ app
 	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.use(serve(path.join(__dirname, './public'), staticAssetsOptions))
-	.use(serve(path.join(__dirname, './publicDist'), staticAssetsOptions))
+	.use(serve(path.join(__dirname, './publicDist'), getStaticAssetOptions()))
+	.use(serve(path.join(__dirname, './public'), getStaticAssetOptions()))
 	.listen(PORT);
