@@ -4,22 +4,15 @@
 	text-align: center;
 }
 
-.home-header__heading {
-	font-size: 3rem;
-}
-
-.home-header__subheading {
-	display: block;
-	margin: var(--spacing-small) 0;
-	font-size: 1rem;
-	line-height: 1.2;
-}
-
 .home-header__links {
 	@mixin list-horizontal;
 
 	margin-top: var(--spacing-medium);
 	font-size: 0.9em;
+}
+
+.home-heading {
+	font-size: 3rem;
 }
 
 /* project */
@@ -88,7 +81,7 @@
 		margin-left: 80px;
 	}
 
-	.home-header__heading {
+	.home-heading {
 		font-size: 3em;
 	}
 }
@@ -98,7 +91,7 @@
 		margin: var(--spacing-section) 0;
 	}
 
-	.home-header__subheading {
+	.home-subheading {
 		margin: 0;
 	}
 

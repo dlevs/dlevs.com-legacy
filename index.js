@@ -24,6 +24,8 @@ const { STATIC_ASSET_MAX_AGE } = require('./lib/constants');
  * A new object is needed for each usage until
  * https://github.com/koajs/static/pull/117 is merged.
  *
+ * TODO: PR merged, update koa-static dependency once published
+ *
  * returns {Object}
  */
 const getStaticAssetOptions = () => {
@@ -47,10 +49,7 @@ app
 	.use(serverPushMiddleware)
 	.use(securityHeadersMiddleware)
 	.use(setCtxStateMiddleware)
-	.use(views(path.join(__dirname, 'views'), {
-		extension: 'pug',
-		options: viewGlobals,
-	}))
+	.use(views(path.join(__dirname, 'views'), { options: viewGlobals }))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './publicDist'), getStaticAssetOptions()))

@@ -7,23 +7,23 @@ block meta
 block content
 	main
 		header.home-header
-			h1.home-header__heading.heading--main Daniel Levett
-				span.home-header__subheading Fullstack Web Developer
+			h1.home-heading.heading--main Daniel Levett
+				span.subheading Fullstack Web Developer
 			ul.home-header__links
 				li
-					a.home-header-link(href="https://github.com/dlevs") GitHub
+					a(href="https://github.com/dlevs") GitHub
 				li
-					a.home-header-link(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
+					a(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
 				li
-					a.home-header-link(href="/travel") Travel Blog
+					a(href="/travel") Travel Blog
 
-		section.site-section
+		section.baseline-section
 			h2.heading--underlined Projects
 			p.baseline-huge
 				= `You can find the projects I’m working on, including `
-				a.home-header-link(href="https://github.com/dlevs/dlevs.com") the source code for this site,
+				a(href="https://github.com/dlevs/dlevs.com") the source code for this site,
 				= ' on '
-				a.home-header-link(href="https://github.com/dlevs") my GitHub page
+				a(href="https://github.com/dlevs") my GitHub page
 				= `. Below is a selection of projects that you won’t find on GitHub that highlight my work for eCommerce websites.`
 
 			ul.project-list
@@ -47,7 +47,7 @@ block content
 									li
 										a.badge(href=technologies[badge].url title=`Built using ${badge}`)= badge
 
-		section.site-section
+		section.baseline-section
 			h2.heading--underlined Experience
 			ul.brand-list
 				each brand in brands

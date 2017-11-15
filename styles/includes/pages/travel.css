@@ -3,7 +3,7 @@
 	text-align: center;
 }
 
-.blog-header__heading {
+.blog-heading {
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;

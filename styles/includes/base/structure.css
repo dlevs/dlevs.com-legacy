@@ -51,24 +51,7 @@ a,
 	@mixin link-color var(--color-text);
 }
 
-/* TODO: move? */
 .site-wrapper {
 	max-width: var(--width-site-max);
 	margin: 0 auto;
-}
-
-.site-section {
-	margin-bottom: var(--spacing-section);
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-@media screen and (min-width: 500px) {
-	.site-section {
-		&:last-child {
-			margin-bottom: var(--spacing-section);
-		}
-	}
 }

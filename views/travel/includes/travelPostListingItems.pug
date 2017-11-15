@@ -2,8 +2,8 @@ include ../../includes/mixins.pug
 
 each post, i in posts
 	article
-		a.link.link--uncolored.block(href=post.path)
-			h2.blog-header__heading
+		a.link--uncolored.block(href=post.path)
+			h2.blog-heading
 				span= post.town
 				span.heading__details= `${post.country}, ${post.humanDate}`
 			+picture(HELPERS.immutableExtend(post.mainImage, {
