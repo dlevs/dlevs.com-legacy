@@ -25,4 +25,4 @@
 @import "./includes/pages/travel.css";
 
 /* Utility */
-@import "./includes/utility.css";
+@import "includes/utility/utility.css";

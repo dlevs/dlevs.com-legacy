@@ -1,0 +1,26 @@
+.text-center {
+	text-align: center;
+}
+
+.align-center {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex--column {
+	flex-direction: column;
+}
+
+.flex--row {
+	flex-direction: column;
+}
+
+.flex--spacing-small {
+	& > * {
+		@mixin horizontal-spacing-small;
+	}
+}

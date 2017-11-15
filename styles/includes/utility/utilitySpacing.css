@@ -1,0 +1,19 @@
+.baseline-small {
+	margin-bottom: var(--spacing-small);
+}
+
+.baseline-medium {
+	margin-bottom: var(--spacing-medium);
+}
+
+.baseline-large {
+	margin-bottom: var(--spacing-large);
+}
+
+.baseline-huge {
+	margin-bottom: var(--spacing-huge);
+}
+
+.baseline-section {
+	margin-bottom: var(--spacing-section);
+}
