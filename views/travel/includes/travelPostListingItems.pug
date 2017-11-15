@@ -2,10 +2,10 @@ include ../../includes/mixins.pug
 
 each post, i in posts
 	article
-		a.blog-link(href=post.path)
-			h2.blog-heading
+		a.link.link--uncolored.block(href=post.path)
+			h2.blog-header__heading
 				span= post.town
-				span.section-heading-details= `${post.country}, ${post.humanDate}`
+				span.heading__details= `${post.country}, ${post.humanDate}`
 			+picture(HELPERS.immutableExtend(post.mainImage, {
 				className: 'blog-image',
 				lazyLoad: i > 1,

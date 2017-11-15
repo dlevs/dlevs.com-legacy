@@ -2,10 +2,6 @@
 	box-sizing: border-box;
 }
 
-a {
-	@mixin link-color var(--color-primary);
-}
-
 html {
 	color: var(--color-text);
 	font-family: var(--font-copy);
@@ -46,15 +42,33 @@ figure {
 	margin: 0;
 }
 
-:--heading {
-	margin: var(--spacing-medium) 0;
-	font-family: var(--font-heading);
-	font-weight: normal;
-	letter-spacing: 0.06em;
-	line-height: 1.1;
+a,
+.link {
+	@mixin link-color var(--color-primary);
 }
 
+.link--uncolored {
+	@mixin link-color var(--color-text);
+}
+
+/* TODO: move? */
 .site-wrapper {
 	max-width: var(--width-site-max);
 	margin: 0 auto;
+}
+
+.site-section {
+	margin-bottom: var(--spacing-section);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.site-section {
+		&:last-child {
+			margin-bottom: var(--spacing-section);
+		}
+	}
 }

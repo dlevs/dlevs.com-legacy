@@ -7,8 +7,8 @@ block content
 	main
 		article
 			header.blog-header
-				h1.site-heading= post.town
-					span.site-subheading= `${post.country} | ${post.humanDate}`
+				h1.heading--main= post.town
+					span.home-header__subheading= `${post.country} | ${post.humanDate}`
 
 			each image, i in post.images
 				+imageLink(image)

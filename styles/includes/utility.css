@@ -114,3 +114,13 @@
 .clearfix::after {
 	clear: both;
 }
+
+/* TODO: separate this file out */
+
+.block {
+	display: block;
+}
+
+.no-js .no-js-hide {
+	display: none;
+}

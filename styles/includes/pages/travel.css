@@ -1,0 +1,30 @@
+.blog-header {
+	margin: var(--spacing-huge) 0;
+	text-align: center;
+}
+
+.blog-header__heading {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	margin-bottom: var(--spacing-medium);
+}
+
+.blog-image {
+	display: block;
+	margin-bottom: var(--spacing-huge);
+
+	&.last {
+		margin-bottom: var(--spacing-large);
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.blog-image {
+		margin-bottom: var(--spacing-section);
+
+		&.last {
+			margin-bottom: var(--spacing-section);
+		}
+	}
+}

@@ -6,7 +6,7 @@ mixin picture({src, alt, className, lazyLoad=true})
 
 	div(
 		style=`padding-bottom: ${images.default.paddingBottom};`
-		class=HELPERS.classnames(className, 'image-wrapper', {'lazyload-wrapper': lazyLoad})
+		class=HELPERS.classnames(className, 'picture', {'picture--lazyload': lazyLoad})
 	)
 		if lazyLoad
 			+pictureLazyload(args)
@@ -21,7 +21,7 @@ mixin pictureNonLazyload(args)
 			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
 			srcset=srcsetWebp
 		)
-		img.picture-img(
+		img(
 			alt=alt
 			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
 			srcset=srcset
@@ -30,14 +30,14 @@ mixin pictureNonLazyload(args)
 
 mixin pictureLazyload(args)
 	- const {src, srcset, srcsetWebp, alt} = args;
-	picture.lazyload-picture
+	picture.no-js-hide
 		source(
 			type="image/webp"
 			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
 			srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
 			data-srcset=srcsetWebp
 		)
-		img.picture-img.lazyload(
+		img.lazyload(
 			alt=alt
 			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
 			src=CONSTANTS.IMG_SRC_PLACEHOLDER

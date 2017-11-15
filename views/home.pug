@@ -6,54 +6,54 @@ block meta
 
 block content
 	main
-		header.site-header
-			h1.site-heading Daniel Levett
-				span.site-subheading Fullstack Web Developer
-			ul.site-heading-links
+		header.home-header
+			h1.home-header__heading.heading--main Daniel Levett
+				span.home-header__subheading Fullstack Web Developer
+			ul.home-header__links
 				li
-					a.site-header-link(href="https://github.com/dlevs") GitHub
+					a.home-header-link(href="https://github.com/dlevs") GitHub
 				li
-					a.site-header-link(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
+					a.home-header-link(href="https://www.linkedin.com/in/daniellevett/") LinkedIn
 				li
-					a.site-header-link(href="/travel") Travel Blog
+					a.home-header-link(href="/travel") Travel Blog
 
 		section.site-section
-			h2.section-heading Projects
-			p.section-intro
+			h2.heading--underlined Projects
+			p.baseline-huge
 				= `You can find the projects I’m working on, including `
-				a.site-header-link(href="https://github.com/dlevs/dlevs.com") the source code for this site,
+				a.home-header-link(href="https://github.com/dlevs/dlevs.com") the source code for this site,
 				= ' on '
-				a.site-header-link(href="https://github.com/dlevs") my GitHub page
+				a.home-header-link(href="https://github.com/dlevs") my GitHub page
 				= `. Below is a selection of projects that you won’t find on GitHub that highlight my work for eCommerce websites.`
 
 			ul.project-list
 				each project, i in projects
-					li.project-list-item
+					li.project
 						h3= project.heading
 
-						figure.project-image-wrapper
+						figure.project__image-wrapper
 							+imageLink(project.img, {'data-caption': project.heading})
 								+picture(HELPERS.immutableExtend(project.img, {
-									className: 'project-image',
+									className: 'project__image',
 									lazyLoad: i > 1
 								}))
 
-							figcaption.project-description
+							figcaption.project__description
 								+readMore(project.shortDescription, project.description)
 
 						if project.badges
-							ul.project-details-badges
+							ul.project__badges
 								each badge in project.badges
 									li
 										a.badge(href=technologies[badge].url title=`Built using ${badge}`)= badge
 
 		section.site-section
-			h2.section-heading Experience
+			h2.heading--underlined Experience
 			ul.brand-list
 				each brand in brands
-					li.brand-list-item
+					li.brand
 						a(href=brand.url title=brand.title rel="noreferrer")
-							img.brand-image(src=brand.svg alt=brand.name)
+							img.brand__image(src=brand.svg alt=brand.name)
 
 		each json in jsonLd
 			script(type="application/ld+json" data-no-instant)!= JSON.stringify(json)

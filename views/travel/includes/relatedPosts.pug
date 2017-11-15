@@ -1,18 +1,18 @@
 mixin relatedPost(post, type)
 	if post
-		article(class=`related-post ${type}-post`)
-			a(href=post.path class=`related-post-link js-${type}-post-link`)
+		article(class=`related-post related-post--${type}`)
+			a(href=post.path class=`related-post__link js-${type}-post-link`)
 				+picture(HELPERS.immutableExtend(post.mainImage, {
-					className: 'related-post-image',
+					className: 'related-post__image',
 					alt: ''
 				}))
-				h3.related-post-heading
-					span.related-post-heading-label= type === 'next' ? 'Next' : 'Previous'
-					span.related-post-heading-title= post.town || post.country
+				h3
+					span.related-post__label= type === 'next' ? 'Next' : 'Previous'
+					span= post.town || post.country
 
 if previousPost || nextPost
-	aside.related-posts-wrapper
-		h2.section-heading Other places
-		.related-posts-wrapper-inner
+	aside.related-posts
+		h2.heading--underlined Other places
+		.related-post__content
 			+relatedPost(previousPost, 'previous')
 			+relatedPost(nextPost, 'next')

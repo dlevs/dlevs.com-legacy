@@ -1,152 +1,28 @@
 /* Base (no output) */
-@import "./includes/variables.css";
-@import "./includes/customSelectors.css";
-@import "./includes/mixins.css";
+@import "./includes/base/variables.css";
+@import "./includes/base/customSelectors.css";
+@import "./includes/base/mixins.css";
 
 /* Base */
 @import "normalize.css/normalize.css";
-@import "./includes/structure.css";
-@import "./includes/buttons.css";
-@import "./includes/breadcrumb.css";
-@import "./includes/instantclick.css";
-@import "./includes/readMoreMixin.css";
-
-/* Pages */
-@import "./pages/home.css";
-@import "./pages/travel.css";
+@import "./includes/base/structure.css";
+@import "./includes/base/buttons.css";
+@import "./includes/base/headings.css";
 
 /* Plugins */
 @import "@dlevs/photoswipe/dist/photoswipe.css";
-@import "./includes/photoswipeSkin.css";
+@import "./includes/plugins/photoswipeSkin.css";
+@import "./includes/plugins/instantclick.css";
+
+/* Features */
+@import "./includes/features/breadcrumb.css";
+@import "./includes/features/readMoreMixin.css";
+@import "./includes/features/pictureMixin.css";
+@import "./includes/features/relatedPosts.css";
+
+/* Pages */
+@import "./includes/pages/home.css";
+@import "./includes/pages/travel.css";
+
+/* Utility */
 @import "./includes/utility.css";
-
-/* Misc */
-
-/* TODO: Organise */
-.site-header {
-	margin: var(--spacing-huge) 0;
-	text-align: center;
-}
-
-.site-heading {
-	margin: 0;
-	font-size: 3rem;
-	text-transform: uppercase;
-}
-
-.site-heading-links {
-	@mixin list-horizontal;
-
-	margin-top: var(--spacing-medium);
-	font-size: 0.9em;
-}
-
-.site-subheading {
-	display: block;
-	margin: var(--spacing-small) 0;
-	font-size: 1rem;
-	line-height: 1.2;
-}
-
-.section-subheading {
-	text-align: center;
-}
-
-.site-section {
-	margin-bottom: var(--spacing-section);
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
-.section-intro {
-	margin-bottom: var(--spacing-huge);
-}
-
-.section-heading {
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	margin-bottom: var(--spacing-small);
-	padding-bottom: var(--spacing-small);
-	border-bottom: var(--hairline-border);
-}
-
-.section-heading-details {
-	flex: 1;
-	margin-left: 20px;
-	font-size: 0.6em;
-	text-align: right;
-}
-
-.image-wrapper {
-	height: 0;
-	background: #f5f5f5;
-
-	img {
-		display: block;
-	}
-}
-
-.js .lazyload-wrapper {
-	img {
-		opacity: 0;
-		transition: opacity var(--speed-slow);
-
-		&.lazyloaded {
-			opacity: 1;
-		}
-	}
-}
-
-.no-js .lazyload-picture {
-	display: none;
-}
-
-.js .js-photoswipe {
-	cursor: zoom-in;
-}
-
-@media screen and (min-width: 375px) {
-	.site-header {
-		margin-right: 20px;
-		margin-left: 20px;
-	}
-}
-
-@media screen and (min-width: 412px) {
-	.site-header {
-		margin-right: 80px;
-		margin-left: 80px;
-	}
-
-	.site-heading {
-		font-size: 3em;
-	}
-}
-
-@media screen and (min-width: 500px) {
-	.site-header {
-		margin: var(--spacing-section) 0;
-	}
-
-	.site-subheading {
-		margin: 0;
-	}
-
-	.section-heading {
-		margin-bottom: var(--spacing-medium);
-		padding-bottom: var(--spacing-medium);
-	}
-
-	.site-heading-links {
-		margin-top: var(--spacing-small);
-	}
-
-	.site-section {
-		&:last-child {
-			margin-bottom: var(--spacing-section);
-		}
-	}
-}

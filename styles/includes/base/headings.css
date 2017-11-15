@@ -1,0 +1,36 @@
+:--heading,
+.heading {
+	margin: var(--spacing-medium) 0;
+	font-family: var(--font-heading);
+	font-weight: normal;
+	letter-spacing: 0.06em;
+	line-height: 1.1;
+}
+
+.heading--underlined {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	margin-bottom: var(--spacing-small);
+	padding-bottom: var(--spacing-small);
+	border-bottom: var(--hairline-border);
+}
+
+.heading--main {
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.heading__details {
+	flex: 1;
+	margin-left: 20px;
+	font-size: 0.6em;
+	text-align: right;
+}
+
+@media screen and (min-width: 500px) {
+	.heading--underlined {
+		margin-bottom: var(--spacing-medium);
+		padding-bottom: var(--spacing-medium);
+	}
+}
