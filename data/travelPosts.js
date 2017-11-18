@@ -6,6 +6,7 @@ const kebabCase = require('lodash/kebabCase');
 const sortBy = require('lodash/fp/sortBy');
 const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
+const { getImageMeta } = require('../lib/imageUtils');
 const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 const rawPostsData = require('../data/travelPostsRaw');
 const { ORIGIN } = require('../config');
@@ -30,6 +31,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			geoLocation: `${post.town}, ${post.country}`,
 		}));
 		const { path } = last(breadcrumb);
+		const imageMeta = getImageMeta(images[0].src);
 
 		return {
 			countrySlug,
@@ -42,7 +44,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 				'@context': 'http://schema.org',
 				'@type': 'BlogPosting',
 				headline: `${post.town} - ${post.country}`,
-				image: `${ORIGIN}${images[0].src}`,
+				image: imageMeta && `${ORIGIN}${imageMeta.large.src}`,
 				genre: 'travel',
 				url: `${ORIGIN}${path}`,
 				datePublished: post.date,

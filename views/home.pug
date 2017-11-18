@@ -53,7 +53,7 @@ block content
 				each brand in brands
 					li.brand
 						a(href=brand.url title=brand.title rel="noreferrer")
-							img.brand__image(src=brand.svg alt=brand.name)
+							img.brand__image(src=HELPERS.getRevvedPath(brand.svg) alt=brand.name)
 
 		each json in jsonLd
 			script(type="application/ld+json" data-no-instant)!= JSON.stringify(json)

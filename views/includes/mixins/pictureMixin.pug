@@ -1,5 +1,5 @@
 mixin picture({src, alt, className, lazyLoad=true})
-	- const images = IMAGE_META[src];
+	- const images = HELPERS.getImageMeta(src);
 	- const srcset = HELPERS.createImgSrcset(images.default, images.large);
 	- const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
 	- const args = {src: images.default.src, srcset, srcsetWebp, alt}

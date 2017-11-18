@@ -21,7 +21,6 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 			format: 'jpeg',
 			size: 2000,
 			quality: 80,
-			isDefault: true,
 		},
 		{
 			type: 'default',
@@ -50,7 +49,7 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 		imageData[createWebPath(filepath)] === undefined;
 
 	const processImage = async ({
-		type, filepath, format, size, quality, isDefault,
+		type, filepath, format, size, quality,
 	}) => {
 		const sharpFile = sharp(filepath);
 		const outputPathParts = path.parse(filepath.replace('/images/', '/publicDist/images/'));
@@ -71,9 +70,7 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 
 		const outputPath = path.format({
 			...outputPathParts,
-			name: isDefault
-				? outputPathParts.name
-				: `${outputPathParts.name}_${width}x${height}`,
+			name: `${outputPathParts.name}_${width}x${height}`,
 			ext: `.${format.replace(/^jpeg$/, 'jpg')}`,
 		});
 
