@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { PAGES, CREDENTIALS, ORIGIN } = require('./testLib/testConstants');
-const { scrollPageToBottom } = require('./testLib/testUtils');
+const { scrollPage } = require('./testLib/testUtils');
 
 
 let browser;
@@ -34,7 +34,7 @@ const createTest = ({
 
 	// Scroll to bottom to allow image lazyloading to kick in, in case
 	// that triggers any errors.
-	await scrollPageToBottom(page);
+	await scrollPage(page);
 
 	// If features exist on page, trigger them to check they do not
 	// cause errors.

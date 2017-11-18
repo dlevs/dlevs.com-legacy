@@ -46,6 +46,42 @@ const PAGES = mapValues(
 );
 
 
+// Pages to include in screenshot tests
+//------------------------------
+const SCREENSHOT_CONFIG = [
+	{
+		path: '/',
+		options: {
+			fullPage: true,
+		},
+	},
+	{
+		// Page very long, just screenshot the top
+		path: '/travel',
+	},
+	{
+		path: '/travel/slovakia',
+		options: {
+			fullPage: true,
+		},
+	},
+	{
+		// This is a short article, so should take less time
+		path: '/travel/slovakia/bratislava',
+		options: {
+			fullPage: true,
+		},
+	},
+	{
+		path: '/nonexistent-page',
+	},
+].map(({ path, ...otherProps }) => ({
+	url: `${ORIGIN}${path}`,
+	path,
+	...otherProps,
+}));
+
+
 // Credentials
 //------------------------------
 const CREDENTIALS = PASSWORD
@@ -70,6 +106,7 @@ module.exports = {
 	AUTH_HEADER,
 	IS_PRODUCTION,
 	PAGES,
+	SCREENSHOT_CONFIG,
 	MIN_STATIC_MAX_AGE,
 };
 

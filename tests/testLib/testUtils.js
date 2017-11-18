@@ -106,7 +106,7 @@ const isPageScrolledToBottom = () =>
  *
  * @param {Object} page
  */
-exports.scrollPageToBottom = async (page) => {
+exports.scrollPage = async (page) => {
 	await page.evaluate(() => {
 		window.scroll({
 			top: document.documentElement.scrollHeight - window.innerHeight,
@@ -115,6 +115,12 @@ exports.scrollPageToBottom = async (page) => {
 		});
 	});
 	await page.waitForFunction(isPageScrolledToBottom);
+
+	// Now scroll up so we can take screenshots of top of page in fullPage mode.
+	await page.evaluate(() => {
+		window.scroll({ top: 0, left: 0 });
+	});
+
 	// Allow time for images to load
 	await page.waitFor(1000);
 };

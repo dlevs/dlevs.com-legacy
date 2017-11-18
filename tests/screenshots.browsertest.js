@@ -1,8 +1,8 @@
 require('./testLib/testSetup');
 
 const puppeteer = require('puppeteer');
-const { PAGES, CREDENTIALS } = require('./testLib/testConstants');
-const { scrollPageToBottom } = require('./testLib/testUtils');
+const { SCREENSHOT_CONFIG, CREDENTIALS } = require('./testLib/testConstants');
+const { scrollPage } = require('./testLib/testUtils');
 
 let browser;
 beforeAll(async (done) => {
@@ -14,7 +14,7 @@ afterAll(async (done) => {
 	done();
 });
 
-const createTest = (description, url, jsEnabled, viewport) => {
+const createTest = (description, { url, options }, jsEnabled, viewport) => {
 	test(description, async () => {
 		const page = await browser.newPage();
 		await page.authenticate(CREDENTIALS);
@@ -22,10 +22,8 @@ const createTest = (description, url, jsEnabled, viewport) => {
 		await page.setViewport(viewport);
 		await page.goto(url);
 		// Scroll to bottom to allow image lazyloading to kick in
-		await scrollPageToBottom(page);
-		const screenshot = await page.screenshot({
-			fullPage: true,
-		});
+		await scrollPage(page);
+		const screenshot = await page.screenshot(options);
 
 		expect(screenshot).toMatchImageSnapshot();
 	}, 40000);
@@ -42,15 +40,15 @@ describe('Screenshots match for', () => {
 	const desktopViewport = { width: 1280, height: 800 };
 	const mobileViewport = { width: 320, height: 568 };
 
-	PAGES.UNIQUE.forEach((url) => {
-		describe(url, () => {
+	SCREENSHOT_CONFIG.forEach((config) => {
+		describe(config.url, () => {
 			describe('on desktop', () => {
-				createTest('with JS enabled', url, true, desktopViewport);
-				createTest('with JS disabled', url, false, desktopViewport);
+				createTest('with JS enabled', config, true, desktopViewport);
+				createTest('with JS disabled', config, false, desktopViewport);
 			});
 			describe('on mobile', () => {
-				createTest('with JS enabled', url, true, mobileViewport);
-				createTest('with JS disabled', url, false, mobileViewport);
+				createTest('with JS enabled', config, true, mobileViewport);
+				createTest('with JS disabled', config, false, mobileViewport);
 			});
 		});
 	});
