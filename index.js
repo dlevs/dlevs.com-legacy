@@ -15,11 +15,11 @@ const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddl
 const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
 const router = require('./routes');
 const viewGlobals = require('./lib/viewGlobals');
-const { STATIC_ASSET_MAX_AGE } = require('./lib/constants');
+const { STATIC_ASSET_MAX_AGE_IN_SECONDS } = require('./lib/constants');
 
 
 const app = new Koa();
-const staticAssetOptions = { maxage: STATIC_ASSET_MAX_AGE };
+const staticAssetOptions = { maxage: STATIC_ASSET_MAX_AGE_IN_SECONDS * 1000 };
 
 
 // App sits behind an nginx server. Set proxy option to true
