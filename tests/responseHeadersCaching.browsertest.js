@@ -14,7 +14,6 @@ const pathsToCache = [
 
 const pathsNotToCache = PAGES.UNIQUE.concat([
 	'/info.json',
-	'/manifest.json',
 	'/sitemap.xml',
 	'/robots.txt',
 ]);
