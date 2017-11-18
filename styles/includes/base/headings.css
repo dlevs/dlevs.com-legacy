@@ -18,6 +18,7 @@
 
 .heading--main {
 	margin: 0;
+	font-size: 2rem;
 	text-transform: uppercase;
 }
 
@@ -39,5 +40,15 @@
 	.heading--underlined {
 		margin-bottom: var(--spacing-medium);
 		padding-bottom: var(--spacing-medium);
+	}
+
+	.subheading--reduced-margin {
+		margin: 0;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.heading--main {
+		font-size: 2.5rem;
 	}
 }

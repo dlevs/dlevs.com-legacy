@@ -91,10 +91,6 @@
 		margin: var(--spacing-section) 0;
 	}
 
-	.home-subheading {
-		margin: 0;
-	}
-
 	.home-header__links {
 		margin-top: var(--spacing-small);
 	}
