@@ -52,7 +52,7 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 		type, filepath, format, size, quality,
 	}) => {
 		const sharpFile = sharp(filepath);
-		const outputPathParts = path.parse(filepath.replace('/images/', '/publicDist/images/'));
+		const outputPathParts = path.parse(filepath.replace('/images/', '/public/images/'));
 
 		// Remove base, so path.format() will use the specified extension
 		delete outputPathParts.base;
@@ -85,7 +85,7 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 				width,
 				height,
 				format,
-				src: createWebPath(outputPath.replace('/publicDist', '')),
+				src: createWebPath(outputPath.replace('/public', '')),
 				paddingBottom: `${toFixedTrimmed(((height / width) * 100), 4)}%`,
 			},
 		);

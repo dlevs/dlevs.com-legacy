@@ -34,7 +34,7 @@ app
 	.use(views(path.join(__dirname, 'views'), { options: viewGlobals }))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.use(serve(path.join(__dirname, './publicDist'), {
+	.use(serve(path.join(__dirname, './public'), {
 		maxage: STATIC_ASSET_MAX_AGE_IN_SECONDS * 1000,
 	}))
 	.listen(PORT);

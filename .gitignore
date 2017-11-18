@@ -1,5 +1,5 @@
 /data/generated/*
-/publicDist
+/public
 /images/travel
 /config.js
 /tests/imageSnapshots
