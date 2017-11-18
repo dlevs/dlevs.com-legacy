@@ -1,8 +1,8 @@
 require('./testLib/testSetup');
 
 const puppeteer = require('puppeteer');
-const Promise = require('bluebird');
 const { PAGES, CREDENTIALS } = require('./testLib/testConstants');
+const { scrollPageToBottom } = require('./testLib/testUtils');
 
 let browser;
 beforeAll(async (done) => {
@@ -21,16 +21,8 @@ const createTest = (description, url, jsEnabled, viewport) => {
 		await page.setJavaScriptEnabled(jsEnabled);
 		await page.setViewport(viewport);
 		await page.goto(url);
-		await page.evaluate(() => {
-			// Scroll to bottom to allow image lazyloading to kick in
-			window.scroll({
-				top: document.body.offsetHeight - window.innerHeight,
-				left: 0,
-				behavior: 'smooth',
-			});
-		});
-		// Allow time for images to load
-		await Promise.delay(5000);
+		// Scroll to bottom to allow image lazyloading to kick in
+		await scrollPageToBottom(page);
 		const screenshot = await page.screenshot({
 			fullPage: true,
 		});

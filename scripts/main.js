@@ -1,5 +1,3 @@
-import './includes/recordErrors';
-// eslint-disable-next-line import/first
 import 'lazysizes';
 import './includes/elementClosestPolyfill';
 import { init as initInstantclick } from './includes/vendor/instantclick';

@@ -90,3 +90,31 @@ exports.normalizePathToAbsolute = (path) => {
 
 	return `${ORIGIN}${path}`;
 };
+
+/**
+ * Return true if the user is scrolled to the bottom of the page.
+ *
+ * @returns {Boolean}
+ */
+const isPageScrolledToBottom = () =>
+	document.documentElement.scrollHeight === Math.ceil(window.scrollY + window.innerHeight);
+
+
+/**
+ * For a Puppeteer page instance, scroll to the bottom of the page.
+ * Useful for triggering lazyloading features.
+ *
+ * @param {Object} page
+ */
+exports.scrollPageToBottom = async (page) => {
+	await page.evaluate(() => {
+		window.scroll({
+			top: document.documentElement.scrollHeight - window.innerHeight,
+			left: 0,
+			behavior: 'smooth',
+		});
+	});
+	await page.waitForFunction(isPageScrolledToBottom);
+	// Allow time for images to load
+	await page.waitFor(1000);
+};
