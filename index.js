@@ -8,6 +8,7 @@ const Koa = require('koa');
 const serve = require('koa-static');
 const views = require('koa-views');
 const slash = require('koa-slash');
+const json = require('koa-json');
 const bodyParser = require('koa-bodyparser');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
 const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
@@ -28,6 +29,11 @@ app
 	.use(errorMiddleware)
 	.use(bodyParser())
 	.use(slash())
+	.use(json({
+		pretty: process.env.NODE_ENV !== 'production',
+		param: 'pretty',
+		spaces: '\t',
+	}))
 	.use(serverPushMiddleware)
 	.use(securityHeadersMiddleware)
 	.use(setCtxStateMiddleware)

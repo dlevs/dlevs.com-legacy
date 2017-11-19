@@ -8,14 +8,13 @@ const serverStartDate = new Date().toString();
 
 module.exports = () => ({
 	index: async (ctx) => {
-		ctx.body = JSON.stringify({
+		ctx.body = {
 			appVersion: version,
 			nodeVersion: process.version,
 			date: new Date().toString(),
 			serverStartDate,
 			environment: process.env.NODE_ENV,
 			lastCommit: await lastCommitPromise,
-		}, null, '\t');
-		ctx.type = 'json';
+		};
 	},
 });
