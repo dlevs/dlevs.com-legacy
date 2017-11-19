@@ -44,7 +44,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 				'@context': 'http://schema.org',
 				'@type': 'BlogPosting',
 				headline: `${post.town} - ${post.country}`,
-				image: imageMeta && `${ORIGIN}${imageMeta.large.src}`,
+				image: imageMeta && imageMeta.large.absoluteSrc,
 				genre: 'travel',
 				url: `${ORIGIN}${path}`,
 				datePublished: post.date,

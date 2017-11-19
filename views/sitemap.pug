@@ -9,7 +9,7 @@ urlset(
 			if page.images
 				each image in page.images
 					image:image
-						image:loc= origin + HELPERS.getImageMeta(image.src).large.src
+						image:loc= HELPERS.getImageMeta(image.src).large.absoluteSrc
 
 						if image.caption
 							image:caption= image.caption
