@@ -736,8 +736,8 @@ module.exports = function (pswp, framework) {
 			);
 			
 			// Expose these for testing purposes
-			_indexIndicator.dataset.currentSlide = currentSlide;
-			_indexIndicator.dataset.totalSlides = totalSlides;			
+			_indexIndicator.setAttribute('data-current-slide', currentSlide);
+			_indexIndicator.setAttribute('data-total-slides', totalSlides);
 		}
 	};
 

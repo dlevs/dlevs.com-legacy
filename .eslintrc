@@ -1,5 +1,6 @@
 {
 	"extends": "airbnb-base",
+	"plugins": ["compat"],
 	"rules": {
 		"indent": ["error", "tab"],
 		"no-tabs": "off",
@@ -22,5 +23,14 @@
 		"test": true,
 		"beforeAll": true,
 		"afterAll": true
-	}
+	},
+	"overrides": [
+		{
+			"files": ["scripts/**"],
+			"excludedFiles": "*.browsertest.js",
+			"rules": {
+				"compat/compat": "error"
+			}
+		}
+	]
 }

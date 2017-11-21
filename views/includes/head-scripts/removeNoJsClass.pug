@@ -1,4 +1,2 @@
 script.
-	var classes = document.documentElement.classList;
-	classes.remove('no-js');
-	classes.add('js');
+	document.documentElement.className = document.documentElement.className.replace('no-js', 'js');

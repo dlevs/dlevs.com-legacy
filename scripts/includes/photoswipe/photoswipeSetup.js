@@ -23,13 +23,13 @@ const openGallery = (index, disableTransitions) => {
 		const caption = elem.getElementsByTagName('figcaption')[0];
 
 		return {
-			src: isWebp ? elem.dataset.hrefWebp : elem.href,
+			src: isWebp ? elem.getAttribute('data-hrefWebp') : elem.href,
 			msrc: thumbnail.currentSrc || thumbnail.src,
 			thumbnail,
-			w: Number(elem.dataset.width),
-			h: Number(elem.dataset.height),
-			mapLink: elem.dataset.mapLink,
-			title: elem.dataset.caption || (caption && caption.textContent),
+			w: Number(elem.getAttribute('data-width')),
+			h: Number(elem.getAttribute('data-height')),
+			mapLink: elem.getAttribute('data-map-link'),
+			title: elem.getAttribute('data-caption') || (caption && caption.textContent),
 		};
 	});
 	const options = {
