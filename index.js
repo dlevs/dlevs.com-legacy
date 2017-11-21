@@ -37,7 +37,12 @@ app
 	.use(serverPushMiddleware)
 	.use(securityHeadersMiddleware)
 	.use(setCtxStateMiddleware)
-	.use(views(path.join(__dirname, 'views'), { options: viewGlobals }))
+	.use(views(path.join(__dirname, 'views'), {
+		options: {
+			...viewGlobals,
+			pretty: process.env.NODE_ENV !== 'production',
+		},
+	}))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(serve(path.join(__dirname, './public'), {
