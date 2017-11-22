@@ -127,5 +127,29 @@ describe('Photoswipe gallery', () => {
 			expect(afterRight.currentSlide).toBe(1);
 			expect(afterRightAgain.currentSlide).toBe(2);
 		},
+		'og:image changes as expected when using share URL': url => async () => {
+			// Shared URLs have "pid=<n>" in query string to set the og:image meta
+			// in markup, allowing correct image to get pulled in on share.
+			const getOgImage = () => document
+				.querySelector('meta[property="og:image"]')
+				.getAttribute('content');
+
+			const defaultOgImage = await runBrowserTest(url, getOgImage);
+			const sharedOgImage1 = await runBrowserTest(`${url}?pid=1`, getOgImage);
+			const sharedOgImage2 = await runBrowserTest(`${url}?pid=2`, getOgImage);
+
+			expect(typeof defaultOgImage).toBe('string');
+			expect(typeof sharedOgImage1).toBe('string');
+			expect(typeof sharedOgImage2).toBe('string');
+
+			expect(typeof defaultOgImage).toBe('string');
+			expect(typeof sharedOgImage1).toBe('string');
+			expect(typeof sharedOgImage2).toBe('string');
+
+			// Check that the og:image URLs are different. The first image in the
+			// gallery may double up as the `defaultOgImage`, so no need to check those.
+			expect(sharedOgImage2).not.toBe(defaultOgImage);
+			expect(sharedOgImage2).not.toBe(sharedOgImage1);
+		},
 	});
 });

@@ -14,15 +14,19 @@ afterAll(async (done) => {
 	done();
 });
 
-const createTest = (description, { url, options }, jsEnabled, viewport) => {
+const createTest = (description, { url, shouldScrollPage, options }, jsEnabled, viewport) => {
 	test(description, async () => {
 		const page = await browser.newPage();
 		await page.authenticate(CREDENTIALS);
 		await page.setJavaScriptEnabled(jsEnabled);
 		await page.setViewport(viewport);
 		await page.goto(url);
-		// Scroll to bottom to allow image lazyloading to kick in
-		await scrollPage(page);
+
+		if (shouldScrollPage) {
+			// Scroll to bottom to allow image lazyloading to kick in
+			await scrollPage(page);
+		}
+
 		const screenshot = await page.screenshot(options);
 
 		expect(screenshot).toMatchImageSnapshot();

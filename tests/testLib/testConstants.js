@@ -51,6 +51,7 @@ const PAGES = mapValues(
 const SCREENSHOT_CONFIG = [
 	{
 		path: '/',
+		shouldScrollPage: true,
 		options: {
 			fullPage: true,
 		},
@@ -58,9 +59,11 @@ const SCREENSHOT_CONFIG = [
 	{
 		// Page very long, just screenshot the top
 		path: '/travel',
+		shouldScrollPage: true,
 	},
 	{
 		path: '/travel/slovakia',
+		shouldScrollPage: true,
 		options: {
 			fullPage: true,
 		},
@@ -68,12 +71,19 @@ const SCREENSHOT_CONFIG = [
 	{
 		// This is a short article, so should take less time
 		path: '/travel/slovakia/bratislava',
+		shouldScrollPage: true,
 		options: {
 			fullPage: true,
 		},
 	},
 	{
+		// Photoswipe gallery
+		path: '/travel/slovakia/bratislava#pid=2',
+		shouldScrollPage: false,
+	},
+	{
 		path: '/nonexistent-page',
+		shouldScrollPage: true,
 	},
 ].map(({ path, ...otherProps }) => ({
 	url: `${ORIGIN}${path}`,

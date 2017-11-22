@@ -31,7 +31,8 @@ describe('Links and static resources', () => {
 				const links = []
 					.concat($('[href]').map(({ href }) => href))
 					.concat($('[src]').map(({ src }) => src))
-					.concat($('[data-href-webp]').map(({ dataset }) => dataset.hrefWebp));
+					.concat($('[data-href-webp]').map(({ dataset }) => dataset.hrefWebp))
+					.concat($('meta').map(({ content }) => content).filter(str => /^(http|\/)/.test(str)));
 
 				$('script[type="application/ld+json"]').forEach(({ innerHTML }) => {
 					const regex = /"(https?:\/\/.*?)"/g;
