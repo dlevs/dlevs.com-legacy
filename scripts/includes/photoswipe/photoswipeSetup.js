@@ -67,7 +67,7 @@ const openGallery = (index, disableTransitions) => {
 
 			// Appends the "pid" value to the query string, so it can
 			// be used on backend to set the sharing image.
-			return `${protocol}${host}${pathname}?${newSearch}${hash}`;
+			return `${protocol}//${host}${pathname}?${newSearch}${hash}`;
 		},
 	};
 
