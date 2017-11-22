@@ -1,4 +1,5 @@
 const { SITE_NAME, ORIGIN } = require('../lib/constants');
+const { getImageMeta } = require('../lib/imageUtils');
 const technologies = require('./technologies');
 
 const description = 'London-based fullstack web developer.';
@@ -16,6 +17,7 @@ module.exports = {
 				alumniOf: 'University of Hertfordshire',
 				gender: 'male',
 				nationality: 'British',
+				image: getImageMeta('/images/misc/self.jpg').large.absoluteSrc,
 				url: ORIGIN,
 				sameAs: [
 					'https://www.linkedin.com/in/daniellevett/',
