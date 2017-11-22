@@ -45,7 +45,8 @@
     "moment": "^2.18.1",
     "node-fetch": "^1.7.3",
     "normalize.css": "^7.0.0",
-    "pug": "^2.0.0-rc.3"
+    "pug": "^2.0.0-rc.3",
+    "query-string": "^5.0.1"
   },
   "devDependencies": {
     "async": "^2.5.0",

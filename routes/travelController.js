@@ -50,11 +50,13 @@ module.exports = (options) => {
 
 		renderPost: async (ctx) => {
 			const index = findIndex(posts, ctx.params);
+			const { pid = '1' } = ctx.query;
+			const imageIndex = Number(pid) - 1;
 
 			if (index === -1) return;
 
 			const post = posts[index];
-			const image = getImageMeta(post.mainImage.src).large;
+			const image = getImageMeta(post.images[imageIndex].src).large;
 
 			await ctx.render('travel/travelPost.pug', {
 				post,

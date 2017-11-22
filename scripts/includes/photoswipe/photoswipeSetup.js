@@ -1,4 +1,5 @@
 import PhotoSwipe from '@dlevs/photoswipe';
+import queryString from 'query-string';
 import PhotoSwipeUI from './photoswipeUi';
 import { getLastInputDevice, focusWithoutScrolling } from '../utils';
 import {
@@ -18,11 +19,12 @@ const openGallery = (index, disableTransitions) => {
 	// placeholder data gif src.
 	const firstThumbnail = elems[0].getElementsByTagName('img')[0];
 	const isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
-	const items = elems.map((elem) => {
+	const items = elems.map((elem, i) => {
 		const thumbnail = elem.getElementsByTagName('img')[0];
 		const caption = elem.getElementsByTagName('figcaption')[0];
 
 		return {
+			pid: i + 1,
 			src: isWebp ? elem.getAttribute('data-href-webp') : elem.href,
 			msrc: thumbnail.currentSrc || thumbnail.src,
 			thumbnail,
@@ -53,6 +55,20 @@ const openGallery = (index, disableTransitions) => {
 				? item.initialZoomLevel * 1.5
 				: fullSizeScale;
 		},
+		getPageURLForShare: () => {
+			const {
+				protocol, host, pathname, search, hash,
+			} = document.location;
+			const newSearch = queryString.stringify({
+				...queryString.parse(search),
+				// eslint-disable-next-line no-use-before-define
+				pid: gallery.currItem.pid,
+			});
+
+			// Appends the "pid" value to the query string, so it can
+			// be used on backend to set the sharing image.
+			return `${protocol}${host}${pathname}?${newSearch}${hash}`;
+		},
 	};
 
 	if (disableTransitions) {
@@ -72,13 +88,13 @@ const openGallery = (index, disableTransitions) => {
 	gallery.listen('afterChange', () => {
 		trackGalleryNavigation({
 			title: gallery.currItem.title,
-			index: gallery.currItem.index,
+			index: gallery.currItem.pid,
 		});
 	});
 	gallery.listen('shareLinkClick', (e, target) => {
 		trackShare({
 			content_type: 'image',
-			method: target.dataset.method,
+			method: target.getAttribute('data-method'),
 			title: gallery.currItem.title,
 		});
 	});
@@ -118,13 +134,11 @@ const onImageLinkClick = (event) => {
 };
 
 const openGalleryFromHash = () => {
-	const matches = /pid=(\d+)/.exec(document.location.hash);
+	const { pid } = queryString.parse(document.location.hash);
 
-	if (!matches) return;
+	if (pid === undefined) return;
 
-	const index = Number(matches[1]) - 1;
-
-	openGallery(index, true);
+	openGallery(Number(pid) - 1, true);
 };
 
 const applyTitlesToLinks = () => {
