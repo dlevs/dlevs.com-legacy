@@ -38,9 +38,9 @@ block content
 								+readMore(project.shortDescription, project.description)
 
 						if project.badges
-							ul.project__badges
+							ul.project__badges-list
 								each badge in project.badges
-									li
+									li.project__badges-list-item
 										a.badge(href=badge.url title=`Built using ${badge.name}`)= badge.name
 
 		section.baseline-section

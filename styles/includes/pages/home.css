@@ -24,12 +24,14 @@
 	margin-bottom: var(--spacing-section);
 }
 
-.project__badges {
+.project__badges-list {
 	@mixin list-unstyled;
 
-	display: flex;
-	flex-wrap: wrap;
 	margin-bottom: calc(var(--spacing-small) * -1);
+}
+
+.project__badges-list-item {
+	display: inline-block;
 }
 
 .project__image {
