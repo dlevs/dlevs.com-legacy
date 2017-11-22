@@ -692,9 +692,10 @@ module.exports = function (pswp, framework) {
 
 			if (_options.captionEl) {
 				_options.addCaptionHTMLFn(pswp.currItem, _captionContainer);
-				_options.updateMapLink(pswp.currItem);
 				_togglePswpClass(_captionContainer, 'caption--empty', !pswp.currItem.title);
 			}
+
+			_options.updateMapLink(pswp.currItem);
 
 			_overlayUIUpdated = true;
 
