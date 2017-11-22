@@ -2,3 +2,19 @@ meta(charset="utf-8")
 meta(http-equiv="x-ua-compatible" content="ie=edge")
 meta(name="viewport" content="width=device-width, initial-scale=1")
 meta(name="theme-color" content="#ffffff")
+
+if meta
+	if meta.title
+		title= meta.title === CONSTANTS.SITE_NAME ? meta.title : `${meta.title} | ${CONSTANTS.SITE_NAME}`
+
+	if meta.description
+		meta(name="description" content=meta.description)
+
+	- const metaWithUrl = HELPERS.immutableExtend({url: CTX.href}, meta);
+	each content, property in HELPERS.expandOpenGraphMeta(metaWithUrl)
+		if content
+			meta(property=`og:${property}` content=content)
+
+	if meta.jsonLd
+		each json in meta.jsonLd
+			script(type="application/ld+json" data-no-instant)!= JSON.stringify(json)

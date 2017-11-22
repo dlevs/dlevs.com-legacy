@@ -1,8 +1,5 @@
 extends ../layouts/main.pug
 
-block meta
-	title= `${post.town} | Daniel Levett`
-
 block content
 	main
 		article
@@ -21,6 +18,3 @@ block content
 							figcaption.visually-hidden= image.caption
 
 			include includes/relatedPosts.pug
-
-			if post.jsonLd
-				script(type="application/ld+json" data-no-instant)!= JSON.stringify(post.jsonLd)

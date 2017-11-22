@@ -1,11 +1,8 @@
 extends ../layouts/main.pug
 
-block meta
-	title= `${title} | Daniel Levett`
-
 block content
 	main.baseline-section
 		header.blog-header
-			h1.heading--main= title
+			h1.heading--main= meta.title
 
 		include includes/travelPostListingItems.pug

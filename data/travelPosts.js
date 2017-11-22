@@ -6,10 +6,9 @@ const kebabCase = require('lodash/kebabCase');
 const sortBy = require('lodash/fp/sortBy');
 const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
-const { getImageMeta } = require('../lib/imageUtils');
 const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
+const { SITE_AUTHOR } = require('../lib/constants');
 const rawPostsData = require('../data/travelPostsRaw');
-const { ORIGIN } = require('../config');
 
 const expandPosts = ({ breadcrumbRoot }) => flow(
 	posts => posts.map((post) => {
@@ -31,7 +30,6 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			geoLocation: `${post.town}, ${post.country}`,
 		}));
 		const { path } = last(breadcrumb);
-		const imageMeta = getImageMeta(images[0].src);
 
 		return {
 			countrySlug,
@@ -39,18 +37,9 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			breadcrumb,
 			path,
 			humanDate: moment(post.date).format('MMMM YYYY'),
+			description: `Photos from ${post.town}, ${post.country}.`,
+			author: SITE_AUTHOR,
 			mainImage: images[0],
-			jsonLd: {
-				'@context': 'http://schema.org',
-				'@type': 'BlogPosting',
-				headline: `${post.town} - ${post.country}`,
-				image: imageMeta && imageMeta.large.absoluteSrc,
-				genre: 'travel',
-				url: `${ORIGIN}${path}`,
-				datePublished: post.date,
-				author: ORIGIN,
-				publisher: ORIGIN,
-			},
 			...post,
 			images,
 		};
@@ -75,8 +64,9 @@ const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
 			countrySlug,
 			breadcrumb,
 			path: last(breadcrumb).path,
+			description: `Photos from ${country}.`,
+			author: SITE_AUTHOR,
 			posts,
-			// Images for sitemap
 			images,
 			mainImage: images[0],
 		};

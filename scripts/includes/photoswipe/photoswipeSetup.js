@@ -23,7 +23,7 @@ const openGallery = (index, disableTransitions) => {
 		const caption = elem.getElementsByTagName('figcaption')[0];
 
 		return {
-			src: isWebp ? elem.getAttribute('data-hrefWebp') : elem.href,
+			src: isWebp ? elem.getAttribute('data-href-webp') : elem.href,
 			msrc: thumbnail.currentSrc || thumbnail.src,
 			thumbnail,
 			w: Number(elem.getAttribute('data-width')),

@@ -80,10 +80,6 @@
 		margin-right: 80px;
 		margin-left: 80px;
 	}
-
-	.home-heading {
-		font-size: 3em;
-	}
 }
 
 @media screen and (min-width: 500px) {

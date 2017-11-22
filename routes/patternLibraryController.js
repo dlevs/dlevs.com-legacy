@@ -21,7 +21,10 @@ module.exports = (options) => {
 				await ctx.render(
 					`patternLibrary/${camelCase(slug)}.pug`,
 					{
-						title,
+						meta: {
+							title,
+							description: 'Common styling and code examples.',
+						},
 						breadcrumb: expandBreadcrumb(breadcrumb),
 						rootPath,
 					},

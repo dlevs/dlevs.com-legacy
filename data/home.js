@@ -1,51 +1,37 @@
-const { ORIGIN } = require('../config');
+const { SITE_NAME, ORIGIN } = require('../lib/constants');
+const technologies = require('./technologies');
 
-const title = 'Daniel Levett';
 const description = 'London-based fullstack web developer.';
 
 module.exports = {
-	title,
-	description,
-	technologies: {
-		React: {
-			url: 'https://facebook.github.io/react/',
-		},
-		Redux: {
-			url: 'http://redux.js.org/',
-		},
-		PostCSS: {
-			url: 'http://postcss.org/',
-		},
-		ES6: {
-			url: 'https://babeljs.io/',
-		},
-		webpack: {
-			url: 'https://webpack.js.org/',
-		},
-		Express: {
-			url: 'https://expressjs.com/',
-		},
-		Less: {
-			url: 'http://lesscss.org/',
-		},
-		Jest: {
-			url: 'https://facebook.github.io/jest/',
-		},
-		jQuery: {
-			url: 'https://jquery.com/',
-		},
-		'Node.js': {
-			url: 'https://nodejs.org/en/',
-		},
-		'Web Sockets': {
-			url: 'https://socket.io/',
-		},
-		Handlebars: {
-			url: 'http://handlebarsjs.com/',
-		},
-		Pug: {
-			url: 'https://www.npmjs.com/package/pug',
-		},
+	meta: {
+		title: SITE_NAME,
+		description,
+		jsonLd: [
+			{
+				'@context': 'http://schema.org',
+				'@type': 'Person',
+				jobTitle: 'Web Developer',
+				name: 'Daniel Levett',
+				alumniOf: 'University of Hertfordshire',
+				gender: 'male',
+				nationality: 'British',
+				url: ORIGIN,
+				sameAs: [
+					'https://www.linkedin.com/in/daniellevett/',
+					'https://github.com/dlevs',
+					'https://www.npmjs.com/~dlevs',
+				],
+			},
+			{
+				'@context': 'http://schema.org',
+				'@type': 'WebSite',
+				url: ORIGIN,
+				name: SITE_NAME,
+				author: ORIGIN,
+				description,
+			},
+		],
 	},
 	projects: [
 		{
@@ -57,12 +43,12 @@ module.exports = {
 				alt: 'A screenshot of the content creation tool being used to edit a web article.',
 			},
 			badges: [
-				'ES6',
-				'React',
-				'Redux',
-				'PostCSS',
-				'webpack',
-				'Jest',
+				technologies.es6,
+				technologies.react,
+				technologies.redux,
+				technologies.postCss,
+				technologies.webpack,
+				technologies.jest,
 			],
 		},
 		{
@@ -74,12 +60,12 @@ module.exports = {
 				alt: 'A screenshot of the email builder’s web interface.',
 			},
 			badges: [
-				'Node.js',
-				'Express',
-				'Handlebars',
-				'jQuery',
-				'Web Sockets',
-				'Less',
+				technologies.nodeJs,
+				technologies.express,
+				technologies.handlebars,
+				technologies.jQuery,
+				technologies.webSockets,
+				technologies.less,
 			],
 		},
 		{
@@ -91,28 +77,11 @@ module.exports = {
 				alt: 'A screenshot of the content inspector showing a listing of content assets.',
 			},
 			badges: [
-				'Node.js',
-				'Express',
-				'Pug',
-				'jQuery',
-				'Less',
-			],
-		},
-	],
-	skills: [
-		{
-			heading: 'JavaScript',
-			skills: [
-				'ES6',
-				'ReactJS',
-				'jQuery (reluctantly)',
-			],
-		},
-		{
-			heading: 'Web',
-			skills: [
-				'Accessibility',
-				'Tagging',
+				technologies.nodeJs,
+				technologies.express,
+				technologies.pug,
+				technologies.jQuery,
+				technologies.less,
 			],
 		},
 	],
@@ -134,31 +103,6 @@ module.exports = {
 			name: 'Belstaff',
 			url: 'https://www.belstaff.co.uk/',
 			svg: '/images/brands/belstaff.svg',
-		},
-	],
-	jsonLd: [
-		{
-			'@context': 'http://schema.org',
-			'@type': 'Person',
-			jobTitle: 'Web Developer',
-			name: 'Daniel Levett',
-			alumniOf: 'University of Hertfordshire',
-			gender: 'male',
-			nationality: 'British',
-			url: ORIGIN,
-			sameAs: [
-				'https://www.linkedin.com/in/daniellevett/',
-				'https://github.com/dlevs',
-				'https://www.npmjs.com/~dlevs',
-			],
-		},
-		{
-			'@context': 'http://schema.org',
-			'@type': 'WebSite',
-			url: ORIGIN,
-			name: title,
-			author: ORIGIN,
-			description,
 		},
 	],
 };

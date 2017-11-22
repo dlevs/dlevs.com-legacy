@@ -1,9 +1,5 @@
 extends ./layouts/main.pug
 
-block meta
-	title Daniel Levett
-	meta(name="description" content="London-based fullstack web developer.")
-
 block content
 	main
 		header.home-header
@@ -45,7 +41,7 @@ block content
 							ul.project__badges
 								each badge in project.badges
 									li
-										a.badge(href=technologies[badge].url title=`Built using ${badge}`)= badge
+										a.badge(href=badge.url title=`Built using ${badge.name}`)= badge.name
 
 		section.baseline-section
 			h2.heading--underlined Experience
@@ -54,6 +50,3 @@ block content
 					li.brand
 						a(href=brand.url title=brand.title rel="noreferrer")
 							img.brand__image(src=HELPERS.getRevvedPath(brand.svg) alt=brand.name)
-
-		each json in jsonLd
-			script(type="application/ld+json" data-no-instant)!= JSON.stringify(json)
