@@ -1,6 +1,12 @@
 mixin readMore(shortText, longText)
+	//- We have a circular reference using attributes "id", "for", _and_
+	//- "aria-labelledby" to satisfy accessibility guidelines when using
+	//- role="button". Otherwise audits will complain that the button
+	//- has no text, even though it has a label.
 	- const id = `readmore__checkbox-${COUNTER++}`;
-	input.readmore__checkbox(id=id type="checkbox" role="button")
+	- const labelId = `readmore__label-${COUNTER++}`;
+
+	input.readmore__checkbox(id=id type="checkbox" role="button" aria-labelledby=labelId)
 	.readmore__short!= shortText
 	.readmore__long!= longText
-	label.readmore__label(for=id) Read more…
+	label.readmore__label(id=labelId for=id) Read more…
