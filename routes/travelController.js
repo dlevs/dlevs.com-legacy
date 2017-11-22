@@ -50,13 +50,15 @@ module.exports = (options) => {
 
 		renderPost: async (ctx) => {
 			const index = findIndex(posts, ctx.params);
+
+			// Get gallery image index from query string, for setting og:image to
+			// shared image from photoswipe gallery.
 			const { pid = '1' } = ctx.query;
 			const imageIndex = Number(pid) - 1;
 
 			if (index === -1) return;
 
 			const post = posts[index];
-			const image = getImageMeta(post.images[imageIndex].src).large;
 
 			await ctx.render('travel/travelPost.pug', {
 				post,
@@ -67,7 +69,7 @@ module.exports = (options) => {
 					title: post.town,
 					description: post.description,
 					og: {
-						image,
+						image: getImageMeta(post.images[imageIndex].src).large,
 						type: 'article',
 						'article:published_time': post.date,
 						'article:author': post.author,
@@ -78,7 +80,7 @@ module.exports = (options) => {
 							'@context': 'http://schema.org',
 							'@type': 'BlogPosting',
 							headline: post.description,
-							image: image.absoluteSrc,
+							image: getImageMeta(post.mainImage.src).large.absoluteSrc,
 							genre: 'travel',
 							url: ctx.href,
 							datePublished: post.date,
