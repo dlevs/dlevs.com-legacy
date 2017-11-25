@@ -1,2 +1,2 @@
-mixin icon(...args)
-	!= ICONS.toSvg(...args)
+mixin icon(name, options)
+	!= ICONS[name].toSvg(options)
