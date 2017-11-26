@@ -80,7 +80,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
  *
  * The generated URLs are relative to the `options.breadcrumbRoot` property.
  *
- * The optional second paramater allows for testing.
+ * The optional second parameter allows for testing.
  *
  * @param {Object} options
  * @param {Array}  options.breadcrumbRoot
