@@ -1,3 +1,5 @@
+'use strict';
+
 const puppeteer = require('puppeteer');
 const { PAGES, CREDENTIALS } = require('../../../tests/testLib/testConstants');
 const { testUrls } = require('../../../tests/testLib/testUtils');

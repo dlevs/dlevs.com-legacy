@@ -1,3 +1,5 @@
+'use strict';
+
 exports.setProcessEnv = () => {
 	process.env.NODE_ENV = 'production';
 };

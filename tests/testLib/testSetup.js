@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const { toMatchImageSnapshot } = require('jest-image-snapshot');
 const { HOSTNAME } = require('./testConstants');

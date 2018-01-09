@@ -1,3 +1,5 @@
+'use strict';
+
 const { setProcessEnv, PORT, IS_BEHIND_PROXY } = require('./config');
 
 setProcessEnv();

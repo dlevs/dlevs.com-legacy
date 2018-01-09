@@ -1,3 +1,5 @@
+'use strict';
+
 const { fetch } = require('./testLib/testUtils');
 const { HOSTNAME, ORIGIN } = require('./testLib/testConstants');
 

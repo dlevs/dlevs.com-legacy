@@ -1,3 +1,5 @@
+'use strict';
+
 const { getPosts } = require('./travelPosts');
 
 const testPosts = [

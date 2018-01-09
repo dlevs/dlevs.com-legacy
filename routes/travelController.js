@@ -1,3 +1,5 @@
+'use strict';
+
 const findIndex = require('lodash/findIndex');
 const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 const { getPosts } = require('../data/travelPosts');

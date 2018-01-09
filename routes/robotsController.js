@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Geneate robots text with absolute URLs.
  *

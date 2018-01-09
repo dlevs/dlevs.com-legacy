@@ -1,3 +1,5 @@
+'use strict';
+
 const { delay } = require('bluebird');
 const { fetch } = require('../tests/testLib/testUtils');
 const { ORIGIN } = require('../tests/testLib/testConstants');

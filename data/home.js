@@ -1,3 +1,5 @@
+'use strict';
+
 const { SITE_NAME, ORIGIN } = require('../lib/constants');
 const { getImageMeta } = require('../lib/imageUtils');
 const technologies = require('./technologies');

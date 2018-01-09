@@ -1,3 +1,5 @@
+'use strict';
+
 const { PAGES } = require('./testLib/testConstants');
 const { fetch } = require('./testLib/testUtils');
 const validator = require('html-validator');

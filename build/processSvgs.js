@@ -1,3 +1,5 @@
+'use strict';
+
 const { promisify } = require('util');
 const fs = require('fs-extra');
 const path = require('path');

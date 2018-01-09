@@ -1,3 +1,5 @@
+'use strict';
+
 const moment = require('moment');
 const last = require('lodash/last');
 const orderBy = require('lodash/fp/orderBy');

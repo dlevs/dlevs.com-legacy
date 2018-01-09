@@ -1,7 +1,11 @@
 {
 	"extends": "airbnb-base",
 	"plugins": ["compat"],
+	"parserOptions": {
+		"sourceType": "script"
+	},
 	"rules": {
+		"strict": ["error", "global"],
 		"indent": ["error", "tab"],
 		"no-tabs": "off",
 		"no-plusplus": "off",
@@ -28,6 +32,9 @@
 		{
 			"files": ["scripts/**"],
 			"excludedFiles": "*.browsertest.js",
+			"parserOptions": {
+				"sourceType": "module"
+			},
 			"rules": {
 				"compat/compat": "error"
 			}

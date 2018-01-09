@@ -1,3 +1,5 @@
+'use strict';
+
 const { getRevvedPath } = require('../lib/assetUtils');
 const { PAGES, MIN_STATIC_MAX_AGE } = require('./testLib/testConstants');
 const { normalizePathToAbsolute, fetch } = require('./testLib/testUtils');

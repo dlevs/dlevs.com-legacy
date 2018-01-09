@@ -1,3 +1,5 @@
+'use strict';
+
 const { promisify } = require('util');
 const tough = require('tough-cookie');
 const rawFetch = require('node-fetch');

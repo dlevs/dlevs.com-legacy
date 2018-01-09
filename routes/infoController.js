@@ -1,3 +1,5 @@
+'use strict';
+
 const { getLastCommit } = require('../lib/gitUtils');
 const { version } = require('../package');
 

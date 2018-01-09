@@ -1,3 +1,5 @@
+'use strict';
+
 const set = require('lodash/fp/set');
 const { getImageMeta } = require('../lib/imageUtils');
 const data = require('../data/home');

@@ -1,3 +1,5 @@
+'use strict';
+
 const startCase = require('lodash/startCase');
 const camelCase = require('lodash/camelCase');
 const { expandBreadcrumb } = require('../lib/breadcrumbUtils');

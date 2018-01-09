@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = () => ({
 	/**
 	 * Report Content Security Policy violations.

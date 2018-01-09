@@ -1,3 +1,5 @@
+'use strict';
+
 // This file exports a webpack config for compiling the
 // frontend JS into a single file.
 //

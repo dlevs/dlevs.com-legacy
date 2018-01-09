@@ -1,3 +1,5 @@
+'use strict';
+
 require('./testLib/testSetup');
 
 const puppeteer = require('puppeteer');

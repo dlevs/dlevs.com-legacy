@@ -1,3 +1,5 @@
+'use strict';
+
 const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
 const { fetch, eachLimited } = require('../tests/testLib/testUtils');

@@ -1,3 +1,5 @@
+'use strict';
+
 const { fetch } = require('../tests/testLib/testUtils');
 const { ORIGIN } = require('../tests/testLib/testConstants');
 
