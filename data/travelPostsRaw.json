@@ -1,5 +1,77 @@
 [
     {
+        "country": "United States",
+        "town": "New York",
+        "date": "2018-01-12",
+        "images": [
+            {
+                "src": "/images/travel/usa/new-york/20180114_122128.jpg",
+                "caption": "Midtown Manhattan",
+                "alt": "New York’s many skyscrapers, viewed from the top of a tall, nearby building."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180114_122159-PANO.jpg",
+                "caption": "Manhattan and the Hudson River",
+                "alt": "A panoramic view of New York’s buildings, with the Hudson river in the background."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180115_141801-PANO.jpg",
+                "caption": "Central Park from the Rockefeller Center’s “Top of the Rock”",
+                "alt": "A panoramic view of Central Park and its surrounding buildings."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180115_165545.jpg",
+                "caption": "The Lake, Central Park",
+                "alt": "A lake in Central Park, viewed from a small bridge. Skyscrapers can be seen in the background."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180113_163133.jpg",
+                "caption": "Jacob Mould Fountain",
+                "alt": "A fountain full of plants in the square of a built-up area."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180113_164330-PANO.jpg",
+                "caption": "Brooklyn Bridge, leading to Brooklyn",
+                "alt": "A panoramic view of Brooklyn Bridge just before sunset, with Brooklyn visible in the distance."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180113_172638.jpg",
+                "caption": "Lower Manhattan, viewed from Brooklyn Bridge",
+                "alt": "Oncoming traffic illuminates a three-lane carriageway on Brooklyn Bridge at dusk, with Manhattan’s skyscrapers in the background."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180114_230517.jpg",
+                "caption": "View downtown of Manhattan from the Empire State Building",
+                "alt": "New York at night, viewed from above."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180114_230605.jpg",
+                "caption": "Looking towards Upper Manhattan from the Empire State Building",
+                "alt": "Skyscrapers in New York, lit up at night time."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180112_195700.jpg",
+                "caption": "Times Square",
+                "alt": "A swarm of yellow taxis pass through Times Square; adverts on bright screens shine down on them."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180116_115022.jpg",
+                "caption": "Grand Central Terminal",
+                "alt": "Traffic passes in front of Grand Central Terminal—a grand train station with stone pillars."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180114_144143.jpg",
+                "caption": "Charging Bull, Wall Street",
+                "alt": "The bronze Charging Bull statue on Wall Street."
+            },
+            {
+                "src": "/images/travel/usa/new-york/20180114_150908b.jpg",
+                "caption": "The Statue of Liberty and Lower Manhattan",
+                "alt": "The Statue of Liberty viewed from a boat. It sits on a small island, with the skyscrapers of Manhattan visible in the distance."
+            }
+        ]
+    },
+    {
         "country": "Ireland",
         "town": "Dublin",
         "date": "2017-09-23",
