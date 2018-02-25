@@ -4,21 +4,17 @@ const glob = require('glob');
 const Router = require('koa-router');
 const { basename } = require('path');
 const { root } = require('../lib/pathUtils');
-const last = require('lodash/last');
 const startCase = require('lodash/startCase');
 const camelCase = require('lodash/camelCase');
-const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 
 
 // TODO: This controller essentially serves static pug files.
 // This can be turned into a reusable function.
 module.exports = ({ breadcrumbRoot }) => {
-	const page = {
+	const pageBreadcrumb = breadcrumbRoot.append({
 		slug: 'pattern-library',
 		name: 'Pattern Library',
-	};
-	const pageBreadcrumb = expandBreadcrumb(breadcrumbRoot.concat(page));
-	const rootPath = last(pageBreadcrumb).path;
+	});
 	const serve = async (ctx) => {
 		const { slug = 'index' } = ctx.params;
 		let title = 'Pattern Library';
@@ -27,7 +23,7 @@ module.exports = ({ breadcrumbRoot }) => {
 		if (slug !== 'index') {
 			const name = startCase(slug);
 			title = `${name} - ${title}`;
-			breadcrumb = breadcrumb.concat({ slug, name });
+			breadcrumb = breadcrumb.append({ slug, name });
 		}
 
 		try {
@@ -38,8 +34,8 @@ module.exports = ({ breadcrumbRoot }) => {
 						title,
 						description: 'Common styling and code examples.',
 					},
-					breadcrumb: expandBreadcrumb(breadcrumb),
-					rootPath,
+					breadcrumb,
+					rootPath: pageBreadcrumb.path,
 				},
 			);
 		} catch (err) {
@@ -53,17 +49,17 @@ module.exports = ({ breadcrumbRoot }) => {
 
 	return {
 		router: new Router()
-			.get(`/${page.slug}`, serve)
-			.get(`/${page.slug}/:slug`, serve),
+			.get(pageBreadcrumb.path, serve)
+			.get(`${pageBreadcrumb.path}/:slug`, serve),
 
 		sitemap: {
-			...page,
+			...pageBreadcrumb.currentPage,
 			posts: glob.sync(root('views/patternLibrary/*.pug'))
 				.map((filepath) => {
 					const slug = basename(filepath, '.pug');
 					return {
 						name: startCase(slug),
-						path: `${rootPath}/${slug}`,
+						path: `${pageBreadcrumb.path}/${slug}`,
 					};
 				})
 				.filter(({ name }) => name !== 'Index'),

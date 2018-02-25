@@ -1,7 +1,7 @@
-if breadcrumb
+if breadcrumb && breadcrumb.parts.length
 	nav
 		ol.breadcrumb(itemscope itemtype="http://schema.org/BreadcrumbList")
-			each item, i in breadcrumb
+			each item, i in breadcrumb.parts
 				li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
 					a(href=item.path itemprop="item")
 						span(itemprop="name")= item.name

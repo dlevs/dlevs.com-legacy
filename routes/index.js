@@ -3,13 +3,13 @@
 // Dependencies
 //------------------------------------
 const Router = require('koa-router');
-
+const Breadcrumb = require('../lib/Breadcrumb');
 
 // Variables
 //------------------------------------
 const router = new Router();
-const ROOT_PAGE = { name: 'Home', path: '/' };
-const controllerParams = { breadcrumbRoot: [ROOT_PAGE] };
+const ROOT_PAGE = { name: 'Home', slug: '', path: '/' };
+const controllerParams = { breadcrumbRoot: new Breadcrumb([ROOT_PAGE]) };
 
 
 // Controllers

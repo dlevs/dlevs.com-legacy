@@ -1,14 +1,12 @@
 'use strict';
 
 const moment = require('moment');
-const last = require('lodash/last');
 const orderBy = require('lodash/fp/orderBy');
 const flow = require('lodash/flow');
 const kebabCase = require('lodash/kebabCase');
 const sortBy = require('lodash/fp/sortBy');
 const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
-const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 const { SITE_AUTHOR } = require('../lib/constants');
 const rawPostsData = require('../data/travelPostsRaw');
 
@@ -16,8 +14,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 	posts => posts.map((post) => {
 		const countrySlug = kebabCase(post.country);
 		const townSlug = kebabCase(post.town);
-		const breadcrumb = expandBreadcrumb([
-			...breadcrumbRoot,
+		const breadcrumb = breadcrumbRoot.append([
 			{
 				slug: countrySlug,
 				name: post.country,
@@ -31,14 +28,13 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			...image,
 			geoLocation: `${post.town}, ${post.country}`,
 		}));
-		const { path } = last(breadcrumb);
 
 		return {
 			name: post.town,
 			countrySlug,
 			townSlug,
 			breadcrumb,
-			path,
+			path: breadcrumb.path,
 			humanDate: moment(post.date).format('MMMM YYYY'),
 			description: `Photos from ${post.town}, ${post.country}.`,
 			author: SITE_AUTHOR,
@@ -54,8 +50,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
 	groupBy('country'),
 	map((posts) => {
 		const { country, countrySlug } = posts[0];
-		const breadcrumb = expandBreadcrumb([
-			...breadcrumbRoot,
+		const breadcrumb = breadcrumbRoot.append([
 			{
 				slug: countrySlug,
 				name: country,
@@ -67,7 +62,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
 			country,
 			countrySlug,
 			breadcrumb,
-			path: last(breadcrumb).path,
+			path: breadcrumb.path,
 			description: `Photos from ${country}.`,
 			author: SITE_AUTHOR,
 			posts,

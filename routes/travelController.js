@@ -2,25 +2,24 @@
 
 const Router = require('koa-router');
 const findIndex = require('lodash/findIndex');
-const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 const { getPosts } = require('../data/travelPosts');
 const { getImageMeta } = require('../lib/imageUtils');
 const { ORIGIN } = require('../config');
 
 
 module.exports = ({ breadcrumbRoot }) => {
-	const page = {
+	const pageBreadcrumb = breadcrumbRoot.append({
 		slug: 'travel',
 		name: 'Travel',
-	};
+	});
 	const { posts, postsByCountry } = getPosts({
-		breadcrumbRoot: [...breadcrumbRoot, page],
+		breadcrumbRoot: pageBreadcrumb,
 	});
 	const controllers = {
 		index: async (ctx) => {
 			await ctx.render('travel/travelPostListing.pug', {
 				posts,
-				breadcrumb: expandBreadcrumb(breadcrumbRoot),
+				breadcrumb: pageBreadcrumb,
 				meta: {
 					title: 'Travel Blog',
 					description: 'Photos from around the world.',
@@ -107,12 +106,12 @@ module.exports = ({ breadcrumbRoot }) => {
 	return {
 
 		router: new Router()
-			.get(`/${page.slug}`, controllers.index)
-			.get(`/${page.slug}/:countrySlug`, controllers.renderPostsForCountry)
-			.get(`/${page.slug}/:countrySlug/:townSlug`, controllers.renderPost),
+			.get(`${pageBreadcrumb.path}`, controllers.index)
+			.get(`${pageBreadcrumb.path}/:countrySlug`, controllers.renderPostsForCountry)
+			.get(`${pageBreadcrumb.path}/:countrySlug/:townSlug`, controllers.renderPost),
 
 		sitemap: {
-			...page,
+			...pageBreadcrumb.currentPage,
 			posts: postsByCountry,
 		},
 
