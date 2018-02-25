@@ -109,21 +109,21 @@
 }
 
 .pswp--fs .pswp__button--fs {
-	& .pswp__button-icon {
+	.pswp__button-icon {
 		display: none;
 	}
 
-	& .pswp__button-icon-alt {
+	.pswp__button-icon-alt {
 		display: inline-block;
 	}
 }
 
 .pswp--zoomed-in .pswp__button--zoom {
-	& .pswp__button-icon {
+	.pswp__button-icon {
 		display: none;
 	}
 
-	& .pswp__button-icon-alt {
+	.pswp__button-icon-alt {
 		display: inline-block;
 	}
 }
@@ -170,7 +170,7 @@
 	height: 30px;
 	background-color: rgba(0, 0, 0, 0.3);
 
-	& .pswp__button-icon {
+	.pswp__button-icon {
 		height: 32px;
 	}
 }
