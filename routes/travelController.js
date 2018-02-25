@@ -1,17 +1,22 @@
 'use strict';
 
+const Router = require('koa-router');
 const findIndex = require('lodash/findIndex');
 const { expandBreadcrumb } = require('../lib/breadcrumbUtils');
 const { getPosts } = require('../data/travelPosts');
 const { getImageMeta } = require('../lib/imageUtils');
 const { ORIGIN } = require('../config');
 
-module.exports = (options) => {
-	const { breadcrumbRoot } = options;
-	const { posts, postsByCountry } = getPosts(options);
 
-	return {
-
+module.exports = ({ breadcrumbRoot }) => {
+	const page = {
+		slug: 'travel',
+		name: 'Travel',
+	};
+	const { posts, postsByCountry } = getPosts({
+		breadcrumbRoot: [...breadcrumbRoot, page],
+	});
+	const controllers = {
 		index: async (ctx) => {
 			await ctx.render('travel/travelPostListing.pug', {
 				posts,
@@ -25,7 +30,8 @@ module.exports = (options) => {
 		},
 
 		renderPostsForCountry: async (ctx) => {
-			const index = findIndex(postsByCountry, ctx.params);
+			const { countrySlug } = ctx.params;
+			const index = findIndex(postsByCountry, { countrySlug });
 
 			if (index === -1) return;
 
@@ -51,7 +57,8 @@ module.exports = (options) => {
 		},
 
 		renderPost: async (ctx) => {
-			const index = findIndex(posts, ctx.params);
+			const { countrySlug, townSlug } = ctx.params;
+			const index = findIndex(posts, { countrySlug, townSlug });
 
 			// Get gallery image index from query string, for setting og:image to
 			// shared image from photoswipe gallery.
@@ -95,11 +102,19 @@ module.exports = (options) => {
 				},
 			});
 		},
+	};
 
-		sitemap: [
-			...postsByCountry,
-			...posts,
-		],
+	return {
+
+		router: new Router()
+			.get(`/${page.slug}`, controllers.index)
+			.get(`/${page.slug}/:countrySlug`, controllers.renderPostsForCountry)
+			.get(`/${page.slug}/:countrySlug/:townSlug`, controllers.renderPost),
+
+		sitemap: {
+			...page,
+			posts: postsByCountry,
+		},
 
 	};
 };

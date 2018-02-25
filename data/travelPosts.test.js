@@ -56,7 +56,7 @@ const testPosts = [
 
 describe('getPosts()', () => {
 	const { posts, postsByCountry } = getPosts(
-		{ breadcrumbRoot: [{ label: 'Home' }] },
+		{ breadcrumbRoot: [{ name: 'Home' }] },
 		testPosts,
 	);
 
@@ -68,17 +68,17 @@ describe('getPosts()', () => {
 				townSlug: 'vung-tau',
 				breadcrumb: [
 					{
-						label: 'Home',
+						name: 'Home',
 						slug: '',
 						path: '/',
 					},
 					{
-						label: 'Vietnam',
+						name: 'Vietnam',
 						slug: 'vietnam',
 						path: '/vietnam',
 					},
 					{
-						label: 'Vung Tau',
+						name: 'Vung Tau',
 						slug: 'vung-tau',
 						path: '/vietnam/vung-tau',
 					},
@@ -133,12 +133,12 @@ describe('getPosts()', () => {
 				countrySlug: 'england',
 				breadcrumb: [
 					{
-						label: 'Home',
+						name: 'Home',
 						slug: '',
 						path: '/',
 					},
 					{
-						label: 'England',
+						name: 'England',
 						slug: 'england',
 						path: '/england',
 					},

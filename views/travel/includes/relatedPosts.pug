@@ -8,7 +8,7 @@ mixin relatedPost(post, type)
 				}))
 				h3
 					span.related-post__label= type === 'next' ? 'Next' : 'Previous'
-					span= post.town || post.country
+					span= post.name
 
 if previousPost || nextPost
 	aside.related-posts

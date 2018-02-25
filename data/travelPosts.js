@@ -20,11 +20,11 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			...breadcrumbRoot,
 			{
 				slug: countrySlug,
-				label: post.country,
+				name: post.country,
 			},
 			{
 				slug: townSlug,
-				label: post.town,
+				name: post.town,
 			},
 		]);
 		const images = post.images.map(image => ({
@@ -34,6 +34,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 		const { path } = last(breadcrumb);
 
 		return {
+			name: post.town,
 			countrySlug,
 			townSlug,
 			breadcrumb,
@@ -57,11 +58,12 @@ const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
 			...breadcrumbRoot,
 			{
 				slug: countrySlug,
-				label: country,
+				name: country,
 			},
 		]);
 		const images = posts.map(({ mainImage }) => mainImage);
 		return {
+			name: country,
 			country,
 			countrySlug,
 			breadcrumb,

@@ -1,0 +1,24 @@
+mixin sitemapPages(pages)
+	if pages
+		for page in pages
+			url
+				loc= origin + page.path
+				if page.images
+					each image in page.images
+						image:image
+							image:loc= HELPERS.getImageMeta(image.src).large.absoluteSrc
+
+							if image.caption
+								image:caption= image.caption
+
+							if image.geoLocation
+								image:geo_location= image.geoLocation
+
+			+sitemapPages(page.posts)
+
+doctype xml
+urlset(
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+)
+	+sitemapPages(pages)

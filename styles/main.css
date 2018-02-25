@@ -23,6 +23,8 @@
 /* Pages */
 @import "./includes/pages/home.css";
 @import "./includes/pages/travel.css";
+@import "./includes/pages/sitemap.css";
+@import "./includes/pages/patternLibrary.css";
 
 /* Utility */
 @import "includes/utility/utility.css";

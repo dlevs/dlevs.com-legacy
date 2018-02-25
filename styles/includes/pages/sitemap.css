@@ -1,0 +1,26 @@
+.sitemap-list {
+	padding: 0 0 0 var(--spacing-large);
+	list-style: none;
+}
+
+.sitemap-list--lv1 {
+	padding: 0;
+}
+
+.sitemap-list-item--lv1,
+.sitemap-list-item--lv2 {
+	margin-bottom: var(--spacing-large);
+}
+
+.sitemap-link {
+	@mixin link-color var(--color-text);
+}
+
+.sitemap-link--lv3 {
+	@mixin link-color var(--color-text-light);
+}
+
+.sitemap-heading:not(.sitemap-heading--lv1) {
+	font-family: var(--font-copy);
+	font-size: 1em;
+}

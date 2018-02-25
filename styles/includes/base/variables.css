@@ -6,6 +6,7 @@
 
 	/* Colors */
 	--color-text: #444;
+	--color-text-light: color(var(--color-text) lightness(+15%));
 	--color-primary: #1168cb;
 
 	/* Transition speeds */

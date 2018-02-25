@@ -1,8 +1,15 @@
 'use strict';
 
-module.exports = ({ pages = [] }) => ({
-	index: async (ctx) => {
-		await ctx.render('sitemap.pug', { pages, origin: ctx.origin });
-		ctx.type = 'xml';
-	},
-});
+module.exports = ({ pages = [] }) => {
+	const getRenderVariables = ctx => ({ pages, origin: ctx.origin });
+
+	return {
+		xml: async (ctx) => {
+			await ctx.render('sitemapXml.pug', getRenderVariables(ctx));
+			ctx.type = 'xml';
+		},
+		html: async (ctx) => {
+			await ctx.render('sitemapHtml.pug', getRenderVariables(ctx));
+		},
+	};
+};

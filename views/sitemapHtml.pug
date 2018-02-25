@@ -1,0 +1,18 @@
+extends ./layouts/main.pug
+
+mixin sitemapPages(pages, level)
+	if pages
+		ul(class=`sitemap-list sitemap-list--lv${level}`)
+			for page in pages
+				li(class=`sitemap-list-item sitemap-list-item--lv${level}`)
+					#{level < 6 ? `h${level + 1}` : 'div'}.sitemap-heading(
+						class=HELPERS.classnames(`sitemap-heading--lv${level}`, { 'heading--underlined': level === 1 })
+					)
+						a(href=origin + page.path title=page.description class=`sitemap-link sitemap-link--lv${level}`)= page.name
+					+sitemapPages(page.posts, level + 1)
+
+block content
+	main.baseline-section
+		header.blog-header
+			h1.heading--main Sitemap
+		+sitemapPages(pages, 1)

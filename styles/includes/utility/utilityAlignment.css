@@ -24,3 +24,11 @@
 		@mixin horizontal-spacing-small;
 	}
 }
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
