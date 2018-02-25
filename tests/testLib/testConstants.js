@@ -34,6 +34,7 @@ const PAGES = mapValues(
 			'/travel',
 			'/travel/ireland',
 			'/travel/ireland/dublin',
+			'/sitemap',
 		],
 		// Pages on which to test JS features.
 		WITH_READMORE: [
@@ -86,6 +87,10 @@ const SCREENSHOT_CONFIG = [
 	{
 		path: '/nonexistent-page',
 		shouldScrollPage: true,
+	},
+	{
+		path: '/sitemap',
+		shouldScrollPage: false,
 	},
 ].map(({ path, ...otherProps }) => ({
 	url: `${ORIGIN}${path}`,
