@@ -1,5 +1,6 @@
 'use strict';
 
+const Breadcrumb = require('../lib/Breadcrumb');
 const { getPosts } = require('./travelPosts');
 
 const testPosts = [
@@ -56,7 +57,7 @@ const testPosts = [
 
 describe('getPosts()', () => {
 	const { posts, postsByCountry } = getPosts(
-		{ breadcrumbRoot: [{ name: 'Home' }] },
+		{ breadcrumbRoot: new Breadcrumb([{ name: 'Home', slug: '' }]) },
 		testPosts,
 	);
 
@@ -66,23 +67,6 @@ describe('getPosts()', () => {
 			expect(posts[0]).toMatchObject({
 				countrySlug: 'vietnam',
 				townSlug: 'vung-tau',
-				breadcrumb: [
-					{
-						name: 'Home',
-						slug: '',
-						path: '/',
-					},
-					{
-						name: 'Vietnam',
-						slug: 'vietnam',
-						path: '/vietnam',
-					},
-					{
-						name: 'Vung Tau',
-						slug: 'vung-tau',
-						path: '/vietnam/vung-tau',
-					},
-				],
 				path: '/vietnam/vung-tau',
 				humanDate: 'September 2018',
 				mainImage: {
@@ -131,18 +115,6 @@ describe('getPosts()', () => {
 			expect(postsByCountry[0]).toMatchObject({
 				country: 'England',
 				countrySlug: 'england',
-				breadcrumb: [
-					{
-						name: 'Home',
-						slug: '',
-						path: '/',
-					},
-					{
-						name: 'England',
-						slug: 'england',
-						path: '/england',
-					},
-				],
 				path: '/england',
 				images: [
 					{
