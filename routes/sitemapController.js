@@ -1,9 +1,16 @@
 'use strict';
 
-module.exports = ({ pages = [] }) => {
-	const getRenderVariables = ctx => ({ pages, origin: ctx.origin });
+const Router = require('koa-router');
 
-	return {
+module.exports = ({ pages = [], breadcrumbRoot }) => {
+	const breadcrumb = breadcrumbRoot.append({ name: 'Sitemap', slug: 'sitemap' });
+	const getRenderVariables = ctx => ({
+		pages,
+		breadcrumb,
+		origin: ctx.origin,
+	});
+
+	const controllers = {
 		xml: async (ctx) => {
 			await ctx.render('sitemapXml.pug', getRenderVariables(ctx));
 			ctx.type = 'xml';
@@ -11,5 +18,11 @@ module.exports = ({ pages = [] }) => {
 		html: async (ctx) => {
 			await ctx.render('sitemapHtml.pug', getRenderVariables(ctx));
 		},
+	};
+
+	return {
+		router: new Router()
+			.get(`${breadcrumb.path}`, controllers.html)
+			.get(`${breadcrumb.path}.xml`, controllers.xml),
 	};
 };

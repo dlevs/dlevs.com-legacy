@@ -5,6 +5,7 @@
 const Router = require('koa-router');
 const Breadcrumb = require('../lib/Breadcrumb');
 
+
 // Variables
 //------------------------------------
 const router = new Router();
@@ -21,6 +22,7 @@ const reportingController = require('./reportingController')();
 const travelController = require('./travelController')(controllerParams);
 const patternLibraryController = require('./patternLibraryController')(controllerParams);
 const sitemapController = require('./sitemapController')({
+	...controllerParams,
 	pages: [
 		ROOT_PAGE,
 		travelController.sitemap,
@@ -37,13 +39,19 @@ router
 
 	// Travel blog
 	.use(travelController.router.routes())
+	.use(travelController.router.allowedMethods())
+
+	// Pattern library
+	.use(patternLibraryController.router.routes())
+	.use(patternLibraryController.router.allowedMethods())
+
+	// Sitemap
+	.use(sitemapController.router.routes())
+	.use(sitemapController.router.allowedMethods())
 
 	// Meta
-	.use(patternLibraryController.router.routes())
 	.get('/info.json', infoController.index)
 	.get('/robots.txt', robotsController.index)
-	.get('/sitemap', sitemapController.html)
-	.get('/sitemap.xml', sitemapController.xml)
 
 	// Reporting
 	.post('/report-csp-violation', reportingController.reportCSPViolation);

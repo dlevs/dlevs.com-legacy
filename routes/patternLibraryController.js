@@ -49,11 +49,12 @@ module.exports = ({ breadcrumbRoot }) => {
 
 	return {
 		router: new Router()
-			.get(pageBreadcrumb.path, serve)
+			.get(`${pageBreadcrumb.path}`, serve)
 			.get(`${pageBreadcrumb.path}/:slug`, serve),
 
 		sitemap: {
 			...pageBreadcrumb.currentPage,
+			// TODO: Change the word "posts" to "pages".
 			posts: glob.sync(root('views/patternLibrary/*.pug'))
 				.map((filepath) => {
 					const slug = basename(filepath, '.pug');
