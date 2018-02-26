@@ -31,8 +31,8 @@ describe('Links and static resources', () => {
 			const newAssets = await page.evaluate(() => {
 				const $ = selector => Array.from(document.querySelectorAll(selector));
 				const links = []
-					.concat($('[href]').map(({ href }) => href))
-					.concat($('[src]').map(({ src }) => src))
+					.concat($('[href]').map(el => el.getAttribute('href')))
+					.concat($('[src]').map(el => el.getAttribute('src')))
 					.concat($('[data-href-webp]').map(({ dataset }) => dataset.hrefWebp))
 					.concat($('meta').map(({ content }) => content).filter(str => /^(http|\/)/.test(str)));
 
@@ -56,18 +56,20 @@ describe('Links and static resources', () => {
 			.from(new Set(assets))
 			// Remove unwanted URLS
 			.filter(url => !url.startsWith('data:'))
-			.filter(url => !ignoreList.includes(url))
-			// If link is from data attribute instead of "src" or "href",
-			// browser does not expand to be an absolute URL. Do this manually.
-			.map((url) => {
-				if (url.startsWith('http')) {
-					return url;
-				}
-				return new URL(url, ORIGIN).toString();
-			});
+			.filter(url => !ignoreList.includes(url));
 
-		expect(assets.length).toBeGreaterThan(0);
 		expect(assets.every(value => typeof value === 'string')).toBe(true);
+		expect(assets.every(value => value.trim() !== '')).toBe(true);
+		expect(assets.length).toBeGreaterThan(0);
+
+		// If link is from data attribute instead of "src" or "href",
+		// browser does not expand to be an absolute URL. Do this manually.
+		assets = assets.map((url) => {
+			if (url.startsWith('http')) {
+				return url;
+			}
+			return new URL(url, ORIGIN).toString();
+		});
 
 		eachLimited(assets, async (url) => {
 			const response = await fetch(url);
