@@ -8,6 +8,7 @@ module.exports = ({ pages = [], breadcrumbRoot }) => {
 		pages,
 		breadcrumb,
 		origin: ctx.origin,
+		meta: { title: breadcrumb.currentPage.name },
 	});
 
 	const controllers = {
