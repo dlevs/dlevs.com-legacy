@@ -23,7 +23,7 @@
     "precommit": "lint-staged"
   },
   "engines": {
-    "node": "^8.9.1"
+    "node": "^8.9.4"
   },
   "author": "Daniel Levett <dlevett@hotmail.co.uk>",
   "dependencies": {
