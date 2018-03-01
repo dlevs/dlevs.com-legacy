@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import instantclick from './vendor/instantclick';
 
 const { GOOGLE_ANALYTICS_ID, BASE_CONFIG, gtag } = window;

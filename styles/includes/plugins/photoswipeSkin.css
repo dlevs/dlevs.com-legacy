@@ -46,11 +46,22 @@
 	background: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
+	text-align: center;
 	opacity: 0.75;
 	cursor: pointer;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
 	-webkit-appearance: none;
+}
+
+.pswp__button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+.pswp__button:active {
+	outline: none;
+	opacity: 0.9;
 }
 
 .pswp__button:focus,
@@ -60,25 +71,9 @@
 	}
 }
 
-.pswp__button:active {
-	outline: none;
-	opacity: 0.9;
-}
-
-.pswp__button::-moz-focus-inner {
-	padding: 0;
-	border: 0;
-}
-
 /* pswp__ui--over-close class it added when mouse is over element that should close gallery */
 .pswp__ui--over-close .pswp__button--close {
 	opacity: 1;
-}
-
-.pswp__button {
-	width: 44px;
-	height: 44px;
-	text-align: center;
 }
 
 .pswp__button-icon {
@@ -87,17 +82,21 @@
 	color: #fff;
 }
 
+.pswp__button--arrow--backdrop .pswp__button-icon {
+	height: 32px;
+}
+
+.pswp__button--close > .pswp__button-icon {
+	/* Annoyingly, the close icon is tiny... */
+	width: 22px;
+}
+
 .pswp__button[aria-disabled=true] .pswp__button-icon {
 	color: #666;
 }
 
 .pswp__button-icon-alt {
 	display: none;
-}
-
-.pswp__button--close > .pswp__button-icon {
-	/* Annoyingly, the close icon is tiny... */
-	width: 22px;
 }
 
 .pswp__button--fs {
@@ -118,6 +117,10 @@
 	}
 }
 
+.pswp__button--zoom {
+	display: none;
+}
+
 .pswp--zoomed-in .pswp__button--zoom {
 	.pswp__button-icon {
 		display: none;
@@ -128,18 +131,8 @@
 	}
 }
 
-.pswp__button--zoom {
-	display: none;
-}
-
 .pswp--zoom-allowed .pswp__button--zoom {
 	display: block;
-}
-
-/* no arrows on touch screens */
-.pswp--touch .pswp__button--arrow--left,
-.pswp--touch .pswp__button--arrow--right {
-	visibility: hidden;
 }
 
 /*
@@ -163,16 +156,18 @@
 	right: 0;
 }
 
+/* no arrows on touch screens */
+.pswp--touch .pswp__button--arrow--left,
+.pswp--touch .pswp__button--arrow--right {
+	visibility: hidden;
+}
+
 .pswp__button--arrow--backdrop {
 	position: absolute;
 	top: 35px;
 	width: 32px;
 	height: 30px;
 	background-color: rgba(0, 0, 0, 0.3);
-
-	.pswp__button-icon {
-		height: 32px;
-	}
 }
 
 .pswp__button--arrow--left > .pswp__button--arrow--backdrop {
@@ -244,6 +239,12 @@
 	font-size: 14px;
 	line-height: 18px;
 	text-decoration: none;
+}
+
+.pswp__caption a {
+	@mixin link-color #ccc;
+
+	text-decoration: underline;
 }
 
 .pswp__share-tooltip a:hover {
@@ -343,12 +344,6 @@ a.pswp__share--download:hover {
 	min-height: 44px;
 }
 
-.pswp__caption a {
-	@mixin link-color #ccc;
-
-	text-decoration: underline;
-}
-
 .pswp__caption small {
 	color: #bbb;
 	font-size: 11px;
@@ -408,9 +403,20 @@ a.pswp__share--download:hover {
 	opacity: 1;
 }
 
-.pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
-	-webkit-animation: clockwise 500ms linear infinite;
-	animation: clockwise 500ms linear infinite;
+.pswp--css_animation .pswp__preloader__donut {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 14px;
+	height: 14px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	background: none;
 }
 
 .pswp--css_animation .pswp__preloader--active .pswp__preloader__donut {
@@ -429,6 +435,11 @@ a.pswp__share--download:hover {
 	opacity: 0.75;
 }
 
+.pswp--css_animation .pswp__preloader--active .pswp__preloader__icn {
+	-webkit-animation: clockwise 500ms linear infinite;
+	animation: clockwise 500ms linear infinite;
+}
+
 .pswp--css_animation .pswp__preloader__cut {
 	/*
 			  The idea of animating inner circle is based on Polymer ("material") loading indicator
@@ -438,22 +449,6 @@ a.pswp__share--download:hover {
 	width: 7px;
 	height: 14px;
 	overflow: hidden;
-}
-
-.pswp--css_animation .pswp__preloader__donut {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 14px;
-	height: 14px;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	margin: 0;
-	border: 2px solid #fff;
-	border-radius: 50%;
-	border-bottom-color: transparent;
-	border-left-color: transparent;
-	background: none;
 }
 
 @media screen and (max-width: 1024px) {
