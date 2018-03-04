@@ -1,5 +1,52 @@
 [
     {
+        "country": "France",
+        "town": "Paris",
+        "date": "2018-03-02",
+        "images": [
+            {
+                "src": "/images/travel/france/paris/20180303_140655.jpg",
+                "caption": "Tour Eiffel",
+                "alt": "The Eiffel Tower on a clear winter’s day."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_170652.jpg",
+                "caption": "Musée du Louvre",
+                "alt": "The glass pyramid of the Louvre."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_172645.jpg",
+                "caption": "Jardin des Tuileries",
+                "alt": "A large octagonal fountain surrounded by green chairs."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_174100.jpg",
+                "caption": "Obélisque de Louxor",
+                "alt": "Luxor Obelisk in front of a ferris wheel."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_174302.jpg",
+                "caption": "Place de la Concorde",
+                "alt": "Crossroads of Place de la Concorde."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_173949.jpg",
+                "caption": "Fontaine de la Concorde",
+                "alt": "An ornate fountain with sculpted stone figures."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_191042.jpg",
+                "caption": "Arc de Triomphe",
+                "alt": "The Arc de Triomphe lit up in the evening."
+            },
+            {
+                "src": "/images/travel/france/paris/20180303_194915.jpg",
+                "caption": "Sacré-Cœur",
+                "alt": "An elaborate church illuminated at night."
+            }
+        ]
+    },
+    {
         "country": "United States",
         "town": "New York",
         "date": "2018-01-12",
