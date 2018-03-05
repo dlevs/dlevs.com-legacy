@@ -8,7 +8,7 @@ mixin sitemapPages(pages, level)
 					#{level < 6 ? `h${level + 1}` : 'div'}.sitemap-heading(
 						class=HELPERS.classnames(`sitemap-heading--lv${level}`, { 'heading--underlined': level === 1 })
 					)
-						a.sitemap-link(href=origin + page.path title=page.description class=`sitemap-link--lv${link}`)= page.name
+						a.sitemap-link(href=origin + page.path title=page.description class=`sitemap-link--lv${level}`)= page.name
 					+sitemapPages(page.posts, level + 1)
 
 block content
