@@ -40,8 +40,8 @@ module.exports = {
 	projects: [
 		{
 			heading: 'Content Creation Tool',
-			shortDescription: '<p>A web application for editing content on <a href="http://www.demandware.com/">Demandware sites</a>.</p>',
-			description: '<p>A web application for editing content on <a href="http://www.demandware.com/">Demandware sites</a>, making use of Demandware’s REST API to load and save content directly from a site’s business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>',
+			shortDescription: '<p>A web application for editing content on <a href="http://www.demandware.com/">Salesforce Commerce Cloud</a> sites.</p>',
+			description: '<p>A web application for editing content on <a href="http://www.demandware.com/">Salesforce Commerce Cloud</a> sites, making use of their REST API to load and save content directly from a site’s business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>',
 			img: {
 				src: '/images/projects/json-tool.png',
 				alt: 'A screenshot of the content creation tool being used to edit a web article.',
@@ -73,9 +73,9 @@ module.exports = {
 			],
 		},
 		{
-			heading: 'Demandware Content Inspector',
-			shortDescription: '<p>A content inspector for <a href="https://www.npmjs.com/package/xml-stream" title="The xml-stream package on npm, used to parse XML">XML content exports</a> of <a href="http://www.demandware.com/">Demandware sites</a>.</p>',
-			description: '<p>A content inspector for <a href="https://www.npmjs.com/package/xml-stream" title="The xml-stream package on npm, used to parse XML">XML content exports</a> of <a href="http://www.demandware.com/">Demandware sites</a>. It highlights potential errors and enables users to perform batch editing.</p><p>The tool drove our lead developer mad, as it allowed him to see all the broken HTML and duplicate content that he had no time to fix!</p>',
+			heading: 'Content Inspector',
+			shortDescription: '<p>A content inspector for <a href="https://www.npmjs.com/package/xml-stream" title="The xml-stream package on npm, used to parse XML">XML content exports</a> of <a href="http://www.demandware.com/">Salesforce Commerce Cloud</a> sites.</p>',
+			description: '<p>A content inspector for <a href="https://www.npmjs.com/package/xml-stream" title="The xml-stream package on npm, used to parse XML">XML content exports</a> of <a href="http://www.demandware.com/">Salesforce Commerce Cloud</a> sites. It highlights potential errors and enables users to perform batch editing.</p>',
 			img: {
 				src: '/images/projects/content-inspector.png',
 				alt: 'A screenshot of the content inspector showing a listing of content assets.',
