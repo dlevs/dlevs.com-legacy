@@ -1,13 +1,3 @@
-@define-mixin flush-margin-edge-children {
-	&:first-child {
-		margin-left: 0;
-	}
-
-	&:last-child {
-		margin-right: 0;
-	}
-}
-
 @define-mixin horizontal-spacing-small {
 	margin-right: var(--spacing-small);
 	margin-left: var(--spacing-small);
@@ -38,6 +28,12 @@
 	padding: 0;
 	border: 0;
 	clip: rect(0 0 0 0);
+}
+
+@define-mixin flex-vertical-center-items {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 @define-mixin link-color $color {

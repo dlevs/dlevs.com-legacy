@@ -11,20 +11,6 @@
 	display: flex;
 }
 
-.flex--column {
-	flex-direction: column;
-}
-
-.flex--row {
-	flex-direction: column;
-}
-
-.flex--spacing-small {
-	& > * {
-		@mixin horizontal-spacing-small;
-	}
-}
-
 .float-left {
 	float: left;
 }

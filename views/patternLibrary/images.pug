@@ -6,7 +6,7 @@ block contentInner
 
 	.baseline-section
 		h2 Images
-		.flex.flex--spacing-small
+		.cols.cols--spacing-medium
 			.col-6
 				+picture(HELPERS.immutableExtend(img1, {lazyLoad: false}))
 				h3 Normal
@@ -17,7 +17,7 @@ block contentInner
 
 	.baseline-section
 		h2 Images with link (no JS) / Photoswipe gallery (JS)
-		.flex.flex--spacing-small
+		.cols.cols--spacing-medium
 			.col-6
 				+imageLink(img1)
 					+picture(img1)

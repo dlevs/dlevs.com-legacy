@@ -1,12 +1,22 @@
 /* Grid */
 .demo-alignment-grid {
-	flex-wrap: wrap;
 	border: 1px solid var(--color-text);
+
+	/*
+	Give it a background as Chrome will sometimes leave a hairline gap on
+	the right when calculating the width of the child elements. With a
+	background to fill in the gap, it looks slightly less bad.
+	*/
+	background: var(--color-text);
 }
 
 .demo-alignment-grid > * {
+	@mixin flex-vertical-center-items;
+
+	overflow: hidden;
 	padding: var(--spacing-small);
 	border: 1px solid var(--color-text);
+	background: #fff;
 	text-align: center;
 }
 
