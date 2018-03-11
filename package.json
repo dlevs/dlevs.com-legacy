@@ -10,7 +10,7 @@
     "build": "npm run build:copypublic && npm run build:scripts && npm run build:styles && npm run build:images && npm run build:manifest",
     "build:copypublic": "cp -r publicSrc/* public",
     "build:scripts": "webpack --config build/processScripts.webpack.config.js",
-    "build:styles": "postcss styles/*.css -d public/styles",
+    "build:styles": "postcss --verbose -d public/styles styles/*.css",
     "build:images": "node build/processImages.js && node build/processSvgs.js",
     "build:manifest": "hashlink -s --relative public 'public/**/*.+(js|css|png|ico|jpg|svg|json|webp)' > data/generated/assets.json",
     "clean": "rimraf ./public/* && rimraf ./data/generated/*",
