@@ -13,10 +13,11 @@ html.no-js(lang="en-GB")
 
 	body
 		.site-wrapper
-			include ../includes/breadcrumb.pug
-			block content
+			.site-content
+				include ../includes/breadcrumb.pug
+				block content
 
-			footer.text-center
+			footer.site-footer.text-center
 				a.small(href="/sitemap") Sitemap
 
 		include ../includes/photoswipeDialog.pug

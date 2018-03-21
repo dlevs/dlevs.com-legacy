@@ -22,6 +22,7 @@
 	--spacing-large: calc(var(--spacing-small) * 3);
 	--spacing-huge: calc(var(--spacing-small) * 5);
 	--spacing-section: calc(var(--spacing-small) * 10);
+	--spacing-site-padding: var(--spacing-medium);
 
 	/* Borders */
 	--hairline-border: 1px solid #eee;
