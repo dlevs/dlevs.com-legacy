@@ -54,7 +54,7 @@ a,
 .site-wrapper {
 	display: flex;
 	flex-direction: column;
-	max-width: var(--width-site-max);
+	max-width: calc(var(--width-site-max) + (var(--spacing-site-padding) * 2));
 	min-height: 100vh;
 	margin: 0 auto;
 	padding: 0 var(--spacing-site-padding);
