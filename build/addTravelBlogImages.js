@@ -48,7 +48,7 @@ const getImagesDataForDirectory = async (dirpath) => {
 	return {
 		country,
 		town,
-		date: getImageFormattedDate(imagePaths[0]),
+		date: await getImageFormattedDate(imagePaths[0]),
 		images: imagePaths.map(imagePath => ({
 			src: `/${imagePath}`,
 			caption: '',
@@ -67,7 +67,7 @@ const addImages = async (sourceFilepath, newImageDirectories) => {
 
 	fs.writeFile(
 		sourceFilepath,
-		JSON.stringify(combinedEntries, null, '\t'),
+		`${JSON.stringify(combinedEntries, null, '\t')}\n`,
 	);
 };
 
