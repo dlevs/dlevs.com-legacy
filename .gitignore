@@ -1,6 +1,6 @@
 /.vscode
 /data/generated/*
 /public
-/images/travel
+/publicSrc/processUncommitted/*
 /config.js
 /tests/imageSnapshots

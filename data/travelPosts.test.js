@@ -10,11 +10,11 @@ const testPosts = [
 		date: '2016-01-02',
 		images: [
 			{
-				src: '/images/travel/india/image_1.jpg',
+				src: '/media/travel/india/image_1.jpg',
 				arbitraryProp: 'foo',
 			},
 			{
-				src: '/images/travel/india/image_2.jpg',
+				src: '/media/travel/india/image_2.jpg',
 				arbitraryProp: 'foo',
 			},
 		],
@@ -25,7 +25,7 @@ const testPosts = [
 		date: '2017-09-23',
 		images: [
 			{
-				src: '/images/travel/england/image_1.jpg',
+				src: '/media/travel/england/image_1.jpg',
 				arbitraryProp: 'foo',
 			},
 		],
@@ -37,7 +37,7 @@ const testPosts = [
 		date: '2018-09-23',
 		images: [
 			{
-				src: '/images/travel/vietnam/image_1.jpg',
+				src: '/media/travel/vietnam/image_1.jpg',
 				arbitraryProp: 'foo',
 			},
 		],
@@ -48,7 +48,7 @@ const testPosts = [
 		date: '2016-01-03',
 		images: [
 			{
-				src: '/images/travel/india/image_3.jpg',
+				src: '/media/travel/india/image_3.jpg',
 				arbitraryProp: 'foo',
 			},
 		],
@@ -70,7 +70,7 @@ describe('getPosts()', () => {
 				path: '/vietnam/vung-tau',
 				humanDate: 'September 2018',
 				mainImage: {
-					src: '/images/travel/vietnam/image_1.jpg',
+					src: '/media/travel/vietnam/image_1.jpg',
 					arbitraryProp: 'foo',
 					geoLocation: 'Vung Tau, Vietnam',
 				},
@@ -79,7 +79,7 @@ describe('getPosts()', () => {
 				date: '2018-09-23',
 				images: [
 					{
-						src: '/images/travel/vietnam/image_1.jpg',
+						src: '/media/travel/vietnam/image_1.jpg',
 						arbitraryProp: 'foo',
 						geoLocation: 'Vung Tau, Vietnam',
 					},
@@ -118,13 +118,13 @@ describe('getPosts()', () => {
 				path: '/england',
 				images: [
 					{
-						src: '/images/travel/england/image_1.jpg',
+						src: '/media/travel/england/image_1.jpg',
 						arbitraryProp: 'foo',
 						geoLocation: 'London, England',
 					},
 				],
 				mainImage: {
-					src: '/images/travel/england/image_1.jpg',
+					src: '/media/travel/england/image_1.jpg',
 					arbitraryProp: 'foo',
 					geoLocation: 'London, England',
 				},

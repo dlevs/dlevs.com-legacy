@@ -7,8 +7,9 @@ The app is daemonised by [pm2](https://www.npmjs.com/package/pm2), and sits behi
 ## First time setup
 
 1. Install the Node.js version specified by [package.json](./package.json)'s `engine` property.
-1. Copy all images not committed to this repository to `/images`.
-1. In the terminal, run:
+2. Install ffmpeg: `brew install ffmpeg`.
+3. Copy all media files not committed to this repository to `/publicSrc/processUncommitted`. This directory is for images, videos, etc, and is gitignored from repository due to filesize.
+4. In the terminal, run:
     ```bash
     npm install                             # Install dependencies
     npm run build                           # Compile static assets (JS, CSS, image compression)
@@ -46,13 +47,13 @@ The app is daemonised by [pm2](https://www.npmjs.com/package/pm2), and sits behi
 The site does not make use of any databases. Data to populate templates is stored in JSON files.
 
 ### Images
-
+TODO: Change to "media"
 | Directory | Comments |
 | --- | --- |
-| `/images` | Images organised into directories |
-| `/images/travel` | Travel images gitignored from repository due to filesize |
+| `/media` | Images organised into directories |
 
-All images sit in the `/images` directory. They are copied by build tasks to `/public/images`.
+TODO: Update the below:
+All images sit in the `/media` directory. They are copied by build tasks to `/public/media`.
 
 During the process:
 

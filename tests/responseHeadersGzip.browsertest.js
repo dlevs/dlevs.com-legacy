@@ -16,8 +16,8 @@ const pathsToGzip = PAGES.UNIQUE.concat([
 ]);
 
 const pathsNotToGzip = [
-	'/images/travel/ireland/dublin/20170923_145256_960x540.jpg',
-	'/images/travel/ireland/dublin/20170923_145256_960x540.webp',
+	'/media/travel/ireland/dublin/20170923_145256_960x540.jpg',
+	'/media/travel/ireland/dublin/20170923_145256_960x540.webp',
 	'/apple-touch-icon.png',
 ];
 

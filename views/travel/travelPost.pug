@@ -8,13 +8,17 @@ block content
 					span.subheading= `${post.country} | ${post.humanDate}`
 
 			each image, i in post.images
-				+imageLink(image)
-					figure
-						+picture(HELPERS.immutableExtend(image, {
-							className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
-							lazyLoad: i > 1
-						}))
-						if image.caption
-							figcaption.visually-hidden= image.caption
+				if image.src.endsWith('.mp4')
+					video(controls autoplay loop muted)
+						source(src=image.src type="video/mp4")
+				else
+					+imageLink(image)
+						figure
+							+picture(HELPERS.immutableExtend(image, {
+								className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
+								lazyLoad: i > 1
+							}))
+							if image.caption
+								figcaption.visually-hidden= image.caption
 
 			include includes/relatedPosts.pug

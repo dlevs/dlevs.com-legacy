@@ -10,13 +10,18 @@ const glob = promisify(require('glob'));
 const fs = require('fs-extra');
 const readExif = require('exif-reader');
 const ProgressBar = require('progress');
-const { toFixedTrimmed } = require('../lib/numberUtils');
 const { createGoogleMapsLink } = require('../lib/gpsUtils');
-const { root, relativeToRoot } = require('../lib/pathUtils');
+const { root } = require('../lib/pathUtils');
+const {
+	MEDIA_TO_PROCESS_ROOT,
+	createOutputPath,
+	createWebPath,
+	getPaddingBottom,
+	mediaData,
+	isFileNew,
+} = require('./buildUtils');
 
 (async () => {
-	const imageData = await fs.readJson(root('data/generated/images.json')).catch(() => ({}));
-
 	const imageFormats = [
 		{
 			type: 'large',
@@ -44,17 +49,11 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 		},
 	];
 
-	const createWebPath = filepath =>
-		`/${relativeToRoot(filepath)}`;
-
-	const isFileNew = filepath =>
-		imageData[createWebPath(filepath)] === undefined;
-
 	const processImage = async ({
 		type, filepath, format, size, quality,
 	}) => {
 		const sharpFile = sharp(filepath);
-		const outputPathParts = path.parse(filepath.replace('/images/', '/public/images/'));
+		const outputPathParts = path.parse(createOutputPath(filepath));
 
 		// Remove base, so path.format() will use the specified extension
 		delete outputPathParts.base;
@@ -81,14 +80,15 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 		await sharpFile[format]({ quality }).toFile(outputPath);
 
 		set(
-			imageData,
+			mediaData,
 			[createWebPath(filepath), type],
 			{
 				width,
 				height,
 				format,
-				src: createWebPath(outputPath.replace('/public', '')),
-				paddingBottom: `${toFixedTrimmed(((height / width) * 100), 4)}%`,
+				type: 'image',
+				src: createWebPath(outputPath),
+				paddingBottom: getPaddingBottom(width, height),
 			},
 		);
 	};
@@ -116,7 +116,7 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 
 				if (exif && exif.gps) {
 					set(
-						imageData,
+						mediaData,
 						[createWebPath(filepath), 'mapLink'],
 						createGoogleMapsLink(exif.gps),
 					);
@@ -130,11 +130,11 @@ const { root, relativeToRoot } = require('../lib/pathUtils');
 			});
 		});
 
-		const metaOutputPath = root('./data/generated/images.json');
+		const metaOutputPath = root('./data/generated/media.json');
 		// eslint-disable-next-line no-console
 		console.log(`Writing image meta data to ${metaOutputPath}`);
-		fs.writeFile(metaOutputPath, JSON.stringify(imageData, null, '\t'));
+		fs.writeFile(metaOutputPath, JSON.stringify(mediaData, null, '\t'));
 	};
 
-	await processImages(root('./images/**/*.+(png|jpg)'));
+	processImages(path.join(MEDIA_TO_PROCESS_ROOT, '**/*.+(png|jpg)'));
 })();

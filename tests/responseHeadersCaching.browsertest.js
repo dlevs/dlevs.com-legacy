@@ -8,8 +8,8 @@ const { normalizePathToAbsolute, fetch } = require('./testLib/testUtils');
 const pathsToCache = [
 	getRevvedPath('/styles/main.css'),
 	getRevvedPath('/scripts/main.js'),
-	'/images/travel/ireland/dublin/20170923_145256_960x540.jpg',
-	'/images/travel/ireland/dublin/20170923_145256_960x540.webp',
+	'/media/travel/ireland/dublin/20170923_145256_960x540.jpg',
+	'/media/travel/ireland/dublin/20170923_145256_960x540.webp',
 	'/apple-touch-icon.png',
 	'/favicon.ico',
 ];
