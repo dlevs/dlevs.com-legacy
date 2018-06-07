@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const glob = promisify(require('glob'));
 const ProgressBar = require('progress');
 const mapLimit = promisify(require('async').mapLimit);
-const set = require('lodash/set');
+const chalk = require('chalk');
 
 const { root, relativeToRoot } = require('../lib/pathUtils');
 const { toFixedTrimmed } = require('../lib/numberUtils');
@@ -13,7 +13,7 @@ const { toFixedTrimmed } = require('../lib/numberUtils');
 // TODO: Tidy up const and exports. No exports where they are not needed.
 exports.MEDIA_TO_PROCESS_ROOT = root('./publicSrc/+(process|processUncommitted)/media');
 exports.PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
-const FILEPATH_MEDIA_JSON = '../data/generated/media.json';
+const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');
 const MAX_FILES_PROCESS_CONCURRENTLY = 8;
 exports.createWebPath = filepath => `/${relativeToRoot(filepath)}`
 	.replace('/public/', '/')
@@ -34,12 +34,15 @@ const getMedia = async () => {
 
 const createLogger = name => new Proxy(console, {
 	get(obj, prop) {
-		return (...args) => obj[prop](`[${name}]`, ...args);
+		return (...args) => obj[prop](
+			chalk.cyan(`[${name}]`),
+			...args,
+		);
 	},
 });
 
-const addMedia = async (globPattern, processFile) => {
-	const logger = createLogger(`${processFile.type} files`);
+const addMedia = async (fileType, processFile, globPattern) => {
+	const logger = createLogger(fileType);
 	const media = await getMedia();
 	const allFilepaths = await glob(globPattern);
 	const filepaths = allFilepaths.filter((filepath) => {
@@ -48,6 +51,7 @@ const addMedia = async (globPattern, processFile) => {
 	});
 	const progress = new ProgressBar('[:bar] :percent', {
 		total: filepaths.length,
+		clear: true,
 	});
 
 	logger.log(`${allFilepaths.length} files found`);
@@ -55,26 +59,27 @@ const addMedia = async (globPattern, processFile) => {
 
 	if (!filepaths.length) return;
 
-	// const addFile = (filepath, type, data) => {
-	// 	set(media, [filepath, type], data);
-	// };
-
 	const newMedia = await mapLimit(
 		filepaths,
 		MAX_FILES_PROCESS_CONCURRENTLY,
 		async (filepath) => {
-			const result = await processFile(filepath);
+			const outputData = await processFile(filepath);
 			progress.tick();
-			return result;
+			return {
+				[exports.createWebPath(filepath)]: outputData,
+			};
 		},
 	);
 
-	console.log(newMedia);
-
-	// await fs.writeJson(FILEPATH_MEDIA_JSON, {
-	// 	...media,
-	// 	...newMedia
-	// });
+	await fs.writeJson(
+		FILEPATH_MEDIA_JSON,
+		Object.assign(
+			{},
+			media,
+			...newMedia,
+		),
+		{ spaces: '\t' },
+	);
 };
 
 // TODO: Tidy up the exports of this file. Maybe rename file.

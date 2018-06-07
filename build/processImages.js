@@ -5,7 +5,7 @@ const sharp = require('sharp');
 const path = require('path');
 const set = require('lodash/set');
 const eachLimit = promisify(require('async').eachLimit);
-const eachSeries = promisify(require('async').eachSeries);
+const mapSeries = promisify(require('async').mapSeries);
 const glob = promisify(require('glob'));
 const fs = require('fs-extra');
 const readExif = require('exif-reader');
@@ -21,120 +21,90 @@ const {
 	isFileNew,
 } = require('./buildUtils');
 
-(async () => {
-	const imageFormats = [
-		{
-			type: 'large',
-			format: 'jpeg',
-			size: 2000,
-			quality: 80,
-		},
-		{
-			type: 'default',
-			format: 'jpeg',
-			size: 960,
-			quality: 80,
-		},
-		{
-			type: 'largeWebp',
-			format: 'webp',
-			size: 2000,
-			quality: 80,
-		},
-		{
-			type: 'defaultWebp',
-			format: 'webp',
-			size: 960,
-			quality: 80,
-		},
-	];
+const QUALITY = 80;
+const SIZE_MEDIUM = 960;
+const SIZE_LARGE = 2000;
 
-	const processImage = async ({
-		type, filepath, format, size, quality,
-	}) => {
-		const sharpFile = sharp(filepath);
-		const outputPathParts = path.parse(createOutputPath(filepath));
+const imageFormats = {
+	large: {
+		format: 'jpeg',
+		size: SIZE_LARGE,
+		quality: QUALITY,
+	},
+	default: {
+		format: 'jpeg',
+		size: SIZE_MEDIUM,
+		quality: QUALITY,
+	},
+	largeWebp: {
+		format: 'webp',
+		size: SIZE_LARGE,
+		quality: QUALITY,
+	},
+	defaultWebp: {
+		format: 'webp',
+		size: SIZE_MEDIUM,
+		quality: QUALITY,
+	},
+};
 
-		// Remove base, so path.format() will use the specified extension
-		delete outputPathParts.base;
+const convertImage = async ({
+	filepath, format, size, quality,
+}) => {
+	const sharpFile = sharp(filepath);
+	const outputPathParts = path.parse(createOutputPath(filepath));
 
-		await fs.ensureDir(outputPathParts.dir);
+	// Remove base, so path.format() will use the specified extension
+	delete outputPathParts.base;
 
-		sharpFile
-			.withoutEnlargement()
-			.resize(size)
-			.max();
+	await fs.ensureDir(outputPathParts.dir);
 
-		const { width, height } = await sharpFile
-			.toBuffer({ resolveWithObject: true })
-			.then(({ info }) => info);
+	sharpFile
+		.withoutEnlargement()
+		.resize(size)
+		.max();
 
-		const outputPath = path.format({
-			...outputPathParts,
-			name: `${outputPathParts.name}_${width}x${height}`,
-			ext: `.${format.replace(/^jpeg$/, 'jpg')}`,
-		});
+	const { width, height } = await sharpFile
+		.toBuffer({ resolveWithObject: true })
+		.then(({ info }) => info);
 
-		// Dynamically call function for file format.
-		// e.g. sharpFile.jpeg({...}).toFile(...);
-		await sharpFile[format]({ quality }).toFile(outputPath);
+	const outputPath = path.format({
+		...outputPathParts,
+		name: `${outputPathParts.name}_${width}x${height}`,
+		ext: `.${format.replace(/^jpeg$/, 'jpg')}`,
+	});
 
-		set(
-			mediaData,
-			[createWebPath(filepath), type],
-			{
-				width,
-				height,
-				format,
-				type: 'image',
-				src: createWebPath(outputPath),
-				paddingBottom: getPaddingBottom(width, height),
-			},
-		);
+	// Dynamically call function for file format.
+	// e.g. sharpFile.jpeg({...}).toFile(...);
+	await sharpFile[format]({ quality }).toFile(outputPath);
+
+	return {
+		width,
+		height,
+		format,
+		src: createWebPath(outputPath),
+		paddingBottom: getPaddingBottom(width, height),
 	};
+};
 
-	const processImages = async (pattern) => {
-		const allFilepaths = await glob(pattern);
-		// eslint-disable-next-line no-console
-		console.log(`${allFilepaths.length} image files found`);
-		const filepaths = allFilepaths.filter(isFileNew);
-		// eslint-disable-next-line no-console
-		console.log(`${filepaths.length} images are new`);
+const processImage = async (filepath) => {
+	const sharpFile = sharp(filepath);
+	const meta = await sharpFile.metadata();
 
-		if (!filepaths.length) return;
+	if (meta.exif) {
+		const exif = readExif(meta.exif);
 
-		const progress = new ProgressBar('[:bar] :percent', {
-			total: filepaths.length * (1 + imageFormats.length),
-		});
+		if (exif && exif.gps) {
+			set(
+				mediaData,
+				[createWebPath(filepath), 'mapLink'],
+				createGoogleMapsLink(exif.gps),
+			);
+		}
+	}
 
-		await eachLimit(filepaths, 8, async (filepath) => {
-			const sharpFile = sharp(filepath);
-			const meta = await sharpFile.metadata();
+	const foo = await mapSeries(imageFormats, (format) => {
+		convertImage({ ...format, filepath });
+	});
 
-			if (meta.exif) {
-				const exif = readExif(meta.exif);
-
-				if (exif && exif.gps) {
-					set(
-						mediaData,
-						[createWebPath(filepath), 'mapLink'],
-						createGoogleMapsLink(exif.gps),
-					);
-				}
-			}
-			progress.tick();
-
-			await eachSeries(imageFormats, async (format) => {
-				await processImage({ ...format, filepath });
-				progress.tick();
-			});
-		});
-
-		const metaOutputPath = root('./data/generated/media.json');
-		// eslint-disable-next-line no-console
-		console.log(`Writing image meta data to ${metaOutputPath}`);
-		fs.writeFile(metaOutputPath, JSON.stringify(mediaData, null, '\t'));
-	};
-
-	processImages(path.join(MEDIA_TO_PROCESS_ROOT, '**/*.+(png|jpg)'));
-})();
+};

@@ -2,37 +2,26 @@
 
 const { promisify } = require('util');
 const ffmpeg = require('fluent-ffmpeg');
-const path = require('path');
-const set = require('lodash/set');
-const eachLimit = promisify(require('async').eachLimit);
-const glob = promisify(require('glob'));
-const fs = require('fs-extra');
-const { root } = require('../lib/pathUtils');
+const mapValues = require('lodash/mapValues');
 const {
-	MEDIA_TO_PROCESS_ROOT,
 	createOutputPath,
 	createWebPath,
 	getPaddingBottom,
-	mediaData,
-	isFileNew,
 } = require('./buildUtils');
 
-const SIZE_720P = '?x720';
-
-const runFfmpeg = instance =>
-	new Promise((resolve, reject) => instance
+const runFfmpeg = ffmpegInstance =>
+	new Promise((resolve, reject) => ffmpegInstance
 		.on('end', resolve)
 		.on('error', reject)
 		.run());
 
-const convertVideo = (filepath) => {
+const convertVideo = async (filepath) => {
 	const mp4OutputPath = createOutputPath(filepath);
-	// TODO: Use ext change function
-	const webmOutputPath = createOutputPath(filepath).replace('.mp4', '.webm');
-	const file = ffmpeg(filepath)
+	const webmOutputPath = createOutputPath(filepath).replace(/\.mp4/, '.webm');
+	const ffmpegInstance = ffmpeg(filepath)
 
 		// Shared attributes
-		.size(SIZE_720P)
+		.size('?x720') // 720p
 		.videoBitrate('1000k')
 		.audioBitrate('96k')
 		.audioCodec('aac')
@@ -52,43 +41,35 @@ const convertVideo = (filepath) => {
 		.withVideoBitrate(1024)
 		.withAudioCodec('libvorbis');
 
-	await runFfmpeg(file);
+	await runFfmpeg(ffmpegInstance);
 
-	return [
-		{ src: mp4OutputPath },
-		{ src: webmOutputPath },
-	];
+	return {
+		mp4: { src: createWebPath(mp4OutputPath) },
+		webm: { src: createWebPath(webmOutputPath) },
+	};
 };
 
 const getSharedVideoMeta = async (filepath) => {
 	const meta = await promisify(ffmpeg.ffprobe)(filepath);
 	const videoMeta = meta.streams.find(streamMeta => streamMeta.codec_type === 'video');
 	const { width, height } = videoMeta;
+
 	return {
 		width,
 		height,
 		type: 'video',
 		paddingBottom: getPaddingBottom(width, height),
 	};
-}
-
-// TODO: There is a lot of duplication between this file and processImages.js. Reduce duplication.
-(async () => {
-
-
-	processVideos(path.join(MEDIA_TO_PROCESS_ROOT, '**/*.mp4'));
-})();
-
-const processVideos = async (pattern) => {
-
-
-	await eachLimit(filepaths, 8, async (filepath) => {
-		const convertedVideoMeta = await convertVideo(filepath);
-		const sharedVideoMeta = await getSharedVideoMeta(filepath);
-
-		return convertedVideoMeta.map(meta => ({
-			...sharedVideoMeta,
-			...meta
-		}))
-	});
 };
+
+const processVideo = async (filepath) => {
+	const convertedVideoMeta = await convertVideo(filepath);
+	const sharedVideoMeta = await getSharedVideoMeta(filepath);
+
+	return mapValues(convertedVideoMeta, meta => ({
+		...sharedVideoMeta,
+		...meta,
+	}));
+};
+
+module.exports = processVideo;
