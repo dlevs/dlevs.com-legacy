@@ -5,7 +5,9 @@ block content
 		article
 			header.blog-header
 				h1.heading--main= post.town
-					span.subheading= `${post.country} | ${post.humanDate}`
+					span.subheading
+						span= `${post.country} | `
+						time(datetime=post.date)= post.humanDate
 
 			each image, i in post.images
 				+imageLink(image)

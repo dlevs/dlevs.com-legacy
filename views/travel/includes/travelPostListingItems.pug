@@ -5,7 +5,9 @@ each post, i in posts
 		a.link--uncolored.block(href=post.path)
 			h2.blog-heading
 				span= post.town
-				span.heading__details= `${post.country}, ${post.humanDate}`
+				span.heading__details
+					span= `${post.country}, `
+					time(datetime=post.date)= post.humanDate
 			+media(HELPERS.immutableExtend(post.mainImage, {
 				className: 'blog-image',
 				lazyLoad: i > 1,
