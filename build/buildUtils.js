@@ -6,33 +6,73 @@ const glob = promisify(require('glob'));
 const ProgressBar = require('progress');
 const mapLimit = promisify(require('async').mapLimit);
 const chalk = require('chalk');
-
 const { root, relativeToRoot } = require('../lib/pathUtils');
 const { toFixedTrimmed } = require('../lib/numberUtils');
 
-// TODO: Tidy up const and exports. No exports where they are not needed.
-exports.MEDIA_TO_PROCESS_ROOT = root('./publicSrc/+(process|processUncommitted)/media');
-exports.PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
+const PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
 const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');
 const MAX_FILES_PROCESS_CONCURRENTLY = 8;
+
+
+/**
+ * Create the corresponding output path for any file that is in the
+ * "publicSrc" directory, waiting to be processed.
+ *
+ * The output path will be in the "public" directory, so that it is
+ * accessible to the user.
+ *
+ * createWebPath('/path/to/this/repo/publicSrc/process/media/foo.jpg');
+ * // '/path/to/this/repo/public/media/foo.jpg'
+ *
+ * @param {String} filepath
+ * @returns {String}
+ */
+exports.createOutputPath = filepath => filepath
+	.replace(PUBLIC_SRC_REGEX, '/public/');
+
+/**
+ * Create the corresponding web path for any file that is in the
+ * "publicSrc" directory OR an already processed file in the "public"
+ * directory.
+ *
+ * The web path is the relative path that can be appended to the
+ * site hostname to access the resource.
+ *
+ * createWebPath('/path/to/this/repo/publicSrc/process/media/foo.jpg');
+ * // '/media/foo.jpg'
+ *
+ * @param {String} filepath
+ * @returns {String}
+ */
 exports.createWebPath = filepath => `/${relativeToRoot(filepath)}`
 	.replace('/public/', '/')
-	.replace(exports.PUBLIC_SRC_REGEX, '/');
-exports.createOutputPath = filepath => filepath
-	.replace(exports.PUBLIC_SRC_REGEX, '/public/');
+	.replace(PUBLIC_SRC_REGEX, '/');
+
+/**
+ * Get the CSS padding-bottom value needed to perform the padding-bottom
+ * hack for maintaining the height of an element while it is loading.
+ *
+ * As described in:
+ * http://andyshora.com/css-image-container-padding-hack.html
+ *
+ * @param {Number} width
+ * @param {Number} height
+ * @returns {String}
+ */
 exports.getPaddingBottom = (width, height) =>
 	`${toFixedTrimmed(((height / width) * 100), 4)}%`;
 
-
-const getMedia = async () => {
-	try {
-		return await fs.readJson(FILEPATH_MEDIA_JSON);
-	} catch (err) {
-		return {};
-	}
-};
-
-// TODO: Move me
+/**
+ * A wrapper around console.log.
+ *
+ * The provided `name` is prepended to all messages.
+ *
+ * Extra methods are added, like `.success()`, which affects
+ * the color of the logged message.
+ *
+ * @param {String} name
+ * @returns {Object}
+ */
 const createLogger = name => new Proxy(console, {
 	get(obj, logLevel) {
 		return (...args) => {
@@ -57,7 +97,42 @@ const createLogger = name => new Proxy(console, {
 	},
 });
 
-const addMedia = async (fileType, processFile, globPattern) => {
+/**
+ * Get the existing meta JSON object from file, or an empty object if it
+ * doesn't exist.
+ *
+ * @returns {Promise.<Object>}
+ */
+const getMedia = async () => {
+	try {
+		return await fs.readJson(FILEPATH_MEDIA_JSON);
+	} catch (err) {
+		return {};
+	}
+};
+
+/**
+ * Process all files that match `globPattern` by passing them through
+ * `processFile`, which must return a promise that resolves to an
+ * object with meta data about any output files that may have been
+ * produced from the input file.
+ *
+ * This meta data is added to a JSON file for reference later.
+ *
+ * Example of an object `processFile` may return:
+ * {
+ *     type: 'image',
+ *     versions: {
+ *         default: { 'src': '/foo.jpg', width: 400, height: 300 },
+ *         large: { 'src': '/foo-large.jpg', width: 600, height: 450 },
+ *     },
+ * }
+ *
+ * @param {String} fileType
+ * @param {Function} processFile
+ * @param {String} globPattern
+ */
+exports.addMedia = async (fileType, processFile, globPattern) => {
 	const logger = createLogger(fileType);
 	const media = await getMedia();
 	const allFilepaths = await glob(globPattern);
@@ -104,6 +179,3 @@ const addMedia = async (fileType, processFile, globPattern) => {
 
 	logger.success(`${filepaths.length} files successfully processed`);
 };
-
-// TODO: Tidy up the exports of this file. Maybe rename file.
-exports.addMedia = addMedia;
