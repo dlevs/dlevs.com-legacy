@@ -1,0 +1,10 @@
+mixin media(options, ...args)
+	- const media = HELPERS.getMediaMeta(options.src);
+
+	if media.type === 'video'
+		video(controls autoplay loop muted)
+			source(src=media.versions.webm.src type="video/webm")
+			source(src=media.versions.mp4.src type="video/mp4")
+
+	else if media.type === 'image'
+		+picture(options, ...args)

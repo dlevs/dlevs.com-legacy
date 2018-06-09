@@ -57,19 +57,22 @@ const getSharedVideoMeta = async (filepath) => {
 	return {
 		width,
 		height,
-		type: 'video',
 		paddingBottom: getPaddingBottom(width, height),
 	};
 };
 
 const processVideo = async (filepath) => {
 	const convertedVideoMeta = await convertVideo(filepath);
-	const sharedVideoMeta = await getSharedVideoMeta(filepath);
-
-	return mapValues(convertedVideoMeta, meta => ({
+	const sharedVideoMeta = await getSharedVideoMeta(createOutputPath(filepath));
+	const versions = mapValues(convertedVideoMeta, meta => ({
 		...sharedVideoMeta,
 		...meta,
 	}));
+
+	return {
+		type: 'video',
+		versions,
+	};
 };
 
 module.exports = processVideo;

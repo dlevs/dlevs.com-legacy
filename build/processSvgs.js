@@ -16,7 +16,10 @@ const processSvgs = async (filepath) => {
 	await fs.writeFile(outputFilepath, data);
 
 	return {
-		default: { src: createWebPath(filepath) },
+		type: 'svg',
+		versions: {
+			default: { src: createWebPath(filepath) },
+		},
 	};
 };
 

@@ -3,7 +3,7 @@
 const Router = require('koa-router');
 const findIndex = require('lodash/findIndex');
 const { getPosts } = require('../data/travelPosts');
-const { getImageMeta } = require('../lib/imageUtils');
+const { getMediaMeta } = require('../lib/mediaUtils');
 const { ORIGIN } = require('../config');
 
 
@@ -23,7 +23,7 @@ module.exports = ({ breadcrumbRoot }) => {
 				meta: {
 					title: 'Travel Blog',
 					description: 'Photos from around the world.',
-					og: { image: getImageMeta(posts[0].mainImage.src).large },
+					og: { image: getMediaMeta(posts[0].mainImage.src).large },
 				},
 			});
 		},
@@ -50,7 +50,7 @@ module.exports = ({ breadcrumbRoot }) => {
 				meta: {
 					title: country,
 					description,
-					og: { image: getImageMeta(posts[0].mainImage.src).large },
+					og: { image: getMediaMeta(posts[0].mainImage.src).large },
 				},
 			});
 		},
@@ -77,7 +77,7 @@ module.exports = ({ breadcrumbRoot }) => {
 					title: post.town,
 					description: post.description,
 					og: {
-						image: getImageMeta(post.images[imageIndex].src).large,
+						image: getMediaMeta(post.images[imageIndex].src).versions.large,
 						type: 'article',
 						'article:published_time': post.date,
 						'article:author': post.author,
@@ -88,7 +88,7 @@ module.exports = ({ breadcrumbRoot }) => {
 							'@context': 'http://schema.org',
 							'@type': 'BlogPosting',
 							headline: post.description,
-							image: getImageMeta(post.mainImage.src).large.absoluteSrc,
+							image: getMediaMeta(post.mainImage.src).versions.large.absoluteSrc,
 							genre: 'travel',
 							url: ctx.href,
 							datePublished: post.date,

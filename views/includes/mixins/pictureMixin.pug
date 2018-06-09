@@ -1,11 +1,11 @@
 mixin picture({src, alt, className, lazyLoad=true})
-	- const images = HELPERS.getImageMeta(src);
-	- const srcset = HELPERS.createImgSrcset(images.default, images.large);
-	- const srcsetWebp = HELPERS.createImgSrcset(images.defaultWebp, images.largeWebp);
-	- const args = {src: images.default.src, srcset, srcsetWebp, alt}
+	- const { versions } = HELPERS.getMediaMeta(src);
+	- const srcset = HELPERS.createImgSrcset(versions.default, versions.large);
+	- const srcsetWebp = HELPERS.createImgSrcset(versions.defaultWebp, versions.largeWebp);
+	- const args = {src: versions.default.src, srcset, srcsetWebp, alt}
 
 	div(
-		style=`padding-bottom: ${images.default.paddingBottom};`
+		style=`padding-bottom: ${versions.default.paddingBottom};`
 		class=HELPERS.classnames(className, 'picture', {'picture--lazyload': lazyLoad})
 	)
 		if lazyLoad

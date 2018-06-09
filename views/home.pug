@@ -29,7 +29,7 @@ block content
 
 						figure.project__image-wrapper
 							+imageLink(project.img, {'data-caption': project.heading})
-								+picture(HELPERS.immutableExtend(project.img, {
+								+media(HELPERS.immutableExtend(project.img, {
 									className: 'project__image',
 									lazyLoad: i > 1
 								}))

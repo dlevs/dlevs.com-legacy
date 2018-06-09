@@ -78,6 +78,8 @@ const addMedia = async (fileType, processFile, globPattern) => {
 		return;
 	}
 
+	logger.log('Processing new files');
+
 	const newMedia = await mapLimit(
 		filepaths,
 		MAX_FILES_PROCESS_CONCURRENTLY,

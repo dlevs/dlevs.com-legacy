@@ -12,7 +12,7 @@
 		"build:scripts": "webpack --config build/processScripts.webpack.config.js",
 		"build:styles": "postcss --verbose -d public/styles styles/*.css",
 		"build:media": "node build/processMedia",
-		"build:manifest": "hashlink -s --relative public 'public/**/*.+(js|css|png|ico|jpg|svg|json|webp|mp4)' > data/generated/assets.json",
+		"build:manifest": "hashlink -s --relative public 'public/**/*.+(js|css|png|ico|jpg|svg|json|webp|mp4|webm)' > data/generated/assets.json",
 		"clean": "rimraf ./public/* && rimraf ./data/generated/*",
 		"test": "jest",
 		"test:browser": "jest -i --testRegex=.*browsertest.js",
@@ -47,7 +47,7 @@
 		"moment": "^2.20.1",
 		"node-fetch": "^2.0.0",
 		"normalize.css": "^8.0.0",
-		"pug": "^2.0.0-rc.4",
+		"pug": "^2.0.3",
 		"query-string": "^5.1.0"
 	},
 	"devDependencies": {

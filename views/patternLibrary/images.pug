@@ -8,11 +8,11 @@ block contentInner
 		h2 Images
 		.cols.cols--spacing-medium
 			.col-6
-				+picture(HELPERS.immutableExtend(img1, {lazyLoad: false}))
+				+media(HELPERS.immutableExtend(img1, {lazyLoad: false}))
 				h3 Normal
 
 			.col-6
-				+picture(HELPERS.immutableExtend(img2, {lazyLoad: true}))
+				+media(HELPERS.immutableExtend(img2, {lazyLoad: true}))
 				h3 Lazy Loaded
 
 	.baseline-section
@@ -20,8 +20,8 @@ block contentInner
 		.cols.cols--spacing-medium
 			.col-6
 				+imageLink(img1)
-					+picture(img1)
+					+media(img1)
 
 			.col-6
 				+imageLink(img2)
-					+picture(img2)
+					+media(img2)

@@ -1,7 +1,7 @@
 'use strict';
 
 const { SITE_NAME, ORIGIN } = require('../lib/constants');
-const { getImageMeta } = require('../lib/imageUtils');
+const { getMediaMeta } = require('../lib/mediaUtils');
 const technologies = require('./technologies');
 
 const description = 'London-based fullstack web developer.';
@@ -19,7 +19,7 @@ module.exports = {
 				alumniOf: 'University of Hertfordshire',
 				gender: 'male',
 				nationality: 'British',
-				image: getImageMeta('/media/misc/self.jpg').large.absoluteSrc,
+				image: getMediaMeta('/media/misc/self.jpg').versions.large.absoluteSrc,
 				url: ORIGIN,
 				sameAs: [
 					'https://www.linkedin.com/in/daniellevett/',

@@ -1,7 +1,7 @@
 'use strict';
 
 const set = require('lodash/fp/set');
-const { getImageMeta } = require('../lib/imageUtils');
+const { getMediaMeta } = require('../lib/mediaUtils');
 const data = require('../data/home');
 
 module.exports = () => ({
@@ -14,7 +14,7 @@ module.exports = () => ({
 			const imageIndex = Number(pid) - 1;
 			const setOgImage = set(
 				'meta.og.image',
-				getImageMeta(data.projects[imageIndex].img.src).large,
+				getMediaMeta(data.projects[imageIndex].img.src).large,
 			);
 			dataForRender = setOgImage(data);
 		}

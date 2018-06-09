@@ -1,11 +1,15 @@
 mixin imageLink({src}, attrs={})
-	- const images = HELPERS.getImageMeta(src);
-	a.js-photoswipe(
-		href=images.large.src
-		data-href-webp=images.largeWebp.src
-		data-width=images.large.width
-		data-height=images.large.height
-		data-map-link=images.mapLink
-		data-no-instant
-	)&attributes(attrs)
+	- const { type, versions } = HELPERS.getMediaMeta(src);
+
+	if type === 'image'
+		a.js-photoswipe(
+			href=versions.large.src
+			data-href-webp=versions.largeWebp.src
+			data-width=versions.large.width
+			data-height=versions.large.height
+			data-map-link=versions.mapLink
+			data-no-instant
+		)&attributes(attrs)
+			block
+	else
 		block

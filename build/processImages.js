@@ -16,6 +16,28 @@ const {
 const QUALITY = 80;
 const SIZE_MEDIUM = 960;
 const SIZE_LARGE = 2000;
+const imageFormats = {
+	large: {
+		format: 'jpeg',
+		size: SIZE_LARGE,
+		quality: QUALITY,
+	},
+	default: {
+		format: 'jpeg',
+		size: SIZE_MEDIUM,
+		quality: QUALITY,
+	},
+	largeWebp: {
+		format: 'webp',
+		size: SIZE_LARGE,
+		quality: QUALITY,
+	},
+	defaultWebp: {
+		format: 'webp',
+		size: SIZE_MEDIUM,
+		quality: QUALITY,
+	},
+};
 
 const createOutputFile = async ({
 	filepath, format, size, quality,
@@ -56,59 +78,32 @@ const createOutputFile = async ({
 	};
 };
 
-const imageFormats = {
+const getMapLink = async (filepath) => {
+	const sharpFile = sharp(filepath);
+	const meta = await sharpFile.metadata();
 
-	// Image output formats
-	large: {
-		format: 'jpeg',
-		size: SIZE_LARGE,
-		quality: QUALITY,
-		process: createOutputFile,
-	},
-	default: {
-		format: 'jpeg',
-		size: SIZE_MEDIUM,
-		quality: QUALITY,
-		process: createOutputFile,
-	},
-	largeWebp: {
-		format: 'webp',
-		size: SIZE_LARGE,
-		quality: QUALITY,
-		process: createOutputFile,
-	},
-	defaultWebp: {
-		format: 'webp',
-		size: SIZE_MEDIUM,
-		quality: QUALITY,
-		process: createOutputFile,
-	},
+	if (meta.exif) {
+		const exif = readExif(meta.exif);
 
-	// Metadata related to all output image files
-	mapLink: {
-		process: async ({ filepath }) => {
-			const sharpFile = sharp(filepath);
-			const meta = await sharpFile.metadata();
+		if (exif && exif.gps) {
+			return createGoogleMapsLink(exif.gps);
+		}
+	}
 
-			if (meta.exif) {
-				const exif = readExif(meta.exif);
-
-				if (exif && exif.gps) {
-					return createGoogleMapsLink(exif.gps);
-				}
-			}
-
-			return null;
-		},
-	},
-
+	return null;
 };
 
-const processImage = filepath => mapValuesSeries(
-	imageFormats,
-	// Simply returning a promise is not enough - mapValuesSeries
-	// checks if the iteratee is an async function.
-	async format => format.process({ ...format, filepath }),
-);
+const processImage = async (filepath) => {
+	const versions = await mapValuesSeries(
+		imageFormats,
+		async format => createOutputFile({ ...format, filepath }),
+	);
+
+	return {
+		type: 'image',
+		mapLink: await getMapLink(filepath),
+		versions,
+	};
+};
 
 module.exports = processImage;
