@@ -11,8 +11,7 @@ const createMediaGlob = pattern =>
 
 const processMedia = async () => {
 	await addMedia('SVG', processSvgs, createMediaGlob('**/*.svg'));
-	// TODO: Change this glob to be all images
-	await addMedia('image', processImages, createMediaGlob('travel/england/*/*.+(png|jpg)'));
+	await addMedia('image', processImages, createMediaGlob('**/*.+(png|jpg)'));
 	await addMedia('video', processVideos, createMediaGlob('**/*.mp4'));
 };
 

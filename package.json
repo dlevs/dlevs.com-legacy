@@ -11,7 +11,7 @@
 		"build:copypublic": "cp -r publicSrc/copy/* public",
 		"build:scripts": "webpack --config build/processScripts.webpack.config.js",
 		"build:styles": "postcss --verbose -d public/styles styles/*.css",
-		"build:media": "node build/processImages.js && node build/processVideos.js && node build/processSvgs.js",
+		"build:media": "node build/processMedia",
 		"build:manifest": "hashlink -s --relative public 'public/**/*.+(js|css|png|ico|jpg|svg|json|webp|mp4)' > data/generated/assets.json",
 		"clean": "rimraf ./public/* && rimraf ./data/generated/*",
 		"test": "jest",

@@ -32,12 +32,28 @@ const getMedia = async () => {
 	}
 };
 
+// TODO: Move me
 const createLogger = name => new Proxy(console, {
-	get(obj, prop) {
-		return (...args) => obj[prop](
-			chalk.cyan(`[${name}]`),
-			...args,
-		);
+	get(obj, logLevel) {
+		return (...args) => {
+			let method = logLevel;
+			let messages = args;
+			let color;
+
+			if (logLevel === 'success') {
+				method = 'log';
+				color = 'green';
+			}
+
+			if (color) {
+				messages = messages.map(message => chalk[color](message));
+			}
+
+			obj[method](
+				chalk.cyan(`[${name}]`),
+				...messages,
+			);
+		};
 	},
 });
 
@@ -57,7 +73,10 @@ const addMedia = async (fileType, processFile, globPattern) => {
 	logger.log(`${allFilepaths.length} files found`);
 	logger.log(`${filepaths.length} files are new`);
 
-	if (!filepaths.length) return;
+	if (!filepaths.length) {
+		logger.success('No action taken');
+		return;
+	}
 
 	const newMedia = await mapLimit(
 		filepaths,
@@ -80,6 +99,8 @@ const addMedia = async (fileType, processFile, globPattern) => {
 		),
 		{ spaces: '\t' },
 	);
+
+	logger.success(`${filepaths.length} files successfully processed`);
 };
 
 // TODO: Tidy up the exports of this file. Maybe rename file.
