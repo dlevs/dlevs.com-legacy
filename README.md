@@ -7,7 +7,10 @@ The app is daemonised by [pm2](https://www.npmjs.com/package/pm2), and sits behi
 ## First time setup
 
 1. Install the Node.js version specified by [package.json](./package.json)'s `engine` property.
-2. Install ffmpeg: `brew install ffmpeg --with-libvpx --with-libvorbis`.
+2. Install ffmpeg:
+    - MacOS: `brew install ffmpeg --with-libvpx --with-libvorbis`
+    - Linux: `sudo apt-get install ffmpeg`
+
 3. Copy all media files not committed to this repository to `/publicSrc/processUncommitted`. This directory is for images, videos, etc, and is gitignored from repository due to file size.
 4. In the terminal, run:
     ```bash
