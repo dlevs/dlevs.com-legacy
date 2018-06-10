@@ -10,7 +10,7 @@ The app is daemonised by [pm2](https://www.npmjs.com/package/pm2), and sits behi
 2. Install ffmpeg:
     - MacOS: `brew install ffmpeg --with-libvpx --with-libvorbis`
     - Linux: `sudo apt-get install ffmpeg`
-
+   This is used by build scripts to compress videos.
 3. Copy all media files not committed to this repository to `/publicSrc/processUncommitted`. This directory is for images, videos, etc, and is gitignored from repository due to file size.
 4. In the terminal, run:
     ```bash

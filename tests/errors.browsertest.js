@@ -77,7 +77,7 @@ describe('JavaScript errors', () => {
 
 describe('Asset network errors', () => {
 	const eventName = 'requestfinished';
-	const eventsFilter = request => !request.response().ok;
+	const eventsFilter = request => !request.response().ok();
 
 	test('are detected when they occur', createTest({
 		url: `${ORIGIN}/test/asset-error.html`,
