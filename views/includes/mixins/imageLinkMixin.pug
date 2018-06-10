@@ -1,5 +1,5 @@
 mixin imageLink({src}, attrs={})
-	- const { type, versions } = HELPERS.getMediaMeta(src);
+	- const { type, versions, mapLink } = HELPERS.getMediaMeta(src);
 
 	if type === 'image'
 		a.js-photoswipe(
@@ -7,7 +7,7 @@ mixin imageLink({src}, attrs={})
 			data-href-webp=versions.largeWebp.src
 			data-width=versions.large.width
 			data-height=versions.large.height
-			data-map-link=versions.mapLink
+			data-map-link=mapLink
 			data-no-instant
 		)&attributes(attrs)
 			block
