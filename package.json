@@ -20,6 +20,7 @@
 		"lint:scripts": "eslint .",
 		"lint:styles": "stylelint 'styles/**/*.css'",
 		"lint:views": "pug-lint views",
+		"addtravelblogimages": "node build/addTravelBlogImages.js",
 		"precommit": "lint-staged"
 	},
 	"engines": {

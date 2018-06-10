@@ -7,10 +7,10 @@
  * needed to create a blog post.
  *
  * Command line usage (one location):
- * node build/addTravelBlogImages.js ./media/travel/japan/tokyo
+ * node build/addTravelBlogImages.js ./publicSrc/processUncommitted/media/travel/japan/tokyo
  *
  * Command line usage (all locations in a country):
- * node build/addTravelBlogImages.js ./media/travel/japan/*
+ * node build/addTravelBlogImages.js ./publicSrc/processUncommitted/media/travel/japan/*
  */
 
 // Dependencies
@@ -23,6 +23,7 @@ const glob = promisify(require('glob'));
 const readExif = require('exif-reader');
 const sharp = require('sharp');
 const moment = require('moment');
+const { createWebPath } = require('./buildUtils');
 
 
 // Functions
@@ -50,7 +51,7 @@ const getImagesDataForDirectory = async (dirpath) => {
 		town,
 		date: await getImageFormattedDate(imagePaths[0]),
 		images: imagePaths.map(imagePath => ({
-			src: `/${imagePath}`,
+			src: createWebPath(imagePath),
 			caption: '',
 			alt: '',
 		})),
