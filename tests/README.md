@@ -8,5 +8,3 @@ See the [main README file](../README.md)
 
 ## This directory
 This directory is for all `*.browsertest.js` files which cannot be neatly be matched with a file that is responsible for the thing being tested.
-
-TODO: Puppeteer is used for testing. Upgrading to the latest version causes CSP errors, so tests fail. Consider upgrading after this issue is resolved. https://github.com/GoogleChrome/puppeteer/issues/1229
