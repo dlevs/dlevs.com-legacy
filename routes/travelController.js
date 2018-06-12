@@ -23,7 +23,7 @@ module.exports = ({ breadcrumbRoot }) => {
 				meta: {
 					title: 'Travel Blog',
 					description: 'Photos from around the world.',
-					og: { image: getMediaMeta(posts[0].mainImage.src).large },
+					og: { image: getMediaMeta(posts[0].mainImage.src).versions.large },
 				},
 			});
 		},
@@ -50,7 +50,7 @@ module.exports = ({ breadcrumbRoot }) => {
 				meta: {
 					title: country,
 					description,
-					og: { image: getMediaMeta(posts[0].mainImage.src).large },
+					og: { image: getMediaMeta(posts[0].mainImage.src).versions.large },
 				},
 			});
 		},

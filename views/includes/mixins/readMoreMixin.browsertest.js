@@ -48,7 +48,7 @@ const getStats = async (url, viewportOptions) => {
 
 describe('"Read more…" functionality', () => {
 	testUrls(PAGES.WITH_READMORE, {
-		'works as expected on mobile': url => async () => {
+		'works as expected on mobile': async (url) => {
 			const { beforeClick, afterClick } = await getStats(url, {
 				width: 320,
 				height: 600,
@@ -59,7 +59,7 @@ describe('"Read more…" functionality', () => {
 			expect(beforeClick.longTextCount).toBe(0);
 			expect(afterClick.longTextCount).toBe(1);
 		},
-		'does nothing on desktop': url => async () => {
+		'does nothing on desktop': async (url) => {
 			const { beforeClick, afterClick } = await getStats(url, {
 				width: 1280,
 				height: 800,

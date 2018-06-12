@@ -14,7 +14,7 @@ module.exports = () => ({
 			const imageIndex = Number(pid) - 1;
 			const setOgImage = set(
 				'meta.og.image',
-				getMediaMeta(data.projects[imageIndex].img.src).large,
+				getMediaMeta(data.projects[imageIndex].img.src).versions.large,
 			);
 			dataForRender = setOgImage(data);
 		}

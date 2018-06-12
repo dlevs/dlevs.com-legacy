@@ -44,6 +44,13 @@ const PAGES = mapValues(
 			'/',
 			'/travel/ireland/dublin',
 		],
+		WITH_PHOTOSWIPE_MAP_LINK: [
+			'/travel/france/paris#&gid=1&pid=1',
+			'/travel/united-states/new-york#&gid=1&pid=3',
+		],
+		WITHOUT_PHOTOSWIPE_MAP_LINK: [
+			'/#&gid=1&pid=1',
+		],
 	},
 	paths => paths.map(path => `${ORIGIN}${path}`),
 );

@@ -65,7 +65,7 @@ exports.testUrls = (urls, tests) => {
 	Object.entries(tests).forEach(([testDescription, testFn]) => {
 		describe(testDescription, () => {
 			urls.forEach((url) => {
-				test(url, testFn(url));
+				test(url, () => testFn(url));
 			});
 		});
 	});
