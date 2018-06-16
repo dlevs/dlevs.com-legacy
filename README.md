@@ -85,6 +85,8 @@ For the PNGs and JPGs, multiple image files are outputted per source file. These
 
 MP4 files are compressed using [fluent-ffmpeg](https://www.npmjs.com/package/fluent-ffmpeg), and outputted as a smaller MP4 file, and a WEBM file.
 
+TODO: Video streaming with the current code does not work in Safari. It probably should not be handled by the same app that serves the HTML.
+
 ### Frontend source files
 
 | Directory | Comments |

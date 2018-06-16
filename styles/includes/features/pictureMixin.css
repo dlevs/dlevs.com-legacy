@@ -8,6 +8,16 @@
 
 	img {
 		display: block;
+
+		/*
+			When viewing a <picture> on Safari on a small screen, and then increasing
+			the browser width, Safari will not download a larger version defined in the
+			srcset. This is especially annoying on iPad, when changing the orientation
+			from portrait to landscape - the images will be too small to fill the
+			entire space. Set width to 100% to compensate.
+		*/
+		width: 100%;
+		max-width: none;
 	}
 }
 
