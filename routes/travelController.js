@@ -82,7 +82,7 @@ module.exports = ({ breadcrumbRoot }) => {
 					og: {
 						image: getMediaMeta(post.images[imageIndex].src).versions.large,
 						type: 'article',
-						'article:published_time': post.date,
+						'article:published_time': post.datePublished || post.date,
 						'article:author': post.author,
 						'article:section': 'Travel',
 					},
@@ -94,7 +94,7 @@ module.exports = ({ breadcrumbRoot }) => {
 							image: getMediaMeta(post.mainImage.src).versions.large.absoluteSrc,
 							genre: 'travel',
 							url: ctx.href,
-							datePublished: post.date,
+							datePublished: post.datePublished || post.date,
 							dateModified: post.dateModified || post.date,
 							author: ORIGIN,
 							publisher: ORIGIN,
