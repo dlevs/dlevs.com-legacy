@@ -23,6 +23,8 @@ const testPosts = [
 		country: 'England',
 		town: 'London',
 		date: '2017-09-23',
+		datePublished: '2017-09-29',
+		dateModified: '2017-09-30',
 		images: [
 			{
 				src: '/media/travel/england/image_1.jpg',
@@ -77,6 +79,8 @@ describe('getPosts()', () => {
 				country: 'Vietnam',
 				town: 'Vung Tau',
 				date: '2018-09-23',
+				datePublished: '2018-09-23',
+				dateModified: '2018-09-23',
 				images: [
 					{
 						src: '/media/travel/vietnam/image_1.jpg',
@@ -84,6 +88,22 @@ describe('getPosts()', () => {
 						geoLocation: 'Vung Tau, Vietnam',
 					},
 				],
+			});
+		});
+
+		test('have default date values generated if omitted', () => {
+			expect(posts[0]).toMatchObject({
+				date: '2018-09-23',
+				datePublished: '2018-09-23',
+				dateModified: '2018-09-23',
+			});
+		});
+
+		test('retain date values if provided', () => {
+			expect(posts[1]).toMatchObject({
+				date: '2017-09-23',
+				datePublished: '2017-09-29',
+				dateModified: '2017-09-30',
 			});
 		});
 
