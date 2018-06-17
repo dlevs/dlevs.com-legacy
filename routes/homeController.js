@@ -1,6 +1,5 @@
 'use strict';
 
-const set = require('lodash/fp/set');
 const { getMediaMeta } = require('../lib/mediaUtils');
 const data = require('../data/home');
 
@@ -9,14 +8,24 @@ module.exports = () => ({
 		let dataForRender = data;
 		const { pid } = ctx.query;
 
-		// Set og:image to be the one from photoswipe gallery share if 'pid' is in URL query
+		// Set og:image and page description to be the one from photoswipe
+		// gallery share if 'pid' is in URL query
 		if (pid) {
 			const imageIndex = Number(pid) - 1;
-			const setOgImage = set(
-				'meta.og.image',
-				getMediaMeta(data.projects[imageIndex].img.src).versions.large,
-			);
-			dataForRender = setOgImage(data);
+			const project = data.projects[imageIndex];
+			if (project) {
+				dataForRender = {
+					...dataForRender,
+					meta: {
+						...dataForRender.meta,
+						description: project.heading,
+						og: {
+							...dataForRender.meta.og,
+							image: getMediaMeta(project.img.src).versions.large,
+						},
+					},
+				};
+			}
 		}
 
 		await ctx.render('home.pug', dataForRender);

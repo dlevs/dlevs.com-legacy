@@ -74,8 +74,11 @@ module.exports = ({ breadcrumbRoot }) => {
 				nextPost: posts[index + 1],
 				breadcrumb: post.breadcrumb,
 				meta: {
+					// TODO: Write tests for metadata sitewide
 					title: post.town,
-					description: post.description,
+					description: ctx.query.pid
+						? post.images[imageIndex].caption
+						: post.description,
 					og: {
 						image: getMediaMeta(post.images[imageIndex].src).versions.large,
 						type: 'article',
