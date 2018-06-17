@@ -24,6 +24,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 				name: post.town,
 			},
 		]);
+		const datePublished = post.datePublished || post.date;
 		const images = post.images.map(image => ({
 			...image,
 			geoLocation: `${post.town}, ${post.country}`,
@@ -40,6 +41,8 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			author: SITE_AUTHOR,
 			mainImage: images[0],
 			...post,
+			datePublished,
+			dateModified: post.dateModified || datePublished,
 			images,
 		};
 	}),
