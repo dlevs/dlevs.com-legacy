@@ -1,13 +1,8 @@
 include ../includes/mixins.pug
 
 doctype html
-html.no-js(lang="en-GB")
-
-	//- TODO: Move all meta logic out of template. Do something in koa middleware
-	- const ogType = meta && meta.og && meta.og['og:type'];
-	- const prefix = ogType && `og: http://ogp.me/ns# ${ogType}: http://ogp.me/ns/${ogType}#`;
-
-	head(prefix=prefix)
+html.no-js(lang=CONSTANTS.SITE_LOCALE xmlns:og="http://opengraphprotocol.org/schema/")
+	head
 		include ../includes/meta.pug
 		script(src=HELPERS.getRevvedPath('/scripts/main.js') defer data-no-instant)
 		link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
