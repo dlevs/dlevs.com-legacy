@@ -2,7 +2,12 @@ include ../includes/mixins.pug
 
 doctype html
 html.no-js(lang="en-GB")
-	head
+
+	//- TODO: Move all meta logic out of template. Do something in koa middleware
+	- const ogType = meta && meta.og && meta.og['og:type'];
+	- const prefix = ogType && `${ogType}: http://ogp.me/ns/${ogType}#`;
+
+	head(prefix=prefix)
 		include ../includes/meta.pug
 		script(src=HELPERS.getRevvedPath('/scripts/main.js') defer data-no-instant)
 		link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
