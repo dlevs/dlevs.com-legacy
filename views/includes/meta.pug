@@ -13,7 +13,7 @@ if meta
 	- const metaWithUrl = HELPERS.immutableExtend({url: CTX.href}, meta);
 	each content, property in HELPERS.expandOpenGraphMeta(metaWithUrl)
 		if content
-			meta(property=`og:${property}` content=content)
+			meta(property=property content=content)
 
 	if meta.jsonLd
 		each json in meta.jsonLd
