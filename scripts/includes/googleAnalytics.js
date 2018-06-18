@@ -1,17 +1,6 @@
 /* eslint-disable camelcase */
 
-import instantclick from './vendor/instantclick';
-
-const { GOOGLE_ANALYTICS_ID, BASE_CONFIG, gtag } = window;
-
-export const trackPageView = () => {
-	const { pathname, search } = document.location;
-
-	gtag('config', GOOGLE_ANALYTICS_ID, {
-		...BASE_CONFIG,
-		page_path: pathname + search,
-	});
-};
+const { gtag } = window;
 
 export const trackException = ({
 	message, filename, lineno, colno,
@@ -49,11 +38,6 @@ export const trackShare = ({ content_type, method, title }) => {
 
 const init = () => {
 	window.addEventListener('error', trackException);
-	instantclick.on('change', (isInitialLoad) => {
-		if (!isInitialLoad) {
-			trackPageView();
-		}
-	});
 };
 
 export default init;

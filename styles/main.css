@@ -12,7 +12,6 @@
 /* Plugins */
 @import "@dlevs/photoswipe/dist/photoswipe.css";
 @import "./includes/plugins/photoswipeSkin.css";
-@import "./includes/plugins/instantclick.css";
 
 /* Features */
 @import "./includes/features/breadcrumb.css";

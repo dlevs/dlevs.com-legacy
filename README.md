@@ -2,8 +2,6 @@
 
 This is the repo for my personal portfolio site, [dlevs.com](https://dlevs.com). It is a [Node.js](https://nodejs.org/) app built using [the Koa framework](https://www.npmjs.com/package/koa).
 
-The app is daemonised by [pm2](https://www.npmjs.com/package/pm2), and sits behind an [nginx](https://www.nginx.com/) reverse proxy which caches all requests. [instantclick](https://www.npmjs.com/package/instantclick) is used on the frontend to make things a little snappier for desktop users.
-
 ## First time setup
 
 1. Install the Node.js version specified by [package.json](./package.json)'s `engine` property.

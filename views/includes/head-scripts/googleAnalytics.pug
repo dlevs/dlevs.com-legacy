@@ -3,15 +3,13 @@ if GOOGLE_ANALYTICS_ID
 	script(async data-no-instant src=`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`)
 
 script.
-	window.GOOGLE_ANALYTICS_ID = '#[= GOOGLE_ANALYTICS_ID]';
-	window.GOOGLE_ANALYTICS_CONFIG = {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments)};
+	gtag('js', new Date());
+	gtag('config', '#[= GOOGLE_ANALYTICS_ID]', {
 		custom_map: {
 			dimension1: 'file',
 			dimension2: 'title',
 			dimension3: 'index'
 		}
-	};
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments)};
-	gtag('js', new Date());
-	gtag('config', '#[= GOOGLE_ANALYTICS_ID]', GOOGLE_ANALYTICS_CONFIG);
+	});
