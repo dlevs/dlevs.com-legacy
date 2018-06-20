@@ -4,7 +4,7 @@ doctype html
 html.no-js(lang=CONSTANTS.SITE_LOCALE)
 	head
 		include ../includes/meta.pug
-		script(src=HELPERS.getRevvedPath('/scripts/main.js') defer data-no-instant)
+		script(src=HELPERS.getRevvedPath('/scripts/main.js') defer)
 		link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
 		link(rel="manifest" href=HELPERS.getRevvedPath('/manifest.json'))
 		include ../includes/headScripts.pug

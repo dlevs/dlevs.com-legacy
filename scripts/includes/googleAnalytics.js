@@ -25,7 +25,7 @@ export const trackGalleryNavigation = data =>
 	trackGalleryEvent({ ...data, event_label: 'navigation' });
 
 export const trackShare = ({ content_type, method, title }) => {
-	const { pathname, search, hash } = document.location;
+	const { pathname, search, hash } = window.location;
 
 	gtag('event', 'share', {
 		content_id: pathname + search + hash,

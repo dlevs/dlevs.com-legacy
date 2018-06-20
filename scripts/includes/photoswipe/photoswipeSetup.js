@@ -58,7 +58,7 @@ const openGallery = (index, disableTransitions) => {
 		getPageURLForShare: () => {
 			const {
 				protocol, host, pathname, search, hash,
-			} = document.location;
+			} = window.location;
 			const newSearch = queryString.stringify({
 				...queryString.parse(search),
 				// eslint-disable-next-line no-use-before-define
@@ -134,7 +134,7 @@ const onImageLinkClick = (event) => {
 };
 
 const openGalleryFromHash = () => {
-	const { pid } = queryString.parse(document.location.hash);
+	const { pid } = queryString.parse(window.location.hash);
 
 	if (pid === undefined) return;
 

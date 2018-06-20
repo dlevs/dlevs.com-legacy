@@ -17,4 +17,4 @@ if meta
 
 	if meta.jsonLd
 		each json in meta.jsonLd
-			script(type="application/ld+json" data-no-instant)!= JSON.stringify(json)
+			script(type="application/ld+json")!= JSON.stringify(json)
