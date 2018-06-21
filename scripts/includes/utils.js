@@ -38,3 +38,27 @@ export const getLastInputDevice = (() => {
 	});
 	return () => lastDevice;
 })();
+
+/**
+ * Fetch a resource. Do nothing with the result.
+ *
+ * @param {String} url
+ */
+export const fetchAndForget = (url) => {
+	const req = new window.XMLHttpRequest();
+	req.open('GET', url);
+	req.send();
+};
+
+/**
+ * Test a path to see if it has a file extension.
+ *
+ * @example
+ * hasExtension('/');                 // false
+ * hasExtension('/travel');           // false
+ * hasExtension('/travel/cats.mp4');  // true
+ * hasExtension('/travel/cats.json'); // true
+ *
+ * @param {String} pathname
+ */
+export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
