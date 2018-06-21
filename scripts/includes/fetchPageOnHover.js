@@ -33,7 +33,9 @@ const init = () => {
 		lastLink = link;
 
 		// TODO: Check this is polyfilled and working for IE9
-		window.fetch(link.href);
+		window.fetch(link.href, {
+			credentials: 'same-origin',
+		});
 	});
 };
 
