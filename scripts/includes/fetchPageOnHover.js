@@ -11,7 +11,7 @@ const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
 const init = () => {
 	let lastLink;
 
-	document.addEventListener('mouseover', async ({ target }) => {
+	document.addEventListener('mouseover', ({ target }) => {
 		const link = target.closest('a');
 
 		if (link === lastLink) {
