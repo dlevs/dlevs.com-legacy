@@ -119,6 +119,8 @@ const AUTH_HEADER = PASSWORD
 // Misc
 //------------------------------
 const MIN_STATIC_MAX_AGE = 2500000;
+const MIN_HTML_MAX_AGE = 20;
+const MAX_HTML_MAX_AGE = 120;
 
 
 // Exports
@@ -132,6 +134,8 @@ module.exports = {
 	PAGES,
 	SCREENSHOT_CONFIG,
 	MIN_STATIC_MAX_AGE,
+	MIN_HTML_MAX_AGE,
+	MAX_HTML_MAX_AGE,
 };
 
 assert(
