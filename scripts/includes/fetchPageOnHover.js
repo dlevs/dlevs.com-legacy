@@ -6,14 +6,13 @@
  * The cached page will load quicker if the user decides to click.
  */
 
-const { fetchAndForget, hasExtension } = require('./utils');
+const { fetch, hasExtension, wasRecentlyTouched } = require('./utils');
 
 const init = () => {
 	let lastLink;
-	let wasTouched = false;
 
 	document.addEventListener('mouseover', ({ target }) => {
-		if (wasTouched) return;
+		if (wasRecentlyTouched()) return;
 
 		const link = target.closest('a');
 
@@ -35,16 +34,8 @@ const init = () => {
 
 		lastLink = link;
 
-		fetchAndForget(link.href);
-	});
-
-	// Touch devices register touchstart and mouseover almost
-	// immediately after eachother. There's no need to fetch anything.
-	document.addEventListener('touchstart', () => {
-		wasTouched = true;
-		setTimeout(() => {
-			wasTouched = false;
-		}, 100);
+		// eslint-disable-next-line compat/compat
+		fetch(link.href);
 	});
 };
 

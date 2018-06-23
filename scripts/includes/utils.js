@@ -40,11 +40,31 @@ export const getLastInputDevice = (() => {
 })();
 
 /**
+ * Check if a touch event has occurred in the last `timeout`
+ * milliseconds.
+ *
+ * @param {Number} [timeout]
+ * @returns {Boolean}
+ */
+export const wasRecentlyTouched = (() => {
+	let lastTouched = null;
+	document.addEventListener('touchstart', () => {
+		lastTouched = Date.now();
+	});
+	return (timeout = 100) => {
+		if (!lastTouched) {
+			return false;
+		}
+		return (Date.now() - timeout) < lastTouched;
+	};
+})();
+
+/**
  * Fetch a resource. Do nothing with the result.
  *
  * @param {String} url
  */
-export const fetchAndForget = (url) => {
+export const fetch = (url) => {
 	const req = new window.XMLHttpRequest();
 	req.open('GET', url);
 	req.send();
