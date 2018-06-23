@@ -22,6 +22,7 @@ module.exports = () => ({
 						og: {
 							...dataForRender.meta.og,
 							'og:image': getMediaMeta(project.img.src).versions.large,
+							'og:image:alt': project.img.alt,
 						},
 					},
 				};

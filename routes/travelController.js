@@ -23,7 +23,10 @@ module.exports = ({ breadcrumbRoot }) => {
 				meta: {
 					title: 'Travel Blog',
 					description: 'Photos from around the world.',
-					og: { 'og:image': getMediaMeta(posts[0].mainImage.src).versions.large },
+					og: {
+						'og:image': getMediaMeta(posts[0].mainImage.src).versions.large,
+						'og:image:alt': posts[0].mainImage.alt,
+					},
 				},
 			});
 		},
@@ -50,7 +53,10 @@ module.exports = ({ breadcrumbRoot }) => {
 				meta: {
 					title: country,
 					description,
-					og: { 'og:image': getMediaMeta(posts[0].mainImage.src).versions.large },
+					og: {
+						'og:image': getMediaMeta(posts[0].mainImage.src).versions.large,
+						'og:image:alt': posts[0].mainImage.alt,
+					},
 				},
 			});
 		},
@@ -81,6 +87,7 @@ module.exports = ({ breadcrumbRoot }) => {
 						: post.description,
 					og: {
 						'og:image': getMediaMeta(post.images[imageIndex].src).versions.large,
+						'og:image:alt': post.images[imageIndex].alt,
 						'og:type': 'article',
 						'article:published_time': post.datePublished,
 						'article:modified_time': post.dateModified,
