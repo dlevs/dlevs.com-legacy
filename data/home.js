@@ -4,7 +4,7 @@ const { SITE_NAME, ORIGIN } = require('../lib/constants');
 const { getMediaMeta } = require('../lib/mediaUtils');
 const technologies = require('./technologies');
 
-const description = 'London-based fullstack web developer.';
+const description = 'London-based full-stack web developer.';
 
 module.exports = {
 	meta: {
