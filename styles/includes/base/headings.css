@@ -22,10 +22,18 @@
 	text-transform: uppercase;
 }
 
+.heading__title,
+.heading__details {
+	* {
+		display: inline-block;
+	}
+}
+
 .heading__details {
 	flex: 1;
 	margin-left: var(--spacing-medium);
-	font-size: 0.6em;
+	font-size: 0.5em;
+	line-height: 1.5;
 	text-align: right;
 }
 
@@ -37,6 +45,10 @@
 }
 
 @media screen and (min-width: 500px) {
+	.heading__details {
+		font-size: 0.6em;
+	}
+
 	.heading--underlined {
 		margin-bottom: var(--spacing-medium);
 		padding-bottom: var(--spacing-medium);

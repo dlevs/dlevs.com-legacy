@@ -21,6 +21,10 @@
 	width: 100%;
 }
 
+.related-post__heading {
+	margin: 0;
+}
+
 .related-post__link {
 	@mixin link-color var(--color-text);
 }
@@ -33,6 +37,12 @@
 .related-post__label {
 	display: block;
 	font-size: var(--font-size-small);
+}
+
+@media screen and (min-width: 500px) {
+	.related-post__heading {
+		margin: var(--spacing-medium) 0;
+	}
 }
 
 @media screen and (min-width: 650px) {

@@ -6,7 +6,7 @@ mixin relatedPost(post, type)
 					className: 'related-post__image',
 					alt: ''
 				}))
-				h3
+				h3.related-post__heading
 					span.related-post__label= type === 'next' ? 'Next' : 'Previous'
 					span= post.name
 

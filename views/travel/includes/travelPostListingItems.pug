@@ -4,10 +4,15 @@ each post, i in posts
 	article
 		a.link--uncolored.block(href=post.path)
 			h2.blog-heading
-				span= post.town
-				span.heading__details
-					span= `${post.country}, `
-					time(datetime=post.date)= post.humanDate
+				.heading__title
+					span= post.town
+				.heading__details
+					//- These nested elements are needed to align multi-line
+					//- text to the baseline of text next to it.
+					span
+						span= `${post.country},`
+						= ' '
+						time(datetime=post.date)= post.humanDate
 			+media(HELPERS.immutableExtend(post.mainImage, {
 				className: 'blog-image',
 				lazyLoad: i > 1,
