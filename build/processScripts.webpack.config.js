@@ -13,7 +13,7 @@ const { root } = require('../lib/pathUtils');
 const isDebug = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-	entry: root('./scripts/main.js'),
+	entry: root('./publicSrc/scripts/main.js'),
 	output: {
 		path: root('./public/scripts'),
 		filename: '[name].js',
