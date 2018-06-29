@@ -1,5 +1,6 @@
 .picture {
 	height: 0;
+	overflow: hidden;
 	animation-name: loading-background;
 	animation-duration: 1s;
 	animation-timing-function: linear;
