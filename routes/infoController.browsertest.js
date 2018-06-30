@@ -1,8 +1,8 @@
 'use strict';
 
 const { delay } = require('bluebird');
-const { fetch } = require('../tests/testLib/testUtils');
-const { ORIGIN } = require('../tests/testLib/testConstants');
+const { fetch } = require('../tests/testLib/browserTestUtils');
+const { ORIGIN } = require('../tests/testLib/browserTestConstants');
 const { version, engines } = require('../package');
 
 let response;

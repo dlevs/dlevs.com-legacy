@@ -1,10 +1,10 @@
 'use strict';
 
-require('./testLib/testSetup');
+require('./testLib/browserTestSetup');
 
 const puppeteer = require('puppeteer');
-const { SCREENSHOT_CONFIG, CREDENTIALS } = require('./testLib/testConstants');
-const { scrollPage } = require('./testLib/testUtils');
+const { SCREENSHOT_CONFIG, CREDENTIALS } = require('./testLib/browserTestConstants');
+const { scrollPage } = require('./testLib/browserTestUtils');
 
 let browser;
 beforeAll(async (done) => {

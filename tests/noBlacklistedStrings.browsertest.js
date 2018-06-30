@@ -1,7 +1,7 @@
 'use strict';
 
-const { PAGES } = require('./testLib/testConstants');
-const { fetch } = require('./testLib/testUtils');
+const { PAGES } = require('./testLib/browserTestConstants');
+const { fetch } = require('./testLib/browserTestUtils');
 
 // These tests aren't perfect. The strings could appear in a valid page,
 // at which point these tests can be updated. For now, we want to know

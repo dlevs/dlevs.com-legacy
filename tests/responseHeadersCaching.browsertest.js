@@ -1,13 +1,13 @@
 'use strict';
 
 const { getRevvedPath } = require('../lib/assetUtils');
-const { normalizePathToAbsolute, fetch } = require('./testLib/testUtils');
+const { normalizePathToAbsolute, fetch } = require('./testLib/browserTestUtils');
 const {
 	PAGES,
 	MIN_STATIC_MAX_AGE,
 	MIN_HTML_MAX_AGE,
 	MAX_HTML_MAX_AGE,
-} = require('./testLib/testConstants');
+} = require('./testLib/browserTestConstants');
 
 
 const pathsToCache = [

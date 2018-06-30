@@ -1,7 +1,7 @@
 'use strict';
 
-const { PAGES } = require('./testLib/testConstants');
-const { fetch } = require('./testLib/testUtils');
+const { PAGES } = require('./testLib/browserTestConstants');
+const { fetch } = require('./testLib/browserTestUtils');
 const validator = require('html-validator');
 
 describe('HTML validation', () => {

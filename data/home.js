@@ -1,6 +1,7 @@
 'use strict';
 
-const { SITE_NAME, ORIGIN } = require('../lib/constants');
+const { SITE_NAME } = require('../lib/constants');
+const { ORIGIN } = require('../config');
 const { getMediaMeta } = require('../lib/mediaUtils');
 const technologies = require('./technologies');
 

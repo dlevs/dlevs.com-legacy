@@ -58,10 +58,23 @@ const testPosts = [
 ];
 
 describe('getPosts()', () => {
-	const { posts, postsByCountry } = getPosts(
-		{ breadcrumbRoot: new Breadcrumb([{ name: 'Home', slug: '' }]) },
-		testPosts,
-	);
+	const options = { breadcrumbRoot: new Breadcrumb([{ name: 'Home', slug: '' }]) };
+	const { posts, postsByCountry } = getPosts(options, testPosts);
+
+	test('snapshots match', () => {
+		expect(posts).toMatchSnapshot();
+		expect(postsByCountry).toMatchSnapshot();
+	});
+
+	test('returns posts from JSON file if no 2nd parameter is provided', () => {
+		const defaultPosts = getPosts(options);
+		const { town } = defaultPosts.posts[0];
+		// eslint-disable-next-line global-require
+		const match = require('../data/travelPostsRaw.json').find(post => post.town === town);
+
+		expect(typeof town).toBe('string');
+		expect(match).toBeDefined();
+	});
 
 	describe('posts', () => {
 		test('are expanded correctly', () => {

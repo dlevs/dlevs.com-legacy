@@ -2,8 +2,8 @@
 
 const puppeteer = require('puppeteer');
 const { URL } = require('url');
-const { PAGES, ORIGIN, CREDENTIALS } = require('./testLib/testConstants');
-const { fetch, eachLimited } = require('./testLib/testUtils');
+const { PAGES, ORIGIN, CREDENTIALS } = require('./testLib/browserTestConstants');
+const { fetch, eachLimited } = require('./testLib/browserTestUtils');
 
 let browser;
 beforeAll(async (done) => {

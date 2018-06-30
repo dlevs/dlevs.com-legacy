@@ -2,8 +2,8 @@
 
 const puppeteer = require('puppeteer');
 const uniqBy = require('lodash/uniqBy');
-const { fetch, eachLimited } = require('../tests/testLib/testUtils');
-const { ORIGIN, CREDENTIALS } = require('../tests/testLib/testConstants');
+const { fetch, eachLimited } = require('../tests/testLib/browserTestUtils');
+const { ORIGIN, CREDENTIALS } = require('../tests/testLib/browserTestConstants');
 
 const imageUrlRegex = /\.(jpg|png)$/;
 

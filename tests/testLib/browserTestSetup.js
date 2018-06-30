@@ -2,11 +2,11 @@
 
 const path = require('path');
 const { toMatchImageSnapshot } = require('jest-image-snapshot');
-const { HOSTNAME } = require('./testConstants');
+const { HOSTNAME } = require('./browserTestConstants');
 
 function toMatchImageSnapshotModified(received, { ...args }) {
 	return toMatchImageSnapshot.call(this, received, {
-		customSnapshotsDir: path.resolve(__dirname, `../imageSnapshots/${HOSTNAME}`),
+		customSnapshotsDir: path.resolve(__dirname, `../__image_snapshots__/${HOSTNAME}`),
 		...args,
 	});
 }

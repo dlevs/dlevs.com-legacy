@@ -3,6 +3,11 @@
 const assert = require('assert');
 const mapValues = require('lodash/mapValues');
 
+assert(
+	process.env.TEST_HOSTNAME,
+	'TEST_HOSTNAME environment variable must be defined',
+);
+
 
 // Environment variables
 //------------------------------
@@ -137,8 +142,3 @@ module.exports = {
 	MIN_HTML_MAX_AGE,
 	MAX_HTML_MAX_AGE,
 };
-
-assert(
-	process.env.TEST_HOSTNAME,
-	'TEST_HOSTNAME environment variable must be defined',
-);

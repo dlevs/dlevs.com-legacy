@@ -1,8 +1,8 @@
 'use strict';
 
 const { getRevvedPath } = require('../lib/assetUtils');
-const { PAGES } = require('./testLib/testConstants');
-const { normalizePathToAbsolute, fetch } = require('./testLib/testUtils');
+const { PAGES } = require('./testLib/browserTestConstants');
+const { normalizePathToAbsolute, fetch } = require('./testLib/browserTestUtils');
 
 
 const pathsToGzip = PAGES.UNIQUE.concat([
