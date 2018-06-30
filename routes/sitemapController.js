@@ -24,7 +24,7 @@ module.exports = ({ pages = [], breadcrumbRoot }) => {
 		origin: ctx.origin,
 		meta: { title: breadcrumb.currentPage.name },
 	});
-	const controllers = {
+	const controller = {
 		xml: async (ctx) => {
 			await ctx.render('sitemapXml.pug', getRenderVariables(ctx));
 			ctx.type = 'xml';
@@ -36,7 +36,8 @@ module.exports = ({ pages = [], breadcrumbRoot }) => {
 
 	return {
 		router: new Router()
-			.get(`${breadcrumb.path}`, controllers.html)
-			.get(`${breadcrumb.path}.xml`, controllers.xml),
+			.get(`${breadcrumb.path}`, controller.html)
+			.get(`${breadcrumb.path}.xml`, controller.xml),
+		controller,
 	};
 };

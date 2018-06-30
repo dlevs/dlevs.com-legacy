@@ -17,6 +17,11 @@ Some variables need to be passed to `npm run test:browser`:
 | `env TEST_HOSTNAME=dlevs.com npm run test:browser` | Runs tests against production |
 | `env TEST_HOSTNAME=staging.dlevs.com TEST_USERNAME=foo TEST_PASSWORD=bar npm run test:browser` | Runs tests against staging |
 | `env TEST_HOSTNAME=dlevs.com npm run test:browser -- sitemap` | Runs only tests with "sitemap" in the filename |
-| `env TEST_HOSTNAME=dlevs.com npm run test:browser -- --updateSnapshot` | Runs tests and updates the screenshots in `/tests/__image_snapshots__/<HOSTNAME>`. Manually check these to ensure rendering is correct. All subsequent usages of `npm run test:browser` will compare the current UI to these screenshots, until running again with the `--updateSnapshot` flag. This can highlight UI regression. |
+
+## Snapshots
+
+Jest will store snapshots in `__snapshots__` and `__image_snapshots__` directories. For unit tests, these are normally JSON objects. For the browser tests, these are screenshots. Jest will highlight where differences exist in the snapshots since the last time the tests were run. They're good for catching regression.
+
+To update the snapshots, run the tests with the `-u` flag: `npm run test -- -u`.
 
 [back](../README.md)

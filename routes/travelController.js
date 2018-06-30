@@ -15,7 +15,7 @@ module.exports = ({ breadcrumbRoot }) => {
 	const { posts, postsByCountry } = getPosts({
 		breadcrumbRoot: pageBreadcrumb,
 	});
-	const controllers = {
+	const controller = {
 		index: async (ctx) => {
 			await ctx.render('travel/travelPostListing.pug', {
 				posts,
@@ -80,7 +80,6 @@ module.exports = ({ breadcrumbRoot }) => {
 				nextPost: posts[index + 1],
 				breadcrumb: post.breadcrumb,
 				meta: {
-					// TODO: Write tests for metadata sitewide
 					title: post.town,
 					description: ctx.query.pid
 						? post.images[imageIndex].caption
@@ -117,14 +116,16 @@ module.exports = ({ breadcrumbRoot }) => {
 	return {
 
 		router: new Router()
-			.get(`${pageBreadcrumb.path}`, controllers.index)
-			.get(`${pageBreadcrumb.path}/:countrySlug`, controllers.renderPostsForCountry)
-			.get(`${pageBreadcrumb.path}/:countrySlug/:townSlug`, controllers.renderPost),
+			.get(`${pageBreadcrumb.path}`, controller.index)
+			.get(`${pageBreadcrumb.path}/:countrySlug`, controller.renderPostsForCountry)
+			.get(`${pageBreadcrumb.path}/:countrySlug/:townSlug`, controller.renderPost),
 
 		sitemap: {
 			...pageBreadcrumb.currentPage,
 			posts: postsByCountry,
 		},
+
+		controller,
 
 	};
 };
