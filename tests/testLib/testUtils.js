@@ -10,14 +10,18 @@
  */
 exports.getControllerRenderData = async (controller, params = {}) => {
 	let renderedData;
-
-	await controller({
+	const ctx = {
 		query: {},
 		...params,
 		render(template, data) {
 			renderedData = data;
 		},
-	});
+	};
 
-	return renderedData;
+	await controller(ctx);
+
+	return {
+		ctx,
+		renderedData,
+	};
 };
