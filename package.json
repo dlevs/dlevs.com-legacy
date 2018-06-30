@@ -21,7 +21,7 @@
 		"lint:styles": "stylelint 'styles/**/*.css'",
 		"lint:views": "pug-lint views",
 		"addtravelblogimages": "node build/addTravelBlogImages.js",
-		"precommit": "lint-staged"
+		"precommit": "npm test && lint-staged"
 	},
 	"engines": {
 		"node": "^8.11.2"

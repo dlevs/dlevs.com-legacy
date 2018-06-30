@@ -24,6 +24,8 @@
 
 .heading__title,
 .heading__details {
+	display: block;
+
 	* {
 		display: inline-block;
 	}
