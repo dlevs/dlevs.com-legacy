@@ -7,7 +7,7 @@ const kebabCase = require('lodash/kebabCase');
 const sortBy = require('lodash/fp/sortBy');
 const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
-const { SITE_AUTHOR } = require('../lib/constants');
+const { ORIGIN } = require('../config');
 const rawPostsData = require('../data/travelPostsRaw');
 
 const expandPosts = ({ breadcrumbRoot }) => flow(
@@ -38,7 +38,7 @@ const expandPosts = ({ breadcrumbRoot }) => flow(
 			path: breadcrumb.path,
 			humanDate: moment(post.date).format('MMMM YYYY'),
 			description: `Photos from ${post.town}, ${post.country}.`,
-			author: SITE_AUTHOR,
+			author: ORIGIN,
 			mainImage: images[0],
 			...post,
 			datePublished,
@@ -67,7 +67,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }) => flow(
 			breadcrumb,
 			path: breadcrumb.path,
 			description: `Photos from ${country}.`,
-			author: SITE_AUTHOR,
+			author: ORIGIN,
 			posts,
 			images,
 			mainImage: images[0],

@@ -2,7 +2,7 @@ include ../includes/mixins.pug
 
 doctype html
 html.no-js(lang=CONSTANTS.SITE_LOCALE)
-	head
+	head(prefix="og: http://ogp.me/ns#")
 		include ../includes/meta.pug
 		script(src=HELPERS.getRevvedPath('/scripts/main.js') defer)
 		link(rel="stylesheet" href=HELPERS.getRevvedPath('/styles/main.css'))
