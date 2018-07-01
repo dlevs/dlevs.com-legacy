@@ -6,11 +6,20 @@ const { getMediaMeta } = require('../lib/mediaUtils');
 const technologies = require('./technologies');
 
 const description = 'London-based full-stack web developer.';
+const selfImage = getMediaMeta('/media/misc/self.jpg');
 
 module.exports = {
 	meta: {
 		title: SITE_NAME,
 		description,
+		og: {
+			'og:type': 'profile',
+			'og:image': selfImage.versions.large,
+			'profile:first_name': 'Daniel',
+			'profile:last_name': 'Levett',
+			'profile:gender': 'male',
+			'profile:username': 'dlevs',
+		},
 		jsonLd: [
 			{
 				'@context': 'http://schema.org',
@@ -20,7 +29,7 @@ module.exports = {
 				alumniOf: 'University of Hertfordshire',
 				gender: 'male',
 				nationality: 'British',
-				image: getMediaMeta('/media/misc/self.jpg').versions.large.absoluteSrc,
+				image: selfImage.versions.large.absoluteSrc,
 				url: ORIGIN,
 				sameAs: [
 					'https://www.linkedin.com/in/daniellevett/',
