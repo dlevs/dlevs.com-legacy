@@ -73,6 +73,7 @@ const createOutputFile = async ({
 		width,
 		height,
 		format,
+		type: `image/${format}`,
 		src: createWebPath(outputPath),
 		paddingBottom: getPaddingBottom(width, height),
 	};
