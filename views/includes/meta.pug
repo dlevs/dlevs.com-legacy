@@ -14,7 +14,11 @@ if meta
 	- const metaWithUrl = HELPERS.immutableExtend({url: CTX.href}, meta);
 	each content, property in HELPERS.expandOpenGraphMeta(metaWithUrl)
 		if content
-			meta(property=property content=content)
+			if Array.isArray(content)
+				each contentItem in content
+					meta(property=property content=contentItem)
+			else
+				meta(property=property content=content)
 
 	if meta.jsonLd
 		each json in meta.jsonLd

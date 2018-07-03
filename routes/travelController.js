@@ -92,6 +92,7 @@ module.exports = ({ breadcrumbRoot }) => {
 						'article:modified_time': post.dateModified,
 						'article:author': post.author,
 						'article:section': 'Travel',
+						'article:tag': [post.town, post.country],
 					},
 					jsonLd: [
 						{
