@@ -26,6 +26,6 @@ To update the snapshots, run the tests with the `-u` flag: `npm run test -- -u`.
 
 ## Coverage
 
-A test coverage report is generated when running `npm build`. You can [view the coverage report on the site](https://dlevs.com/coverage).
+A test coverage report is generated when running `npm run build`. You can [view the coverage report on the site](https://dlevs.com/coverage).
 
 [back](../README.md)
