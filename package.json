@@ -14,7 +14,7 @@
 		"build:media": "node build/processMedia",
 		"build:manifest": "hashlink -s --relative public 'public/**/*.+(js|css|png|ico|jpg|svg|json|webp|mp4|webm)' > data/generated/assets.json",
 		"clean": "rimraf ./public/* && rimraf ./data/generated/*",
-		"test": "jest",
+		"test": "jest --coverage --coverageDirectory=./public/coverage && mv ./public/coverage/lcov-report/* ./public/coverage",
 		"test:browser": "jest -i --testRegex=.*browsertest.js",
 		"lint": "npm run lint:scripts && npm run lint:styles && npm run lint:views",
 		"lint:scripts": "eslint .",

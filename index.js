@@ -13,6 +13,7 @@ const slash = require('koa-slash');
 const json = require('koa-json');
 const bodyParser = require('koa-bodyparser');
 const errorMiddleware = require('./lib/middleware/errorMiddleware');
+const redirectMiddleware = require('./lib/middleware/redirectMiddleware');
 const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
 const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddleware');
 const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
@@ -29,8 +30,9 @@ app.proxy = IS_BEHIND_PROXY;
 
 app
 	.use(errorMiddleware)
-	.use(bodyParser())
 	.use(slash())
+	.use(redirectMiddleware)
+	.use(bodyParser())
 	.use(json({
 		pretty: process.env.NODE_ENV !== 'production',
 		param: 'pretty',
