@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index data passed to template with ctx {} 1`] = `
+Object {
+  "ctx": Object {
+    "body": "# Allow crawling of all content
+User-agent: *
+Disallow:
+
+# XML Sitemaps
+Sitemap: undefined/sitemap.xml",
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": undefined,
+}
+`;

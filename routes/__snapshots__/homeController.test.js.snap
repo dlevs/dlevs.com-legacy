@@ -1,0 +1,555 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index data passed to template with ctx {"query":{"pid":"2"}} 1`] = `
+Object {
+  "ctx": Object {
+    "query": Object {
+      "pid": "2",
+    },
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": Object {
+    "brands": Array [
+      Object {
+        "name": "Jimmy Choo",
+        "svg": "/media/brands/jimmy-choo.svg",
+        "title": "Jimmy Choo - eCommerce Website",
+        "url": "http://www.jimmychoo.com/",
+      },
+      Object {
+        "name": "Bally",
+        "svg": "/media/brands/bally.svg",
+        "title": "Bally - eCommerce Website",
+        "url": "http://www.bally.co.uk/",
+      },
+      Object {
+        "name": "Belstaff",
+        "svg": "/media/brands/belstaff.svg",
+        "title": "Belstaff - eCommerce Website",
+        "url": "https://www.belstaff.co.uk/",
+      },
+    ],
+    "meta": Object {
+      "description": "Email Build Automater",
+      "jsonLd": Array [
+        Object {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "alumniOf": "University of Hertfordshire",
+          "gender": "male",
+          "image": "http://localhost:3000/media/misc/self_1340x1650.jpg",
+          "jobTitle": "Web Developer",
+          "name": "Daniel Levett",
+          "nationality": "British",
+          "sameAs": Array [
+            "https://www.linkedin.com/in/daniellevett/",
+            "https://github.com/dlevs",
+            "https://www.npmjs.com/~dlevs",
+          ],
+          "url": "http://localhost:3000",
+        },
+        Object {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "author": "http://localhost:3000",
+          "description": "London-based full-stack web developer.",
+          "name": "Daniel Levett",
+          "url": "http://localhost:3000",
+        },
+      ],
+      "og": Object {
+        "og:image": Object {
+          "absoluteSrc": "http://localhost:3000/media/projects/email-build_2000x1250.jpg",
+          "format": "jpeg",
+          "height": 1250,
+          "paddingBottom": "62.5%",
+          "src": "/media/projects/email-build_2000x1250.jpg",
+          "type": "image/jpeg",
+          "width": 2000,
+        },
+        "og:image:alt": "A screenshot of the email builder’s web interface.",
+        "og:type": "profile",
+        "profile:first_name": "Daniel",
+        "profile:gender": "male",
+        "profile:last_name": "Levett",
+        "profile:username": "dlevs",
+      },
+      "title": "Daniel Levett",
+    },
+    "projects": Array [
+      Object {
+        "badges": Array [
+          Object {
+            "name": "ES6",
+            "url": "https://babeljs.io/",
+          },
+          Object {
+            "name": "React",
+            "url": "https://facebook.github.io/react/",
+          },
+          Object {
+            "name": "Redux",
+            "url": "http://redux.js.org/",
+          },
+          Object {
+            "name": "PostCSS",
+            "url": "http://postcss.org/",
+          },
+          Object {
+            "name": "webpack",
+            "url": "https://webpack.js.org/",
+          },
+          Object {
+            "name": "Jest",
+            "url": "https://facebook.github.io/jest/",
+          },
+        ],
+        "description": "<p>A web application for editing content on <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites, making use of their REST API to load and save content directly from a site’s business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>",
+        "heading": "Content Creation Tool",
+        "img": Object {
+          "alt": "A screenshot of the content creation tool being used to edit a web article.",
+          "src": "/media/projects/json-tool.png",
+        },
+        "shortDescription": "<p>A web application for editing content on <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites.</p>",
+      },
+      Object {
+        "badges": Array [
+          Object {
+            "name": "Node.js",
+            "url": "https://nodejs.org/en/",
+          },
+          Object {
+            "name": "Express",
+            "url": "https://expressjs.com/",
+          },
+          Object {
+            "name": "Handlebars",
+            "url": "http://handlebarsjs.com/",
+          },
+          Object {
+            "name": "jQuery",
+            "url": "https://jquery.com/",
+          },
+          Object {
+            "name": "Web Sockets",
+            "url": "https://socket.io/",
+          },
+          Object {
+            "name": "Less",
+            "url": "http://lesscss.org/",
+          },
+        ],
+        "description": "<p>A Node.js framework for building marketing emails. The tool <a href=\\"https://www.npmjs.com/package/xlsx\\" title=\\"The xlsx package on npm, used to to parse spreadsheets\\">parses text and links directly from spreadsheet specifications</a> and provides an easy way to stitch them together into HTML files, ready to send.</p><p>Translations are automatically compiled along with the English; build an email in one language and all the others are built for you! Automatic validation ensures quality. This brought my average build time for emails down from about 2 hours to just 15 minutes.</p>",
+        "heading": "Email Build Automater",
+        "img": Object {
+          "alt": "A screenshot of the email builder’s web interface.",
+          "src": "/media/projects/email-build.png",
+        },
+        "shortDescription": "<p>A Node.js framework for building marketing emails.</p>",
+      },
+      Object {
+        "badges": Array [
+          Object {
+            "name": "Node.js",
+            "url": "https://nodejs.org/en/",
+          },
+          Object {
+            "name": "Express",
+            "url": "https://expressjs.com/",
+          },
+          Object {
+            "name": "Pug",
+            "url": "https://www.npmjs.com/package/pug",
+          },
+          Object {
+            "name": "jQuery",
+            "url": "https://jquery.com/",
+          },
+          Object {
+            "name": "Less",
+            "url": "http://lesscss.org/",
+          },
+        ],
+        "description": "<p>A content inspector for <a href=\\"https://www.npmjs.com/package/xml-stream\\" title=\\"The xml-stream package on npm, used to parse XML\\">XML content exports</a> of <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites. It highlights potential errors and enables users to perform batch editing.</p>",
+        "heading": "Content Inspector",
+        "img": Object {
+          "alt": "A screenshot of the content inspector showing a listing of content assets.",
+          "src": "/media/projects/content-inspector.png",
+        },
+        "shortDescription": "<p>A content inspector for <a href=\\"https://www.npmjs.com/package/xml-stream\\" title=\\"The xml-stream package on npm, used to parse XML\\">XML content exports</a> of <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites.</p>",
+      },
+    ],
+  },
+}
+`;
+
+exports[`index data passed to template with ctx {"query":{"pid":"40"}} 1`] = `
+Object {
+  "ctx": Object {
+    "query": Object {
+      "pid": "40",
+    },
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": Object {
+    "brands": Array [
+      Object {
+        "name": "Jimmy Choo",
+        "svg": "/media/brands/jimmy-choo.svg",
+        "title": "Jimmy Choo - eCommerce Website",
+        "url": "http://www.jimmychoo.com/",
+      },
+      Object {
+        "name": "Bally",
+        "svg": "/media/brands/bally.svg",
+        "title": "Bally - eCommerce Website",
+        "url": "http://www.bally.co.uk/",
+      },
+      Object {
+        "name": "Belstaff",
+        "svg": "/media/brands/belstaff.svg",
+        "title": "Belstaff - eCommerce Website",
+        "url": "https://www.belstaff.co.uk/",
+      },
+    ],
+    "meta": Object {
+      "description": "London-based full-stack web developer.",
+      "jsonLd": Array [
+        Object {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "alumniOf": "University of Hertfordshire",
+          "gender": "male",
+          "image": "http://localhost:3000/media/misc/self_1340x1650.jpg",
+          "jobTitle": "Web Developer",
+          "name": "Daniel Levett",
+          "nationality": "British",
+          "sameAs": Array [
+            "https://www.linkedin.com/in/daniellevett/",
+            "https://github.com/dlevs",
+            "https://www.npmjs.com/~dlevs",
+          ],
+          "url": "http://localhost:3000",
+        },
+        Object {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "author": "http://localhost:3000",
+          "description": "London-based full-stack web developer.",
+          "name": "Daniel Levett",
+          "url": "http://localhost:3000",
+        },
+      ],
+      "og": Object {
+        "og:image": Object {
+          "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650.jpg",
+          "format": "jpeg",
+          "height": 1650,
+          "paddingBottom": "123.1343%",
+          "src": "/media/misc/self_1340x1650.jpg",
+          "type": "image/jpeg",
+          "width": 1340,
+        },
+        "og:type": "profile",
+        "profile:first_name": "Daniel",
+        "profile:gender": "male",
+        "profile:last_name": "Levett",
+        "profile:username": "dlevs",
+      },
+      "title": "Daniel Levett",
+    },
+    "projects": Array [
+      Object {
+        "badges": Array [
+          Object {
+            "name": "ES6",
+            "url": "https://babeljs.io/",
+          },
+          Object {
+            "name": "React",
+            "url": "https://facebook.github.io/react/",
+          },
+          Object {
+            "name": "Redux",
+            "url": "http://redux.js.org/",
+          },
+          Object {
+            "name": "PostCSS",
+            "url": "http://postcss.org/",
+          },
+          Object {
+            "name": "webpack",
+            "url": "https://webpack.js.org/",
+          },
+          Object {
+            "name": "Jest",
+            "url": "https://facebook.github.io/jest/",
+          },
+        ],
+        "description": "<p>A web application for editing content on <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites, making use of their REST API to load and save content directly from a site’s business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>",
+        "heading": "Content Creation Tool",
+        "img": Object {
+          "alt": "A screenshot of the content creation tool being used to edit a web article.",
+          "src": "/media/projects/json-tool.png",
+        },
+        "shortDescription": "<p>A web application for editing content on <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites.</p>",
+      },
+      Object {
+        "badges": Array [
+          Object {
+            "name": "Node.js",
+            "url": "https://nodejs.org/en/",
+          },
+          Object {
+            "name": "Express",
+            "url": "https://expressjs.com/",
+          },
+          Object {
+            "name": "Handlebars",
+            "url": "http://handlebarsjs.com/",
+          },
+          Object {
+            "name": "jQuery",
+            "url": "https://jquery.com/",
+          },
+          Object {
+            "name": "Web Sockets",
+            "url": "https://socket.io/",
+          },
+          Object {
+            "name": "Less",
+            "url": "http://lesscss.org/",
+          },
+        ],
+        "description": "<p>A Node.js framework for building marketing emails. The tool <a href=\\"https://www.npmjs.com/package/xlsx\\" title=\\"The xlsx package on npm, used to to parse spreadsheets\\">parses text and links directly from spreadsheet specifications</a> and provides an easy way to stitch them together into HTML files, ready to send.</p><p>Translations are automatically compiled along with the English; build an email in one language and all the others are built for you! Automatic validation ensures quality. This brought my average build time for emails down from about 2 hours to just 15 minutes.</p>",
+        "heading": "Email Build Automater",
+        "img": Object {
+          "alt": "A screenshot of the email builder’s web interface.",
+          "src": "/media/projects/email-build.png",
+        },
+        "shortDescription": "<p>A Node.js framework for building marketing emails.</p>",
+      },
+      Object {
+        "badges": Array [
+          Object {
+            "name": "Node.js",
+            "url": "https://nodejs.org/en/",
+          },
+          Object {
+            "name": "Express",
+            "url": "https://expressjs.com/",
+          },
+          Object {
+            "name": "Pug",
+            "url": "https://www.npmjs.com/package/pug",
+          },
+          Object {
+            "name": "jQuery",
+            "url": "https://jquery.com/",
+          },
+          Object {
+            "name": "Less",
+            "url": "http://lesscss.org/",
+          },
+        ],
+        "description": "<p>A content inspector for <a href=\\"https://www.npmjs.com/package/xml-stream\\" title=\\"The xml-stream package on npm, used to parse XML\\">XML content exports</a> of <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites. It highlights potential errors and enables users to perform batch editing.</p>",
+        "heading": "Content Inspector",
+        "img": Object {
+          "alt": "A screenshot of the content inspector showing a listing of content assets.",
+          "src": "/media/projects/content-inspector.png",
+        },
+        "shortDescription": "<p>A content inspector for <a href=\\"https://www.npmjs.com/package/xml-stream\\" title=\\"The xml-stream package on npm, used to parse XML\\">XML content exports</a> of <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites.</p>",
+      },
+    ],
+  },
+}
+`;
+
+exports[`index data passed to template with ctx {} 1`] = `
+Object {
+  "ctx": Object {
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": Object {
+    "brands": Array [
+      Object {
+        "name": "Jimmy Choo",
+        "svg": "/media/brands/jimmy-choo.svg",
+        "title": "Jimmy Choo - eCommerce Website",
+        "url": "http://www.jimmychoo.com/",
+      },
+      Object {
+        "name": "Bally",
+        "svg": "/media/brands/bally.svg",
+        "title": "Bally - eCommerce Website",
+        "url": "http://www.bally.co.uk/",
+      },
+      Object {
+        "name": "Belstaff",
+        "svg": "/media/brands/belstaff.svg",
+        "title": "Belstaff - eCommerce Website",
+        "url": "https://www.belstaff.co.uk/",
+      },
+    ],
+    "meta": Object {
+      "description": "London-based full-stack web developer.",
+      "jsonLd": Array [
+        Object {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "alumniOf": "University of Hertfordshire",
+          "gender": "male",
+          "image": "http://localhost:3000/media/misc/self_1340x1650.jpg",
+          "jobTitle": "Web Developer",
+          "name": "Daniel Levett",
+          "nationality": "British",
+          "sameAs": Array [
+            "https://www.linkedin.com/in/daniellevett/",
+            "https://github.com/dlevs",
+            "https://www.npmjs.com/~dlevs",
+          ],
+          "url": "http://localhost:3000",
+        },
+        Object {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "author": "http://localhost:3000",
+          "description": "London-based full-stack web developer.",
+          "name": "Daniel Levett",
+          "url": "http://localhost:3000",
+        },
+      ],
+      "og": Object {
+        "og:image": Object {
+          "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650.jpg",
+          "format": "jpeg",
+          "height": 1650,
+          "paddingBottom": "123.1343%",
+          "src": "/media/misc/self_1340x1650.jpg",
+          "type": "image/jpeg",
+          "width": 1340,
+        },
+        "og:type": "profile",
+        "profile:first_name": "Daniel",
+        "profile:gender": "male",
+        "profile:last_name": "Levett",
+        "profile:username": "dlevs",
+      },
+      "title": "Daniel Levett",
+    },
+    "projects": Array [
+      Object {
+        "badges": Array [
+          Object {
+            "name": "ES6",
+            "url": "https://babeljs.io/",
+          },
+          Object {
+            "name": "React",
+            "url": "https://facebook.github.io/react/",
+          },
+          Object {
+            "name": "Redux",
+            "url": "http://redux.js.org/",
+          },
+          Object {
+            "name": "PostCSS",
+            "url": "http://postcss.org/",
+          },
+          Object {
+            "name": "webpack",
+            "url": "https://webpack.js.org/",
+          },
+          Object {
+            "name": "Jest",
+            "url": "https://facebook.github.io/jest/",
+          },
+        ],
+        "description": "<p>A web application for editing content on <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites, making use of their REST API to load and save content directly from a site’s business manager portal.</p><p>The editor makes creating complex features like product carousels and social media feeds simple, without the need for a developer to get involved. Behind the scenes, the tool stores content as JSON for populating backend templates.</p>",
+        "heading": "Content Creation Tool",
+        "img": Object {
+          "alt": "A screenshot of the content creation tool being used to edit a web article.",
+          "src": "/media/projects/json-tool.png",
+        },
+        "shortDescription": "<p>A web application for editing content on <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites.</p>",
+      },
+      Object {
+        "badges": Array [
+          Object {
+            "name": "Node.js",
+            "url": "https://nodejs.org/en/",
+          },
+          Object {
+            "name": "Express",
+            "url": "https://expressjs.com/",
+          },
+          Object {
+            "name": "Handlebars",
+            "url": "http://handlebarsjs.com/",
+          },
+          Object {
+            "name": "jQuery",
+            "url": "https://jquery.com/",
+          },
+          Object {
+            "name": "Web Sockets",
+            "url": "https://socket.io/",
+          },
+          Object {
+            "name": "Less",
+            "url": "http://lesscss.org/",
+          },
+        ],
+        "description": "<p>A Node.js framework for building marketing emails. The tool <a href=\\"https://www.npmjs.com/package/xlsx\\" title=\\"The xlsx package on npm, used to to parse spreadsheets\\">parses text and links directly from spreadsheet specifications</a> and provides an easy way to stitch them together into HTML files, ready to send.</p><p>Translations are automatically compiled along with the English; build an email in one language and all the others are built for you! Automatic validation ensures quality. This brought my average build time for emails down from about 2 hours to just 15 minutes.</p>",
+        "heading": "Email Build Automater",
+        "img": Object {
+          "alt": "A screenshot of the email builder’s web interface.",
+          "src": "/media/projects/email-build.png",
+        },
+        "shortDescription": "<p>A Node.js framework for building marketing emails.</p>",
+      },
+      Object {
+        "badges": Array [
+          Object {
+            "name": "Node.js",
+            "url": "https://nodejs.org/en/",
+          },
+          Object {
+            "name": "Express",
+            "url": "https://expressjs.com/",
+          },
+          Object {
+            "name": "Pug",
+            "url": "https://www.npmjs.com/package/pug",
+          },
+          Object {
+            "name": "jQuery",
+            "url": "https://jquery.com/",
+          },
+          Object {
+            "name": "Less",
+            "url": "http://lesscss.org/",
+          },
+        ],
+        "description": "<p>A content inspector for <a href=\\"https://www.npmjs.com/package/xml-stream\\" title=\\"The xml-stream package on npm, used to parse XML\\">XML content exports</a> of <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites. It highlights potential errors and enables users to perform batch editing.</p>",
+        "heading": "Content Inspector",
+        "img": Object {
+          "alt": "A screenshot of the content inspector showing a listing of content assets.",
+          "src": "/media/projects/content-inspector.png",
+        },
+        "shortDescription": "<p>A content inspector for <a href=\\"https://www.npmjs.com/package/xml-stream\\" title=\\"The xml-stream package on npm, used to parse XML\\">XML content exports</a> of <a href=\\"http://www.demandware.com/\\">Salesforce Commerce Cloud</a> sites.</p>",
+      },
+    ],
+  },
+}
+`;

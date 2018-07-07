@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`html data passed to template with ctx {} 1`] = `
+Object {
+  "ctx": Object {
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": Object {
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "Sitemap",
+          "path": "/sitemap",
+          "slug": "sitemap",
+        },
+      ],
+    },
+    "meta": Object {
+      "title": "Sitemap",
+    },
+    "origin": undefined,
+    "pages": Array [
+      Object {
+        "name": "Home",
+        "path": "/",
+      },
+      Object {
+        "name": "Travel",
+        "path": "/travel",
+        "posts": Array [
+          Object {
+            "name": "Japan",
+            "path": "/travel/japan",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`html data passed to template with ctx {} 2`] = `
+Object {
+  "ctx": Object {
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": Object {
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "Sitemap",
+          "path": "/sitemap",
+          "slug": "sitemap",
+        },
+      ],
+    },
+    "meta": Object {
+      "title": "Sitemap",
+    },
+    "origin": undefined,
+    "pages": Array [],
+  },
+}
+`;
+
+exports[`xml data passed to template with ctx {} 1`] = `
+Object {
+  "ctx": Object {
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+    "type": "xml",
+  },
+  "renderedData": Object {
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "Sitemap",
+          "path": "/sitemap",
+          "slug": "sitemap",
+        },
+      ],
+    },
+    "meta": Object {
+      "title": "Sitemap",
+    },
+    "origin": undefined,
+    "pages": Array [
+      Object {
+        "name": "Home",
+        "path": "/",
+      },
+      Object {
+        "name": "Travel",
+        "path": "/travel",
+        "posts": Array [
+          Object {
+            "name": "Japan",
+            "path": "/travel/japan",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`xml data passed to template with ctx {} 2`] = `
+Object {
+  "ctx": Object {
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+    "type": "xml",
+  },
+  "renderedData": Object {
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "Sitemap",
+          "path": "/sitemap",
+          "slug": "sitemap",
+        },
+      ],
+    },
+    "meta": Object {
+      "title": "Sitemap",
+    },
+    "origin": undefined,
+    "pages": Array [],
+  },
+}
+`;

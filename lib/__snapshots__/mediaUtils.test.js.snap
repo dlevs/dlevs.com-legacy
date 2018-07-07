@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getMediaMeta() development responds with expected result for a file that does exist 1`] = `
+Object {
+  "mapLink": "https://maps.google.com/maps?q=52°21'43\\"N,4°53'34\\"E",
+  "type": "image",
+  "versions": Object {
+    "default": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182.jpg",
+      "format": "jpeg",
+      "height": 1182,
+      "paddingBottom": "123.125%",
+      "src": "/media/misc/self_960x1182.jpg",
+      "type": "image/jpeg",
+      "width": 960,
+    },
+    "defaultWebp": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182.webp",
+      "format": "webp",
+      "height": 1182,
+      "paddingBottom": "123.125%",
+      "src": "/media/misc/self_960x1182.webp",
+      "type": "image/webp",
+      "width": 960,
+    },
+    "large": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650.jpg",
+      "format": "jpeg",
+      "height": 1650,
+      "paddingBottom": "123.1343%",
+      "src": "/media/misc/self_1340x1650.jpg",
+      "type": "image/jpeg",
+      "width": 1340,
+    },
+    "largeWebp": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650.webp",
+      "format": "webp",
+      "height": 1650,
+      "paddingBottom": "123.1343%",
+      "src": "/media/misc/self_1340x1650.webp",
+      "type": "image/webp",
+      "width": 1340,
+    },
+  },
+}
+`;
+
+exports[`getMediaMeta() production responds with expected result for a file that does exist 1`] = `
+Object {
+  "mapLink": "https://maps.google.com/maps?q=52°21'43\\"N,4°53'34\\"E",
+  "type": "image",
+  "versions": Object {
+    "default": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182-88bae99cf2.jpg",
+      "format": "jpeg",
+      "height": 1182,
+      "paddingBottom": "123.125%",
+      "src": "/media/misc/self_960x1182-88bae99cf2.jpg",
+      "type": "image/jpeg",
+      "width": 960,
+    },
+    "defaultWebp": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182-dd455a2794.webp",
+      "format": "webp",
+      "height": 1182,
+      "paddingBottom": "123.125%",
+      "src": "/media/misc/self_960x1182-dd455a2794.webp",
+      "type": "image/webp",
+      "width": 960,
+    },
+    "large": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650-3c16eef358.jpg",
+      "format": "jpeg",
+      "height": 1650,
+      "paddingBottom": "123.1343%",
+      "src": "/media/misc/self_1340x1650-3c16eef358.jpg",
+      "type": "image/jpeg",
+      "width": 1340,
+    },
+    "largeWebp": Object {
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650-2478f5307d.webp",
+      "format": "webp",
+      "height": 1650,
+      "paddingBottom": "123.1343%",
+      "src": "/media/misc/self_1340x1650-2478f5307d.webp",
+      "type": "image/webp",
+      "width": 1340,
+    },
+  },
+}
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index data passed to template with ctx {} 1`] = `
+Object {
+  "ctx": Object {
+    "body": Object {
+      "appVersion": "1.0.0",
+      "environment": "test",
+      "nodeVersion": "v8.11.2",
+    },
+    "query": Object {},
+    "render": [Function],
+    "state": Object {
+      "CANONICAL_URL": "DUMMY_CANONICAL_URL",
+    },
+  },
+  "renderedData": undefined,
+}
+`;

@@ -1,0 +1,494 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getPosts() snapshots match 1`] = `
+Array [
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "Vietnam",
+          "path": "/vietnam",
+          "slug": "vietnam",
+        },
+        Object {
+          "name": "Vung Tau",
+          "path": "/vietnam/vung-tau",
+          "slug": "vung-tau",
+        },
+      ],
+    },
+    "country": "Vietnam",
+    "countrySlug": "vietnam",
+    "date": "2018-09-23",
+    "dateModified": "2018-09-23",
+    "datePublished": "2018-09-23",
+    "description": "Photos from Vung Tau, Vietnam.",
+    "humanDate": "September 2018",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Vung Tau, Vietnam",
+        "src": "/media/travel/vietnam/image_1.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "Vung Tau, Vietnam",
+      "src": "/media/travel/vietnam/image_1.jpg",
+    },
+    "name": "Vung Tau",
+    "path": "/vietnam/vung-tau",
+    "town": "Vung Tau",
+    "townSlug": "vung-tau",
+  },
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "England",
+          "path": "/england",
+          "slug": "england",
+        },
+        Object {
+          "name": "London",
+          "path": "/england/london",
+          "slug": "london",
+        },
+      ],
+    },
+    "country": "England",
+    "countrySlug": "england",
+    "date": "2017-09-23",
+    "dateModified": "2017-09-30",
+    "datePublished": "2017-09-29",
+    "description": "Photos from London, England.",
+    "humanDate": "September 2017",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "London, England",
+        "src": "/media/travel/england/image_1.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "London, England",
+      "src": "/media/travel/england/image_1.jpg",
+    },
+    "name": "London",
+    "path": "/england/london",
+    "town": "London",
+    "townSlug": "london",
+  },
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "India",
+          "path": "/india",
+          "slug": "india",
+        },
+        Object {
+          "name": "Agra",
+          "path": "/india/agra",
+          "slug": "agra",
+        },
+      ],
+    },
+    "country": "India",
+    "countrySlug": "india",
+    "date": "2016-01-03",
+    "dateModified": "2016-01-03",
+    "datePublished": "2016-01-03",
+    "description": "Photos from Agra, India.",
+    "humanDate": "January 2016",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Agra, India",
+        "src": "/media/travel/india/image_3.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "Agra, India",
+      "src": "/media/travel/india/image_3.jpg",
+    },
+    "name": "Agra",
+    "path": "/india/agra",
+    "town": "Agra",
+    "townSlug": "agra",
+  },
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "India",
+          "path": "/india",
+          "slug": "india",
+        },
+        Object {
+          "name": "Delhi",
+          "path": "/india/delhi",
+          "slug": "delhi",
+        },
+      ],
+    },
+    "country": "India",
+    "countrySlug": "india",
+    "date": "2016-01-02",
+    "dateModified": "2016-01-02",
+    "datePublished": "2016-01-02",
+    "description": "Photos from Delhi, India.",
+    "humanDate": "January 2016",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Delhi, India",
+        "src": "/media/travel/india/image_1.jpg",
+      },
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Delhi, India",
+        "src": "/media/travel/india/image_2.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "Delhi, India",
+      "src": "/media/travel/india/image_1.jpg",
+    },
+    "name": "Delhi",
+    "path": "/india/delhi",
+    "town": "Delhi",
+    "townSlug": "delhi",
+  },
+]
+`;
+
+exports[`getPosts() snapshots match 2`] = `
+Array [
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "England",
+          "path": "/england",
+          "slug": "england",
+        },
+      ],
+    },
+    "country": "England",
+    "countrySlug": "england",
+    "description": "Photos from England.",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "London, England",
+        "src": "/media/travel/england/image_1.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "London, England",
+      "src": "/media/travel/england/image_1.jpg",
+    },
+    "name": "England",
+    "path": "/england",
+    "posts": Array [
+      Object {
+        "author": "http://localhost:3000",
+        "breadcrumb": Breadcrumb {
+          "parts": Array [
+            Object {
+              "name": "Home",
+              "path": "/",
+              "slug": "",
+            },
+            Object {
+              "name": "England",
+              "path": "/england",
+              "slug": "england",
+            },
+            Object {
+              "name": "London",
+              "path": "/england/london",
+              "slug": "london",
+            },
+          ],
+        },
+        "country": "England",
+        "countrySlug": "england",
+        "date": "2017-09-23",
+        "dateModified": "2017-09-30",
+        "datePublished": "2017-09-29",
+        "description": "Photos from London, England.",
+        "humanDate": "September 2017",
+        "images": Array [
+          Object {
+            "arbitraryProp": "foo",
+            "geoLocation": "London, England",
+            "src": "/media/travel/england/image_1.jpg",
+          },
+        ],
+        "mainImage": Object {
+          "arbitraryProp": "foo",
+          "geoLocation": "London, England",
+          "src": "/media/travel/england/image_1.jpg",
+        },
+        "name": "London",
+        "path": "/england/london",
+        "town": "London",
+        "townSlug": "london",
+      },
+    ],
+  },
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "India",
+          "path": "/india",
+          "slug": "india",
+        },
+      ],
+    },
+    "country": "India",
+    "countrySlug": "india",
+    "description": "Photos from India.",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Agra, India",
+        "src": "/media/travel/india/image_3.jpg",
+      },
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Delhi, India",
+        "src": "/media/travel/india/image_1.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "Agra, India",
+      "src": "/media/travel/india/image_3.jpg",
+    },
+    "name": "India",
+    "path": "/india",
+    "posts": Array [
+      Object {
+        "author": "http://localhost:3000",
+        "breadcrumb": Breadcrumb {
+          "parts": Array [
+            Object {
+              "name": "Home",
+              "path": "/",
+              "slug": "",
+            },
+            Object {
+              "name": "India",
+              "path": "/india",
+              "slug": "india",
+            },
+            Object {
+              "name": "Agra",
+              "path": "/india/agra",
+              "slug": "agra",
+            },
+          ],
+        },
+        "country": "India",
+        "countrySlug": "india",
+        "date": "2016-01-03",
+        "dateModified": "2016-01-03",
+        "datePublished": "2016-01-03",
+        "description": "Photos from Agra, India.",
+        "humanDate": "January 2016",
+        "images": Array [
+          Object {
+            "arbitraryProp": "foo",
+            "geoLocation": "Agra, India",
+            "src": "/media/travel/india/image_3.jpg",
+          },
+        ],
+        "mainImage": Object {
+          "arbitraryProp": "foo",
+          "geoLocation": "Agra, India",
+          "src": "/media/travel/india/image_3.jpg",
+        },
+        "name": "Agra",
+        "path": "/india/agra",
+        "town": "Agra",
+        "townSlug": "agra",
+      },
+      Object {
+        "author": "http://localhost:3000",
+        "breadcrumb": Breadcrumb {
+          "parts": Array [
+            Object {
+              "name": "Home",
+              "path": "/",
+              "slug": "",
+            },
+            Object {
+              "name": "India",
+              "path": "/india",
+              "slug": "india",
+            },
+            Object {
+              "name": "Delhi",
+              "path": "/india/delhi",
+              "slug": "delhi",
+            },
+          ],
+        },
+        "country": "India",
+        "countrySlug": "india",
+        "date": "2016-01-02",
+        "dateModified": "2016-01-02",
+        "datePublished": "2016-01-02",
+        "description": "Photos from Delhi, India.",
+        "humanDate": "January 2016",
+        "images": Array [
+          Object {
+            "arbitraryProp": "foo",
+            "geoLocation": "Delhi, India",
+            "src": "/media/travel/india/image_1.jpg",
+          },
+          Object {
+            "arbitraryProp": "foo",
+            "geoLocation": "Delhi, India",
+            "src": "/media/travel/india/image_2.jpg",
+          },
+        ],
+        "mainImage": Object {
+          "arbitraryProp": "foo",
+          "geoLocation": "Delhi, India",
+          "src": "/media/travel/india/image_1.jpg",
+        },
+        "name": "Delhi",
+        "path": "/india/delhi",
+        "town": "Delhi",
+        "townSlug": "delhi",
+      },
+    ],
+  },
+  Object {
+    "author": "http://localhost:3000",
+    "breadcrumb": Breadcrumb {
+      "parts": Array [
+        Object {
+          "name": "Home",
+          "path": "/",
+          "slug": "",
+        },
+        Object {
+          "name": "Vietnam",
+          "path": "/vietnam",
+          "slug": "vietnam",
+        },
+      ],
+    },
+    "country": "Vietnam",
+    "countrySlug": "vietnam",
+    "description": "Photos from Vietnam.",
+    "images": Array [
+      Object {
+        "arbitraryProp": "foo",
+        "geoLocation": "Vung Tau, Vietnam",
+        "src": "/media/travel/vietnam/image_1.jpg",
+      },
+    ],
+    "mainImage": Object {
+      "arbitraryProp": "foo",
+      "geoLocation": "Vung Tau, Vietnam",
+      "src": "/media/travel/vietnam/image_1.jpg",
+    },
+    "name": "Vietnam",
+    "path": "/vietnam",
+    "posts": Array [
+      Object {
+        "author": "http://localhost:3000",
+        "breadcrumb": Breadcrumb {
+          "parts": Array [
+            Object {
+              "name": "Home",
+              "path": "/",
+              "slug": "",
+            },
+            Object {
+              "name": "Vietnam",
+              "path": "/vietnam",
+              "slug": "vietnam",
+            },
+            Object {
+              "name": "Vung Tau",
+              "path": "/vietnam/vung-tau",
+              "slug": "vung-tau",
+            },
+          ],
+        },
+        "country": "Vietnam",
+        "countrySlug": "vietnam",
+        "date": "2018-09-23",
+        "dateModified": "2018-09-23",
+        "datePublished": "2018-09-23",
+        "description": "Photos from Vung Tau, Vietnam.",
+        "humanDate": "September 2018",
+        "images": Array [
+          Object {
+            "arbitraryProp": "foo",
+            "geoLocation": "Vung Tau, Vietnam",
+            "src": "/media/travel/vietnam/image_1.jpg",
+          },
+        ],
+        "mainImage": Object {
+          "arbitraryProp": "foo",
+          "geoLocation": "Vung Tau, Vietnam",
+          "src": "/media/travel/vietnam/image_1.jpg",
+        },
+        "name": "Vung Tau",
+        "path": "/vietnam/vung-tau",
+        "town": "Vung Tau",
+        "townSlug": "vung-tau",
+      },
+    ],
+  },
+]
+`;
