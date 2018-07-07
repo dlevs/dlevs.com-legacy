@@ -28,7 +28,8 @@
 		"beforeAll": true,
 		"afterAll": true,
 		"beforeEach": true,
-		"afterEach": true
+		"afterEach": true,
+		"jest": true
 	},
 	"overrides": [
 		{

@@ -12,6 +12,7 @@ const {
 describe('config', () => {
 	test('setProcessEnv()', () => {
 		expect(typeof setProcessEnv).toBe('function');
+		process.env.NODE_ENV = 'test';
 		setProcessEnv();
 		expect(process.env.NODE_ENV).toMatch(/^development$|^production$/);
 	});
