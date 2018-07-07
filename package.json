@@ -13,7 +13,7 @@
 		"build:styles": "postcss --verbose -d public/styles publicSrc/styles/*.css",
 		"build:media": "node build/processMedia",
 		"build:manifest": "hashlink -s --relative public 'public/**/*.+(js|css|png|ico|jpg|svg|json|webp|mp4|webm)' > data/generated/assets.json",
-		"build:testcoverage": "rimraf ./public/coverage && jest --coverage --coverageDirectory=./public/coverage && mv ./public/coverage/lcov-report/* ./public/coverage",
+		"build:testcoverage": "rimraf ./public/coverage && jest --ci --coverage --coverageDirectory=./public/coverage && mv ./public/coverage/lcov-report/* ./public/coverage",
 		"clean": "rimraf ./public/* && rimraf ./data/generated/*",
 		"test": "jest",
 		"test:browser": "jest -i --testRegex=.*browsertest.js",
