@@ -8,10 +8,10 @@ const Breadcrumb = require('../../lib/Breadcrumb');
  * Return the data passed to template.
  *
  * @param {Function} controller
- * @param {Object} [params]
+ * @param {Object} params
  * @returns {*}
  */
-exports.getControllerRenderData = async (controller, params = {}) => {
+exports.getControllerRenderData = async (controller, params) => {
 	let renderedData;
 	const ctx = {
 		query: {},

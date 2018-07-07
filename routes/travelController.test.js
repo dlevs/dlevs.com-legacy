@@ -27,6 +27,7 @@ testControllerSnapshots(travelController.controller, {
 				...renderPostsForCountryCtx,
 				...imageQuery,
 			},
+			{ params: { countrySlug: 'something-non-existent' } },
 		],
 	},
 	renderPost: {
@@ -36,6 +37,7 @@ testControllerSnapshots(travelController.controller, {
 				...renderPostCtx,
 				...imageQuery,
 			},
+			{ params: { countrySlug: 'something-non-existent', townSlug: 'nothing' } },
 		],
 	},
 });
