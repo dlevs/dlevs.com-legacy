@@ -1,19 +1,17 @@
 'use strict';
 
+const flow = require('lodash/flow');
+const unset = require('lodash/fp/unset');
 const { testControllerSnapshots } = require('../tests/testLib/testUtils');
 const infoController = require('./infoController')();
 
 testControllerSnapshots(infoController, {
 	index: {
-		mapData(data) {
-			// eslint-disable-next-line no-param-reassign
-			delete data.ctx.body.date;
-			// eslint-disable-next-line no-param-reassign
-			delete data.ctx.body.serverStartDate;
-			// eslint-disable-next-line no-param-reassign
-			delete data.ctx.body.lastCommit;
-			return data;
-		},
+		mapData: data => flow(
+			unset('ctx.body.date'),
+			unset('ctx.body.serverStartDate'),
+			unset('ctx.body.lastCommit'),
+		)(data),
 		contexts: [{}],
 	},
 });

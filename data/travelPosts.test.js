@@ -68,12 +68,9 @@ describe('getPosts()', () => {
 
 	test('returns posts from JSON file if no 2nd parameter is provided', () => {
 		const defaultPosts = getPosts(options);
-		const { town } = defaultPosts.posts[0];
-		// eslint-disable-next-line global-require
-		const match = require('../data/travelPostsRaw.json').find(post => post.town === town);
 
-		expect(typeof town).toBe('string');
-		expect(match).toBeDefined();
+		expect(defaultPosts).toBeDefined();
+		expect(defaultPosts).toMatchSnapshot();
 	});
 
 	describe('posts', () => {
