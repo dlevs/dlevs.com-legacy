@@ -1,9 +1,13 @@
 'use strict';
 
-const { setProcessEnv, PORT, IS_BEHIND_PROXY } = require('./config');
+const {
+	setProcessEnv,
+	PORT,
+	IS_BEHIND_PROXY,
+	STATIC_ASSET_MAX_AGE_IN_SECONDS,
+} = require('./config');
 
 setProcessEnv();
-
 
 const path = require('path');
 const Koa = require('koa');
@@ -19,8 +23,6 @@ const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddl
 const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
 const router = require('./routes');
 const viewGlobals = require('./lib/viewGlobals');
-const { STATIC_ASSET_MAX_AGE_IN_SECONDS } = require('./lib/constants');
-
 
 const app = new Koa();
 
