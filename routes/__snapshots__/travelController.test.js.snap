@@ -28,7 +28,7 @@ Object {
       "description": "Photos from around the world.",
       "og": Object {
         "og:image": Object {
-          "absoluteSrc": "https://dlevs.com/media/travel/japan/miyajima/20180524_121514_2000x1125.jpg",
+          "absoluteSrc": "http://localhost:3000/media/travel/japan/miyajima/20180524_121514_2000x1125.jpg",
           "format": "jpeg",
           "height": 1125,
           "paddingBottom": "56.25%",
@@ -42,7 +42,7 @@ Object {
     },
     "posts": Array [
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -124,7 +124,7 @@ Object {
         "townSlug": "miyajima",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -206,7 +206,7 @@ Object {
         "townSlug": "hiroshima",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -282,7 +282,7 @@ Object {
         "townSlug": "onomichi",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -358,7 +358,7 @@ Object {
         "townSlug": "osaka",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -446,7 +446,7 @@ Object {
         "townSlug": "kyoto",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -594,7 +594,7 @@ Meiji Jingu.”",
         "townSlug": "tokyo",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -688,7 +688,7 @@ Meiji Jingu.”",
         "townSlug": "paris",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -812,7 +812,7 @@ Meiji Jingu.”",
         "townSlug": "new-york",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -882,7 +882,7 @@ Meiji Jingu.”",
         "townSlug": "london",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -994,7 +994,7 @@ Meiji Jingu.”",
         "townSlug": "dublin",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1070,7 +1070,7 @@ Meiji Jingu.”",
         "townSlug": "corsica",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1164,7 +1164,7 @@ Meiji Jingu.”",
         "townSlug": "cat-ba",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1246,7 +1246,7 @@ Meiji Jingu.”",
         "townSlug": "hoa-lu",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1340,7 +1340,7 @@ Meiji Jingu.”",
         "townSlug": "hanoi",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1404,7 +1404,7 @@ Meiji Jingu.”",
         "townSlug": "phu-quoc",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1492,7 +1492,7 @@ Meiji Jingu.”",
         "townSlug": "hong-kong",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1586,7 +1586,7 @@ Meiji Jingu.”",
         "townSlug": "venice",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1680,7 +1680,7 @@ Meiji Jingu.”",
         "townSlug": "athens",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1780,7 +1780,7 @@ Meiji Jingu.”",
         "townSlug": "vienna",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1868,7 +1868,7 @@ Meiji Jingu.”",
         "townSlug": "edinburgh",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1926,7 +1926,7 @@ Meiji Jingu.”",
         "townSlug": "amsterdam",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -1990,7 +1990,7 @@ Meiji Jingu.”",
         "townSlug": "bratislava",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -2060,7 +2060,7 @@ Meiji Jingu.”",
         "townSlug": "agra",
       },
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -2180,19 +2180,19 @@ Object {
         Object {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "dateModified": "2017-10-01",
           "datePublished": "2017-10-01",
           "genre": "travel",
           "headline": "Photos from London, England.",
-          "image": "https://dlevs.com/media/travel/england/london/20171021_154027_2000x1125.jpg",
+          "image": "http://localhost:3000/media/travel/england/london/20171021_154027_2000x1125.jpg",
           "mainEntityOfPage": "DUMMY_CANONICAL_URL",
-          "publisher": "https://dlevs.com",
+          "publisher": "http://localhost:3000",
           "url": "DUMMY_CANONICAL_URL",
         },
       ],
       "og": Object {
-        "article:author": "https://dlevs.com",
+        "article:author": "http://localhost:3000",
         "article:modified_time": "2017-10-01",
         "article:published_time": "2017-10-01",
         "article:section": "Travel",
@@ -2201,7 +2201,7 @@ Object {
           "England",
         ],
         "og:image": Object {
-          "absoluteSrc": "https://dlevs.com/media/travel/england/london/20171021_125619_2000x1156.jpg",
+          "absoluteSrc": "http://localhost:3000/media/travel/england/london/20171021_125619_2000x1156.jpg",
           "format": "jpeg",
           "height": 1156,
           "paddingBottom": "57.8%",
@@ -2215,7 +2215,7 @@ Object {
       "title": "London",
     },
     "nextPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -2327,7 +2327,7 @@ Object {
       "townSlug": "dublin",
     },
     "post": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -2397,7 +2397,7 @@ Object {
       "townSlug": "london",
     },
     "previousPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -2568,19 +2568,19 @@ Object {
         Object {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "dateModified": "2017-10-01",
           "datePublished": "2017-10-01",
           "genre": "travel",
           "headline": "Photos from London, England.",
-          "image": "https://dlevs.com/media/travel/england/london/20171021_154027_2000x1125.jpg",
+          "image": "http://localhost:3000/media/travel/england/london/20171021_154027_2000x1125.jpg",
           "mainEntityOfPage": "DUMMY_CANONICAL_URL",
-          "publisher": "https://dlevs.com",
+          "publisher": "http://localhost:3000",
           "url": "DUMMY_CANONICAL_URL",
         },
       ],
       "og": Object {
-        "article:author": "https://dlevs.com",
+        "article:author": "http://localhost:3000",
         "article:modified_time": "2017-10-01",
         "article:published_time": "2017-10-01",
         "article:section": "Travel",
@@ -2589,7 +2589,7 @@ Object {
           "England",
         ],
         "og:image": Object {
-          "absoluteSrc": "https://dlevs.com/media/travel/england/london/20171021_154027_2000x1125.jpg",
+          "absoluteSrc": "http://localhost:3000/media/travel/england/london/20171021_154027_2000x1125.jpg",
           "format": "jpeg",
           "height": 1125,
           "paddingBottom": "56.25%",
@@ -2603,7 +2603,7 @@ Object {
       "title": "London",
     },
     "nextPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -2715,7 +2715,7 @@ Object {
       "townSlug": "dublin",
     },
     "post": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -2785,7 +2785,7 @@ Object {
       "townSlug": "london",
     },
     "previousPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -2967,7 +2967,7 @@ Object {
       "description": "Photos from England.",
       "og": Object {
         "og:image": Object {
-          "absoluteSrc": "https://dlevs.com/media/travel/england/london/20171021_154027_2000x1125.jpg",
+          "absoluteSrc": "http://localhost:3000/media/travel/england/london/20171021_154027_2000x1125.jpg",
           "format": "jpeg",
           "height": 1125,
           "paddingBottom": "56.25%",
@@ -2980,7 +2980,7 @@ Object {
       "title": "England",
     },
     "nextPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -3027,7 +3027,7 @@ Object {
       "path": "/travel/france",
       "posts": Array [
         Object {
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "breadcrumb": Breadcrumb {
             "parts": Array [
               Object {
@@ -3121,7 +3121,7 @@ Object {
           "townSlug": "paris",
         },
         Object {
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "breadcrumb": Breadcrumb {
             "parts": Array [
               Object {
@@ -3200,7 +3200,7 @@ Object {
     },
     "posts": Array [
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -3271,7 +3271,7 @@ Object {
       },
     ],
     "previousPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -3312,7 +3312,7 @@ Object {
       "path": "/travel/austria",
       "posts": Array [
         Object {
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "breadcrumb": Breadcrumb {
             "parts": Array [
               Object {
@@ -3453,7 +3453,7 @@ Object {
       "description": "Photos from England.",
       "og": Object {
         "og:image": Object {
-          "absoluteSrc": "https://dlevs.com/media/travel/england/london/20171021_154027_2000x1125.jpg",
+          "absoluteSrc": "http://localhost:3000/media/travel/england/london/20171021_154027_2000x1125.jpg",
           "format": "jpeg",
           "height": 1125,
           "paddingBottom": "56.25%",
@@ -3466,7 +3466,7 @@ Object {
       "title": "England",
     },
     "nextPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -3513,7 +3513,7 @@ Object {
       "path": "/travel/france",
       "posts": Array [
         Object {
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "breadcrumb": Breadcrumb {
             "parts": Array [
               Object {
@@ -3607,7 +3607,7 @@ Object {
           "townSlug": "paris",
         },
         Object {
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "breadcrumb": Breadcrumb {
             "parts": Array [
               Object {
@@ -3686,7 +3686,7 @@ Object {
     },
     "posts": Array [
       Object {
-        "author": "https://dlevs.com",
+        "author": "http://localhost:3000",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -3757,7 +3757,7 @@ Object {
       },
     ],
     "previousPost": Object {
-      "author": "https://dlevs.com",
+      "author": "http://localhost:3000",
       "breadcrumb": Breadcrumb {
         "parts": Array [
           Object {
@@ -3798,7 +3798,7 @@ Object {
       "path": "/travel/austria",
       "posts": Array [
         Object {
-          "author": "https://dlevs.com",
+          "author": "http://localhost:3000",
           "breadcrumb": Breadcrumb {
             "parts": Array [
               Object {

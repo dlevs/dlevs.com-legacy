@@ -6,7 +6,7 @@ Object {
   "type": "image",
   "versions": Object {
     "default": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_960x1182.jpg",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182.jpg",
       "format": "jpeg",
       "height": 1182,
       "paddingBottom": "123.125%",
@@ -15,7 +15,7 @@ Object {
       "width": 960,
     },
     "defaultWebp": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_960x1182.webp",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182.webp",
       "format": "webp",
       "height": 1182,
       "paddingBottom": "123.125%",
@@ -24,7 +24,7 @@ Object {
       "width": 960,
     },
     "large": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_1340x1650.jpg",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650.jpg",
       "format": "jpeg",
       "height": 1650,
       "paddingBottom": "123.1343%",
@@ -33,7 +33,7 @@ Object {
       "width": 1340,
     },
     "largeWebp": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_1340x1650.webp",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650.webp",
       "format": "webp",
       "height": 1650,
       "paddingBottom": "123.1343%",
@@ -51,7 +51,7 @@ Object {
   "type": "image",
   "versions": Object {
     "default": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_960x1182-88bae99cf2.jpg",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182-88bae99cf2.jpg",
       "format": "jpeg",
       "height": 1182,
       "paddingBottom": "123.125%",
@@ -60,7 +60,7 @@ Object {
       "width": 960,
     },
     "defaultWebp": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_960x1182-dd455a2794.webp",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_960x1182-dd455a2794.webp",
       "format": "webp",
       "height": 1182,
       "paddingBottom": "123.125%",
@@ -69,7 +69,7 @@ Object {
       "width": 960,
     },
     "large": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_1340x1650-3c16eef358.jpg",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650-3c16eef358.jpg",
       "format": "jpeg",
       "height": 1650,
       "paddingBottom": "123.1343%",
@@ -78,7 +78,7 @@ Object {
       "width": 1340,
     },
     "largeWebp": Object {
-      "absoluteSrc": "https://dlevs.com/media/misc/self_1340x1650-2478f5307d.webp",
+      "absoluteSrc": "http://localhost:3000/media/misc/self_1340x1650-2478f5307d.webp",
       "format": "webp",
       "height": 1650,
       "paddingBottom": "123.1343%",
