@@ -9,10 +9,10 @@
 3. Copy all media files not committed to this repository to `/publicSrc/processUncommitted`. This directory is for images, videos, etc, and is gitignored from repository due to file size.
 4. In the terminal, run:
     ```bash
-    cp config.sample.js config.js           # Create own config. Edit for environment.
-    npm install                             # Install dependencies
-    npm run build                           # Compile static assets (JS, CSS, image compression)
-    npm start                               # Start the app on port specified in config.js
+    cp config/config.sample.js config/config.js # Create own config. Edit for environment.
+    npm install                                 # Install dependencies
+    npm run build                               # Compile static assets (JS, CSS, image compression)
+    npm start                                   # Start the app on port specified in config.js
     ```
 
 [back](../README.md)

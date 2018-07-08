@@ -6,7 +6,7 @@
 /publicSrc/processUncommitted/*
 
 # File unique to environment
-/config.js
+/config/config.js
 
 # IDE files
 /.vscode

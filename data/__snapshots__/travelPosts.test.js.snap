@@ -3,7 +3,7 @@
 exports[`getPosts() snapshots match 1`] = `
 Array [
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -48,7 +48,7 @@ Array [
     "townSlug": "vung-tau",
   },
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -93,7 +93,7 @@ Array [
     "townSlug": "london",
   },
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -138,7 +138,7 @@ Array [
     "townSlug": "agra",
   },
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -193,7 +193,7 @@ Array [
 exports[`getPosts() snapshots match 2`] = `
 Array [
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -227,7 +227,7 @@ Array [
     "path": "/england",
     "posts": Array [
       Object {
-        "author": "http://localhost:3000",
+        "author": "https://dlevs.com",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -274,7 +274,7 @@ Array [
     ],
   },
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -313,7 +313,7 @@ Array [
     "path": "/india",
     "posts": Array [
       Object {
-        "author": "http://localhost:3000",
+        "author": "https://dlevs.com",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -358,7 +358,7 @@ Array [
         "townSlug": "agra",
       },
       Object {
-        "author": "http://localhost:3000",
+        "author": "https://dlevs.com",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {
@@ -410,7 +410,7 @@ Array [
     ],
   },
   Object {
-    "author": "http://localhost:3000",
+    "author": "https://dlevs.com",
     "breadcrumb": Breadcrumb {
       "parts": Array [
         Object {
@@ -444,7 +444,7 @@ Array [
     "path": "/vietnam",
     "posts": Array [
       Object {
-        "author": "http://localhost:3000",
+        "author": "https://dlevs.com",
         "breadcrumb": Breadcrumb {
           "parts": Array [
             Object {

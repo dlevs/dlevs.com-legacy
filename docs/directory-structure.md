@@ -4,6 +4,7 @@
 
 | Directory | Comments |
 | --- | --- |
+| `/config` | Configuration files for setting variables that are different depending on the environment |
 | `/routes` | Routes and controllers |
 | `/views` | Templates (Pug) |
 | `/lib` | Utility functions |

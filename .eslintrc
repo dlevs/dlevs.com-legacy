@@ -6,7 +6,7 @@
 	},
 	"rules": {
 		"strict": ["error", "global"],
-		"indent": ["error", "tab"],
+		"indent": ["error", "tab", { "SwitchCase" : 1 }],
 		"no-tabs": "off",
 		"no-plusplus": "off",
 		"import/no-extraneous-dependencies": ["error", {
