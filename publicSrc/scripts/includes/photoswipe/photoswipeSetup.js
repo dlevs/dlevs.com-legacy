@@ -1,25 +1,36 @@
 import PhotoSwipe from '@dlevs/photoswipe';
 import queryString from 'query-string';
 import PhotoSwipeUI from './photoswipeUi';
-import { getLastInputDevice, focusWithoutScrolling } from '../utils';
+import { $, getLastInputDevice, focusWithoutScrolling } from '../utils';
 import {
 	trackGalleryOpen,
 	trackGalleryNavigation,
 	trackShare,
 } from '../googleAnalytics';
 
-const getSlideElements = () => Array.prototype.slice.call(document.querySelectorAll('.js-photoswipe'));
+const SLIDE_SELECTOR = '.js-photoswipe';
 
-const openGallery = (index, disableTransitions) => {
-	const focusedElementBeforeOpening = document.activeElement;
-	const pswpElement = document.querySelector('.pswp');
-	const elems = getSlideElements();
+/**
+ * Get the link elements that wrap the thumbnail images of a gallery.
+ *
+ * @returns {HTMLAnchorElement[]}
+ */
+const getSlides = () => $(SLIDE_SELECTOR);
+
+/**
+ * Get the `options.items` value expected by PhotoSwipe from an
+ * array of thumbnail links.
+ *
+ * @param {HTMLAnchorElement[]} slides
+ */
+const getGalleryItems = (slides) => {
 	// Check first thumbnail format. First image is unlikely to be
 	// lazyloaded, so will be populated with webp/ jpg, instead of
 	// placeholder data gif src.
-	const firstThumbnail = elems[0].getElementsByTagName('img')[0];
+	const firstThumbnail = slides[0].getElementsByTagName('img')[0];
 	const isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
-	const items = elems.map((elem, i) => {
+
+	return slides.map((elem, i) => {
 		const thumbnail = elem.getElementsByTagName('img')[0];
 		const caption = elem.getElementsByTagName('figcaption')[0];
 
@@ -34,56 +45,61 @@ const openGallery = (index, disableTransitions) => {
 			title: elem.getAttribute('data-caption') || (caption && caption.textContent),
 		};
 	});
-	const options = {
-		index,
-		getThumbBoundsFn: (currentIndex) => {
-			const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-			const rect = items[currentIndex].thumbnail.getBoundingClientRect();
+};
 
-			return {
-				x: rect.left,
-				y: rect.top + pageYScroll,
-				w: rect.width,
-			};
-		},
-		getDoubleTapZoom: (isMouseClick, item) => {
-			const fullSizeScale = 1 / (window.devicePixelRatio || 1);
+/**
+ * For accessibility, add text to link titles to indicate that clicking
+ * will open the gallery.
+ *
+ * @param {HTMLAnchorElement[]} slides
+ */
+const applyTitlesToSlides = (slides) => {
+	slides.forEach((link) => {
+		const textToAppend = 'View in gallery (opens dialog)';
 
-			// If screen has high pixel density, we don't want to shrink the
-			// image on "zooming", so check this.
-			return fullSizeScale < item.initialZoomLevel
-				? item.initialZoomLevel * 1.5
-				: fullSizeScale;
-		},
-		getPageURLForShare: () => {
-			const {
-				protocol, host, pathname, search, hash,
-			} = window.location;
-			const newSearch = queryString.stringify({
-				...queryString.parse(search),
-				// eslint-disable-next-line no-use-before-define
-				pid: gallery.currItem.pid,
-			});
+		// eslint-disable-next-line no-param-reassign
+		link.title = link.title
+			? `${link.title} - ${textToAppend}`
+			: textToAppend;
+	});
+};
 
-			// Appends the "pid" value to the query string, so it can
-			// be used on backend to set the sharing image.
-			return `${protocol}//${host}${pathname}?${newSearch}${hash}`;
-		},
-	};
+/**
+ * Make all thumbnails visible.
+ *
+ * @param {Object} gallery
+ */
+const makeThumbnailsVisible = (gallery) => {
+	gallery.items.forEach(({ thumbnail }) => {
+		thumbnail.closest(SLIDE_SELECTOR).classList.remove('invisible');
+	});
+};
 
-	if (disableTransitions) {
-		options.hideAnimationDuration = 0;
-		options.showAnimationDuration = 0;
-	}
+/**
+ * Make the current active thumbnail invisible.
+ *
+ * This is useful to prevent 2 images from showing on opening/closing the gallery:
+ * - The original thumbnail
+ * - The gallery image which expands/shrinks over the thumbnail
+ *
+ * By hiding the first of these, it creates the effect of a single image expanding/shrinking.
+ *
+ * @param {Object} gallery
+ */
+const makeActiveThumbnailInvisible = (gallery) => {
+	makeThumbnailsVisible(gallery);
+	gallery.currItem.thumbnail.closest(SLIDE_SELECTOR).classList.add('invisible');
+};
 
-	const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI, items, options);
-
-	gallery.init();
-
-	// Tracking
+/**
+ * Apply tracking events to a new gallery.
+ *
+ * @param {Object} gallery
+ */
+const applyGalleryTracking = (gallery) => {
 	trackGalleryOpen({
-		title: items[index].title,
-		index,
+		title: gallery.currItem.title,
+		index: gallery.currItem.pid,
 	});
 	gallery.listen('afterChange', () => {
 		trackGalleryNavigation({
@@ -98,6 +114,84 @@ const openGallery = (index, disableTransitions) => {
 			title: gallery.currItem.title,
 		});
 	});
+};
+
+/**
+ * Get the default options for a PhotoSwipe gallery
+ *
+ * The gallery is not initialized at the point where this function is
+ * expected to be called, but some of the callback functions defined
+ * in the options require it. This is provided via the `getGallery`
+ * parameter.
+ *
+ * @param {Function<Object>} getGallery
+ * @returns {Object}
+ */
+const getDefaultOptions = getGallery => ({
+	index: 0,
+	getThumbBoundsFn: (currentIndex) => {
+		const pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+		const rect = getGallery().items[currentIndex].thumbnail.getBoundingClientRect();
+
+		return {
+			x: Math.round(rect.left),
+			y: Math.round(rect.top + pageYScroll),
+			w: Math.round(rect.width),
+		};
+	},
+	getDoubleTapZoom: (isMouseClick, item) => {
+		const fullSizeScale = 1 / (window.devicePixelRatio || 1);
+
+		// If screen has high pixel density, we don't want to shrink the
+		// image on "zooming", so check this.
+		return fullSizeScale < item.initialZoomLevel
+			? item.initialZoomLevel * 1.5
+			: fullSizeScale;
+	},
+	getPageURLForShare() {
+		const {
+			protocol, host, pathname, search, hash,
+		} = window.location;
+		const newSearch = queryString.stringify({
+			...queryString.parse(search),
+			pid: getGallery().currItem.pid,
+		});
+
+		// Appends the "pid" value to the query string, so it can
+		// be used on backend to set the sharing image.
+		return `${protocol}//${host}${pathname}?${newSearch}${hash}`;
+	},
+});
+
+/**
+ * Create an instance of PhotoSwipe and immediately open it.
+ *
+ * @param {Object} userOptions
+ */
+const openGallery = (userOptions) => {
+	const focusedElementBeforeOpening = document.activeElement;
+	const items = getGalleryItems(getSlides());
+	const options = {
+		// eslint-disable-next-line no-use-before-define
+		...getDefaultOptions(() => gallery),
+		...userOptions,
+	};
+	const gallery = new PhotoSwipe(
+		document.querySelector('.pswp'),
+		PhotoSwipeUI,
+		items,
+		options,
+	);
+
+	gallery.init();
+
+	applyGalleryTracking(gallery);
+
+	// Add/remove class to make thumbnail invisible, so there appears to be
+	// only 1 image expanding/shrinking into place when the gallery opens/closes.
+	makeActiveThumbnailInvisible(gallery);
+	gallery.listen('destroy', () => makeThumbnailsVisible(gallery));
+	gallery.listen('beforeChange', () => makeActiveThumbnailInvisible(gallery));
 
 	// Refocus last element on gallery close for accessibility
 	gallery.listen('close', () => {
@@ -120,42 +214,37 @@ const openGallery = (index, disableTransitions) => {
  *
  * @param {Object} event
  */
-const onImageLinkClick = (event) => {
-	const imgLink = event.target.closest('.js-photoswipe');
+const onThumbnailClick = (event) => {
+	const imgLink = event.target.closest(SLIDE_SELECTOR);
 
 	if (!imgLink) return;
 
 	event.preventDefault();
 
-	const elems = getSlideElements();
-	const index = elems.indexOf(imgLink);
+	const index = getSlides().indexOf(imgLink);
 
-	openGallery(index);
+	openGallery({ index });
 };
 
+/**
+ * If there are relevant parameters in the current URL's hash,
+ * open the gallery at the defined index.
+ */
 const openGalleryFromHash = () => {
 	const { pid } = queryString.parse(window.location.hash);
 
 	if (pid === undefined) return;
 
-	openGallery(Number(pid) - 1, true);
-};
-
-const applyTitlesToLinks = () => {
-	getSlideElements().forEach((link) => {
-		const textToAppend = 'View in gallery (opens dialog)';
-
-		// eslint-disable-next-line no-param-reassign
-		link.title = link.title
-			? `${link.title} - ${textToAppend}`
-			: textToAppend;
+	openGallery({
+		index: Number(pid) - 1,
+		showAnimationDuration: 0,
 	});
 };
 
 const init = () => {
-	document.addEventListener('click', onImageLinkClick);
+	document.addEventListener('click', onThumbnailClick);
 	openGalleryFromHash();
-	applyTitlesToLinks();
+	applyTitlesToSlides(getSlides());
 };
 
 export default init;

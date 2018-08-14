@@ -1,9 +1,16 @@
+/* Fully hide an element and remove from flow of document. */
 .hidden {
 	display: none;
 }
 
+/* Like .hidden, but screen readers should still be able to access the content. */
 .visually-hidden {
 	@mixin visually-hidden;
+}
+
+/* Fully hide an element, but have it take up the same amount of space in the document. */
+.invisible {
+	visibility: hidden;
 }
 
 .no-js .no-js-hide {

@@ -82,3 +82,6 @@ export const fetch = (url) => {
  * @param {String} pathname
  */
 export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
+
+export const $ = selector =>
+	Array.prototype.slice.call(document.querySelectorAll(selector));
