@@ -12,6 +12,7 @@ Object {
     },
   },
   "renderedData": Object {
+    "bodyClass": "home-wrapper",
     "brands": Array [
       Object {
         "name": "Jimmy Choo",
@@ -198,6 +199,7 @@ Object {
     },
   },
   "renderedData": Object {
+    "bodyClass": "home-wrapper",
     "brands": Array [
       Object {
         "name": "Jimmy Choo",
@@ -381,6 +383,7 @@ Object {
     },
   },
   "renderedData": Object {
+    "bodyClass": "home-wrapper",
     "brands": Array [
       Object {
         "name": "Jimmy Choo",

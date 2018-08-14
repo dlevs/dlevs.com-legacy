@@ -37,7 +37,17 @@
 .project__image {
 	display: block;
 	margin-bottom: var(--spacing-medium);
-	box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
+}
+
+/* All photoswipe images on the home page have a box-shadow as they are
+   screenshots with a lot of white which leads to no distinct border.
+   This little hack to ".pswp__img" is needed to prevent the shadow
+   from disappearing when opening the PhotoSwipe gallery. */
+.home-wrapper {
+	.js-photoswipe .picture,
+	.pswp__img {
+		box-shadow: 0 0 var(--spacing-medium) rgba(0, 0, 0, 0.2);
+	}
 }
 
 .project__description {
@@ -93,4 +103,3 @@
 		margin-top: var(--spacing-small);
 	}
 }
-
