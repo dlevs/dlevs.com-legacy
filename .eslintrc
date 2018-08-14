@@ -33,7 +33,7 @@
 	},
 	"overrides": [
 		{
-			"files": ["scripts/**"],
+			"files": ["publicSrc/scripts/**"],
 			"excludedFiles": "*.browsertest.js",
 			"parserOptions": {
 				"sourceType": "module"

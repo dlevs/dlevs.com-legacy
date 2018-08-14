@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
-		"start:watch": "nodemon --ignore scripts/ --ignore public/ index.js",
+		"start:watch": "nodemon --ignore publicSrc/ --ignore public/ index.js",
 		"dev": "npm run build:styles -- --w & npm run build:scripts -- -w & npm run start:watch",
 		"build": "npm run build:copypublic && npm run build:scripts && npm run build:styles && npm run build:media && npm run build:manifest && npm run build:testcoverage",
 		"build:copypublic": "cp -r publicSrc/copy/* public",

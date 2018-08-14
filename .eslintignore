@@ -1,5 +1,5 @@
 node_modules/*
 public/*
-publicSrc/*
-scripts/includes/vendor/*
-scripts/includes/photoswipe/photoswipeUi.js
+publicSrc/copy/*
+publicSrc/scripts/includes/vendor/*
+publicSrc/scripts/includes/photoswipe/photoswipeUi.js
