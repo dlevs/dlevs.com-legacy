@@ -80,8 +80,16 @@ export const fetch = (url) => {
  * hasExtension('/travel/cats.json'); // true
  *
  * @param {String} pathname
+ * @returns {Boolean}
  */
 export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
 
+/**
+ * A wrapper around `document.querySelectorAll` that returns a plain array
+ * instead of a `NodeList` instance.
+ *
+ * @param {String} selector
+ * @returns {HTMLElement[]}
+ */
 export const $ = selector =>
 	Array.prototype.slice.call(document.querySelectorAll(selector));
