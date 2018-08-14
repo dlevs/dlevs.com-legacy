@@ -97,7 +97,6 @@ const hideActiveThumbnail = (gallery) => {
  * @param {Object} gallery
  */
 const applyGalleryTracking = (gallery) => {
-	console.log(gallery.currItem.pid, gallery.currItem.title);
 	trackGalleryOpen({
 		title: gallery.currItem.title,
 		index: gallery.currItem.pid,
