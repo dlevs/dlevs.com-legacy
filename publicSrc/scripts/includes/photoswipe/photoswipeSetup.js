@@ -69,7 +69,7 @@ const applyTitlesToSlides = (slides) => {
  *
  * @param {Object} gallery
  */
-const makeThumbnailsVisible = (gallery) => {
+const showAllThumbnails = (gallery) => {
 	gallery.items.forEach(({ thumbnail }) => {
 		thumbnail.closest(SLIDE_SELECTOR).classList.remove('invisible');
 	});
@@ -86,8 +86,8 @@ const makeThumbnailsVisible = (gallery) => {
  *
  * @param {Object} gallery
  */
-const makeActiveThumbnailInvisible = (gallery) => {
-	makeThumbnailsVisible(gallery);
+const hideActiveThumbnail = (gallery) => {
+	showAllThumbnails(gallery);
 	gallery.currItem.thumbnail.closest(SLIDE_SELECTOR).classList.add('invisible');
 };
 
@@ -97,6 +97,7 @@ const makeActiveThumbnailInvisible = (gallery) => {
  * @param {Object} gallery
  */
 const applyGalleryTracking = (gallery) => {
+	console.log(gallery.currItem.pid, gallery.currItem.title);
 	trackGalleryOpen({
 		title: gallery.currItem.title,
 		index: gallery.currItem.pid,
@@ -182,23 +183,33 @@ const openGallery = (userOptions) => {
 		items,
 		options,
 	);
+	let isInitialSlide = true;
 
-	gallery.init();
-
-	applyGalleryTracking(gallery);
-
-	// Add/remove class to make thumbnail invisible, so there appears to be
-	// only 1 image expanding/shrinking into place when the gallery opens/closes.
-	makeActiveThumbnailInvisible(gallery);
-	gallery.listen('destroy', () => makeThumbnailsVisible(gallery));
-	gallery.listen('beforeChange', () => makeActiveThumbnailInvisible(gallery));
-
-	// Refocus last element on gallery close for accessibility
-	gallery.listen('close', () => {
+	gallery.listen('imageLoadComplete', (index) => {
+		// Image load complete for the placeholder that expands over thumbnail.
+		// Make the thumbnail below invisible so the element appears to move.
+		if (isInitialSlide && index === options.index) {
+			hideActiveThumbnail(gallery);
+			isInitialSlide = false;
+		}
+	});
+	gallery.listen('beforeChange', () => {
+		// Make thumbnail for current slide invisible.
+		// Must omit on PhotoSwipe init as expanding placeholder may not yet be loaded.
+		if (!isInitialSlide) {
+			hideActiveThumbnail(gallery);
+		}
+	});
+	gallery.listen('destroy', () => {
+		showAllThumbnails(gallery);
+		// Refocus last element on gallery close for accessibility
 		if (getLastInputDevice() === 'keyboard') {
 			focusWithoutScrolling(focusedElementBeforeOpening);
 		}
 	});
+
+	gallery.init();
+	applyGalleryTracking(gallery);
 };
 
 /**
