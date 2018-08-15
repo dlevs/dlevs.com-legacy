@@ -71,7 +71,7 @@ const applyTitlesToSlides = (slides) => {
  */
 const showAllThumbnails = (gallery) => {
 	gallery.items.forEach(({ thumbnail }) => {
-		thumbnail.closest(SLIDE_SELECTOR).classList.remove('invisible');
+		thumbnail.classList.remove('invisible');
 	});
 };
 
@@ -88,7 +88,7 @@ const showAllThumbnails = (gallery) => {
  */
 const hideActiveThumbnail = (gallery) => {
 	showAllThumbnails(gallery);
-	gallery.currItem.thumbnail.closest(SLIDE_SELECTOR).classList.add('invisible');
+	gallery.currItem.thumbnail.classList.add('invisible');
 };
 
 /**

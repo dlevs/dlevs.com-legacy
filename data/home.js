@@ -9,7 +9,6 @@ const description = 'London-based full-stack web developer.';
 const selfImage = getMediaMeta('/media/misc/self.jpg');
 
 module.exports = {
-	bodyClass: 'home-wrapper',
 	meta: {
 		title: SITE_NAME,
 		description,

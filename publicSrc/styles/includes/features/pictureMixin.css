@@ -1,11 +1,6 @@
 .picture {
 	height: 0;
 	overflow: hidden;
-	animation-name: loading-background;
-	animation-duration: 1s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
 
 	img {
 		display: block;
@@ -22,14 +17,24 @@
 	}
 }
 
-.js .picture--lazyload {
-	img {
-		opacity: 0;
-		transition: opacity var(--speed-slow);
-
-		&.lazyloaded {
-			opacity: 1;
+.js {
+	.picture--lazyload {
+		&:not(.picture--lazyloaded-transitions-ended) {
+			animation-name: loading-background;
+			animation-duration: 1s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
 		}
+
+		img {
+			opacity: 0;
+			transition: opacity var(--speed-slow);
+		}
+	}
+
+	.picture--lazyloaded img {
+		opacity: 1;
 	}
 }
 
