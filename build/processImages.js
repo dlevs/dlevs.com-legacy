@@ -14,8 +14,8 @@ const {
 } = require('./buildUtils');
 
 const QUALITY = 80;
-const SIZE_MEDIUM = 960;
-const SIZE_LARGE = 2000;
+const SIZE_MEDIUM = [960];
+const SIZE_LARGE = [2000, 800];
 const imageFormats = {
 	large: {
 		format: 'jpeg',
@@ -52,8 +52,8 @@ const createOutputFile = async ({
 
 	sharpFile
 		.withoutEnlargement()
-		.resize(size)
-		.max();
+		.resize(...size)
+		.min();
 
 	const { width, height } = await sharpFile
 		.toBuffer({ resolveWithObject: true })
