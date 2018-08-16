@@ -25,7 +25,7 @@
 		"precommit": "npm test && lint-staged"
 	},
 	"engines": {
-		"node": "^8.11.2"
+		"node": "^8.11.4"
 	},
 	"author": "Daniel Levett <dlevett@hotmail.co.uk>",
 	"dependencies": {
