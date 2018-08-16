@@ -103,14 +103,17 @@ describe('Photoswipe gallery', () => {
 			const {
 				initial,
 				afterCloseClick,
-			} = await runBrowserTest(`${url}#pid=1`, () => {
+			} = await runBrowserTest(`${url}#pid=1`, () => new Promise((resolve) => {
 				const states = { initial: window.getState() };
 
 				document.querySelector('.pswp__button--close').click();
-				states.afterCloseClick = window.getState();
 
-				return states;
-			});
+				// Give the gallery time to close
+				window.wait(400).then(() => {
+					states.afterCloseClick = window.getState();
+					resolve(states);
+				});
+			}));
 			expect(initial.isGalleryOpen).toBe(true);
 			expect(afterCloseClick.isGalleryOpen).toBe(false);
 		},
