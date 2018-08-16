@@ -2,24 +2,36 @@
 
 const Router = require('koa-router');
 const assert = require('assert');
+const flow = require('lodash/flow');
+const sortBy = require('lodash/fp/sortBy');
+const map = require('lodash/fp/map');
+const forEach = require('lodash/fp/forEach');
 
-const validatePages = (pages) => {
-	pages.forEach(({ name, path, posts }) => {
-		assert(typeof name === 'string', 'Page name must be a string');
-		assert(typeof path === 'string', 'Page path must be a string');
-
-		// TODO: Change "posts" to "pages"
-		if (posts) {
-			validatePages(posts);
-		}
-	});
+const validatePage = ({ name, path }) => {
+	assert(typeof name === 'string', 'Page name must be a string');
+	assert(typeof path === 'string', 'Page path must be a string');
 };
 
+const sortPages = flow(
+	forEach(validatePage),
+	sortBy('name'),
+	map((value) => {
+		if (!value.posts) {
+			return value;
+		}
+
+		return {
+			...value,
+			posts: sortPages(value.posts),
+		};
+	}),
+);
+
 module.exports = ({ pages = [], breadcrumbRoot }) => {
-	validatePages(pages);
+	const sortedPages = sortPages(pages);
 	const breadcrumb = breadcrumbRoot.append({ name: 'Sitemap', slug: 'sitemap' });
 	const getRenderVariables = ctx => ({
-		pages,
+		pages: sortedPages,
 		breadcrumb,
 		origin: ctx.origin,
 		meta: { title: breadcrumb.currentPage.name },
