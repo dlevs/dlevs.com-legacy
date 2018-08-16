@@ -55,7 +55,7 @@ Object {
           "@context": "http://schema.org",
           "@type": "WebSite",
           "author": "http://localhost:3000",
-          "description": "London-based full-stack web developer.",
+          "description": "London-based full-stack web developer experienced in creating and maintaining JavaScript applications.",
           "name": "Daniel Levett",
           "url": "http://localhost:3000",
         },
@@ -219,7 +219,7 @@ Object {
       },
     ],
     "meta": Object {
-      "description": "London-based full-stack web developer.",
+      "description": "London-based full-stack web developer experienced in creating and maintaining JavaScript applications.",
       "jsonLd": Array [
         Object {
           "@context": "http://schema.org",
@@ -241,7 +241,7 @@ Object {
           "@context": "http://schema.org",
           "@type": "WebSite",
           "author": "http://localhost:3000",
-          "description": "London-based full-stack web developer.",
+          "description": "London-based full-stack web developer experienced in creating and maintaining JavaScript applications.",
           "name": "Daniel Levett",
           "url": "http://localhost:3000",
         },
@@ -402,7 +402,7 @@ Object {
       },
     ],
     "meta": Object {
-      "description": "London-based full-stack web developer.",
+      "description": "London-based full-stack web developer experienced in creating and maintaining JavaScript applications.",
       "jsonLd": Array [
         Object {
           "@context": "http://schema.org",
@@ -424,7 +424,7 @@ Object {
           "@context": "http://schema.org",
           "@type": "WebSite",
           "author": "http://localhost:3000",
-          "description": "London-based full-stack web developer.",
+          "description": "London-based full-stack web developer experienced in creating and maintaining JavaScript applications.",
           "name": "Daniel Levett",
           "url": "http://localhost:3000",
         },

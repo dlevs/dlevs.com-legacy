@@ -5,7 +5,7 @@ const { ORIGIN } = require('../config');
 const { getMediaMeta } = require('../lib/mediaUtils');
 const technologies = require('./technologies');
 
-const description = 'London-based full-stack web developer.';
+const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';
 const selfImage = getMediaMeta('/media/misc/self.jpg');
 
 module.exports = {
