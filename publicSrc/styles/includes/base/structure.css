@@ -55,7 +55,7 @@ a,
 .site-wrapper {
 	display: flex;
 	flex-direction: column;
-	max-width: calc(var(--width-site-max) + (var(--spacing-site-padding) * 2));
+	max-width: var(--width-site-max);
 	min-height: 100vh;
 	margin: 0 auto;
 	padding: 0 var(--spacing-site-padding);
@@ -68,4 +68,10 @@ a,
 
 .site-footer {
 	margin-bottom: var(--spacing-site-padding);
+}
+
+@media screen and (min-width: 1000px) {
+	.site-wrapper {
+		padding: 0 12.5%;
+	}
 }
