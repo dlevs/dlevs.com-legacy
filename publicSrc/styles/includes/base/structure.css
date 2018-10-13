@@ -78,3 +78,9 @@ a,
 		padding: 0 12.5%;
 	}
 }
+
+@media screen and (min-width: 1500px) {
+	.site-wrapper {
+		padding: 0 15%;
+	}
+}
