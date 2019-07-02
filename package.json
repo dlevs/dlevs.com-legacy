@@ -22,7 +22,8 @@
 		"lint:styles": "stylelint 'styles/**/*.css'",
 		"lint:views": "pug-lint views",
 		"addtravelblogimages": "node build/addTravelBlogImages.js",
-		"precommit": "npm test && lint-staged"
+		"precommit": "npm test && lint-staged",
+		"postinstall": "git lfs update --force && cd ./node_modules/husky && npm run install -- --append"
 	},
 	"engines": {
 		"node": "^8.11.4"

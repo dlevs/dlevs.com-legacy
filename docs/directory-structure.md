@@ -33,6 +33,5 @@ are generated completely by build scripts from the contents of `/publicSrc`.
 | `/publicSrc/styles` | Frontend styles (PostCSS) that compile into a single CSS file |
 | `/publicSrc/copy` | Files to copy to `/public` |
 | `/publicSrc/process` | Files to convert/compress before copying to `/public` |
-| `/publicSrc/processUncommitted` | The same as `/publicSrc/process`, but for large images and videos that are excluded from this repository due to file size. |
 
 [back](../README.md)

@@ -1,7 +1,6 @@
 # Media
 
-Build scripts process media files in `/publicSrc/process` and
-`/publicSrc/processUncommitted`. For every file processed, an object with
+Build scripts process media files in `/publicSrc/process`. For every file processed, an object with
 metadata about that file is appended to `/data/generated/media.json`. The
 objects contain information like:
 

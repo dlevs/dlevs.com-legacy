@@ -7,10 +7,10 @@
  * needed to create a blog post.
  *
  * Command line usage (one location):
- * node build/addTravelBlogImages.js ./publicSrc/processUncommitted/media/travel/japan/tokyo
+ * node build/addTravelBlogImages.js ./publicSrc/process/media/travel/japan/tokyo
  *
  * Command line usage (all locations in a country):
- * node build/addTravelBlogImages.js ./publicSrc/processUncommitted/media/travel/japan/*
+ * node build/addTravelBlogImages.js ./publicSrc/process/media/travel/japan/*
  */
 
 // Dependencies

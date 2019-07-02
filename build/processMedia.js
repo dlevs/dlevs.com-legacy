@@ -7,7 +7,7 @@ const processImages = require('./processImages');
 const processSvgs = require('./processSvgs');
 
 const createMediaGlob = pattern =>
-	root('./publicSrc/+(process|processUncommitted)/media', pattern);
+	root('./publicSrc/process/media', pattern);
 
 const processMedia = async () => {
 	await addMedia('SVG', processSvgs, createMediaGlob('**/*.svg'));
