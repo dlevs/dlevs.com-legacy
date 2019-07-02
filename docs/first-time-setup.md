@@ -1,5 +1,7 @@
 # First time setup
 
+TODO: Make this all encapsulated with docker
+
 1. Install the [Git Large File Storage (LFS)](https://git-lfs.github.com/) extension.
 2. Install the Node.js version specified by [package.json](./package.json)'s `engine` property.
 3. Install ffmpeg:
