@@ -6,7 +6,7 @@ Object {
     "body": Object {
       "appVersion": "1.0.0",
       "environment": "test",
-      "nodeVersion": "v8.11.4",
+      "nodeVersion": "v12.3.1",
     },
     "query": Object {},
     "render": [Function],

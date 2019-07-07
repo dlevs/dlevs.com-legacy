@@ -16,9 +16,10 @@ services:
     container_name: webserver
     restart: unless-stopped
     ports:
-      - "80:80"
+      # TODO: Change port back to 80
+      - "3012:80"
     volumes:
-      - web-root:/var/www/html
+      - .public:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
@@ -33,7 +34,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
+      - .public:/var/www/html
     depends_on:
       - webserver
     command: certonly --webroot --webroot-path=/var/www/html --email dlevett@hotmail.co.uk --agree-tos --no-eff-email --staging -d dlevs.com  -d www.dlevs.com
@@ -41,12 +42,6 @@ services:
 volumes:
   certbot-etc:
   certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/dan/app
-      o: bind
 
 networks:
   app-network:
