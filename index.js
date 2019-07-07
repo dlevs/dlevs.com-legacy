@@ -4,14 +4,14 @@ const {
 	setProcessEnv,
 	PORT,
 	IS_BEHIND_PROXY,
-	STATIC_ASSET_MAX_AGE_IN_SECONDS,
+	// STATIC_ASSET_MAX_AGE_IN_SECONDS,
 } = require('./config');
 
 setProcessEnv();
 
 const path = require('path');
 const Koa = require('koa');
-const serve = require('koa-static');
+// const serve = require('koa-static');
 const views = require('koa-views');
 const slash = require('koa-slash');
 const json = require('koa-json');
@@ -33,6 +33,7 @@ app.proxy = IS_BEHIND_PROXY;
 app
 	.use(errorMiddleware)
 	.use(slash())
+	// TODO: Do less server stuff here, and more with nginx
 	.use(redirectMiddleware)
 	.use(bodyParser())
 	.use(json({
@@ -46,7 +47,4 @@ app
 	.use(views(path.join(__dirname, 'views'), { options: viewGlobals }))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.use(serve(path.join(__dirname, './public'), {
-		maxage: STATIC_ASSET_MAX_AGE_IN_SECONDS * 1000,
-	}))
 	.listen(PORT);
