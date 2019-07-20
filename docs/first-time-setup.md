@@ -3,6 +3,7 @@
 TODO: Make this all encapsulated with docker
 
 1. Install the [Git Large File Storage (LFS)](https://git-lfs.github.com/) extension.
+// TODO: Any need for "git lfs update"?
 2. Install the Node.js version specified by [package.json](./package.json)'s `engine` property.
 3. Install ffmpeg:
     - MacOS: `brew install ffmpeg --with-libvpx --with-libvorbis`
@@ -12,6 +13,7 @@ TODO: Make this all encapsulated with docker
 4. In the terminal, run:
 
     ```bash
+    # TODO: This config is no longer necessary:
     cp config/config.sample.js config/config.js # Create own config. Edit for environment.
     npm install                                 # Install dependencies
     npm run build                               # Compile static assets (JS, CSS, image compression)

@@ -1,7 +1,6 @@
 'use strict';
 
 const { SITE_NAME } = require('../lib/constants');
-const { ORIGIN } = require('../config');
 const { getMediaMeta } = require('../lib/mediaUtils');
 const technologies = require('./technologies');
 
@@ -30,7 +29,7 @@ module.exports = {
 				gender: 'male',
 				nationality: 'British',
 				image: selfImage.versions.large.absoluteSrc,
-				url: ORIGIN,
+				url: process.env.ORIGIN,
 				sameAs: [
 					'https://www.linkedin.com/in/daniellevett/',
 					'https://github.com/dlevs',
@@ -40,9 +39,9 @@ module.exports = {
 			{
 				'@context': 'http://schema.org',
 				'@type': 'WebSite',
-				url: ORIGIN,
+				url: process.env.ORIGIN,
 				name: SITE_NAME,
-				author: ORIGIN,
+				author: process.env.ORIGIN,
 				description,
 			},
 		],

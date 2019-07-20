@@ -1,17 +1,8 @@
 'use strict';
 
-const {
-	setProcessEnv,
-	PORT,
-	IS_BEHIND_PROXY,
-	// STATIC_ASSET_MAX_AGE_IN_SECONDS,
-} = require('./config');
-
-setProcessEnv();
-
 const path = require('path');
 const Koa = require('koa');
-// const serve = require('koa-static');
+// const serve = require('koa-static'); // TODO: Uninstall
 const views = require('koa-views');
 const slash = require('koa-slash');
 const json = require('koa-json');
@@ -28,7 +19,7 @@ const app = new Koa();
 
 // App sits behind an nginx server. Set proxy option to true
 // to get koa to listen to X-Forwarded-Proto headers.
-app.proxy = IS_BEHIND_PROXY;
+app.proxy = true;
 
 app
 	.use(errorMiddleware)
@@ -47,4 +38,4 @@ app
 	.use(views(path.join(__dirname, 'views'), { options: viewGlobals }))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.listen(PORT);
+	.listen(process.env.PORT);

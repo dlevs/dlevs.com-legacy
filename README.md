@@ -9,3 +9,5 @@ There are a lot of overkill for what should be a simple site because I use this 
 - [Commands](./docs/commands.md)
 - [Media](./docs/media.md)
 - [Testing](./docs/testing.md)
+
+// TODO: Add back equivalent of "precommit": "npm test && lint-staged",

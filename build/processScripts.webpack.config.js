@@ -6,8 +6,6 @@
 // Usage:
 // webpack --config <path-to-this-file>
 
-require('../config').setProcessEnv();
-
 const { root } = require('../lib/pathUtils');
 
 const isDebug = process.env.NODE_ENV !== 'production';

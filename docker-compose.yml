@@ -10,16 +10,17 @@ services:
     restart: unless-stopped
     networks:
       - app-network
+    env_file:
+      - .env
 
   webserver:
     image: nginx:mainline-alpine
     container_name: webserver
     restart: unless-stopped
     ports:
-      # TODO: Change port back to 80
-      - "3012:80"
+      - "80:80"
     volumes:
-      - ./public:/var/www/html
+      - web-root:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
@@ -34,15 +35,20 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      # TODO: Look into mounting "./public" as a volume if best practice for sharing between containers
-      - ./public:/var/www/html
+      - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email dlevett@hotmail.co.uk --agree-tos --no-eff-email --staging -d dlevs.com  -d www.dlevs.com
+    command: certonly --webroot --webroot-path=/var/www/html --email dlevett@hotmail.co.uk --agree-tos --no-eff-email --staging -d dlevs.com -d www.dlevs.com
 
 volumes:
   certbot-etc:
   certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${STATIC_ASSET_PATH}
+      o: bind
 
 networks:
   app-network:

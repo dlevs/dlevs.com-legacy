@@ -4,8 +4,6 @@ const Router = require('koa-router');
 const findIndex = require('lodash/findIndex');
 const { getPosts } = require('../data/travelPosts');
 const { getMediaMeta } = require('../lib/mediaUtils');
-const { ORIGIN } = require('../config');
-
 
 module.exports = ({ breadcrumbRoot }) => {
 	const pageBreadcrumb = breadcrumbRoot.append({
@@ -104,8 +102,8 @@ module.exports = ({ breadcrumbRoot }) => {
 							url: ctx.state.CANONICAL_URL,
 							datePublished: post.datePublished,
 							dateModified: post.dateModified,
-							author: ORIGIN,
-							publisher: ORIGIN,
+							author: process.env.ORIGIN,
+							publisher: process.env.ORIGIN,
 							mainEntityOfPage: ctx.state.CANONICAL_URL,
 						},
 					],
