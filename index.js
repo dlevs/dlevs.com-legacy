@@ -39,3 +39,10 @@ app
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.listen(process.env.PORT);
+
+// Respond to external request to shut down server,
+// for example on `docker-compose down`.
+// This app has no cleanup to perform so no need to be graceful.
+process.on('SIGTERM', () => {
+	process.exit(0);
+});
