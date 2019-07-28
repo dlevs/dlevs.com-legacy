@@ -10,6 +10,9 @@ USER node
 
 RUN npm ci
 
+# TODO: is building always a manual step?
+# RUN npm run build
+
 COPY --chown=node:node . .
 
 EXPOSE $PORT
