@@ -1,5 +1,8 @@
 'use strict';
 
+// TODO: Sort docker-compose local dev. docker provides these variables too. Do in one place
+require('dotenv').config();
+
 const path = require('path');
 const Koa = require('koa');
 // const serve = require('koa-static'); // TODO: Uninstall

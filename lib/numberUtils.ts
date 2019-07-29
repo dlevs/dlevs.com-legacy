@@ -2,12 +2,8 @@
 
 /**
  * Like Number.prototype.toFixed, but without trailing zeros.
- *
- * @param {Number} n
- * @param {Number} digits
- * @returns {String}
  */
-exports.toFixedTrimmed = (n, digits) => n
+export const toFixedTrimmed = (n: number, digits: number) => n
 	.toFixed(digits)
 	// Remove zeros after decimal place
 	.replace(/(\..*?)0+$/, '$1')

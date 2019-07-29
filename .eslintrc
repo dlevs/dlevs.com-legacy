@@ -2,7 +2,7 @@
 	"extends": "airbnb-base",
 	"plugins": ["compat"],
 	"parserOptions": {
-		"sourceType": "script"
+		"sourceType": "module"
 	},
 	"rules": {
 		"strict": ["error", "global"],
@@ -35,9 +35,6 @@
 		{
 			"files": ["publicSrc/scripts/**"],
 			"excludedFiles": "*.browsertest.js",
-			"parserOptions": {
-				"sourceType": "module"
-			},
 			"rules": {
 				"compat/compat": "error"
 			}

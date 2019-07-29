@@ -1,9 +1,7 @@
-'use strict';
-
-const Router = require('koa-router');
-const findIndex = require('lodash/findIndex');
-const { getPosts } = require('../data/travelPosts');
-const { getMediaMeta } = require('../lib/mediaUtils');
+import Router from 'koa-router';
+import findIndex from 'lodash/findIndex';
+import { getPosts } from '../data/travelPosts';
+import { getMediaMeta } from '../lib/mediaUtils';
 
 module.exports = ({ breadcrumbRoot }) => {
 	const pageBreadcrumb = breadcrumbRoot.append({
