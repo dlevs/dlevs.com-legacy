@@ -27,8 +27,8 @@ services:
     depends_on:
       - nodejs
     environment:
-      - VIRTUAL_HOST=dlevs.com
-      - LETSENCRYPT_HOST=dlevs.com
+      - VIRTUAL_HOST=www.dlevs.com,dlevs.com
+      - LETSENCRYPT_HOST=www.dlevs.com,dlevs.com
 
 volumes:
   web-root:
