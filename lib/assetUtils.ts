@@ -1,6 +1,8 @@
 'use strict';
 
-import assets from '../data/generated/assets.json';
+import * as assets from '../data/generated/assets.json';
+
+type StringMap = { [key: string]: string }
 
 /**
  * For a given path, get the counterpart that contains a hash in the filename
@@ -11,7 +13,7 @@ import assets from '../data/generated/assets.json';
  * development.
  */
 exports.getRevvedPath = (filepath: string) => {
-	const revvedPath = assets[filepath];
+	const revvedPath = (assets as StringMap)[filepath];
 
 	if (!revvedPath) {
 		// eslint-disable-next-line no-console
