@@ -1,6 +1,6 @@
 import * as assets from '../data/generated/assets.json';
 
-type StringMap = { [key: string]: string }
+type StringMap = { [key: string]: string };
 
 /**
  * For a given path, get the counterpart that contains a hash in the filename

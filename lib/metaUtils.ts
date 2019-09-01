@@ -1,8 +1,6 @@
-'use strict';
-
-const { getShareUrl } = require('./urlUtils');
-const { getMediaMeta } = require('./mediaUtils');
-const { SITE_NAME, SITE_LOCALE, SITE_IMAGE } = require('./constants');
+import { getShareUrl } from './urlUtils';
+import { getMediaMeta } from './mediaUtils';
+import { SITE_NAME, SITE_LOCALE, SITE_IMAGE } from './constants';
 
 /**
  * Meta data used to populate HTML meta tags.

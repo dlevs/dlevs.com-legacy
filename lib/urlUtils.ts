@@ -1,13 +1,11 @@
-'use strict';
-
-const normalizeUrl = require('normalize-url');
+import normalizeUrl from 'normalize-url';
 
 /**
  * Get a normalized version of a URL for canonical purposes.
  *
  * @param {String} url
  */
-exports.getCanonicalUrl = url => normalizeUrl(url, {
+export const getCanonicalUrl = (url: string) => normalizeUrl(url, {
 	removeQueryParameters: ['pretty', 'pid', 'gid'],
 });
 
@@ -16,6 +14,6 @@ exports.getCanonicalUrl = url => normalizeUrl(url, {
  *
  * @param {String} url
  */
-exports.getShareUrl = url => normalizeUrl(url, {
+export const getShareUrl = (url: string) => normalizeUrl(url, {
 	removeQueryParameters: ['pretty'],
 });
