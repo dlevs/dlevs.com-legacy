@@ -1,6 +1,4 @@
-'use strict';
-
-const { createGoogleMapsLink } = require('./gpsUtils');
+import { createGoogleMapsLink } from './gpsUtils';
 
 describe('createGoogleMapsLink()', () => {
 	test('creates expected link from gps exif data', () => {

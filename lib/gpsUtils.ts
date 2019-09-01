@@ -32,7 +32,7 @@ const gpsCoordsToString = (
 /**
  * Creates a Google Maps URL from the raw GPS Exif data from a photo.
  */
-exports.createGoogleMapsLink = ({
+export const createGoogleMapsLink = ({
 	GPSLatitude,
 	GPSLatitudeRef,
 	GPSLongitude,

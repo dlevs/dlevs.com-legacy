@@ -1,21 +1,20 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
-import assert from 'assert';
 import flow from 'lodash/flow';
 import sortBy from 'lodash/fp/sortBy';
 import map from 'lodash/fp/map';
-import forEach from 'lodash/fp/forEach';
 import Breadcrumb from '../lib/Breadcrumb';
 
-const validatePage = ({ name, path }) => {
-	assert(typeof name === 'string', 'Page name must be a string');
-	assert(typeof path === 'string', 'Page path must be a string');
-};
+// TODO: Move
+interface Page {
+	name: string;
+	path: string;
+	posts?: Page[];
+}
 
-const sortPages = flow(
-	forEach(validatePage),
+const sortPages: (pages: Page[]) => Page[] = flow(
 	sortBy('name'),
-	map((value) => {
+	map((value: Page) => {
 		if (!value.posts) {
 			return value;
 		}
@@ -27,7 +26,13 @@ const sortPages = flow(
 	}),
 );
 
-module.exports = ({ pages = [], breadcrumbRoot: Breadcrumb }) => {
+export default ({
+	pages = [],
+	breadcrumbRoot,
+}: {
+	pages: Page[];
+	breadcrumbRoot: Breadcrumb;
+}) => {
 	const sortedPages = sortPages(pages);
 	const breadcrumb = breadcrumbRoot.append({ name: 'Sitemap', slug: 'sitemap' });
 	const getRenderVariables = (ctx: Context) => ({

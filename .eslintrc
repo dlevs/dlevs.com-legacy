@@ -12,6 +12,7 @@
 		"indent": ["error", "tab", { "SwitchCase" : 1 }],
 		"no-tabs": "off",
 		"no-plusplus": "off",
+		"function-paren-newline": "off",
 		"import/no-extraneous-dependencies": ["error", {
 			"devDependencies": [
 				"**/*.test.js",
@@ -21,6 +22,8 @@
 			],
 			"packageDir": "./"
 		}],
+		"import/extensions": "off",
+		"import/no-unresolved": "off",
 		"import/prefer-default-export": "off",
 		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/explicit-function-return-type": "off"

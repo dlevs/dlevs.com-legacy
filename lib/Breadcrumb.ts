@@ -1,6 +1,3 @@
-import last from 'lodash/last';
-import get from 'lodash/get';
-
 interface BreadCrumbItemSource {
 	slug: string;
 	name: string;
@@ -25,22 +22,26 @@ const expandBreadcrumb = (breadcrumb: BreadCrumbItemSource[]) => {
 };
 
 class Breadcrumb {
-	parts: ReturnType<typeof expandBreadcrumb>
+	partsRaw: BreadCrumbItemSource[];
 
 	constructor(parts: BreadCrumbItemSource[]) {
-		this.parts = expandBreadcrumb(parts);
+		this.partsRaw = expandBreadcrumb(parts);
 	}
 
-	append(parts: BreadCrumbItemSource[]) {
-		return new Breadcrumb([...this.parts, ...parts]);
+	append(parts: BreadCrumbItemSource | BreadCrumbItemSource[]) {
+		return new Breadcrumb(this.partsRaw.concat(parts));
+	}
+
+	get parts() {
+		return expandBreadcrumb(this.partsRaw);
 	}
 
 	get currentPage() {
-		return last(this.parts);
+		return this.parts[this.parts.length - 1];
 	}
 
 	get path() {
-		return get(this.currentPage, 'path', '');
+		return this.currentPage.path;
 	}
 }
 
