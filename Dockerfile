@@ -8,7 +8,7 @@ COPY package*.json ./
 
 USER node
 
-RUN npm ci
+RUN npm ci --production
 
 # TODO: is building always a manual step?
 # RUN npm run build

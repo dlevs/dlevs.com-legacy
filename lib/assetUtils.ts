@@ -1,6 +1,6 @@
 'use strict';
 
-const assets = require('../data/generated/assets.json');
+import assets from '../data/generated/assets.json';
 
 /**
  * For a given path, get the counterpart that contains a hash in the filename
@@ -9,11 +9,8 @@ const assets = require('../data/generated/assets.json');
  * This feature is production-only as it would be a pain to watch assets for
  * changes, regenerate the assets.json file and restart the server during
  * development.
- *
- * @param {String} filepath
- * @return {String}
  */
-exports.getRevvedPath = (filepath) => {
+exports.getRevvedPath = (filepath: string) => {
 	const revvedPath = assets[filepath];
 
 	if (!revvedPath) {
