@@ -1,10 +1,6 @@
+import R from 'rambda';
 import moment from 'moment';
-import orderBy from 'lodash/fp/orderBy';
-import flow from 'lodash/flow';
 import kebabCase from 'lodash/kebabCase';
-import sortBy from 'lodash/fp/sortBy';
-import groupBy from 'lodash/fp/groupBy';
-import map from 'lodash/fp/map';
 import rawPostsData from '../data/travelPostsRaw.json';
 import Breadcrumb from '../lib/Breadcrumb.js';
 
@@ -45,10 +41,10 @@ interface PostImage {
 	alt: string;
 }
 
-type ExpandPosts = (posts: PostSource[]) => Post[]
-
-const expandPost = ({ breadcrumbRoot }: Options) =>
-	(post: PostSource): Post => {
+// TODO: Rambda is being used here as the TypeScript support seems better.
+// TODO: If it _is_ better, remove lodash in favour of Rambda.
+const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
+	R.map((post: PostSource): Post => {
 		const countrySlug = kebabCase(post.country);
 		const townSlug = kebabCase(post.town);
 		const breadcrumb = breadcrumbRoot.append([
@@ -82,16 +78,14 @@ const expandPost = ({ breadcrumbRoot }: Options) =>
 			dateModified: post.dateModified || datePublished,
 			images,
 		};
-	}
-
-const expandPosts = (options: Options): ExpandPosts => flow(
-	map(expandPost(options)),
-	orderBy('date', 'desc'),
+	}),
+	R.sortBy(R.prop('date')),
 );
 
-const groupPostsByCountry = ({ breadcrumbRoot }: Options) => flow(
-	groupBy('country'),
-	map((posts: Post[]) => {
+const groupPostsByCountry = ({ breadcrumbRoot }: Options) => R.pipe(
+	(posts: Post[]) => posts, // TODO: Just being lazy. Is there a better way to assert the expected input of a R.pipe?
+	R.groupBy(R.prop('country')),
+	R.map((posts: Post[]) => {
 		const { country, countrySlug } = posts[0];
 		const breadcrumb = breadcrumbRoot.append([
 			{
@@ -113,7 +107,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }: Options) => flow(
 			mainImage: images[0],
 		};
 	}),
-	sortBy('country'),
+	R.sortBy(R.prop('country')),
 );
 
 /**
