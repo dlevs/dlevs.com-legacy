@@ -1,11 +1,11 @@
-'use strict';
-
-const Router = require('koa-router');
-const assert = require('assert');
-const flow = require('lodash/flow');
-const sortBy = require('lodash/fp/sortBy');
-const map = require('lodash/fp/map');
-const forEach = require('lodash/fp/forEach');
+import { Context } from 'koa';
+import Router from 'koa-router';
+import assert from 'assert';
+import flow from 'lodash/flow';
+import sortBy from 'lodash/fp/sortBy';
+import map from 'lodash/fp/map';
+import forEach from 'lodash/fp/forEach';
+import Breadcrumb from '../lib/Breadcrumb';
 
 const validatePage = ({ name, path }) => {
 	assert(typeof name === 'string', 'Page name must be a string');
@@ -27,21 +27,21 @@ const sortPages = flow(
 	}),
 );
 
-module.exports = ({ pages = [], breadcrumbRoot }) => {
+module.exports = ({ pages = [], breadcrumbRoot: Breadcrumb }) => {
 	const sortedPages = sortPages(pages);
 	const breadcrumb = breadcrumbRoot.append({ name: 'Sitemap', slug: 'sitemap' });
-	const getRenderVariables = ctx => ({
+	const getRenderVariables = (ctx: Context) => ({
 		pages: sortedPages,
 		breadcrumb,
 		origin: ctx.origin,
 		meta: { title: breadcrumb.currentPage.name },
 	});
 	const controller = {
-		xml: async (ctx) => {
+		xml: async (ctx: Context) => {
 			await ctx.render('sitemapXml.pug', getRenderVariables(ctx));
 			ctx.type = 'xml';
 		},
-		html: async (ctx) => {
+		html: async (ctx: Context) => {
 			await ctx.render('sitemapHtml.pug', getRenderVariables(ctx));
 		},
 	};

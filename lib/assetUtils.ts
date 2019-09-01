@@ -10,7 +10,7 @@ type StringMap = { [key: string]: string };
  * changes, regenerate the assets.json file and restart the server during
  * development.
  */
-exports.getRevvedPath = (filepath: string) => {
+export const getRevvedPath = (filepath: string) => {
 	const revvedPath = (assets as StringMap)[filepath];
 
 	if (!revvedPath) {

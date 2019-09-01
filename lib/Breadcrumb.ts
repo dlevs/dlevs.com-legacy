@@ -1,7 +1,5 @@
-'use strict';
-
-import assert from 'assert';
-const last = require('lodash/last');
+import last from 'lodash/last';
+import get from 'lodash/get';
 
 interface BreadCrumbItemSource {
 	slug: string;
@@ -42,8 +40,8 @@ class Breadcrumb {
 	}
 
 	get path() {
-		return this.currentPage.path;
+		return get(this.currentPage, 'path', '');
 	}
 }
 
-module.exports = Breadcrumb;
+export default Breadcrumb;
