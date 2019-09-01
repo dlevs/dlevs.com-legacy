@@ -1,11 +1,11 @@
 'use strict';
 
-const assert = require('assert');
+import assert from 'assert';
 const last = require('lodash/last');
 
 interface BreadCrumbItemSource {
-	slug: string
-	name: string
+	slug: string;
+	name: string;
 }
 
 /**

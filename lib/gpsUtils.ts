@@ -1,25 +1,23 @@
-'use strict';
-
 type GPSCoordinate = [number, number, number]
 type LongitudeRef = 'E' | 'W'
 type LatitudeRef = 'N' | 'S'
 
 /** Output from "exif-reader" npm package */
 interface GPSData {
-	GPSLatitudeRef: LatitudeRef,
-	GPSLatitude: GPSCoordinate,
-	GPSLongitudeRef: LongitudeRef,
-	GPSLongitude: GPSCoordinate,
-	GPSAltitudeRef: number,
-	GPSAltitude: number,
-	GPSTimeStamp: GPSCoordinate,
-	GPSSpeedRef: 'K' | 'M' | 'N',
-	GPSSpeed: number,
-	GPSImgDirectionRef: 'T' | 'M',
-	GPSImgDirection: number,
-	GPSDestBearingRef: 'T' | 'M',
-	GPSDestBearing: number,
-	GPSDateStamp: string
+	GPSLatitudeRef: LatitudeRef;
+	GPSLatitude: GPSCoordinate;
+	GPSLongitudeRef: LongitudeRef;
+	GPSLongitude: GPSCoordinate;
+	GPSAltitudeRef: number;
+	GPSAltitude: number;
+	GPSTimeStamp: GPSCoordinate;
+	GPSSpeedRef: 'K' | 'M' | 'N';
+	GPSSpeed: number;
+	GPSImgDirectionRef: 'T' | 'M';
+	GPSImgDirection: number;
+	GPSDestBearingRef: 'T' | 'M';
+	GPSDestBearing: number;
+	GPSDateStamp: string;
 }
 
 /**
@@ -27,7 +25,7 @@ interface GPSData {
  */
 const gpsCoordsToString = (
 	[degrees, minutes, seconds]: GPSCoordinate,
-	ref: LongitudeRef | LatitudeRef
+	ref: LongitudeRef | LatitudeRef,
 ) =>
 	`${degrees}°${minutes}'${seconds}"${ref}`;
 
