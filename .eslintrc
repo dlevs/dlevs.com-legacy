@@ -21,6 +21,7 @@
 			],
 			"packageDir": "./"
 		}],
+		"import/prefer-default-export": "off",
 		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/explicit-function-return-type": "off"
 	},

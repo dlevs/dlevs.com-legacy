@@ -1,13 +1,11 @@
-'use strict';
-
-const { SITE_NAME } = require('../lib/constants');
-const { getMediaMeta } = require('../lib/mediaUtils');
-const technologies = require('./technologies');
+import { SITE_NAME } from '../lib/constants';
+import { getMediaMeta } from '../lib/mediaUtils';
+import technologies from './technologies';
 
 const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';
 const selfImage = getMediaMeta('/media/misc/self.jpg');
 
-module.exports = {
+export default {
 	meta: {
 		title: SITE_NAME,
 		description,

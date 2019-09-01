@@ -1,5 +1,3 @@
-'use strict';
-
 // const fs = require('fs-extra');
 // const path = require('path');
 // const { exec } = require('child-process-promise');
@@ -11,9 +9,9 @@
  * git repository. For these cases, this function relies on the post-receive
  * hook to generate a .gitdatafrompostreceivehook in the project root.
  *
- * @return {Promise.<{ref: String, sha: String, message: String, date: String}>}
+ * TODO: Get rid of all JSDoc type annotations once TypeScript migration is complete
  */
-exports.getLastCommit = async () =>
+export const getLastCommit = async () =>
 	({
 		// TODO: Fix this:
 		ref: 'TODO',

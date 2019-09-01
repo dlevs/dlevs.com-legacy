@@ -1,20 +1,20 @@
 // TODO: Sort docker-compose local dev. docker provides these variables too. Do in one place
-require('dotenv').config();
+// require('dotenv').config();
 
-const path = require('path');
-const Koa = require('koa');
-// const serve = require('koa-static'); // TODO: Uninstall
-const views = require('koa-views');
-const slash = require('koa-slash');
-const json = require('koa-json');
-const bodyParser = require('koa-bodyparser');
-const errorMiddleware = require('./lib/middleware/errorMiddleware');
-const redirectMiddleware = require('./lib/middleware/redirectMiddleware');
-const serverPushMiddleware = require('./lib/middleware/serverPushMiddleware');
-const securityHeadersMiddleware = require('./lib/middleware/securityHeadersMiddleware');
-const setCtxStateMiddleware = require('./lib/middleware/setCtxStateMiddleware');
-const router = require('./routes');
-const viewGlobals = require('./lib/viewGlobals');
+import path from 'path';
+import Koa from 'koa';
+// import serve from 'koa-static'); // TODO: Uninstal
+import views from 'koa-views';
+import slash from 'koa-slash';
+import json from 'koa-json';
+import bodyParser from 'koa-bodyparser';
+import errorMiddleware from './lib/middleware/errorMiddleware';
+import redirectMiddleware from './lib/middleware/redirectMiddleware';
+import serverPushMiddleware from './lib/middleware/serverPushMiddleware';
+import securityHeadersMiddleware from './lib/middleware/securityHeadersMiddleware';
+import setCtxStateMiddleware from './lib/middleware/setCtxStateMiddleware';
+import router from './routes';
+import viewGlobals from './lib/viewGlobals';
 
 const app = new Koa();
 
