@@ -1,4 +1,4 @@
-import R from 'rambda';
+import R from 'ramda';
 import moment from 'moment';
 import kebabCase from 'lodash/kebabCase';
 import rawPostsData from '../data/travelPostsRaw.json';
