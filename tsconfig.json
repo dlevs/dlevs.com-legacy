@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
-    "forceConsistentCasingInFileNames": true
+	"forceConsistentCasingInFileNames": true,
+	"allowJs": true
   },
   "include": [
     "**/*"

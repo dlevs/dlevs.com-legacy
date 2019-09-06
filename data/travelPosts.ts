@@ -83,9 +83,10 @@ const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
 );
 
 const groupPostsByCountry = ({ breadcrumbRoot }: Options) => R.pipe(
-	(posts: Post[]) => posts, // TODO: Just being lazy. Is there a better way to assert the expected input of a R.pipe?
-	R.groupBy(R.prop('country')),
-	R.map((posts: Post[]) => {
+	R.groupBy<Post>(R.prop('country')),
+	R.values,
+	R.sortBy(R.prop('country')),
+	R.map((posts) => {
 		const { country, countrySlug } = posts[0];
 		const breadcrumb = breadcrumbRoot.append([
 			{
@@ -106,8 +107,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }: Options) => R.pipe(
 			images,
 			mainImage: images[0],
 		};
-	}),
-	R.sortBy(R.prop('country')),
+	})
 );
 
 /**

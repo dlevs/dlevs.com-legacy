@@ -1,5 +1,3 @@
-'use strict';
-
 // Dependencies
 //------------------------------------
 const Router = require('koa-router');
