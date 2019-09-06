@@ -1,9 +1,7 @@
 /**
  * Focus an element without having the page scroll jump to that element.
- *
- * @param {HTMLElement} elem
  */
-export const focusWithoutScrolling = (elem) => {
+export const focusWithoutScrolling = (elem: HTMLElement) => {
 	const x = window.pageXOffset;
 	const y = window.pageYOffset;
 	elem.focus();
@@ -12,11 +10,9 @@ export const focusWithoutScrolling = (elem) => {
 
 /**
  * Get the keyCode of the last key pressed.
- *
- * @returns {null|number}
  */
 export const getLastKeyCode = (() => {
-	let lastKeyCode = null;
+	let lastKeyCode: number | null = null;
 	document.addEventListener('keydown', ({ keyCode }) => {
 		lastKeyCode = keyCode;
 	});
@@ -25,11 +21,9 @@ export const getLastKeyCode = (() => {
 
 /**
  * Get the last input device used.
- *
- * @returns {null|('mouse'|'keyboard')}
  */
 export const getLastInputDevice = (() => {
-	let lastDevice = null;
+	let lastDevice: 'mouse' | 'keyboard' = 'mouse';
 	document.addEventListener('mousedown', () => {
 		lastDevice = 'mouse';
 	});
@@ -44,7 +38,6 @@ export const getLastInputDevice = (() => {
  * milliseconds.
  *
  * @param {Number} [timeout]
- * @returns {Boolean}
  */
 export const wasRecentlyTouched = (() => {
 	let lastTouched = null;
@@ -80,7 +73,6 @@ export const fetch = (url) => {
  * hasExtension('/travel/cats.json'); // true
  *
  * @param {String} pathname
- * @returns {Boolean}
  */
 export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
 
@@ -89,7 +81,6 @@ export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
  * instead of a `NodeList` instance.
  *
  * @param {String} selector
- * @returns {HTMLElement[]}
  */
 export const $ = selector =>
 	Array.prototype.slice.call(document.querySelectorAll(selector));

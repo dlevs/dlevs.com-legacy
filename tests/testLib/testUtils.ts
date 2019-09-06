@@ -9,7 +9,6 @@ const Breadcrumb = require('/lib/Breadcrumb');
  *
  * @param {Function} controller
  * @param {Object} params
- * @returns {*}
  */
 exports.getControllerRenderData = async (controller, params) => {
 	let renderedData;
@@ -60,8 +59,6 @@ exports.testControllerSnapshots = (controller, methods) => {
 
 /**
  * Get mock parameters to pass to a controller init function.
- *
- * @returns {Object}
  */
 exports.getMockControllerParams = () => ({
 	breadcrumbRoot: new Breadcrumb([

@@ -23,11 +23,8 @@ const MAX_FILES_PROCESS_CONCURRENTLY = 8;
  *
  * createWebPath('/path/to/this/repo/publicSrc/process/media/foo.jpg');
  * // '/path/to/this/repo/public/media/foo.jpg'
- *
- * @param {String} filepath
- * @returns {String}
  */
-exports.createOutputPath = filepath => filepath
+exports.createOutputPath = (filepath: string) => filepath
 	.replace(PUBLIC_SRC_REGEX, '/public/');
 
 /**
@@ -40,11 +37,8 @@ exports.createOutputPath = filepath => filepath
  *
  * createWebPath('/path/to/this/repo/publicSrc/process/media/foo.jpg');
  * // '/media/foo.jpg'
- *
- * @param {String} filepath
- * @returns {String}
  */
-exports.createWebPath = filepath => `/${relativeToRoot(filepath)}`
+exports.createWebPath = (filepath: string) => `/${relativeToRoot(filepath)}`
 	.replace('/public/', '/')
 	.replace(PUBLIC_SRC_REGEX, '/');
 
@@ -54,12 +48,8 @@ exports.createWebPath = filepath => `/${relativeToRoot(filepath)}`
  *
  * As described in:
  * http://andyshora.com/css-image-container-padding-hack.html
- *
- * @param {Number} width
- * @param {Number} height
- * @returns {String}
  */
-exports.getPaddingBottom = (width, height) =>
+exports.getPaddingBottom = (width: number, height: number) =>
 	`${toFixedTrimmed(((height / width) * 100), 4)}%`;
 
 /**
@@ -69,11 +59,8 @@ exports.getPaddingBottom = (width, height) =>
  *
  * Extra methods are added, like `.success()`, which affects
  * the color of the logged message.
- *
- * @param {String} name
- * @returns {Object}
  */
-const createLogger = name => new Proxy(console, {
+const createLogger = (name: string) => new Proxy(console, {
 	get(obj, logLevel) {
 		return (...args) => {
 			let method = logLevel;
@@ -100,8 +87,6 @@ const createLogger = name => new Proxy(console, {
 /**
  * Get the existing meta JSON object from file, or an empty object if it
  * doesn't exist.
- *
- * @returns {Promise.<Object>}
  */
 const getMedia = async () => {
 	try {
@@ -127,12 +112,12 @@ const getMedia = async () => {
  *         large: { 'src': '/foo-large.jpg', width: 600, height: 450 },
  *     },
  * }
- *
- * @param {String} fileType
- * @param {Function} processFile
- * @param {String} globPattern
  */
-exports.addMedia = async (fileType, processFile, globPattern) => {
+exports.addMedia = async (
+	fileType: string,
+	processFile,
+	globPattern: string,
+) => {
 	const logger = createLogger(fileType);
 	const media = await getMedia();
 	const allFilepaths = await glob(globPattern);

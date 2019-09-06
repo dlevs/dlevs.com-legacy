@@ -12,18 +12,14 @@ const SLIDE_SELECTOR = '.js-photoswipe';
 
 /**
  * Get the link elements that wrap the thumbnail images of a gallery.
- *
- * @returns {HTMLAnchorElement[]}
  */
-const getSlides = () => $(SLIDE_SELECTOR);
+const getSlides = (): HTMLAnchorElement[] => $(SLIDE_SELECTOR);
 
 /**
  * Get the `options.items` value expected by PhotoSwipe from an
  * array of thumbnail links.
- *
- * @param {HTMLAnchorElement[]} slides
  */
-const getGalleryItems = (slides) => {
+const getGalleryItems = (slides): HTMLAnchorElement[] => {
 	// Check first thumbnail format. First image is unlikely to be
 	// lazyloaded, so will be populated with webp/ jpg, instead of
 	// placeholder data gif src.
@@ -50,10 +46,8 @@ const getGalleryItems = (slides) => {
 /**
  * For accessibility, add text to link titles to indicate that clicking
  * will open the gallery.
- *
- * @param {HTMLAnchorElement[]} slides
  */
-const applyTitlesToSlides = (slides) => {
+const applyTitlesToSlides = (slides: HTMLAnchorElement[]) => {
 	slides.forEach((link) => {
 		const textToAppend = 'View in gallery (opens dialog)';
 
@@ -125,7 +119,6 @@ const applyGalleryTracking = (gallery) => {
  * parameter.
  *
  * @param {Function<Object>} getGallery
- * @returns {Object}
  */
 const getDefaultOptions = getGallery => ({
 	index: 0,

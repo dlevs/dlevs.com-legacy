@@ -4,6 +4,7 @@ import { SITE_NAME, SITE_LOCALE, SITE_IMAGE } from './constants';
 
 /**
  * Meta data used to populate HTML meta tags.
+ * // TODO: Update to typescript type
  *
  * @typedef {Object} PageMeta
  * @property {String} title - populates <title>

@@ -58,6 +58,7 @@
 		"@types/feather-icons": "4.7.0",
 		"@types/koa-router": "7.0.42",
 		"@types/lodash": "4.14.138",
+		"@types/node": "12.7.4",
 		"@types/ramda": "0.26.21",
 		"@typescript-eslint/eslint-plugin": "2.1.0",
 		"@typescript-eslint/parser": "2.1.0",

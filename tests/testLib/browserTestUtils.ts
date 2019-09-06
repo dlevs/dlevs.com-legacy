@@ -11,6 +11,7 @@ const { ORIGIN, HOSTNAME, AUTH_HEADER } = require('./browserTestConstants');
  * must be wrapped to support this, otherwise will error out because of too
  * many redirects
  *
+ * // TODO: Remove these JSDoc annotations in favour of TypeScript types
  * @param {String} url
  * @param {Object} [options]
  */
@@ -26,10 +27,9 @@ const externalFetch = require('fetch-cookie/node-fetch')(
  * Wrapper around node-fetch that will set authorisation headers, allowing
  * password-protected site instances, like staging, to be tested.
  *
- * @param {String} url
  * @param {Object} [options]
  */
-const internalFetch = (url, options) =>
+const internalFetch = (url: string, options) =>
 	rawFetch(
 		url,
 		{
@@ -83,7 +83,6 @@ exports.eachLimited = (items, cb) => eachLimit(items, 8, cb);
  * Prepend URL paths with origin if it does not already exist.
  *
  * @param {String} path
- * @returns {String}
  */
 exports.normalizePathToAbsolute = (path) => {
 	if (path.startsWith('http')) {
@@ -95,8 +94,6 @@ exports.normalizePathToAbsolute = (path) => {
 
 /**
  * Return true if the user is scrolled to the bottom of the page.
- *
- * @returns {Boolean}
  */
 const isPageScrolledToBottom = () =>
 	document.documentElement.scrollHeight === Math.ceil(window.scrollY + window.innerHeight);

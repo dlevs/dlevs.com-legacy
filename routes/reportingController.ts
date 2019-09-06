@@ -3,8 +3,6 @@ import { Context } from 'koa';
 export default () => ({
 	/**
 	 * Report Content Security Policy violations.
-	 *
-	 * @param {Object} ctx
 	 */
 	reportCSPViolation: (ctx: Context) => {
 		if (ctx.request.body) {

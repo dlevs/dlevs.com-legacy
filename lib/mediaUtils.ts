@@ -9,11 +9,8 @@ exports.createImgSrcset = (...images) =>
 
 /**
  * For a filepath, get meta for all versions of that image.
- *
- * @param {String} filepath
- * @returns {Object|null}
  */
-exports.getMediaMeta = (filepath) => {
+exports.getMediaMeta = (filepath: string) => {
 	const meta = media[filepath];
 
 	if (meta) {

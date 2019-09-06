@@ -8,7 +8,8 @@
 	"resolveJsonModule": true,
 	"allowSyntheticDefaultImports": true,
     "lib": [
-      "esnext"
+	  "esnext",
+	  "dom"
     ],
     "sourceMap": true,
     "pretty": true,
@@ -23,8 +24,7 @@
 	"allowJs": true,
 	"baseUrl": ".",
     "paths": {
-	  "/*": ["*"],
-	  "*": ["node_modules/*"]
+	  "/*": ["*"]
     }
   },
   "include": [
