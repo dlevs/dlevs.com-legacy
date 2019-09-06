@@ -1,7 +1,7 @@
 'use strict';
 
+const { root } = require('/lib/pathUtils');
 const { addMedia } = require('./buildUtils');
-const { root } = require('../lib/pathUtils');
 const processVideos = require('./processVideos');
 const processImages = require('./processImages');
 const processSvgs = require('./processSvgs');

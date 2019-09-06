@@ -1,8 +1,8 @@
 import R from 'ramda';
 import moment from 'moment';
 import kebabCase from 'lodash/kebabCase';
-import rawPostsData from '../data/travelPostsRaw.json';
-import Breadcrumb from '../lib/Breadcrumb.js';
+import rawPostsData from '/data/travelPostsRaw.json';
+import Breadcrumb from '/lib/Breadcrumb.js';
 
 interface Options {
 	breadcrumbRoot: Breadcrumb;

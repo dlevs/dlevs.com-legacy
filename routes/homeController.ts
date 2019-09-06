@@ -1,7 +1,7 @@
 'use strict';
 
-const { getMediaMeta } = require('../lib/mediaUtils');
-const data = require('../data/home');
+const { getMediaMeta } = require('/lib/mediaUtils');
+const data = require('/data/home');
 
 module.exports = () => ({
 	index: async (ctx) => {

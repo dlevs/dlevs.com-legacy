@@ -1,6 +1,6 @@
 'use strict';
 
-const { testControllerSnapshots, getMockControllerParams } = require('../tests/testLib/testUtils');
+const { testControllerSnapshots, getMockControllerParams } = require('/tests/testLib/testUtils');
 const sitemapController = require('./sitemapController');
 
 const sitemapControllerWithPages = sitemapController({

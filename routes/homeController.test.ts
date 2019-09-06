@@ -1,6 +1,6 @@
 'use strict';
 
-const { testControllerSnapshots } = require('../tests/testLib/testUtils');
+const { testControllerSnapshots } = require('/tests/testLib/testUtils');
 const homeController = require('./homeController')();
 
 testControllerSnapshots(homeController, {

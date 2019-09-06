@@ -6,7 +6,7 @@ const path = require('path');
 const mapValuesSeries = promisify(require('async').mapValuesSeries);
 const fs = require('fs-extra');
 const readExif = require('exif-reader');
-const { createGoogleMapsLink } = require('../lib/gpsUtils');
+const { createGoogleMapsLink } = require('/lib/gpsUtils');
 const {
 	createOutputPath,
 	createWebPath,

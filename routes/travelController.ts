@@ -1,9 +1,9 @@
 import { Context } from 'koa';
 import Router from 'koa-router';
 import findIndex from 'lodash/findIndex';
-import Breadcrumb from '../lib/Breadcrumb';
-import { getPosts } from '../data/travelPosts';
-import { getMediaMeta } from '../lib/mediaUtils';
+import Breadcrumb from '/lib/Breadcrumb';
+import { getPosts } from '/data/travelPosts';
+import { getMediaMeta } from '/lib/mediaUtils';
 
 interface Options {
 	breadcrumbRoot: Breadcrumb;

@@ -1,7 +1,7 @@
 'use strict';
 
 const mapValues = require('lodash/mapValues');
-const media = require('../data/generated/media');
+const media = require('/data/generated/media');
 const { getRevvedPath } = require('./assetUtils');
 
 exports.createImgSrcset = (...images) =>

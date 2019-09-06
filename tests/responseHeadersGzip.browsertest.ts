@@ -2,7 +2,7 @@
 
 // TODO: All these tests add an insane weight to this project. They could be covered by a generic website test lib
 
-const { getRevvedPath } = require('../lib/assetUtils');
+const { getRevvedPath } = require('/lib/assetUtils');
 const { PAGES } = require('./testLib/browserTestConstants');
 const { normalizePathToAbsolute, fetch } = require('./testLib/browserTestUtils');
 

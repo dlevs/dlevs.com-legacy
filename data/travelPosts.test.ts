@@ -1,6 +1,6 @@
 'use strict';
 
-const Breadcrumb = require('../lib/Breadcrumb');
+const Breadcrumb = require('/lib/Breadcrumb');
 const { getPosts } = require('./travelPosts');
 
 const testPosts = [

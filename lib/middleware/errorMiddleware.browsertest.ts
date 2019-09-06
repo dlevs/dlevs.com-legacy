@@ -1,8 +1,8 @@
 'use strict';
 
 const puppeteer = require('puppeteer');
-const { fetch, testUrls } = require('../../tests/testLib/browserTestUtils');
-const { ORIGIN, CREDENTIALS } = require('../../tests/testLib/browserTestConstants');
+const { fetch, testUrls } = require('/tests/testLib/browserTestUtils');
+const { ORIGIN, CREDENTIALS } = require('/tests/testLib/browserTestConstants');
 
 let browser;
 beforeAll(async (done) => {

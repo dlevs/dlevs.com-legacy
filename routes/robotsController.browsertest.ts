@@ -1,7 +1,7 @@
 'use strict';
 
-const { fetch } = require('../tests/testLib/browserTestUtils');
-const { ORIGIN } = require('../tests/testLib/browserTestConstants');
+const { fetch } = require('/tests/testLib/browserTestUtils');
+const { ORIGIN } = require('/tests/testLib/browserTestConstants');
 
 
 describe('/robots.txt', () => {

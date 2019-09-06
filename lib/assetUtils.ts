@@ -1,4 +1,4 @@
-import * as assets from '../data/generated/assets.json';
+import * as assets from '/data/generated/assets.json';
 
 type StringMap = { [key: string]: string };
 

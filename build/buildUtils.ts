@@ -6,8 +6,8 @@ const glob = promisify(require('glob'));
 const ProgressBar = require('progress');
 const mapLimit = promisify(require('async').mapLimit);
 const chalk = require('chalk');
-const { root, relativeToRoot } = require('../lib/pathUtils');
-const { toFixedTrimmed } = require('../lib/numberUtils');
+const { root, relativeToRoot } = require('/lib/pathUtils');
+const { toFixedTrimmed } = require('/lib/numberUtils');
 
 const PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
 const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');

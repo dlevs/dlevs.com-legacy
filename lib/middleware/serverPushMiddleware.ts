@@ -1,6 +1,6 @@
 'use strict';
 
-const { getRevvedPath } = require('../assetUtils');
+const { getRevvedPath } = require('/libs/assetUtils');
 
 module.exports = async (ctx, next) => {
 	await next();

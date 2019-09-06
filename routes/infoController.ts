@@ -1,7 +1,5 @@
-'use strict';
-
-const { getLastCommit } = require('../lib/gitUtils');
-const { version } = require('../package');
+import { getLastCommit } from '/lib/gitUtils';
+import { version } from '/package.json';
 
 // Get last commit data only once, on server init, so we can be sure that
 // the version of the server which is running is the one that is reported.
