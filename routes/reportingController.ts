@@ -1,12 +1,12 @@
-'use strict';
+import { Context } from 'koa';
 
-module.exports = () => ({
+export default () => ({
 	/**
 	 * Report Content Security Policy violations.
 	 *
 	 * @param {Object} ctx
 	 */
-	reportCSPViolation: (ctx) => {
+	reportCSPViolation: (ctx: Context) => {
 		if (ctx.request.body) {
 			// eslint-disable-next-line no-console
 			console.error('CSP Violation: ', ctx.request.body);

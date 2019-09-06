@@ -1,9 +1,15 @@
+import { Context } from 'koa';
 import Router from 'koa-router';
 import findIndex from 'lodash/findIndex';
+import Breadcrumb from '../lib/Breadcrumb';
 import { getPosts } from '../data/travelPosts';
 import { getMediaMeta } from '../lib/mediaUtils';
 
-module.exports = ({ breadcrumbRoot }) => {
+interface Options {
+	breadcrumbRoot: Breadcrumb;
+}
+
+export default ({ breadcrumbRoot }: Options) => {
 	const pageBreadcrumb = breadcrumbRoot.append({
 		slug: 'travel',
 		name: 'Travel',
@@ -12,7 +18,7 @@ module.exports = ({ breadcrumbRoot }) => {
 		breadcrumbRoot: pageBreadcrumb,
 	});
 	const controller = {
-		index: async (ctx) => {
+		index: async (ctx: Context) => {
 			await ctx.render('travel/travelPostListing.pug', {
 				posts,
 				breadcrumb: pageBreadcrumb,
@@ -27,7 +33,7 @@ module.exports = ({ breadcrumbRoot }) => {
 			});
 		},
 
-		renderPostsForCountry: async (ctx) => {
+		renderPostsForCountry: async (ctx: Context) => {
 			const { countrySlug } = ctx.params;
 			const index = findIndex(postsByCountry, { countrySlug });
 
@@ -57,7 +63,7 @@ module.exports = ({ breadcrumbRoot }) => {
 			});
 		},
 
-		renderPost: async (ctx) => {
+		renderPost: async (ctx: Context) => {
 			const { countrySlug, townSlug } = ctx.params;
 			const index = findIndex(posts, { countrySlug, townSlug });
 

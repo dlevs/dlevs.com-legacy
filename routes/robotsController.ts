@@ -1,11 +1,9 @@
-'use strict';
+import { Context } from 'koa';
 
 /**
- * Geneate robots text with absolute URLs.
- *
- * @param {String} origin
+ * Generate robots text with absolute URLs.
  */
-const getRobotsText = origin => `
+const getRobotsText = (origin: string) => `
 
 # Allow crawling of all content
 User-agent: *
@@ -21,7 +19,7 @@ Sitemap: ${origin}/sitemap.xml
  * it has its own route to generate this dynamically.
  */
 module.exports = () => ({
-	index: (ctx) => {
+	index: (ctx: Context) => {
 		ctx.body = getRobotsText(ctx.origin);
 	},
 });

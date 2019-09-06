@@ -12,6 +12,11 @@ interface Page {
 	posts?: Page[];
 }
 
+interface Options {
+	pages: Page[];
+	breadcrumbRoot: Breadcrumb;
+}
+
 const sortPages: (pages: Page[]) => Page[] = flow(
 	sortBy('name'),
 	map((value: Page) => {
@@ -29,10 +34,7 @@ const sortPages: (pages: Page[]) => Page[] = flow(
 export default ({
 	pages = [],
 	breadcrumbRoot,
-}: {
-	pages: Page[];
-	breadcrumbRoot: Breadcrumb;
-}) => {
+}: Options) => {
 	const sortedPages = sortPages(pages);
 	const breadcrumb = breadcrumbRoot.append({ name: 'Sitemap', slug: 'sitemap' });
 	const getRenderVariables = (ctx: Context) => ({

@@ -1,8 +1,12 @@
-// Dependencies
-//------------------------------------
-const Router = require('koa-router');
-const Breadcrumb = require('../lib/Breadcrumb');
-
+import Router from 'koa-router';
+import Breadcrumb from '../lib/Breadcrumb';
+import initHomeController from './homeController';
+import initRobotsController from './robotsController';
+import initInfoController from './infoController';
+import initReportingController from './reportingController';
+import initTravelController from './travelController';
+import initPatternLibraryController from './patternLibraryController';
+import initSitemapController from './sitemapController';
 
 // Variables
 //------------------------------------
@@ -13,13 +17,13 @@ const controllerParams = { breadcrumbRoot: new Breadcrumb([ROOT_PAGE]) };
 
 // Controllers
 //------------------------------------
-const homeController = require('./homeController')();
-const robotsController = require('./robotsController')();
-const infoController = require('./infoController')();
-const reportingController = require('./reportingController')();
-const travelController = require('./travelController')(controllerParams);
-const patternLibraryController = require('./patternLibraryController')(controllerParams);
-const sitemapController = require('./sitemapController')({
+const homeController = initHomeController();
+const robotsController = initRobotsController();
+const infoController = initInfoController();
+const reportingController = initReportingController();
+const travelController = initTravelController(controllerParams);
+const patternLibraryController = initPatternLibraryController(controllerParams);
+const sitemapController = initSitemapController({
 	...controllerParams,
 	pages: [
 		ROOT_PAGE,
@@ -27,7 +31,6 @@ const sitemapController = require('./sitemapController')({
 		patternLibraryController.sitemap,
 	],
 });
-
 
 // Routes
 //------------------------------------

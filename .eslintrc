@@ -13,6 +13,7 @@
 		"no-tabs": "off",
 		"no-plusplus": "off",
 		"function-paren-newline": "off",
+		"implicit-arrow-linebreak": "off",
 		"import/no-extraneous-dependencies": ["error", {
 			"devDependencies": [
 				"**/*.test.js",
@@ -24,6 +25,7 @@
 		}],
 		"import/extensions": "off",
 		"import/no-unresolved": "off",
+		"import/no-absolute-path": "off",
 		"import/prefer-default-export": "off",
 		"@typescript-eslint/indent": ["error", "tab"],
 		"@typescript-eslint/explicit-function-return-type": "off"

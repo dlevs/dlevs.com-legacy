@@ -1,21 +1,24 @@
-'use strict';
+import { Context } from 'koa';
+import { basename } from 'path';
+import glob from 'glob';
+import startCase from 'lodash/startCase';
+import camelCase from 'lodash/camelCase';
+import Router from 'koa-router';
+import { root } from '/lib/pathUtils';
+import Breadcrumb from '/lib/Breadcrumb';
 
-const glob = require('glob');
-const Router = require('koa-router');
-const { basename } = require('path');
-const { root } = require('../lib/pathUtils');
-const startCase = require('lodash/startCase');
-const camelCase = require('lodash/camelCase');
-
+interface Options {
+	breadcrumbRoot: Breadcrumb;
+}
 
 // TODO: This controller essentially serves static pug files.
 // This can be turned into a reusable function.
-module.exports = ({ breadcrumbRoot }) => {
+export default ({ breadcrumbRoot }: Options) => {
 	const pageBreadcrumb = breadcrumbRoot.append({
 		slug: 'pattern-library',
 		name: 'Pattern Library',
 	});
-	const serve = async (ctx) => {
+	const serve = async (ctx: Context) => {
 		const { slug = 'index' } = ctx.params;
 		let title = 'Pattern Library';
 		let breadcrumb = pageBreadcrumb;

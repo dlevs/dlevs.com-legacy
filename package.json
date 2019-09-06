@@ -51,7 +51,7 @@
 		"query-string": "^6.1.0",
 		"ramda": "0.26.1",
 		"ts-node": "8.3.0",
-		"typescript": "3.5.3"
+		"typescript": "3.6.2"
 	},
 	"devDependencies": {
 		"@types/classnames": "2.2.9",
@@ -59,8 +59,8 @@
 		"@types/koa-router": "7.0.42",
 		"@types/lodash": "4.14.138",
 		"@types/ramda": "0.26.21",
-		"@typescript-eslint/eslint-plugin": "2.0.0",
-		"@typescript-eslint/parser": "2.0.0",
+		"@typescript-eslint/eslint-plugin": "2.1.0",
+		"@typescript-eslint/parser": "2.1.0",
 		"async": "^2.6.1",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.4",
@@ -70,9 +70,9 @@
 		"chalk": "^2.4.1",
 		"cssnano": "^3.10.0",
 		"eslint": "6.3.0",
-		"eslint-config-airbnb-base": "^12.1.0",
-		"eslint-plugin-compat": "^2.3.0",
-		"eslint-plugin-import": "^2.12.0",
+		"eslint-config-airbnb-base": "14.0.0",
+		"eslint-plugin-compat": "3.3.0",
+		"eslint-plugin-import": "2.18.2",
 		"exif-reader": "^1.0.2",
 		"fetch-cookie": "^0.7.0",
 		"hashlink": "0.0.1",
