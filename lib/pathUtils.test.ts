@@ -1,6 +1,6 @@
 'use strict';
 
-const { root, relativeToRoot } = require('./pathUtils');
+import { root, relativeToRoot } from './pathUtils';
 
 describe('root()', () => {
 	test('returns an absolute path', () => {

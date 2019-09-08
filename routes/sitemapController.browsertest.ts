@@ -1,9 +1,9 @@
 'use strict';
 
-const puppeteer = require('puppeteer');
-const uniqBy = require('lodash/uniqBy');
-const { fetch, eachLimited } = require('/tests/testLib/browserTestUtils');
-const { ORIGIN, CREDENTIALS } = require('/tests/testLib/browserTestConstants');
+import puppeteer from 'puppeteer';
+import uniqBy from 'lodash/uniqBy';
+import { fetch, eachLimited } from '/tests/testLib/browserTestUtils';
+import { ORIGIN, CREDENTIALS } from '/tests/testLib/browserTestConstants';
 
 const imageUrlRegex = /\.(jpg|png)$/;
 

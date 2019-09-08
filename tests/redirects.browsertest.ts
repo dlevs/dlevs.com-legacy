@@ -1,7 +1,7 @@
 'use strict';
 
-const { fetch } = require('./testLib/browserTestUtils');
-const { HOSTNAME, ORIGIN } = require('./testLib/browserTestConstants');
+import { fetch } from './testLib/browserTestUtils';
+import { HOSTNAME, ORIGIN } from './testLib/browserTestConstants';
 
 
 describe('Redirects', () => {

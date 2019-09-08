@@ -1,6 +1,6 @@
 'use strict';
 
-const { STATUS_CODES } = require('http');
+import { STATUS_CODES } from 'http';
 
 export default async (ctx, next) => {
 	try {

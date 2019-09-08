@@ -1,13 +1,13 @@
 'use strict';
 
-const { promisify } = require('util');
-const fs = require('fs-extra');
+import { promisify } from 'util';
+import fs from 'fs-extra';
 const glob = promisify(require('glob'));
-const ProgressBar = require('progress');
+import ProgressBar from 'progress';
 const mapLimit = promisify(require('async').mapLimit);
-const chalk = require('chalk');
-const { root, relativeToRoot } = require('/lib/pathUtils');
-const { toFixedTrimmed } = require('/lib/numberUtils');
+import chalk from 'chalk';
+import { root, relativeToRoot } from '/lib/pathUtils';
+import { toFixedTrimmed } from '/lib/numberUtils';
 
 const PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
 const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');

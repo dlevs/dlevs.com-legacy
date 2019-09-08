@@ -1,7 +1,7 @@
 'use strict';
 
-const { testControllerSnapshots } = require('/tests/testLib/testUtils');
-const homeController = require('./homeController')();
+import { testControllerSnapshots } from '/tests/testLib/testUtils';
+import homeController from './homeController'();
 
 testControllerSnapshots(homeController, {
 	index: {

@@ -1,7 +1,7 @@
 'use strict';
 
-const { expandOpenGraphMeta } = require('./metaUtils');
-const { getMediaMeta } = require('./mediaUtils');
+import { expandOpenGraphMeta } from './metaUtils';
+import { getMediaMeta } from './mediaUtils';
 
 describe('expandOpenGraphMeta()', () => {
 	test('basic functionality', () => {

@@ -1,6 +1,6 @@
 'use strict';
 
-const helmet = require('koa-helmet');
+import helmet from 'koa-helmet';
 
 export default helmet({
 	contentSecurityPolicy: {

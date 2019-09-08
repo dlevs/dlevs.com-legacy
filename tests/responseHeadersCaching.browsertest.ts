@@ -1,7 +1,7 @@
 'use strict';
 
-const { getRevvedPath } = require('/lib/assetUtils');
-const { normalizePathToAbsolute, fetch } = require('./testLib/browserTestUtils');
+import { getRevvedPath } from '/lib/assetUtils';
+import { normalizePathToAbsolute, fetch } from './testLib/browserTestUtils';
 const {
 	PAGES,
 	MIN_STATIC_MAX_AGE,

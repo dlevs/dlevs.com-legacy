@@ -1,6 +1,6 @@
 'use strict';
 
-// const { getLastCommit } = require('./gitUtils');
+// import { getLastCommit } from './gitUtils';
 
 // let lastCommit;
 

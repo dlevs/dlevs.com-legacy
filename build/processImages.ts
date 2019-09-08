@@ -1,12 +1,12 @@
 'use strict';
 
-const { promisify } = require('util');
-const sharp = require('sharp');
-const path = require('path');
+import { promisify } from 'util';
+import sharp from 'sharp';
+import path from 'path';
 const mapValuesSeries = promisify(require('async').mapValuesSeries);
-const fs = require('fs-extra');
-const readExif = require('exif-reader');
-const { createGoogleMapsLink } = require('/lib/gpsUtils');
+import fs from 'fs-extra';
+import readExif from 'exif-reader';
+import { createGoogleMapsLink } from '/lib/gpsUtils';
 const {
 	createOutputPath,
 	createWebPath,

@@ -1,8 +1,8 @@
 'use strict';
 
-const puppeteer = require('puppeteer');
-const { PAGES, CREDENTIALS, ORIGIN } = require('./testLib/browserTestConstants');
-const { scrollPage } = require('./testLib/browserTestUtils');
+import puppeteer from 'puppeteer';
+import { PAGES, CREDENTIALS, ORIGIN } from './testLib/browserTestConstants';
+import { scrollPage } from './testLib/browserTestUtils';
 
 
 let browser;

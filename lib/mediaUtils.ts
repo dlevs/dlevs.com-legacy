@@ -1,8 +1,8 @@
 'use strict';
 
-const mapValues = require('lodash/mapValues');
-const media = require('/data/generated/media');
-const { getRevvedPath } = require('./assetUtils');
+import mapValues from 'lodash/mapValues';
+import media from '/data/generated/media.json';
+import { getRevvedPath } from './assetUtils';
 
 export const createImgSrcset = (...images) =>
 	images.map(({ src, width }) => `${src} ${width}w`).join(', ');

@@ -1,6 +1,6 @@
 'use strict';
 
-const { getRevvedPath } = require('./assetUtils');
+import { getRevvedPath } from './assetUtils';
 
 console.error = jest.fn();
 

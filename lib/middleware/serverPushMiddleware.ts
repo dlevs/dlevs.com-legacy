@@ -1,6 +1,6 @@
 'use strict';
 
-const { getRevvedPath } = require('/libs/assetUtils');
+import { getRevvedPath } from '/libs/assetUtils';
 
 export default async (ctx, next) => {
 	await next();

@@ -7,7 +7,7 @@
 // webpack --config <path-to-this-file>
 
 // TODO: load .env here?
-const { root } = require('/lib/pathUtils');
+import { root } from '/lib/pathUtils';
 
 const isDebug = process.env.NODE_ENV !== 'production';
 

@@ -1,8 +1,8 @@
 'use strict';
 
-const { PAGES } = require('./testLib/browserTestConstants');
-const { fetch } = require('./testLib/browserTestUtils');
-const validator = require('html-validator');
+import { PAGES } from './testLib/browserTestConstants';
+import { fetch } from './testLib/browserTestUtils';
+import validator from 'html-validator';
 
 describe('HTML validation', () => {
 	PAGES.UNIQUE.forEach((url) => {

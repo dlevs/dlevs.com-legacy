@@ -1,6 +1,6 @@
 'use strict';
 
-const { getCanonicalUrl, getShareUrl } = require('./urlUtils');
+import { getCanonicalUrl, getShareUrl } from './urlUtils';
 
 const urlFormatterTests = (fn) => {
 	test('strips trailing slash', () => {

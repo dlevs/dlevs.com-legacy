@@ -6,7 +6,7 @@
  * The cached page will load quicker if the user decides to click.
  */
 
-const { fetch, hasExtension, wasRecentlyTouched } = require('./utils');
+import { fetch, hasExtension, wasRecentlyTouched } from './utils';
 
 const init = () => {
 	let lastLink;

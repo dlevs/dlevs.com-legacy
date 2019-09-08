@@ -1,7 +1,7 @@
 'use strict';
 
-const each = require('lodash/each');
-const Breadcrumb = require('/lib/Breadcrumb');
+import each from 'lodash/each';
+import Breadcrumb from '/lib/Breadcrumb';
 
 /**
  * Execute a controller using mock data.

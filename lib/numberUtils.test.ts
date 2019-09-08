@@ -1,6 +1,6 @@
 'use strict';
 
-const { toFixedTrimmed } = require('./numberUtils');
+import { toFixedTrimmed } from './numberUtils';
 
 describe('toFixedTrimmed()', () => {
 	test('precision works', () => {

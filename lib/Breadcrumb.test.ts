@@ -1,6 +1,6 @@
 'use strict';
 
-const Breadcrumb = require('./Breadcrumb');
+import Breadcrumb from './Breadcrumb';
 
 const breadcrumb = new Breadcrumb([
 	{ name: 'Home', slug: '' },

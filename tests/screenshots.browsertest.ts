@@ -2,9 +2,9 @@
 
 require('./testLib/browserTestSetup');
 
-const puppeteer = require('puppeteer');
-const { SCREENSHOT_CONFIG, CREDENTIALS } = require('./testLib/browserTestConstants');
-const { scrollPage } = require('./testLib/browserTestUtils');
+import puppeteer from 'puppeteer';
+import { SCREENSHOT_CONFIG, CREDENTIALS } from './testLib/browserTestConstants';
+import { scrollPage } from './testLib/browserTestUtils';
 
 let browser;
 beforeAll(async (done) => {

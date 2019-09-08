@@ -1,7 +1,7 @@
 'use strict';
 
-const isEqual = require('lodash/isEqual');
-const { immutableExtend } = require('./objectUtils');
+import isEqual from 'lodash/isEqual';
+import { immutableExtend } from './objectUtils';
 
 describe('immutableExtend()', () => {
 	const getObjects = () => ({

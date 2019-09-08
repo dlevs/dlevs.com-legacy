@@ -1,7 +1,7 @@
 'use strict';
 
-const { testControllerSnapshots, getMockControllerParams } = require('/tests/testLib/testUtils');
-const travelController = require('./travelController')(getMockControllerParams());
+import { testControllerSnapshots, getMockControllerParams } from '/tests/testLib/testUtils';
+import travelController from './travelController'(getMockControllerParams());
 
 const renderPostsForCountryCtx = {
 	params: {

@@ -1,9 +1,9 @@
 'use strict';
 
-const flow = require('lodash/flow');
-const unset = require('lodash/fp/unset');
-const { testControllerSnapshots } = require('/tests/testLib/testUtils');
-const infoController = require('./infoController')();
+import flow from 'lodash/flow';
+import unset from 'lodash/fp/unset';
+import { testControllerSnapshots } from '/tests/testLib/testUtils';
+import infoController from './infoController'();
 
 testControllerSnapshots(infoController, {
 	index: {

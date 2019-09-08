@@ -1,7 +1,7 @@
 'use strict';
 
-const Breadcrumb = require('/lib/Breadcrumb');
-const { getPosts } = require('./travelPosts');
+import Breadcrumb from '/lib/Breadcrumb';
+import { getPosts } from './travelPosts';
 
 const testPosts = [
 	{

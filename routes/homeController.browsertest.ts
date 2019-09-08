@@ -1,7 +1,7 @@
 'use strict';
 
-const { fetch } = require('/tests/testLib/browserTestUtils');
-const { ORIGIN } = require('/tests/testLib/browserTestConstants');
+import { fetch } from '/tests/testLib/browserTestUtils';
+import { ORIGIN } from '/tests/testLib/browserTestConstants';
 
 describe('Homepage', () => {
 	test('server responds with OK status', async () => {

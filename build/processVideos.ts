@@ -1,8 +1,8 @@
 'use strict';
 
-const { promisify } = require('util');
-const ffmpeg = require('fluent-ffmpeg');
-const mapValues = require('lodash/mapValues');
+import { promisify } from 'util';
+import ffmpeg from 'fluent-ffmpeg';
+import mapValues from 'lodash/mapValues';
 const {
 	createOutputPath,
 	createWebPath,

@@ -1,6 +1,6 @@
 'use strict';
 
-const { getCanonicalUrl } = require('/libs/urlUtils');
+import { getCanonicalUrl } from '/libs/urlUtils';
 
 export default (ctx, next) => {
 	// Properties of ctx.state are available as a globals in pug templates.

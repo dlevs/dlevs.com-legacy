@@ -1,7 +1,7 @@
 'use strict';
 
-const { testControllerSnapshots } = require('/tests/testLib/testUtils');
-const robotsController = require('./robotsController')();
+import { testControllerSnapshots } from '/tests/testLib/testUtils';
+import robotsController from './robotsController'();
 
 testControllerSnapshots(robotsController, {
 	index: { contexts: [{}] },

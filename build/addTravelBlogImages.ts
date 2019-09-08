@@ -15,15 +15,15 @@
 
 // Dependencies
 //------------------------------------
-const { promisify } = require('util');
-const capitalize = require('lodash/capitalize');
-const fs = require('fs-extra');
-const path = require('path');
+import { promisify } from 'util';
+import capitalize from 'lodash/capitalize';
+import fs from 'fs-extra';
+import path from 'path';
 const glob = promisify(require('glob'));
-const readExif = require('exif-reader');
-const sharp = require('sharp');
-const moment = require('moment');
-const { createWebPath } = require('./buildUtils');
+import readExif from 'exif-reader';
+import sharp from 'sharp';
+import moment from 'moment';
+import { createWebPath } from './buildUtils';
 
 
 // Functions
@@ -60,7 +60,7 @@ const getImagesDataForDirectory = async (dirpath) => {
 
 const addImages = async (sourceFilepath, newImageDirectories) => {
 	const newEntries = await Promise.all(newImageDirectories.map(getImagesDataForDirectory));
-	const existingEntries = require(sourceFilepath); // eslint-disable-line
+	import existingEntries from sourceFilepath; // eslint-disable-line
 	const combinedEntries = [
 		...newEntries,
 		...existingEntries,

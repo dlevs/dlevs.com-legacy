@@ -1,6 +1,6 @@
-// const fs = require('fs-extra');
-// const path = require('path');
-// const { exec } = require('child-process-promise');
+// import fs from 'fs-extra';
+// import path from 'path';
+// import { exec } from 'child-process-promise';
 
 /**
  * Get data about the last commit in this repository.

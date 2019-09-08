@@ -1,7 +1,7 @@
 'use strict';
 
-const assert = require('assert');
-const mapValues = require('lodash/mapValues');
+import assert from 'assert';
+import mapValues from 'lodash/mapValues';
 
 assert(
 	process.env.TEST_HOSTNAME,

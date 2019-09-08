@@ -1,10 +1,10 @@
 'use strict';
 
-const { root } = require('/lib/pathUtils');
-const { addMedia } = require('./buildUtils');
-const processVideos = require('./processVideos');
-const processImages = require('./processImages');
-const processSvgs = require('./processSvgs');
+import { root } from '/lib/pathUtils';
+import { addMedia } from './buildUtils';
+import processVideos from './processVideos';
+import processImages from './processImages';
+import processSvgs from './processSvgs';
 
 const createMediaGlob = pattern =>
 	root('./publicSrc/process/media', pattern);

@@ -1,6 +1,6 @@
 'use strict';
 
-const { createImgSrcset, getMediaMeta } = require('./mediaUtils');
+import { createImgSrcset, getMediaMeta } from './mediaUtils';
 
 console.error = jest.fn();
 

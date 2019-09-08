@@ -1,8 +1,8 @@
 'use strict';
 
-const path = require('path');
-const { toMatchImageSnapshot } = require('jest-image-snapshot');
-const { HOSTNAME } = require('./browserTestConstants');
+import path from 'path';
+import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import { HOSTNAME } from './browserTestConstants';
 
 function toMatchImageSnapshotModified(received, options, ...args) {
 	return toMatchImageSnapshot.call(

@@ -1,10 +1,10 @@
 'use strict';
 
-const { promisify } = require('util');
-const tough = require('tough-cookie');
-const rawFetch = require('node-fetch');
+import { promisify } from 'util';
+import tough from 'tough-cookie';
+import rawFetch from 'node-fetch';
 const eachLimit = promisify(require('async').eachLimit);
-const { ORIGIN, HOSTNAME, AUTH_HEADER } = require('./browserTestConstants');
+import { ORIGIN, HOSTNAME, AUTH_HEADER } from './browserTestConstants';
 
 /**
  * When testing external links, some set cookies in redirects. node-fetch
@@ -15,7 +15,7 @@ const { ORIGIN, HOSTNAME, AUTH_HEADER } = require('./browserTestConstants');
  * @param {String} url
  * @param {Object} [options]
  */
-const externalFetch = require('fetch-cookie/node-fetch')(
+import externalFetch from 'fetch-cookie/node-fetch'(
 	rawFetch,
 	new tough.CookieJar(undefined, {
 		rejectPublicSuffixes: false,

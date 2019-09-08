@@ -1,9 +1,9 @@
 'use strict';
 
-const fs = require('fs-extra');
-const path = require('path');
-const Svgo = require('svgo');
-const { createOutputPath, createWebPath } = require('./buildUtils');
+import fs from 'fs-extra';
+import path from 'path';
+import Svgo from 'svgo';
+import { createOutputPath, createWebPath } from './buildUtils';
 
 const svgo = new Svgo();
 

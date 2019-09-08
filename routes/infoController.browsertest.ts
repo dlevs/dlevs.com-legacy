@@ -1,9 +1,9 @@
 'use strict';
 
-const { delay } = require('bluebird');
-const { fetch } = require('/tests/testLib/browserTestUtils');
-const { ORIGIN } = require('/tests/testLib/browserTestConstants');
-const { version, engines } = require('/package');
+import { delay } from 'bluebird';
+import { fetch } from '/tests/testLib/browserTestUtils';
+import { ORIGIN } from '/tests/testLib/browserTestConstants';
+import { version, engines } from '/package';
 
 let response;
 let info;
