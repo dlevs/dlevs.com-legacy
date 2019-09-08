@@ -6,9 +6,10 @@ const redirects: StringMap = {
 };
 
 const redirect: Middleware = async (ctx, next) => {
-	if (redirects[ctx.path]) {
+	const redirectPath = redirects[ctx.path];
+	if (redirectPath) {
 		ctx.status = 301;
-		ctx.redirect(redirects[ctx.path]);
+		ctx.redirect(redirectPath);
 	} else {
 		await next();
 	}

@@ -1,17 +1,15 @@
-'use strict';
-
 import { promisify } from 'util';
 import sharp from 'sharp';
 import path from 'path';
-const mapValuesSeries = promisify(require('async').mapValuesSeries);
 import fs from 'fs-extra';
 import readExif from 'exif-reader';
 import { createGoogleMapsLink } from '@root/lib/gpsUtils';
-const {
+import {
 	createOutputPath,
 	createWebPath,
 	getPaddingBottom,
-} = require('./buildUtils');
+} from './buildUtils';
+const mapValuesSeries = promisify(require('async').mapValuesSeries);
 
 const QUALITY = 80;
 const SIZE_MEDIUM = [960];

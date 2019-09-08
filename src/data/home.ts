@@ -1,6 +1,7 @@
 import { Person, WebSite, Thing } from 'schema-dts';
 import { SITE_NAME } from '@root/lib/constants';
 import { getMediaMeta } from '@root/lib/mediaUtils';
+import { StringMap } from '@root/lib/types';
 import technologies from './technologies';
 
 const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';
@@ -10,7 +11,8 @@ const selfImage = getMediaMeta('/media/misc/self.jpg');
 interface PageMeta {
 	title: string;
 	description: string;
-	og: og.Metadata;
+	// TODO: Type og metadate better
+	og: StringMap;
 	jsonLd: Thing[];
 }
 
