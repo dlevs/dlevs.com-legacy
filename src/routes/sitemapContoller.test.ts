@@ -1,4 +1,4 @@
-import { testControllerSnapshots, getMockControllerParams } from '/tests/testLib/testUtils';
+import { testControllerSnapshots, getMockControllerParams } from '@root/tests/testLib/testUtils';
 import sitemapController from './sitemapController';
 
 const sitemapControllerWithPages = sitemapController({

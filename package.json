@@ -4,7 +4,7 @@
 	"description": "Source code for https://dlevs.com/",
 	"main": "src/index.ts",
 	"scripts": {
-		"start": "ts-node src/index.ts",
+		"start": "node -r ts-node/register -r tsconfig-paths/register src/index.ts",
 		"start:watch": "nodemon --ignore publicSrc/ --ignore public/ --exec 'npm start'",
 		"dev": "npm run build:styles -- --w & npm run build:scripts -- -w & npm run start:watch",
 		"build": "npm run build:copypublic && npm run build:scripts && npm run build:styles && npm run build:media && npm run build:manifest && npm run build:testcoverage",
@@ -99,6 +99,7 @@
 		"stylelint-order": "^0.8.1",
 		"svgo": "^1.0.5",
 		"tough-cookie": "^2.4.2",
+		"tsconfig-paths": "3.8.0",
 		"webpack": "^4.12.0",
 		"webpack-cli": "^3.0.3"
 	},

@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import Breadcrumb from '/lib/Breadcrumb';
+import Breadcrumb from '@root/lib/Breadcrumb';
 import initHomeController from './homeController';
 import initRobotsController from './robotsController';
 import initInfoController from './infoController';

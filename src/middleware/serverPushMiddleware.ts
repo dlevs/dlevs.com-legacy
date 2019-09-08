@@ -1,5 +1,5 @@
-import { getRevvedPath } from '/lib/assetUtils';
-import { KoaMiddlewareFn } from '/lib/types';
+import { getRevvedPath } from '@root/lib/assetUtils';
+import { KoaMiddlewareFn } from '@root/lib/types';
 
 const serverPushMiddleware: KoaMiddlewareFn = async (ctx, next) => {
 	await next();

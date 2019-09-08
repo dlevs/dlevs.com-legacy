@@ -1,4 +1,4 @@
-import { KoaMiddlewareFn, StringMap } from '/lib/types';
+import { KoaMiddlewareFn, StringMap } from '@root/lib/types';
 
 const redirects: StringMap = {
 	'/coverage': '/coverage/index.html',

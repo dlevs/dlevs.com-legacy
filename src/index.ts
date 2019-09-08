@@ -1,20 +1,19 @@
 // TODO: Sort docker-compose local dev. docker provides these variables too. Do in one place
 // require('dotenv').config();
-
 import path from 'path';
 import Koa from 'koa';
-// import serve from 'koa-static'); // TODO: Uninstal
+// import serve from 'koa-static'); // TODO: Uninstall
 import views from 'koa-views';
 // import slash from 'koa-slash';
 import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
-import errorMiddleware from './lib/middleware/errorMiddleware';
-import redirectMiddleware from './lib/middleware/redirectMiddleware';
-import serverPushMiddleware from './lib/middleware/serverPushMiddleware';
-import securityHeadersMiddleware from './lib/middleware/securityHeadersMiddleware';
-import setCtxStateMiddleware from './lib/middleware/setCtxStateMiddleware';
-import router from './routes';
-import viewGlobals from './lib/viewGlobals';
+import errorMiddleware from '@root/middleware/errorMiddleware';
+import redirectMiddleware from '@root/middleware/redirectMiddleware';
+import serverPushMiddleware from '@root/middleware/serverPushMiddleware';
+import securityHeadersMiddleware from '@root/middleware/securityHeadersMiddleware';
+import setCtxStateMiddleware from '@root/middleware/setCtxStateMiddleware';
+import router from '@root/routes';
+import viewGlobals from '@root/lib/viewGlobals';
 
 const app = new Koa();
 

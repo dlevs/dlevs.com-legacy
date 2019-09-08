@@ -1,6 +1,6 @@
 'use strict';
 
-import { getRevvedPath } from '/lib/assetUtils';
+import { getRevvedPath } from '@root/lib/assetUtils';
 import { normalizePathToAbsolute, fetch } from './testLib/browserTestUtils';
 const {
 	PAGES,

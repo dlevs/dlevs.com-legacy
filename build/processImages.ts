@@ -6,7 +6,7 @@ import path from 'path';
 const mapValuesSeries = promisify(require('async').mapValuesSeries);
 import fs from 'fs-extra';
 import readExif from 'exif-reader';
-import { createGoogleMapsLink } from '/lib/gpsUtils';
+import { createGoogleMapsLink } from '@root/lib/gpsUtils';
 const {
 	createOutputPath,
 	createWebPath,

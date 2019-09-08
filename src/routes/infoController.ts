@@ -1,5 +1,6 @@
-import { getLastCommit } from '/lib/gitUtils';
-import { version } from '/package.json';
+import { Context } from 'koa';
+import { getLastCommit } from '@root/lib/gitUtils';
+import { version } from '@root/../package.json';
 
 // Get last commit data only once, on server init, so we can be sure that
 // the version of the server which is running is the one that is reported.
@@ -7,7 +8,7 @@ const lastCommitPromise = getLastCommit();
 const serverStartDate = new Date().toString();
 
 export default () => ({
-	index: async (ctx) => {
+	index: async (ctx: Context) => {
 		ctx.body = {
 			appVersion: version,
 			nodeVersion: process.version,

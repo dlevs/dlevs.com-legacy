@@ -2,7 +2,7 @@
 
 // TODO: All these tests add an insane weight to this project. They could be covered by a generic website test lib
 
-import { getRevvedPath } from '/lib/assetUtils';
+import { getRevvedPath } from '@root/lib/assetUtils';
 import { PAGES } from './testLib/browserTestConstants';
 import { normalizePathToAbsolute, fetch } from './testLib/browserTestUtils';
 

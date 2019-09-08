@@ -1,5 +1,5 @@
-import { getCanonicalUrl } from '/lib/urlUtils';
-import { KoaMiddlewareFn } from '/lib/types';
+import { getCanonicalUrl } from '@root/lib/urlUtils';
+import { KoaMiddlewareFn } from '@root/lib/types';
 
 const setCtxStateMiddleware: KoaMiddlewareFn = (ctx, next) => {
 	// Properties of ctx.state are available as a globals in pug templates.

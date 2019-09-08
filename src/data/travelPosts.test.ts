@@ -1,4 +1,4 @@
-import Breadcrumb from '/lib/Breadcrumb';
+import Breadcrumb from '@root/lib/Breadcrumb';
 import { getPosts } from './travelPosts';
 
 const testPosts = [

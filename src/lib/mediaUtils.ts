@@ -1,5 +1,5 @@
 import mapValues from 'lodash/mapValues';
-import media from '/data/generated/media.json';
+import media from '@root/data/generated/media.json';
 import { getRevvedPath } from './assetUtils';
 
 export const createImgSrcset = (...images) =>

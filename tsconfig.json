@@ -3,14 +3,11 @@
     "outDir": "dist",
     "target": "esnext",
     "strict": true,
-	"module": "commonjs",
-	"moduleResolution": "node",
-	"resolveJsonModule": true,
-	"allowSyntheticDefaultImports": true,
-    "lib": [
-	  "esnext",
-	  "dom"
-    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["esnext", "dom"],
     "sourceMap": true,
     "pretty": true,
     "newLine": "lf",
@@ -20,16 +17,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
-	"forceConsistentCasingInFileNames": true,
-	"allowJs": true,
-	"baseUrl": "src",
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "baseUrl": ".",
     "paths": {
-	  "/*": ["*"]
+      "@root/*": ["src/*"]
     }
   },
-  "include": [
-    "**/*"
-  ],
+  "include": ["src"],
   "exclude": [
     "**/*.test.ts",
     "node_modules"

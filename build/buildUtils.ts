@@ -6,8 +6,8 @@ const glob = promisify(require('glob'));
 import ProgressBar from 'progress';
 const mapLimit = promisify(require('async').mapLimit);
 import chalk from 'chalk';
-import { root, relativeToRoot } from '/lib/pathUtils';
-import { toFixedTrimmed } from '/lib/numberUtils';
+import { root, relativeToRoot } from '@root/lib/pathUtils';
+import { toFixedTrimmed } from '@root/lib/numberUtils';
 
 const PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
 const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');

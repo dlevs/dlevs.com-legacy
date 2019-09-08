@@ -3,7 +3,7 @@ import Router from 'koa-router';
 import flow from 'lodash/flow';
 import sortBy from 'lodash/fp/sortBy';
 import map from 'lodash/fp/map';
-import Breadcrumb from '/lib/Breadcrumb';
+import Breadcrumb from '@root/lib/Breadcrumb';
 
 // TODO: Move
 interface Page {

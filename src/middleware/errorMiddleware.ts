@@ -1,5 +1,5 @@
 import { STATUS_CODES } from 'http';
-import { KoaMiddlewareFn } from '/lib/types';
+import { KoaMiddlewareFn } from '@root/lib/types';
 
 const errorMiddleware: KoaMiddlewareFn = async (ctx, next) => {
 	try {

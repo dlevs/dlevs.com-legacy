@@ -1,6 +1,6 @@
 import { Context } from 'koa';
-import { getMediaMeta } from '/lib/mediaUtils';
-import data from '/data/home';
+import { getMediaMeta } from '@root/lib/mediaUtils';
+import data from '@root/data/home';
 
 export default () => ({
 	index: async (ctx: Context) => {

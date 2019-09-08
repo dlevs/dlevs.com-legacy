@@ -2,7 +2,7 @@
 
 import flow from 'lodash/flow';
 import unset from 'lodash/fp/unset';
-import { testControllerSnapshots } from '/tests/testLib/testUtils';
+import { testControllerSnapshots } from '@root/tests/testLib/testUtils';
 import infoController from './infoController'();
 
 testControllerSnapshots(infoController, {

@@ -1,5 +1,5 @@
-import { SITE_NAME } from '/lib/constants';
-import { getMediaMeta } from '/lib/mediaUtils';
+import { SITE_NAME } from '@root/lib/constants';
+import { getMediaMeta } from '@root/lib/mediaUtils';
 import technologies from './technologies';
 
 const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';

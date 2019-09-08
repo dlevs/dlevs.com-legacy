@@ -1,7 +1,7 @@
 'use strict';
 
 import each from 'lodash/each';
-import Breadcrumb from '/lib/Breadcrumb';
+import Breadcrumb from '@root/lib/Breadcrumb';
 
 /**
  * Execute a controller using mock data.

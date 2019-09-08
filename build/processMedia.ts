@@ -1,6 +1,6 @@
 'use strict';
 
-import { root } from '/lib/pathUtils';
+import { root } from '@root/lib/pathUtils';
 import { addMedia } from './buildUtils';
 import processVideos from './processVideos';
 import processImages from './processImages';
