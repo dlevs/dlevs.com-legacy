@@ -1,5 +1,3 @@
-'use strict';
-
 import { expandOpenGraphMeta } from './metaUtils';
 import { getMediaMeta } from './mediaUtils';
 

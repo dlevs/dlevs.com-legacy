@@ -1,5 +1,3 @@
-'use strict';
-
 import puppeteer from 'puppeteer';
 import { fetch, testUrls } from '/tests/testLib/browserTestUtils';
 import { ORIGIN, CREDENTIALS } from '/tests/testLib/browserTestConstants';
@@ -14,7 +12,6 @@ afterAll(async (done) => {
 	done();
 });
 
-
 describe('404 page', () => {
 	const paths = [
 		'/non-existent-page',
@@ -23,7 +20,7 @@ describe('404 page', () => {
 		// Custom error page should show here too.
 		'/travel/non-existent-page',
 	];
-	const urls = paths.map(path => `${ORIGIN}${path}`);
+	const urls = paths.map((path) => `${ORIGIN}${path}`);
 
 	testUrls(urls, {
 		'has correct status code': async (url) => {

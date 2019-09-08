@@ -58,7 +58,7 @@ const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
 			},
 		]);
 		const datePublished = post.datePublished || post.date;
-		const images = post.images.map(image => ({
+		const images = post.images.map((image) => ({
 			...image,
 			geoLocation: `${post.town}, ${post.country}`,
 		}));
@@ -107,7 +107,7 @@ const groupPostsByCountry = ({ breadcrumbRoot }: Options) => R.pipe(
 			images,
 			mainImage: images[0],
 		};
-	})
+	}),
 );
 
 /**

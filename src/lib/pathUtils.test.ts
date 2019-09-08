@@ -1,5 +1,3 @@
-'use strict';
-
 import { root, relativeToRoot } from './pathUtils';
 
 describe('root()', () => {

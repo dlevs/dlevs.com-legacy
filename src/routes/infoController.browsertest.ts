@@ -1,5 +1,3 @@
-'use strict';
-
 import { delay } from 'bluebird';
 import { fetch } from '/tests/testLib/browserTestUtils';
 import { ORIGIN } from '/tests/testLib/browserTestConstants';
@@ -8,13 +6,11 @@ import { version, engines } from '/package';
 let response;
 let info;
 
-
 beforeAll(async (done) => {
 	response = await fetch(`${ORIGIN}/info.json`);
 	info = await response.json();
 	done();
 });
-
 
 describe('/info.json', () => {
 	test('response has correct MIME type', () => {

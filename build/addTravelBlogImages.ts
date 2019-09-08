@@ -1,5 +1,3 @@
-'use strict';
-
 /* This script adds new blog entries to the travel blog JSON.
  *
  * It adds filepaths for all images found in the directories provided,

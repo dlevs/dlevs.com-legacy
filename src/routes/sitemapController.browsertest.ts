@@ -1,5 +1,3 @@
-'use strict';
-
 import puppeteer from 'puppeteer';
 import uniqBy from 'lodash/uniqBy';
 import { fetch, eachLimited } from '/tests/testLib/browserTestUtils';

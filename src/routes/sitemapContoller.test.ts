@@ -1,5 +1,3 @@
-'use strict';
-
 import { testControllerSnapshots, getMockControllerParams } from '/tests/testLib/testUtils';
 import sitemapController from './sitemapController';
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import Breadcrumb from './Breadcrumb';
 
 const breadcrumb = new Breadcrumb([

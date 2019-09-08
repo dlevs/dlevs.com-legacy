@@ -1,5 +1,3 @@
-'use strict';
-
 import { toFixedTrimmed } from './numberUtils';
 
 describe('toFixedTrimmed()', () => {

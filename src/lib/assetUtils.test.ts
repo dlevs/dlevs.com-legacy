@@ -1,5 +1,3 @@
-'use strict';
-
 import { getRevvedPath } from './assetUtils';
 
 console.error = jest.fn();

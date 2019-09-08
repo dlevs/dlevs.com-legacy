@@ -1,5 +1,3 @@
-'use strict';
-
 import isEqual from 'lodash/isEqual';
 import { immutableExtend } from './objectUtils';
 

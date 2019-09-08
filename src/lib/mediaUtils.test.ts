@@ -1,5 +1,3 @@
-'use strict';
-
 import { createImgSrcset, getMediaMeta } from './mediaUtils';
 
 console.error = jest.fn();

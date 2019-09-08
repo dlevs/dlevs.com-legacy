@@ -1,5 +1,3 @@
-'use strict';
-
 import { getCanonicalUrl, getShareUrl } from './urlUtils';
 
 const urlFormatterTests = (fn) => {

@@ -1,5 +1,3 @@
-'use strict';
-
 import Breadcrumb from '/lib/Breadcrumb';
 import { getPosts } from './travelPosts';
 

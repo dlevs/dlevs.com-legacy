@@ -1,5 +1,3 @@
-'use strict';
-
 import puppeteer from 'puppeteer';
 import { PAGES, CREDENTIALS } from '/tests/testLib/browserTestConstants';
 import { testUrls } from '/tests/testLib/browserTestUtils';
@@ -14,7 +12,6 @@ afterAll(async (done) => {
 	done();
 });
 
-
 const getStats = async (url, viewportOptions) => {
 	const page = await browser.newPage();
 	await page.authenticate(CREDENTIALS);
@@ -22,8 +19,8 @@ const getStats = async (url, viewportOptions) => {
 	await page.setViewport(viewportOptions);
 	await page.setJavaScriptEnabled(false);
 	const stats = await page.evaluate(() => {
-		const isVisible = el => el.offsetParent !== null;
-		const $ = selector => Array
+		const isVisible = (el) => el.offsetParent !== null;
+		const $ = (selector) => Array
 			.from(document.querySelectorAll(selector))
 			.filter(isVisible);
 		const getVisibleElemCounts = () => ({

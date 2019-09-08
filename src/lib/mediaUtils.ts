@@ -1,5 +1,3 @@
-'use strict';
-
 import mapValues from 'lodash/mapValues';
 import media from '/data/generated/media.json';
 import { getRevvedPath } from './assetUtils';

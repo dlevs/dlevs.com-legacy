@@ -1,5 +1,3 @@
-'use strict';
-
 import { fetch } from '/tests/testLib/browserTestUtils';
 import { ORIGIN } from '/tests/testLib/browserTestConstants';
 

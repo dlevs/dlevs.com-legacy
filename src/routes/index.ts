@@ -14,7 +14,6 @@ const router = new Router();
 const ROOT_PAGE = { name: 'Home', slug: '', path: '/' };
 const controllerParams = { breadcrumbRoot: new Breadcrumb([ROOT_PAGE]) };
 
-
 // Controllers
 //------------------------------------
 const homeController = initHomeController();
@@ -56,7 +55,6 @@ router
 
 	// Reporting
 	.post('/report-csp-violation', reportingController.reportCSPViolation);
-
 
 // Exports
 //------------------------------------

@@ -1,15 +1,11 @@
-'use strict';
-
 // import { getLastCommit } from './gitUtils';
 
 // let lastCommit;
-
 
 beforeAll(async (done) => {
 	// lastCommit = await getLastCommit();
 	done();
 });
-
 
 describe('getLastCommit()', () => {
 	// TODO: Add this back
