@@ -8,13 +8,13 @@ import views from 'koa-views';
 // import slash from 'koa-slash';
 import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
-import errorMiddleware from '/lib/middleware/errorMiddleware';
-import redirectMiddleware from '/lib/middleware/redirectMiddleware';
-import serverPushMiddleware from '/lib/middleware/serverPushMiddleware';
-import securityHeadersMiddleware from '/lib/middleware/securityHeadersMiddleware';
-import setCtxStateMiddleware from '/lib/middleware/setCtxStateMiddleware';
-import router from '/routes';
-import viewGlobals from '/lib/viewGlobals';
+import errorMiddleware from './lib/middleware/errorMiddleware';
+import redirectMiddleware from './lib/middleware/redirectMiddleware';
+import serverPushMiddleware from './lib/middleware/serverPushMiddleware';
+import securityHeadersMiddleware from './lib/middleware/securityHeadersMiddleware';
+import setCtxStateMiddleware from './lib/middleware/setCtxStateMiddleware';
+import router from './routes';
+import viewGlobals from './lib/viewGlobals';
 
 const app = new Koa();
 

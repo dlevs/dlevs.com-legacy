@@ -22,7 +22,7 @@
     "noEmitOnError": true,
 	"forceConsistentCasingInFileNames": true,
 	"allowJs": true,
-	"baseUrl": ".",
+	"baseUrl": "src",
     "paths": {
 	  "/*": ["*"]
     }

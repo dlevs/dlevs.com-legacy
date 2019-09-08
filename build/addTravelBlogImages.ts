@@ -60,7 +60,7 @@ const getImagesDataForDirectory = async (dirpath) => {
 
 const addImages = async (sourceFilepath, newImageDirectories) => {
 	const newEntries = await Promise.all(newImageDirectories.map(getImagesDataForDirectory));
-	import existingEntries from sourceFilepath; // eslint-disable-line
+	const existingEntries = require(sourceFilepath); // eslint-disable-line
 	const combinedEntries = [
 		...newEntries,
 		...existingEntries,
