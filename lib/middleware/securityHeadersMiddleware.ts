@@ -1,5 +1,3 @@
-'use strict';
-
 import helmet from 'koa-helmet';
 
 export default helmet({

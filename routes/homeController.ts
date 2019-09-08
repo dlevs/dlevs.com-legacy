@@ -2,7 +2,7 @@ import { Context } from 'koa';
 import { getMediaMeta } from '/lib/mediaUtils';
 import data from '/data/home';
 
-module.export const = () => ({
+export default () => ({
 	index: async (ctx: Context) => {
 		let dataForRender = data;
 		const { pid } = ctx.query;

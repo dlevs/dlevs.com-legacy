@@ -2,9 +2,9 @@
 	"name": "dlevs.com",
 	"version": "1.0.0",
 	"description": "Source code for https://dlevs.com/",
-	"main": "index.js",
+	"main": "index.ts",
 	"scripts": {
-		"start": "ts-node index.js",
+		"start": "ts-node index.ts",
 		"start:watch": "nodemon --ignore publicSrc/ --ignore public/ --exec 'npm start'",
 		"dev": "npm run build:styles -- --w & npm run build:scripts -- -w & npm run start:watch",
 		"build": "npm run build:copypublic && npm run build:scripts && npm run build:styles && npm run build:media && npm run build:manifest && npm run build:testcoverage",
@@ -56,7 +56,11 @@
 	"devDependencies": {
 		"@types/classnames": "2.2.9",
 		"@types/feather-icons": "4.7.0",
+		"@types/koa-bodyparser": "4.3.0",
+		"@types/koa-helmet": "3.1.2",
+		"@types/koa-json": "2.0.18",
 		"@types/koa-router": "7.0.42",
+		"@types/koa-views": "2.0.3",
 		"@types/lodash": "4.14.138",
 		"@types/node": "12.7.4",
 		"@types/ramda": "0.26.21",

@@ -1,10 +1,10 @@
-'use strict';
+import { KoaMiddlewareFn, StringMap } from '/lib/types';
 
-const redirects = {
+const redirects: StringMap = {
 	'/coverage': '/coverage/index.html',
 };
 
-const redirect = async (ctx, next) => {
+const redirect: KoaMiddlewareFn = async (ctx, next) => {
 	if (redirects[ctx.path]) {
 		ctx.status = 301;
 		ctx.redirect(redirects[ctx.path]);

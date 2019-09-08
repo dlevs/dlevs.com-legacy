@@ -1,11 +1,12 @@
-'use strict';
+import { getRevvedPath } from '/lib/assetUtils';
+import { KoaMiddlewareFn } from '/lib/types';
 
-import { getRevvedPath } from '/libs/assetUtils';
-
-export default async (ctx, next) => {
+const serverPushMiddleware: KoaMiddlewareFn = async (ctx, next) => {
 	await next();
 
 	if (ctx.type === 'text/html') {
 		ctx.set('Link', `<${getRevvedPath('/styles/main.css')}>; rel=preload; as=style`);
 	}
 };
+
+export default serverPushMiddleware;

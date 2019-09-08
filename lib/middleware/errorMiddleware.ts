@@ -1,8 +1,7 @@
-'use strict';
-
 import { STATUS_CODES } from 'http';
+import { KoaMiddlewareFn } from '/lib/types';
 
-export default async (ctx, next) => {
+const errorMiddleware: KoaMiddlewareFn = async (ctx, next) => {
 	try {
 		await next();
 		const status = ctx.status || 404;
@@ -22,3 +21,5 @@ export default async (ctx, next) => {
 		ctx.app.emit('error', err, ctx);
 	}
 };
+
+export default errorMiddleware;

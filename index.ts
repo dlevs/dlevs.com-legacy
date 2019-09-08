@@ -5,7 +5,7 @@ import path from 'path';
 import Koa from 'koa';
 // import serve from 'koa-static'); // TODO: Uninstal
 import views from 'koa-views';
-import slash from 'koa-slash';
+// import slash from 'koa-slash';
 import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import errorMiddleware from './lib/middleware/errorMiddleware';
@@ -24,14 +24,13 @@ app.proxy = true;
 
 app
 	.use(errorMiddleware)
-	.use(slash())
 	// TODO: Do less server stuff here, and more with nginx
+	// .use(slash())
 	.use(redirectMiddleware)
 	.use(bodyParser())
 	.use(json({
 		pretty: process.env.NODE_ENV !== 'production',
 		param: 'pretty',
-		spaces: '\t',
 	}))
 	.use(serverPushMiddleware)
 	.use(securityHeadersMiddleware)

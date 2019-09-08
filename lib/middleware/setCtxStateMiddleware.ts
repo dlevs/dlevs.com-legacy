@@ -1,8 +1,7 @@
-'use strict';
+import { getCanonicalUrl } from '/lib/urlUtils';
+import { KoaMiddlewareFn } from '/lib/types';
 
-import { getCanonicalUrl } from '/libs/urlUtils';
-
-export default (ctx, next) => {
+const setCtxStateMiddleware: KoaMiddlewareFn = (ctx, next) => {
 	// Properties of ctx.state are available as a globals in pug templates.
 	ctx.state = ctx.state || {};
 
@@ -20,3 +19,5 @@ export default (ctx, next) => {
 
 	return next();
 };
+
+export default setCtxStateMiddleware;
