@@ -6,9 +6,6 @@ import Breadcrumb from '/lib/Breadcrumb';
 /**
  * Execute a controller using mock data.
  * Return the data passed to template.
- *
- * @param {Function} controller
- * @param {Object} params
  */
 export const getControllerRenderData = async (controller, params) => {
 	let renderedData;
@@ -34,9 +31,6 @@ export const getControllerRenderData = async (controller, params) => {
 /**
  * Snapshot test methods of a controller by checking the data passed
  * to the template and the state of the `ctx` variable.
- *
- * @param {Function} controller
- * @param {Object} methods
  */
 export const testControllerSnapshots = (controller, methods) => {
 	each(methods, ({ contexts, mapData }, methodName) => {

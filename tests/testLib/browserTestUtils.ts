@@ -9,11 +9,7 @@ import { ORIGIN, HOSTNAME, AUTH_HEADER } from './browserTestConstants';
 /**
  * When testing external links, some set cookies in redirects. node-fetch
  * must be wrapped to support this, otherwise will error out because of too
- * many redirects
- *
- * // TODO: Remove these JSDoc annotations in favour of TypeScript types
- * @param {String} url
- * @param {Object} [options]
+ * many redirects.
  */
 import externalFetch from 'fetch-cookie/node-fetch'(
 	rawFetch,
@@ -26,8 +22,6 @@ import externalFetch from 'fetch-cookie/node-fetch'(
 /**
  * Wrapper around node-fetch that will set authorisation headers, allowing
  * password-protected site instances, like staging, to be tested.
- *
- * @param {Object} [options]
  */
 const internalFetch = (url: string, options) =>
 	rawFetch(
@@ -43,9 +37,6 @@ const internalFetch = (url: string, options) =>
 
 /**
  * Wrapper around node fetch to apply headers and cookie handling as needed.
- *
- * @param {String} url
- * @param {Object} [options]
  */
 export const fetch = (url, options = {}) =>
 	(url.includes(HOSTNAME)
@@ -57,9 +48,6 @@ export const fetch = (url, options = {}) =>
  * multiple URLs.
  *
  * The keys in the `tests` object describe what the tests are for.
- *
- * @param {String} urls
- * @param {Object} tests
  */
 export const testUrls = (urls, tests) => {
 	Object.entries(tests).forEach(([testDescription, testFn]) => {
@@ -73,16 +61,11 @@ export const testUrls = (urls, tests) => {
 
 /**
  * Like Promise.all, but limited to reduce parallel tasks/ network requests.
- *
- * @param {Array} items
- * @param {Function<Promise>} cb
  */
 export const eachLimited = (items, cb) => eachLimit(items, 8, cb);
 
 /**
  * Prepend URL paths with origin if it does not already exist.
- *
- * @param {String} path
  */
 export const normalizePathToAbsolute = (path) => {
 	if (path.startsWith('http')) {
@@ -102,8 +85,6 @@ const isPageScrolledToBottom = () =>
 /**
  * For a Puppeteer page instance, scroll to the bottom of the page.
  * Useful for triggering lazyloading features.
- *
- * @param {Object} page
  */
 export const scrollPage = async (page) => {
 	await page.evaluate(() => {

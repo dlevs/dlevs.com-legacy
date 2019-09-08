@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Like Number.prototype.toFixed, but without trailing zeros.
  */

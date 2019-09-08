@@ -36,8 +36,6 @@ export const getLastInputDevice = (() => {
 /**
  * Check if a touch event has occurred in the last `timeout`
  * milliseconds.
- *
- * @param {Number} [timeout]
  */
 export const wasRecentlyTouched = (() => {
 	let lastTouched = null;
@@ -54,8 +52,6 @@ export const wasRecentlyTouched = (() => {
 
 /**
  * Fetch a resource. Do nothing with the result.
- *
- * @param {String} url
  */
 export const fetch = (url) => {
 	const req = new window.XMLHttpRequest();
@@ -71,16 +67,12 @@ export const fetch = (url) => {
  * hasExtension('/travel');           // false
  * hasExtension('/travel/cats.mp4');  // true
  * hasExtension('/travel/cats.json'); // true
- *
- * @param {String} pathname
  */
 export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
 
 /**
  * A wrapper around `document.querySelectorAll` that returns a plain array
  * instead of a `NodeList` instance.
- *
- * @param {String} selector
  */
-export const $ = selector =>
+export const $ = (selector: string) =>
 	Array.prototype.slice.call(document.querySelectorAll(selector));

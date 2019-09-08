@@ -60,8 +60,6 @@ const applyTitlesToSlides = (slides: HTMLAnchorElement[]) => {
 
 /**
  * Make all thumbnails visible.
- *
- * @param {Object} gallery
  */
 const showAllThumbnails = (gallery) => {
 	gallery.items.forEach(({ thumbnail }) => {
@@ -77,8 +75,6 @@ const showAllThumbnails = (gallery) => {
  * - The gallery image which expands/shrinks over the thumbnail
  *
  * By hiding the first of these, it creates the effect of a single image expanding/shrinking.
- *
- * @param {Object} gallery
  */
 const hideActiveThumbnail = (gallery) => {
 	showAllThumbnails(gallery);
@@ -87,8 +83,6 @@ const hideActiveThumbnail = (gallery) => {
 
 /**
  * Apply tracking events to a new gallery.
- *
- * @param {Object} gallery
  */
 const applyGalleryTracking = (gallery) => {
 	trackGalleryOpen({
@@ -117,8 +111,6 @@ const applyGalleryTracking = (gallery) => {
  * expected to be called, but some of the callback functions defined
  * in the options require it. This is provided via the `getGallery`
  * parameter.
- *
- * @param {Function<Object>} getGallery
  */
 const getDefaultOptions = getGallery => ({
 	index: 0,
@@ -158,8 +150,6 @@ const getDefaultOptions = getGallery => ({
 
 /**
  * Create an instance of PhotoSwipe and immediately open it.
- *
- * @param {Object} userOptions
  */
 const openGallery = (userOptions) => {
 	const focusedElementBeforeOpening = document.activeElement;
@@ -214,8 +204,6 @@ const openGallery = (userOptions) => {
  * <a href="foo_large.jpg" class="js-photoswipe" data-width="1000" data-height="600">
  *     <img src="foo.jpg" alt="Foo" />
  * </a>
- *
- * @param {Object} event
  */
 const onThumbnailClick = (event) => {
 	const imgLink = event.target.closest(SLIDE_SELECTOR);
