@@ -2,7 +2,7 @@
 
 const { getRevvedPath } = require('/libs/assetUtils');
 
-module.exports = async (ctx, next) => {
+export default async (ctx, next) => {
 	await next();
 
 	if (ctx.type === 'text/html') {

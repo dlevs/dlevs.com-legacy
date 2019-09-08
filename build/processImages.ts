@@ -107,4 +107,4 @@ const processImage = async (filepath) => {
 	};
 };
 
-module.exports = processImage;
+export default processImage;

@@ -2,7 +2,7 @@
 
 const helmet = require('koa-helmet');
 
-module.exports = helmet({
+export default helmet({
 	contentSecurityPolicy: {
 		directives: {
 			defaultSrc: ["'self'"],

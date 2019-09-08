@@ -13,4 +13,4 @@ const redirect = async (ctx, next) => {
 	}
 };
 
-module.exports = redirect;
+export default redirect;

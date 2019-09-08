@@ -130,7 +130,7 @@ const MAX_HTML_MAX_AGE = 120;
 
 // Exports
 //------------------------------
-module.exports = {
+export default {
 	HOSTNAME,
 	ORIGIN,
 	CREDENTIALS,

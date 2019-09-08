@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = {
+export default {
 	react: {
 		name: 'React',
 		url: 'https://facebook.github.io/react/',

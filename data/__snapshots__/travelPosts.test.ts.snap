@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getPosts() returns posts from JSON file if no 2nd parameter is provided 1`] = `
+export const `getPosts() returns posts from JSON file if no 2nd parameter is provided 1`] = `
 Object {
   "posts": Array [
     Object {
@@ -4833,7 +4833,7 @@ Meiji Jingu.”",
 }
 `;
 
-exports[`getPosts() snapshots match 1`] = `
+export const `getPosts() snapshots match 1`] = `
 Array [
   Object {
     "author": "http://localhost:3000",
@@ -5023,7 +5023,7 @@ Array [
 ]
 `;
 
-exports[`getPosts() snapshots match 2`] = `
+export const `getPosts() snapshots match 2`] = `
 Array [
   Object {
     "author": "http://localhost:3000",

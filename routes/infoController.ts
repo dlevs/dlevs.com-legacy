@@ -6,7 +6,7 @@ import { version } from '/package.json';
 const lastCommitPromise = getLastCommit();
 const serverStartDate = new Date().toString();
 
-module.exports = () => ({
+export default () => ({
 	index: async (ctx) => {
 		ctx.body = {
 			appVersion: version,

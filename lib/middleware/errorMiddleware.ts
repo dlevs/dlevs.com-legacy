@@ -2,7 +2,7 @@
 
 const { STATUS_CODES } = require('http');
 
-module.exports = async (ctx, next) => {
+export default async (ctx, next) => {
 	try {
 		await next();
 		const status = ctx.status || 404;

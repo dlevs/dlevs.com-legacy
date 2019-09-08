@@ -23,4 +23,4 @@ const processSvgs = async (filepath) => {
 	};
 };
 
-module.exports = processSvgs;
+export default processSvgs;

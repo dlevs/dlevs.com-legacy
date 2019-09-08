@@ -10,7 +10,7 @@ const Breadcrumb = require('/lib/Breadcrumb');
  * @param {Function} controller
  * @param {Object} params
  */
-exports.getControllerRenderData = async (controller, params) => {
+export const getControllerRenderData = async (controller, params) => {
 	let renderedData;
 	const ctx = {
 		query: {},
@@ -38,12 +38,12 @@ exports.getControllerRenderData = async (controller, params) => {
  * @param {Function} controller
  * @param {Object} methods
  */
-exports.testControllerSnapshots = (controller, methods) => {
+export const testControllerSnapshots = (controller, methods) => {
 	each(methods, ({ contexts, mapData }, methodName) => {
 		describe(methodName, () => {
 			contexts.forEach((ctx) => {
 				test(`data passed to template with ctx ${JSON.stringify(ctx)}`, async () => {
-					let data = await exports.getControllerRenderData(controller[methodName], ctx);
+					let data = await getControllerRenderData(controller[methodName], ctx);
 
 					if (typeof mapData === 'function') {
 						data = mapData(data);
@@ -60,7 +60,7 @@ exports.testControllerSnapshots = (controller, methods) => {
 /**
  * Get mock parameters to pass to a controller init function.
  */
-exports.getMockControllerParams = () => ({
+export const getMockControllerParams = () => ({
 	breadcrumbRoot: new Breadcrumb([
 		{ name: 'Home', slug: '', path: '/' },
 	]),

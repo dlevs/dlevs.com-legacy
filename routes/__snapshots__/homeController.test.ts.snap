@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`index data passed to template with ctx {"query":{"pid":"2"}} 1`] = `
+export const `index data passed to template with ctx {"query":{"pid":"2"}} 1`] = `
 Object {
   "ctx": Object {
     "query": Object {
@@ -186,7 +186,7 @@ Object {
 }
 `;
 
-exports[`index data passed to template with ctx {"query":{"pid":"40"}} 1`] = `
+export const `index data passed to template with ctx {"query":{"pid":"40"}} 1`] = `
 Object {
   "ctx": Object {
     "query": Object {
@@ -371,7 +371,7 @@ Object {
 }
 `;
 
-exports[`index data passed to template with ctx {} 1`] = `
+export const `index data passed to template with ctx {} 1`] = `
 Object {
   "ctx": Object {
     "query": Object {},

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`index data passed to template with ctx {} 1`] = `
+export const `index data passed to template with ctx {} 1`] = `
 Object {
   "ctx": Object {
     "query": Object {},
@@ -2286,7 +2286,7 @@ Meiji Jingu.”",
 }
 `;
 
-exports[`renderPost data passed to template with ctx {"params":{"countrySlug":"england","townSlug":"london"},"query":{"pid":"2"}} 1`] = `
+export const `renderPost data passed to template with ctx {"params":{"countrySlug":"england","townSlug":"london"},"query":{"pid":"2"}} 1`] = `
 Object {
   "ctx": Object {
     "params": Object {
@@ -2676,7 +2676,7 @@ Object {
 }
 `;
 
-exports[`renderPost data passed to template with ctx {"params":{"countrySlug":"england","townSlug":"london"}} 1`] = `
+export const `renderPost data passed to template with ctx {"params":{"countrySlug":"england","townSlug":"london"}} 1`] = `
 Object {
   "ctx": Object {
     "params": Object {
@@ -3064,7 +3064,7 @@ Object {
 }
 `;
 
-exports[`renderPost data passed to template with ctx {"params":{"countrySlug":"something-non-existent","townSlug":"nothing"}} 1`] = `
+export const `renderPost data passed to template with ctx {"params":{"countrySlug":"something-non-existent","townSlug":"nothing"}} 1`] = `
 Object {
   "ctx": Object {
     "params": Object {
@@ -3081,7 +3081,7 @@ Object {
 }
 `;
 
-exports[`renderPostsForCountry data passed to template with ctx {"params":{"countrySlug":"england"},"query":{"pid":"2"}} 1`] = `
+export const `renderPostsForCountry data passed to template with ctx {"params":{"countrySlug":"england"},"query":{"pid":"2"}} 1`] = `
 Object {
   "ctx": Object {
     "params": Object {
@@ -3569,7 +3569,7 @@ Object {
 }
 `;
 
-exports[`renderPostsForCountry data passed to template with ctx {"params":{"countrySlug":"england"}} 1`] = `
+export const `renderPostsForCountry data passed to template with ctx {"params":{"countrySlug":"england"}} 1`] = `
 Object {
   "ctx": Object {
     "params": Object {
@@ -4055,7 +4055,7 @@ Object {
 }
 `;
 
-exports[`renderPostsForCountry data passed to template with ctx {"params":{"countrySlug":"something-non-existent"}} 1`] = `
+export const `renderPostsForCountry data passed to template with ctx {"params":{"countrySlug":"something-non-existent"}} 1`] = `
 Object {
   "ctx": Object {
     "params": Object {

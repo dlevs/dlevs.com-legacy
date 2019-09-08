@@ -47,7 +47,7 @@ const internalFetch = (url: string, options) =>
  * @param {String} url
  * @param {Object} [options]
  */
-exports.fetch = (url, options = {}) =>
+export const fetch = (url, options = {}) =>
 	(url.includes(HOSTNAME)
 		? internalFetch(url, options)
 		: externalFetch(url, options));
@@ -61,7 +61,7 @@ exports.fetch = (url, options = {}) =>
  * @param {String} urls
  * @param {Object} tests
  */
-exports.testUrls = (urls, tests) => {
+export const testUrls = (urls, tests) => {
 	Object.entries(tests).forEach(([testDescription, testFn]) => {
 		describe(testDescription, () => {
 			urls.forEach((url) => {
@@ -77,14 +77,14 @@ exports.testUrls = (urls, tests) => {
  * @param {Array} items
  * @param {Function<Promise>} cb
  */
-exports.eachLimited = (items, cb) => eachLimit(items, 8, cb);
+export const eachLimited = (items, cb) => eachLimit(items, 8, cb);
 
 /**
  * Prepend URL paths with origin if it does not already exist.
  *
  * @param {String} path
  */
-exports.normalizePathToAbsolute = (path) => {
+export const normalizePathToAbsolute = (path) => {
 	if (path.startsWith('http')) {
 		return path;
 	}
@@ -105,7 +105,7 @@ const isPageScrolledToBottom = () =>
  *
  * @param {Object} page
  */
-exports.scrollPage = async (page) => {
+export const scrollPage = async (page) => {
 	await page.evaluate(() => {
 		window.scroll({
 			top: document.documentElement.scrollHeight - window.innerHeight,

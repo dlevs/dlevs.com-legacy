@@ -24,7 +24,7 @@ const MAX_FILES_PROCESS_CONCURRENTLY = 8;
  * createWebPath('/path/to/this/repo/publicSrc/process/media/foo.jpg');
  * // '/path/to/this/repo/public/media/foo.jpg'
  */
-exports.createOutputPath = (filepath: string) => filepath
+export const createOutputPath = (filepath: string) => filepath
 	.replace(PUBLIC_SRC_REGEX, '/public/');
 
 /**
@@ -38,7 +38,7 @@ exports.createOutputPath = (filepath: string) => filepath
  * createWebPath('/path/to/this/repo/publicSrc/process/media/foo.jpg');
  * // '/media/foo.jpg'
  */
-exports.createWebPath = (filepath: string) => `/${relativeToRoot(filepath)}`
+export const createWebPath = (filepath: string) => `/${relativeToRoot(filepath)}`
 	.replace('/public/', '/')
 	.replace(PUBLIC_SRC_REGEX, '/');
 
@@ -49,7 +49,7 @@ exports.createWebPath = (filepath: string) => `/${relativeToRoot(filepath)}`
  * As described in:
  * http://andyshora.com/css-image-container-padding-hack.html
  */
-exports.getPaddingBottom = (width: number, height: number) =>
+export const getPaddingBottom = (width: number, height: number) =>
 	`${toFixedTrimmed(((height / width) * 100), 4)}%`;
 
 /**
@@ -113,7 +113,7 @@ const getMedia = async () => {
  *     },
  * }
  */
-exports.addMedia = async (
+export const addMedia = async (
 	fileType: string,
 	processFile,
 	globPattern: string,
@@ -122,7 +122,7 @@ exports.addMedia = async (
 	const media = await getMedia();
 	const allFilepaths = await glob(globPattern);
 	const filepaths = allFilepaths.filter((filepath) => {
-		const webPath = exports.createWebPath(filepath);
+		const webPath = createWebPath(filepath);
 		return media[webPath] === undefined;
 	});
 	const progress = new ProgressBar('[:bar] :percent', {
@@ -147,7 +147,7 @@ exports.addMedia = async (
 			const outputData = await processFile(filepath);
 			progress.tick();
 			return {
-				[exports.createWebPath(filepath)]: outputData,
+				[createWebPath(filepath)]: outputData,
 			};
 		},
 	);

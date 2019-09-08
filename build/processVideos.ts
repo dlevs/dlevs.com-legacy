@@ -75,4 +75,4 @@ const processVideo = async (filepath) => {
 	};
 };
 
-module.exports = processVideo;
+export default processVideo;

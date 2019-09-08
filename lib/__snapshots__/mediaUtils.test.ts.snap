@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getMediaMeta() development responds with expected result for a file that does exist 1`] = `
+export const `getMediaMeta() development responds with expected result for a file that does exist 1`] = `
 Object {
   "mapLink": "https://maps.google.com/maps?q=52°21'43\\"N,4°53'34\\"E",
   "type": "image",
@@ -45,7 +45,7 @@ Object {
 }
 `;
 
-exports[`getMediaMeta() production responds with expected result for a file that does exist 1`] = `
+export const `getMediaMeta() production responds with expected result for a file that does exist 1`] = `
 Object {
   "mapLink": "https://maps.google.com/maps?q=52°21'43\\"N,4°53'34\\"E",
   "type": "image",

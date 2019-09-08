@@ -4,13 +4,13 @@ const mapValues = require('lodash/mapValues');
 const media = require('/data/generated/media');
 const { getRevvedPath } = require('./assetUtils');
 
-exports.createImgSrcset = (...images) =>
+export const createImgSrcset = (...images) =>
 	images.map(({ src, width }) => `${src} ${width}w`).join(', ');
 
 /**
  * For a filepath, get meta for all versions of that image.
  */
-exports.getMediaMeta = (filepath: string) => {
+export const getMediaMeta = (filepath: string) => {
 	const meta = media[filepath];
 
 	if (meta) {

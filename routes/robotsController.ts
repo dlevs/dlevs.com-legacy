@@ -18,7 +18,7 @@ Sitemap: ${origin}/sitemap.xml
  * Robots text needs to have an absolute path for the sitemap, therefore,
  * it has its own route to generate this dynamically.
  */
-module.exports = () => ({
+export default () => ({
 	index: (ctx: Context) => {
 		ctx.body = getRobotsText(ctx.origin);
 	},

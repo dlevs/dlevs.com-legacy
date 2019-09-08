@@ -2,10 +2,10 @@
 *
 * UI on top of main sliding area (caption, arrows, close button, etc.).
 * Built just using public methods/properties of PhotoSwipe.
-* 
+*
 */
 
-module.exports = function (pswp, framework) {
+export default function (pswp, framework) {
 
 	var ui = this;
 	var _overlayUIUpdated = false,
@@ -148,12 +148,12 @@ module.exports = function (pswp, framework) {
 				}
 				_blockControlsTap = true;
 
-				// Some versions of Android don't prevent ghost click event 
+				// Some versions of Android don't prevent ghost click event
 				// when preventDefault() was called on touchstart and/or touchend.
-				// 
-				// This happens on v4.3, 4.2, 4.1, 
-				// older versions strangely work correctly, 
-				// but just in case we add delay on all of them)	
+				//
+				// This happens on v4.3, 4.2, 4.1,
+				// older versions strangely work correctly,
+				// but just in case we add delay on all of them)
 				var tapDelay = framework.features.isOldAndroid ? 600 : 30;
 				_blockControlsTapTimeout = setTimeout(function () {
 					_blockControlsTap = false;
@@ -323,7 +323,7 @@ module.exports = function (pswp, framework) {
 						if (pswp.currItem && pswp.currItem.loading) {
 
 							if (!pswp.allowProgressiveImg() || (pswp.currItem.img && !pswp.currItem.img.naturalWidth)) {
-								// show preloader if progressive loading is not enabled, 
+								// show preloader if progressive loading is not enabled,
 								// or image width is not defined yet (because of slow connection)
 								_toggleLoadingIndicator(false);
 								// items-controller.js function allowProgressiveImg
@@ -735,7 +735,7 @@ module.exports = function (pswp, framework) {
 				_options.indexIndicatorSep +
 				totalSlides
 			);
-			
+
 			// Expose these for testing purposes
 			_indexIndicator.setAttribute('data-current-slide', currentSlide);
 			_indexIndicator.setAttribute('data-total-slides', totalSlides);

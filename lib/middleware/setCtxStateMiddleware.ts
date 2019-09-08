@@ -2,7 +2,7 @@
 
 const { getCanonicalUrl } = require('/libs/urlUtils');
 
-module.exports = (ctx, next) => {
+export default (ctx, next) => {
 	// Properties of ctx.state are available as a globals in pug templates.
 	ctx.state = ctx.state || {};
 

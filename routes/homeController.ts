@@ -1,10 +1,9 @@
-'use strict';
+import { Context } from 'koa';
+import { getMediaMeta } from '/lib/mediaUtils';
+import data from '/data/home';
 
-const { getMediaMeta } = require('/lib/mediaUtils');
-const data = require('/data/home');
-
-module.exports = () => ({
-	index: async (ctx) => {
+module.export const = () => ({
+	index: async (ctx: Context) => {
 		let dataForRender = data;
 		const { pid } = ctx.query;
 

@@ -22,7 +22,7 @@ import { SITE_NAME, SITE_LOCALE, SITE_IMAGE } from './constants';
  *
  * @param {PageMeta} meta
  */
-exports.expandOpenGraphMeta = ({
+export const expandOpenGraphMeta = ({
 	title,
 	description,
 	url,
