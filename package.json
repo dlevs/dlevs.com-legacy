@@ -18,7 +18,7 @@
 		"test": "jest",
 		"test:browser": "jest -i --testRegex=.*browsertest.js",
 		"lint": "npm run lint:scripts && npm run lint:styles && npm run lint:views",
-		"lint:scripts": "eslint 'src/**'",
+		"lint:scripts": "eslint src --ext ts,js",
 		"lint:styles": "stylelint 'styles/**/*.css'",
 		"lint:views": "pug-lint views",
 		"addtravelblogimages": "node build/addTravelBlogImages.js"
