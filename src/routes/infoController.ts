@@ -1,4 +1,4 @@
-import { Context } from 'koa';
+import { Middleware } from 'koa';
 import { getLastCommit } from '@root/lib/gitUtils';
 import { version } from '@root/../package.json';
 
@@ -7,8 +7,12 @@ import { version } from '@root/../package.json';
 const lastCommitPromise = getLastCommit();
 const serverStartDate = new Date().toString();
 
-export default () => ({
-	index: async (ctx: Context) => {
+interface InfoController {
+	index: Middleware;
+}
+
+export default (): InfoController => ({
+	index: async (ctx) => {
 		ctx.body = {
 			appVersion: version,
 			nodeVersion: process.version,

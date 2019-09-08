@@ -93,6 +93,7 @@
 		"pug-lint-config-clock": "^2.0.0",
 		"puppeteer": "^1.5.0",
 		"rimraf": "^2.6.2",
+		"schema-dts": "0.4.2",
 		"sharp": "^0.22.1",
 		"stylelint": "^9.2.1",
 		"stylelint-config-standard": "^18.2.0",

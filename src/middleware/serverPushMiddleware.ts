@@ -1,7 +1,7 @@
+import { Middleware } from 'koa';
 import { getRevvedPath } from '@root/lib/assetUtils';
-import { KoaMiddlewareFn } from '@root/lib/types';
 
-const serverPushMiddleware: KoaMiddlewareFn = async (ctx, next) => {
+const serverPushMiddleware: Middleware = async (ctx, next) => {
 	await next();
 
 	if (ctx.type === 'text/html') {

@@ -1,7 +1,7 @@
 import { STATUS_CODES } from 'http';
-import { KoaMiddlewareFn } from '@root/lib/types';
+import { Middleware } from 'koa';
 
-const errorMiddleware: KoaMiddlewareFn = async (ctx, next) => {
+const errorMiddleware: Middleware = async (ctx, next) => {
 	try {
 		await next();
 		const status = ctx.status || 404;

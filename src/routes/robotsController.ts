@@ -1,4 +1,8 @@
-import { Context } from 'koa';
+import { Middleware } from 'koa';
+
+interface RobotsController {
+	index: Middleware;
+}
 
 /**
  * Generate robots text with absolute URLs.
@@ -18,8 +22,8 @@ Sitemap: ${origin}/sitemap.xml
  * Robots text needs to have an absolute path for the sitemap, therefore,
  * it has its own route to generate this dynamically.
  */
-export default () => ({
-	index: (ctx: Context) => {
+export default (): RobotsController => ({
+	index: (ctx) => {
 		ctx.body = getRobotsText(ctx.origin);
 	},
 });

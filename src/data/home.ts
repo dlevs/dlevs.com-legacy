@@ -1,3 +1,4 @@
+import { Person, WebSite, Thing } from 'schema-dts';
 import { SITE_NAME } from '@root/lib/constants';
 import { getMediaMeta } from '@root/lib/mediaUtils';
 import technologies from './technologies';
@@ -5,45 +6,63 @@ import technologies from './technologies';
 const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';
 const selfImage = getMediaMeta('/media/misc/self.jpg');
 
-export default {
-	meta: {
-		title: SITE_NAME,
-		description,
-		og: {
-			'og:type': 'profile',
-			'og:image': selfImage.versions.large,
-			'profile:first_name': 'Daniel',
-			'profile:last_name': 'Levett',
-			'profile:gender': 'male',
-			'profile:username': 'dlevs',
-		},
-		jsonLd: [
-			{
-				'@context': 'http://schema.org',
-				'@type': 'Person',
-				jobTitle: 'Web Developer',
-				name: 'Daniel Levett',
-				alumniOf: 'University of Hertfordshire',
-				gender: 'male',
-				nationality: 'British',
-				image: selfImage.versions.large.absoluteSrc,
-				url: process.env.ORIGIN,
-				sameAs: [
-					'https://www.linkedin.com/in/daniellevett/',
-					'https://github.com/dlevs',
-					'https://www.npmjs.com/~dlevs',
-				],
-			},
-			{
-				'@context': 'http://schema.org',
-				'@type': 'WebSite',
-				url: process.env.ORIGIN,
-				name: SITE_NAME,
-				author: process.env.ORIGIN,
-				description,
-			},
-		],
+// TODO: Move
+interface PageMeta {
+	title: string;
+	description: string;
+	og: og.Metadata;
+	jsonLd: Thing[];
+}
+
+const meta: PageMeta = {
+	title: SITE_NAME,
+	description,
+	og: {
+		'og:type': 'profile',
+		'og:image': selfImage.versions.large,
+		'profile:first_name': 'Daniel',
+		'profile:last_name': 'Levett',
+		'profile:gender': 'male',
+		'profile:username': 'dlevs',
 	},
+	jsonLd: [
+		{
+			'@context': 'http://schema.org',
+			'@type': 'Person',
+			jobTitle: 'Web Developer',
+			name: 'Daniel Levett',
+			alumniOf: {
+				'@type': 'CollegeOrUniversity',
+				name: 'University of Hertfordshire',
+				sameAs: 'https://www.herts.ac.uk/',
+			},
+			// alumniOf: 'University of Hertfordshire',
+			gender: 'Male',
+			nationality: {
+				'@type': 'Country',
+				name: 'United Kingdom',
+			},
+			image: selfImage.versions.large.absoluteSrc,
+			url: process.env.ORIGIN,
+			sameAs: [
+				'https://www.linkedin.com/in/daniellevett/',
+				'https://github.com/dlevs',
+				'https://www.npmjs.com/~dlevs',
+			],
+		} as Person,
+		{
+			'@context': 'http://schema.org',
+			'@type': 'WebSite',
+			url: process.env.ORIGIN,
+			name: SITE_NAME,
+			author: process.env.ORIGIN,
+			description,
+		} as WebSite,
+	],
+};
+
+export default {
+	meta,
 	projects: [
 		{
 			heading: 'Content Creation Tool',

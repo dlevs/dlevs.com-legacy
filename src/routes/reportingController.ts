@@ -1,10 +1,14 @@
-import { Context } from 'koa';
+import { Middleware } from 'koa';
 
-export default () => ({
+interface ReportingController {
+	reportCSPViolation: Middleware;
+}
+
+export default (): ReportingController => ({
 	/**
 	 * Report Content Security Policy violations.
 	 */
-	reportCSPViolation: (ctx: Context) => {
+	reportCSPViolation: (ctx) => {
 		if (ctx.request.body) {
 			// eslint-disable-next-line no-console
 			console.error('CSP Violation: ', ctx.request.body);

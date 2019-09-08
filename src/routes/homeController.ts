@@ -1,9 +1,13 @@
-import { Context } from 'koa';
+import { Middleware } from 'koa';
 import { getMediaMeta } from '@root/lib/mediaUtils';
 import data from '@root/data/home';
 
-export default () => ({
-	index: async (ctx: Context) => {
+interface HomeController {
+	index: Middleware;
+}
+
+export default (): HomeController => ({
+	index: async (ctx) => {
 		let dataForRender = data;
 		const { pid } = ctx.query;
 
