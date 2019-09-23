@@ -1,5 +1,5 @@
 'use strict';
-
+// TODO: Remove, and remove video dependencies from package.json
 import { promisify } from 'util';
 import ffmpeg from 'fluent-ffmpeg';
 import mapValues from 'lodash/mapValues';

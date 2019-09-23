@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { createImgSrcset, getMediaMeta } from './mediaUtils';
+import { createImgSrcset, getImageMeta } from './mediaUtils';
 import { getRevvedPath } from './assetUtils';
 import { immutableExtend } from './objectUtils';
 import { expandOpenGraphMeta } from './metaUtils';
@@ -7,7 +7,7 @@ import { expandOpenGraphMeta } from './metaUtils';
 export default {
 	classnames,
 	createImgSrcset,
-	getMediaMeta,
+	getImageMeta,
 	getRevvedPath,
 	immutableExtend,
 	expandOpenGraphMeta,

@@ -1,5 +1,5 @@
 mixin imageLink({src}, attrs={})
-	- const { type, versions, mapLink } = HELPERS.getMediaMeta(src);
+	- const { type, versions, mapLink } = HELPERS.getImageMeta(src);
 
 	if type === 'image'
 		a.js-photoswipe(

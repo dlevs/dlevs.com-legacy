@@ -1,5 +1,5 @@
 import { Middleware } from 'koa';
-import { getMediaMeta } from '@root/lib/mediaUtils';
+import { getImageMeta } from '@root/lib/mediaUtils';
 import data from '@root/data/home';
 
 interface HomeController {
@@ -24,7 +24,7 @@ export default (): HomeController => ({
 						description: project.heading,
 						og: {
 							...dataForRender.meta.og,
-							'og:image': getMediaMeta(project.img.src).versions.large,
+							'og:image': getImageMeta(project.img.src).versions.large,
 							'og:image:alt': project.img.alt,
 						},
 					},

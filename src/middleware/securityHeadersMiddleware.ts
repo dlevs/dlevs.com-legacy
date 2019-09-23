@@ -1,4 +1,4 @@
-import * as helmet from 'koa-helmet';
+import helmet from 'koa-helmet';
 
 export default helmet({
 	contentSecurityPolicy: {

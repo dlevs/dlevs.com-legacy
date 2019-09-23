@@ -2,7 +2,8 @@ import R from 'ramda';
 import moment from 'moment';
 import kebabCase from 'lodash/kebabCase';
 import rawPostsData from '@root/data/travelPostsRaw.json';
-import Breadcrumb from '@root/lib/Breadcrumb.js';
+import Breadcrumb from '@root/lib/Breadcrumb';
+import { ORIGIN } from '@root/lib/env';
 
 interface Options {
 	breadcrumbRoot: Breadcrumb;
@@ -71,7 +72,7 @@ const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
 			path: breadcrumb.path,
 			humanDate: moment(post.date).format('MMMM YYYY'),
 			description: `Photos from ${post.town}, ${post.country}.`,
-			author: process.env.ORIGIN,
+			author: ORIGIN,
 			mainImage: images[0],
 			...post,
 			datePublished,

@@ -1,12 +1,18 @@
-import { Context } from 'koa';
+import { Middleware } from 'koa';
 import Router from 'koa-router';
 import findIndex from 'lodash/findIndex';
 import Breadcrumb from '@root/lib/Breadcrumb';
 import { getPosts } from '@root/data/travelPosts';
-import { getMediaMeta } from '@root/lib/mediaUtils';
+import { getImageMeta } from '@root/lib/mediaUtils';
 
 interface Options {
 	breadcrumbRoot: Breadcrumb;
+}
+
+interface TravelController {
+	index: Middleware;
+	renderPost: Middleware;
+	renderPostsForCountry: Middleware;
 }
 
 export default ({ breadcrumbRoot }: Options) => {
@@ -17,8 +23,8 @@ export default ({ breadcrumbRoot }: Options) => {
 	const { posts, postsByCountry } = getPosts({
 		breadcrumbRoot: pageBreadcrumb,
 	});
-	const controller = {
-		index: async (ctx: Context) => {
+	const controller: TravelController = {
+		index: async (ctx) => {
 			await ctx.render('travel/travelPostListing.pug', {
 				posts,
 				breadcrumb: pageBreadcrumb,
@@ -26,14 +32,14 @@ export default ({ breadcrumbRoot }: Options) => {
 					title: 'Travel Blog',
 					description: 'Photos from around the world.',
 					og: {
-						'og:image': getMediaMeta(posts[0].mainImage.src).versions.large,
+						'og:image': getImageMeta(posts[0].mainImage.src).versions.large,
 						'og:image:alt': posts[0].mainImage.alt,
 					},
 				},
 			});
 		},
 
-		renderPostsForCountry: async (ctx: Context) => {
+		renderPostsForCountry: async (ctx) => {
 			const { countrySlug } = ctx.params;
 			const index = findIndex(postsByCountry, { countrySlug });
 
@@ -56,14 +62,14 @@ export default ({ breadcrumbRoot }: Options) => {
 					title: country,
 					description,
 					og: {
-						'og:image': getMediaMeta(posts[0].mainImage.src).versions.large,
+						'og:image': getImageMeta(posts[0].mainImage.src).versions.large,
 						'og:image:alt': posts[0].mainImage.alt,
 					},
 				},
 			});
 		},
 
-		renderPost: async (ctx: Context) => {
+		renderPost: async (ctx) => {
 			const { countrySlug, townSlug } = ctx.params;
 			const index = findIndex(posts, { countrySlug, townSlug });
 
@@ -87,7 +93,7 @@ export default ({ breadcrumbRoot }: Options) => {
 						? post.images[imageIndex].caption
 						: post.description,
 					og: {
-						'og:image': getMediaMeta(post.images[imageIndex].src).versions.large,
+						'og:image': getImageMeta(post.images[imageIndex].src).versions.large,
 						'og:image:alt': post.images[imageIndex].alt,
 						'og:type': 'article',
 						'article:published_time': post.datePublished,
@@ -101,7 +107,7 @@ export default ({ breadcrumbRoot }: Options) => {
 							'@context': 'http://schema.org',
 							'@type': 'BlogPosting',
 							headline: post.description,
-							image: getMediaMeta(post.mainImage.src).versions.large.absoluteSrc,
+							image: getImageMeta(post.mainImage.src).versions.large.absoluteSrc,
 							genre: 'travel',
 							url: ctx.state.CANONICAL_URL,
 							datePublished: post.datePublished,

@@ -6,7 +6,7 @@ mixin sitemapPages(pages)
 				if page.images
 					each image in page.images
 						image:image
-							image:loc= HELPERS.getMediaMeta(image.src).versions.large.absoluteSrc
+							image:loc= HELPERS.getImageMeta(image.src).versions.large.absoluteSrc
 
 							if image.caption
 								image:caption= image.caption

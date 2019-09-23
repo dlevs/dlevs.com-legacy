@@ -1,5 +1,8 @@
+/* eslint-disable import/first */
+
 // TODO: Sort docker-compose local dev. docker provides these variables too. Do in one place
-// require('dotenv').config();
+require('dotenv').config();
+
 import path from 'path';
 import Koa from 'koa';
 // import serve from 'koa-static'); // TODO: Uninstall

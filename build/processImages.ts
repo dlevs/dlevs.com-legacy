@@ -99,7 +99,7 @@ const processImage = async (filepath) => {
 	);
 
 	return {
-		type: 'image',
+		type: 'image', // TODO: Type probably not necessary anymore now that it doesn't live with svgs and videos
 		mapLink: await getMapLink(filepath),
 		versions,
 	};

@@ -1,5 +1,5 @@
 import { getShareUrl } from './urlUtils';
-import { getMediaMeta } from './mediaUtils';
+import { getImageMeta } from './mediaUtils';
 import { SITE_NAME, SITE_LOCALE, SITE_IMAGE } from './constants';
 
 /**
@@ -20,7 +20,7 @@ export const expandOpenGraphMeta = ({
 		'og:description': description,
 		'og:url': url && getShareUrl(url),
 		'og:type': 'website',
-		'og:image': getMediaMeta(SITE_IMAGE).versions.large,
+		'og:image': getImageMeta(SITE_IMAGE).versions.large,
 		'og:site_name': SITE_NAME,
 		'og:locale': SITE_LOCALE.replace('-', '_'),
 		...og,

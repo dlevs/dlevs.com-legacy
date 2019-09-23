@@ -1,4 +1,4 @@
-import { createImgSrcset, getMediaMeta } from './mediaUtils';
+import { createImgSrcset, getImageMeta } from './mediaUtils';
 
 console.error = jest.fn();
 
@@ -8,30 +8,30 @@ beforeEach(() => {
 
 const EXISTING_IMAGE = '/media/misc/self.jpg';
 const NON_EXISTING_IMAGE = '/media/foo/bar/nope.jpg';
-const getMediaMetaTests = () => {
+const getImageMetaTests = () => {
 	test('responds with null when a file doesn\'t exist for the passed path', () => {
-		expect(getMediaMeta(NON_EXISTING_IMAGE)).toBe(null);
+		expect(getImageMeta(NON_EXISTING_IMAGE)).toBe(null);
 		expect(console.error).toBeCalledWith(`Media meta not found for filepath ${NON_EXISTING_IMAGE}`);
 	});
 	test('responds with expected result for a file that does exist', () => {
-		const result = getMediaMeta(EXISTING_IMAGE);
+		const result = getImageMeta(EXISTING_IMAGE);
 		expect(result).toMatchSnapshot();
 		expect(console.error).not.toBeCalled();
 	});
 	test('creates an absolute src', () => {
-		const result = getMediaMeta(EXISTING_IMAGE);
+		const result = getImageMeta(EXISTING_IMAGE);
 		expect(result.versions.default.absoluteSrc).toMatch(/https?:\/\//);
 	});
 };
 
-describe('getMediaMeta()', () => {
+describe('getImageMeta()', () => {
 	describe('production', () => {
 		beforeEach(() => {
 			process.env.NODE_ENV = 'production';
 		});
-		getMediaMetaTests();
+		getImageMetaTests();
 		test('filepaths in response are revved', () => {
-			const result = getMediaMeta(EXISTING_IMAGE);
+			const result = getImageMeta(EXISTING_IMAGE);
 			expect(result.versions.default.src).toMatch(/self_960x1182-.{10}\.jpg$/);
 		});
 	});
@@ -39,9 +39,9 @@ describe('getMediaMeta()', () => {
 		beforeEach(() => {
 			process.env.NODE_ENV = 'development';
 		});
-		getMediaMetaTests();
+		getImageMetaTests();
 		test('filepaths in response are not revved', () => {
-			const result = getMediaMeta(EXISTING_IMAGE);
+			const result = getImageMeta(EXISTING_IMAGE);
 			expect(result.versions.default.src.endsWith('/self_960x1182.jpg')).toBe(true);
 		});
 	});

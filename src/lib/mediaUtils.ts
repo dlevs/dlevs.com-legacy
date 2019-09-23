@@ -1,12 +1,9 @@
 import mapValues from 'lodash/mapValues';
-import media from '@root/data/generated/media.json';
+import images from '@root/data/generated/images.json';
 import { getRevvedPath } from '@root/lib/assetUtils';
 import { MapOf } from './types';
 
-// TODO: Maybe define this in a shared place, where the data is generated:
-type ImageMetaMap = MapOf<RasterImageMeta | SVGImageMeta>
-
-interface RasterImageMeta {
+interface ImageMeta {
 	type: 'image';
 	mapLink: string | null;
 	versions: {
@@ -14,15 +11,6 @@ interface RasterImageMeta {
 		default: ImageVersionMeta;
 		largeWebp: ImageVersionMeta;
 		defaultWebp: ImageVersionMeta;
-	};
-}
-
-interface SVGImageMeta {
-	type: 'svg';
-	versions: {
-		default: {
-			src: string;
-		};
 	};
 }
 
@@ -38,11 +26,8 @@ interface ImageVersionMeta {
 export const createImgSrcset = (...images: ImageVersionMeta[]) =>
 	images.map(({ src, width }) => `${src} ${width}w`).join(', ');
 
-/**
- * For a filepath, get meta for all versions of that image.
- */
-export const getMediaMeta = (filepath: string) => {
-	const meta = (media as ImageMetaMap)[filepath];
+export const getImageMeta = (filepath: string) => {
+	const meta = (images as MapOf<ImageMeta>)[filepath];
 
 	if (!meta) {
 		throw new Error(`No meta found for filepath "${filepath}"`);

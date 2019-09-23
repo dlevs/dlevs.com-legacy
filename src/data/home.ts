@@ -1,18 +1,30 @@
 import { Person, WebSite, Thing } from 'schema-dts';
 import { SITE_NAME } from '@root/lib/constants';
-import { getMediaMeta } from '@root/lib/mediaUtils';
-import { StringMap } from '@root/lib/types';
+import { getImageMeta } from '@root/lib/mediaUtils';
 import technologies from './technologies';
 
 const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';
-const selfImage = getMediaMeta('/media/misc/self.jpg');
+const selfImage = getImageMeta('/media/misc/self.jpg');
 
 // TODO: Move
 interface PageMeta {
 	title: string;
 	description: string;
 	// TODO: Type og metadate better
-	og: StringMap;
+	og: {
+		'og:image'?: {
+			absoluteSrc: string;
+			type: string;
+			width: number;
+			height: number;
+		};
+		'og:image:alt'?: string;
+		'og:type'?: string;
+		'profile:first_name'?: string;
+		'profile:last_name'?: string;
+		'profile:gender'?: string;
+		'profile:username'?: string;
+	};
 	jsonLd: Thing[];
 }
 

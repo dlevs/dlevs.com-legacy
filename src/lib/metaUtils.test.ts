@@ -1,5 +1,5 @@
 import { expandOpenGraphMeta } from './metaUtils';
-import { getMediaMeta } from './mediaUtils';
+import { getImageMeta } from './mediaUtils';
 
 describe('expandOpenGraphMeta()', () => {
 	test('basic functionality', () => {
@@ -56,7 +56,7 @@ describe('expandOpenGraphMeta()', () => {
 	test('image as an object works', () => {
 		const result = expandOpenGraphMeta({
 			og: {
-				'og:image': getMediaMeta('/media/favicon/original.png').versions.large,
+				'og:image': getImageMeta('/media/favicon/original.png').versions.large,
 			},
 		});
 

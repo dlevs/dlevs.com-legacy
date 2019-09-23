@@ -10,6 +10,7 @@ import { root, relativeToRoot } from '@root/lib/pathUtils';
 import { toFixedTrimmed } from '@root/lib/numberUtils';
 
 const PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
+// TODO: Rename "media" functions and file. It's now 'images.json', used only for images
 const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');
 const MAX_FILES_PROCESS_CONCURRENTLY = 8;
 

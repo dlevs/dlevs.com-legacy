@@ -15,6 +15,7 @@ const processSvgs = async (filepath) => {
 	await fs.ensureDir(path.dirname(outputFilepath));
 	await fs.writeFile(outputFilepath, data);
 
+	// TODO: Don't write this output to media.json. Also, whole shape is no longer needed since we're not trying to mix in with normal images now
 	return {
 		type: 'svg',
 		versions: {

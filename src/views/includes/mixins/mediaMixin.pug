@@ -1,5 +1,5 @@
 mixin media(options, ...args)
-	- const media = HELPERS.getMediaMeta(options.src);
+	- const media = HELPERS.getImageMeta(options.src);
 
 	if media.type === 'video'
 		video(controls autoplay loop muted)
