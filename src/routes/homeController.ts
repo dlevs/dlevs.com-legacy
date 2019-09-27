@@ -24,7 +24,7 @@ export default (): HomeController => ({
 						description: project.heading,
 						og: {
 							...dataForRender.meta.og,
-							'og:image': getImageMeta(project.img.src).versions.large,
+							'_og:image': getImageMeta(project.img.src).versions.large,
 							'og:image:alt': project.img.alt,
 						},
 					},

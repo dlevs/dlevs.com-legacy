@@ -1,6 +1,6 @@
 import { icons as ICONS } from 'feather-icons';
 import * as CONSTANTS from './constants';
-import * as HELPERS from './viewHelpers';
+import HELPERS from './viewHelpers';
 
 export default {
 	HELPERS,

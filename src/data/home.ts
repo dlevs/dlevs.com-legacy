@@ -1,4 +1,5 @@
 import { Person, WebSite, Thing } from 'schema-dts';
+import { OpenGraphMeta } from '@root/lib/types';
 import { SITE_NAME } from '@root/lib/constants';
 import { getImageMeta } from '@root/lib/mediaUtils';
 import technologies from './technologies';
@@ -10,21 +11,7 @@ const selfImage = getImageMeta('/media/misc/self.jpg');
 interface PageMeta {
 	title: string;
 	description: string;
-	// TODO: Type og metadate better
-	og: {
-		'og:image'?: {
-			absoluteSrc: string;
-			type: string;
-			width: number;
-			height: number;
-		};
-		'og:image:alt'?: string;
-		'og:type'?: string;
-		'profile:first_name'?: string;
-		'profile:last_name'?: string;
-		'profile:gender'?: string;
-		'profile:username'?: string;
-	};
+	og: OpenGraphMeta;
 	jsonLd: Thing[];
 }
 
@@ -33,7 +20,7 @@ const meta: PageMeta = {
 	description,
 	og: {
 		'og:type': 'profile',
-		'og:image': selfImage.versions.large,
+		'_og:image': selfImage.versions.large,
 		'profile:first_name': 'Daniel',
 		'profile:last_name': 'Levett',
 		'profile:gender': 'male',

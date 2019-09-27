@@ -2,7 +2,7 @@ mixin relatedPost(post, type)
 	if post
 		article(class=`related-post related-post--${type}`)
 			a(href=post.path class=`related-post__link js-${type}-post-link`)
-				+media(HELPERS.immutableExtend(post.mainImage, {
+				+media(HELPERS.R.merge(post.mainImage, {
 					className: 'related-post__image',
 					alt: ''
 				}))

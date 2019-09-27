@@ -1,4 +1,4 @@
-import { Context } from 'koa';
+import { Middleware } from 'koa';
 import { basename } from 'path';
 import glob from 'glob';
 import startCase from 'lodash/startCase';
@@ -18,7 +18,7 @@ export default ({ breadcrumbRoot }: Options) => {
 		slug: 'pattern-library',
 		name: 'Pattern Library',
 	});
-	const serve = async (ctx: Context) => {
+	const serve: Middleware = async (ctx) => {
 		const { slug = 'index' } = ctx.params;
 		let title = 'Pattern Library';
 		let breadcrumb = pageBreadcrumb;

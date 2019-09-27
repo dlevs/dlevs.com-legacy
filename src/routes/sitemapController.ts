@@ -1,4 +1,4 @@
-import { Context } from 'koa';
+import { Middleware, Context } from 'koa';
 import Router from 'koa-router';
 import flow from 'lodash/flow';
 import sortBy from 'lodash/fp/sortBy';
@@ -15,6 +15,11 @@ interface Page {
 interface Options {
 	pages: Page[];
 	breadcrumbRoot: Breadcrumb;
+}
+
+interface SitemapController {
+	html: Middleware;
+	xml: Middleware;
 }
 
 const sortPages: (pages: Page[]) => Page[] = flow(
@@ -43,13 +48,13 @@ export default ({
 		origin: ctx.origin,
 		meta: { title: breadcrumb.currentPage.name },
 	});
-	const controller = {
-		xml: async (ctx: Context) => {
-			await ctx.render('sitemapXml.pug', getRenderVariables(ctx));
+	const controller: SitemapController = {
+		xml: async (ctx) => {
+			await ctx.render('sitemapXml.pug', getRenderVariables(ctx as Context));
 			ctx.type = 'xml';
 		},
-		html: async (ctx: Context) => {
-			await ctx.render('sitemapHtml.pug', getRenderVariables(ctx));
+		html: async (ctx) => {
+			await ctx.render('sitemapHtml.pug', getRenderVariables(ctx as Context));
 		},
 	};
 

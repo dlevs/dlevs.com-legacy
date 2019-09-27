@@ -8,11 +8,11 @@ block contentInner
 		h2 Images
 		.cols.cols--spacing-medium
 			.col-6
-				+media(HELPERS.immutableExtend(img1, {lazyLoad: false}))
+				+media(HELPERS.R.merge(img1, {lazyLoad: false}))
 				h3 Normal
 
 			.col-6
-				+media(HELPERS.immutableExtend(img2, {lazyLoad: true}))
+				+media(HELPERS.R.merge(img2, {lazyLoad: true}))
 				h3 Lazy Loaded
 
 	.baseline-section

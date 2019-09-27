@@ -1,5 +1,7 @@
 /* eslint-disable import/first */
 
+console.log('App starting...');
+
 // TODO: Sort docker-compose local dev. docker provides these variables too. Do in one place
 require('dotenv').config();
 
@@ -40,7 +42,9 @@ app
 	.use(views(path.join(__dirname, 'views'), { options: viewGlobals }))
 	.use(router.routes())
 	.use(router.allowedMethods())
-	.listen(process.env.PORT);
+	.listen(process.env.PORT, () => {
+		console.log(`App listening on port ${process.env.PORT}`);
+	});
 
 // Respond to external request to shut down server,
 // for example on `docker-compose down`.

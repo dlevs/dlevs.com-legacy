@@ -11,7 +11,7 @@ if meta
 	if meta.description
 		meta(name="description" content=meta.description)
 
-	- const metaWithUrl = HELPERS.immutableExtend({url: CTX.href}, meta);
+	- const metaWithUrl = HELPERS.R.merge({url: CTX.href}, meta);
 	each content, property in HELPERS.expandOpenGraphMeta(metaWithUrl)
 		if content
 			if Array.isArray(content)

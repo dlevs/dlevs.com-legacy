@@ -1,6 +1,7 @@
 import { getShareUrl } from './urlUtils';
 import { getImageMeta } from './mediaUtils';
 import { SITE_NAME, SITE_LOCALE, SITE_IMAGE } from './constants';
+import { OpenGraphMeta } from './types';
 
 /**
  * Returns an object with key/value pairs to use for og metatags:
@@ -9,11 +10,17 @@ import { SITE_NAME, SITE_LOCALE, SITE_IMAGE } from './constants';
  * Some default values are provided, and title and description may be
  * taken from the `meta` if not defined in `meta.og`.
  */
+
 export const expandOpenGraphMeta = ({
 	title,
 	description,
 	url,
 	og = {},
+}: {
+	title: string;
+	description: string;
+	url: string;
+	og: OpenGraphMeta;
 }) => {
 	const expanded = {
 		'og:title': title,
@@ -27,13 +34,13 @@ export const expandOpenGraphMeta = ({
 	};
 
 	// Image is not a string. It is an object containing image meta. Expand.
-	if (expanded['og:image'] && expanded['og:image'].src) {
+	if (expanded['_og:image']) {
 		const {
 			absoluteSrc,
 			width,
 			height,
 			type,
-		} = expanded['og:image'];
+		} = expanded['_og:image'];
 
 		expanded['og:image'] = absoluteSrc;
 		expanded['og:image:width'] = width;

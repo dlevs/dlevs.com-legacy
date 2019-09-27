@@ -13,7 +13,7 @@ each post, i in posts
 						span= `${post.country},`
 						= ' '
 						time(datetime=post.date)= post.humanDate
-			+media(HELPERS.immutableExtend(post.mainImage, {
+			+media(HELPERS.R.merge(post.mainImage, {
 				className: 'blog-image',
 				lazyLoad: i > 1,
 				alt: ''

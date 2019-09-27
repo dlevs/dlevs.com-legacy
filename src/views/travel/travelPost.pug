@@ -12,7 +12,7 @@ block content
 			each image, i in post.images
 				+imageLink(image)
 					figure
-						+media(HELPERS.immutableExtend(image, {
+						+media(HELPERS.R.merge(image, {
 							className: 'blog-image' + (i === post.images.length - 1 ? ' last' : ''),
 							lazyLoad: i > 1
 						}))
