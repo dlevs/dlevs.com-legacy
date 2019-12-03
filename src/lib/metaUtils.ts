@@ -27,7 +27,7 @@ export const expandOpenGraphMeta = ({
 		'og:description': description,
 		'og:url': url && getShareUrl(url),
 		'og:type': 'website',
-		'og:image': getImageMeta(SITE_IMAGE).versions.large,
+		'_og:image': getImageMeta(SITE_IMAGE).versions.large,
 		'og:site_name': SITE_NAME,
 		'og:locale': SITE_LOCALE.replace('-', '_'),
 		...og,

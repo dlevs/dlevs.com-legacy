@@ -7,14 +7,13 @@
 // webpack --config <path-to-this-file>
 
 // TODO: load .env here?
-import { root } from '@root/lib/pathUtils';
-
+const path = require('path')
 const isDebug = process.env.NODE_ENV !== 'production';
 
-export default {
-	entry: root('./publicSrc/scripts/main.js'),
+module.exports = {
+	entry: path.join(__dirname, '../publicSrc/scripts/main.ts'),
 	output: {
-		path: root('./public/scripts'),
+		path: path.join(__dirname, '../public/scripts'),
 		filename: '[name].js',
 	},
 	module: {

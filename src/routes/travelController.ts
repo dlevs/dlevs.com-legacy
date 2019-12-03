@@ -32,7 +32,7 @@ export default ({ breadcrumbRoot }: Options) => {
 					title: 'Travel Blog',
 					description: 'Photos from around the world.',
 					og: {
-						'og:image': getImageMeta(posts[0].mainImage.src).versions.large,
+						'_og:image': getImageMeta(posts[0].mainImage.src).versions.large,
 						'og:image:alt': posts[0].mainImage.alt,
 					},
 				},
@@ -62,7 +62,7 @@ export default ({ breadcrumbRoot }: Options) => {
 					title: country,
 					description,
 					og: {
-						'og:image': getImageMeta(posts[0].mainImage.src).versions.large,
+						'_og:image': getImageMeta(posts[0].mainImage.src).versions.large,
 						'og:image:alt': posts[0].mainImage.alt,
 					},
 				},
@@ -93,7 +93,7 @@ export default ({ breadcrumbRoot }: Options) => {
 						? post.images[imageIndex].caption
 						: post.description,
 					og: {
-						'og:image': getImageMeta(post.images[imageIndex].src).versions.large,
+						'_og:image': getImageMeta(post.images[imageIndex].src).versions.large,
 						'og:image:alt': post.images[imageIndex].alt,
 						'og:type': 'article',
 						'article:published_time': post.datePublished,

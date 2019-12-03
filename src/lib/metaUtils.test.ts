@@ -56,7 +56,7 @@ describe('expandOpenGraphMeta()', () => {
 	test('image as an object works', () => {
 		const result = expandOpenGraphMeta({
 			og: {
-				'og:image': getImageMeta('/media/favicon/original.png').versions.large,
+				'_og:image': getImageMeta('/media/favicon/original.png').versions.large,
 			},
 		});
 

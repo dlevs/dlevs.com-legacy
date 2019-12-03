@@ -43,7 +43,7 @@ app
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.listen(process.env.PORT, () => {
-		console.log(`App listening on port ${process.env.PORT}`);
+		console.log(`App listening at http://localhost:${process.env.PORT}`);
 	});
 
 // Respond to external request to shut down server,

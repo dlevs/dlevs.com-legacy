@@ -42,6 +42,10 @@ interface PostImage {
 	alt: string;
 }
 
+const sortNewerPostsFirst = R.sortWith<Post>([
+	R.descend(R.prop('date')),
+]);
+
 // TODO: Rambda is being used here as the TypeScript support seems better.
 // TODO: If it _is_ better, remove lodash in favour of Rambda.
 const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
@@ -80,13 +84,12 @@ const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
 			images,
 		};
 	}),
-	R.sortBy(R.prop('date')),
+	sortNewerPostsFirst,
 );
 
 const groupPostsByCountry = ({ breadcrumbRoot }: Options) => R.pipe(
 	R.groupBy<Post>(R.prop('country')),
 	R.values,
-	R.sortBy(R.prop('country')),
 	R.map((posts) => {
 		const { country, countrySlug } = posts[0];
 		const breadcrumb = breadcrumbRoot.append([
@@ -104,11 +107,12 @@ const groupPostsByCountry = ({ breadcrumbRoot }: Options) => R.pipe(
 			path: breadcrumb.path,
 			description: `Photos from ${country}.`,
 			author: process.env.ORIGIN,
-			posts,
+			posts: sortNewerPostsFirst(posts),
 			images,
 			mainImage: images[0],
 		};
 	}),
+	R.sortBy(R.prop('country')),
 );
 
 /**
