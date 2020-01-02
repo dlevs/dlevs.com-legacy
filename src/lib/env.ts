@@ -9,7 +9,6 @@ const getEnvValue = (key: string) => {
 };
 
 // Export environment variables that we have asserted definitely exist.
-export const STATIC_ASSET_PATH = getEnvValue('STATIC_ASSET_PATH');
 export const NODE_ENV = getEnvValue('NODE_ENV');
 export const PORT = getEnvValue('PORT');
 export const GOOGLE_ANALYTICS_ID = getEnvValue('GOOGLE_ANALYTICS_ID');

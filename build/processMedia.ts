@@ -1,12 +1,10 @@
-'use strict';
-
 import { root } from '@root/lib/pathUtils';
 import { addMedia } from './buildUtils';
 import processVideos from './processVideos';
 import processImages from './processImages';
 import processSvgs from './processSvgs';
 
-const createMediaGlob = pattern =>
+const createMediaGlob = (pattern: string) =>
 	root('./publicSrc/process/media', pattern);
 
 const processMedia = async () => {

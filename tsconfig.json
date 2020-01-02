@@ -25,7 +25,7 @@
       "@root/*": ["src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "build"],
   "exclude": [
     "**/*.test.ts",
     "node_modules"

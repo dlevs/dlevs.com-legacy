@@ -77,7 +77,7 @@ const createOutputFile = async ({
 	};
 };
 
-const getMapLink = async (filepath) => {
+const getMapLink = async (filepath: string) => {
 	const sharpFile = sharp(filepath);
 	const meta = await sharpFile.metadata();
 
@@ -92,7 +92,7 @@ const getMapLink = async (filepath) => {
 	return null;
 };
 
-const processImage = async (filepath) => {
+const processImage = async (filepath: string) => {
 	const versions = await mapValuesSeries(
 		imageFormats,
 		async format => createOutputFile({ ...format, filepath }),

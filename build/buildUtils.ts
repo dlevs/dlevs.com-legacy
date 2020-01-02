@@ -1,19 +1,20 @@
-'use strict';
-
 import { promisify } from 'util';
 import fs from 'fs-extra';
-const glob = promisify(require('glob'));
 import ProgressBar from 'progress';
-const mapLimit = promisify(require('async').mapLimit);
 import chalk from 'chalk';
 import { root, relativeToRoot } from '@root/lib/pathUtils';
 import { toFixedTrimmed } from '@root/lib/numberUtils';
+import mapValues from 'lodash/mapValues';
+import globRaw from 'glob';
+import asyncLib from 'async';
+
+const glob = promisify(globRaw);
+const mapLimit = promisify(asyncLib.mapLimit);
 
 const PUBLIC_SRC_REGEX = new RegExp('/publicSrc/.*?/');
 // TODO: Rename "media" functions and file. It's now 'images.json', used only for images
 const FILEPATH_MEDIA_JSON = root('./data/generated/media.json');
 const MAX_FILES_PROCESS_CONCURRENTLY = 8;
-
 
 /**
  * Create the corresponding output path for any file that is in the
@@ -53,6 +54,25 @@ export const createWebPath = (filepath: string) => `/${relativeToRoot(filepath)}
 export const getPaddingBottom = (width: number, height: number) =>
 	`${toFixedTrimmed(((height / width) * 100), 4)}%`;
 
+type LogLevelCustom = 'success';
+type LogLevelBuiltIn = 'log' | 'error' | 'warn';
+type LogLevels = {
+	[k in LogLevelCustom | LogLevelBuiltIn]: {
+		method: LogLevelBuiltIn;
+		applyColor?: (message: string) => string;
+	};
+}
+
+const logLevels: LogLevels = {
+	success: {
+		method: 'log',
+		applyColor: (message: string) => chalk.green(message),
+	},
+	log: { method: 'log' },
+	warn: { method: 'warn' },
+	error: { method: 'error' },
+};
+
 /**
  * A wrapper around console.log.
  *
@@ -61,29 +81,17 @@ export const getPaddingBottom = (width: number, height: number) =>
  * Extra methods are added, like `.success()`, which affects
  * the color of the logged message.
  */
-const createLogger = (name: string) => new Proxy(console, {
-	get(obj, logLevel) {
-		return (...args) => {
-			let method = logLevel;
-			let messages = args;
-			let color;
-
-			if (logLevel === 'success') {
-				method = 'log';
-				color = 'green';
-			}
-
-			if (color) {
-				messages = messages.map(message => chalk[color](message));
-			}
-
-			obj[method](
-				chalk.cyan(`[${name}]`),
-				...messages,
-			);
+const createLogger = (name: string) => {
+	return mapValues(logLevels, ({ method, applyColor }) => {
+		return (...args: any[]) => {
+			const argsToLog = [
+				applyColor ? applyColor(name) : name,
+				...args,
+			];
+			console[method](...argsToLog);
 		};
-	},
-});
+	});
+};
 
 /**
  * Get the existing meta JSON object from file, or an empty object if it

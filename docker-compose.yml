@@ -1,20 +1,17 @@
-version: "3"
+version: '3.7'
 
 # TODO: Document usage of docker in README
 services:
   nodejs:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: nodejs
-    container_name: nodejs
+      # TODO: Eventually change this:
+      target: dev-app
     restart: unless-stopped
     env_file:
       - .env
-
   webserver:
     image: nginx:mainline-alpine
-    container_name: webserver
     restart: unless-stopped
     ports:
       # TODO: Best practices for port choice
@@ -22,21 +19,13 @@ services:
     expose:
       - "9001"
     volumes:
-      - web-root:/var/www/html
+      - ./public:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
     depends_on:
       - nodejs
     environment:
       - VIRTUAL_HOST=dlevs.com
       - LETSENCRYPT_HOST=dlevs.com
-
-volumes:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: ${STATIC_ASSET_PATH}
-      o: bind
 
 networks:
   default:

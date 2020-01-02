@@ -1,6 +1,8 @@
 export type ValueOf<T> = T[keyof T];
 export type MapOf<T> = { [key: string]: T | undefined }
 export type StringMap = MapOf<string>;
+export type Unwrap<T> = T extends Readonly<Array<infer U>> ? U : never;
+
 export interface OpenGraphMeta {
 	// TODO: Ignore this _og stuff in output. Type more strictly.
 	// Raw input type should not be same as output
