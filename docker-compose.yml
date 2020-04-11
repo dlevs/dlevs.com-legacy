@@ -10,6 +10,9 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    # TODO: Not for prod:
+    volumes:
+      - ${PWD}/src:/home/node/app/src
   webserver:
     image: nginx:mainline-alpine
     restart: unless-stopped

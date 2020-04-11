@@ -1,9 +1,9 @@
 import R from 'ramda';
 import moment from 'moment';
 import kebabCase from 'lodash/kebabCase';
-import rawPostsData from '@root/data/travelPostsRaw.json';
-import Breadcrumb from '@root/lib/Breadcrumb';
-import { ORIGIN } from '@root/lib/env';
+import rawPostsData from '/data/travelPostsRaw.json';
+import Breadcrumb from '/lib/Breadcrumb';
+import { ORIGIN } from '/lib/env';
 
 interface Options {
 	breadcrumbRoot: Breadcrumb;
@@ -62,7 +62,7 @@ const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
 				name: post.town,
 			},
 		]);
-		const datePublished = post.datePublished || post.date;
+		const datePublished = post.datePublished ?? post.date;
 		const images = post.images.map((image) => ({
 			...image,
 			geoLocation: `${post.town}, ${post.country}`,
@@ -80,7 +80,7 @@ const expandPosts = ({ breadcrumbRoot }: Options) => R.pipe(
 			mainImage: images[0],
 			...post,
 			datePublished,
-			dateModified: post.dateModified || datePublished,
+			dateModified: post.dateModified ?? datePublished,
 			images,
 		};
 	}),

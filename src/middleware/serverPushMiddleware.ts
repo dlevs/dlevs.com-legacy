@@ -1,5 +1,5 @@
 import { Middleware } from 'koa';
-import { getRevvedPath } from '@root/lib/assetUtils';
+import { getRevvedPath } from '/lib/assetUtils';
 
 const serverPushMiddleware: Middleware = async (ctx, next) => {
 	await next();

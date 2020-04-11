@@ -4,8 +4,8 @@ import glob from 'glob';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import Router from 'koa-router';
-import { root } from '@root/lib/pathUtils';
-import Breadcrumb from '@root/lib/Breadcrumb';
+import { root } from '/lib/pathUtils';
+import Breadcrumb from '/lib/Breadcrumb';
 
 interface Options {
 	breadcrumbRoot: Breadcrumb;

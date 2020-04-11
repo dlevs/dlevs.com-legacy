@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "esnext",
+    "target": "ES2019",
     "strict": true,
-    "module": "commonjs",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-	"allowSyntheticDefaultImports": true,
-	"esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "sourceMap": true,
     "pretty": true,
@@ -17,15 +17,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noEmitOnError": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@root/*": ["src/*"]
+      "/*": ["src/*"]
     }
   },
-  "include": ["src", "build"],
+  "include": ["src", "build", "publicSrc"],
   "exclude": [
     "**/*.test.ts",
     "node_modules"

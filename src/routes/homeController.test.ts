@@ -1,6 +1,6 @@
 'use strict';
 
-import { testControllerSnapshots } from '@root/tests/testLib/testUtils';
+import { testControllerSnapshots } from '/tests/testLib/testUtils';
 import homeController from './homeController'();
 
 testControllerSnapshots(homeController, {

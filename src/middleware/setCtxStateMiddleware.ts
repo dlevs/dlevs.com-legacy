@@ -1,9 +1,9 @@
 import { Middleware } from 'koa';
-import { getCanonicalUrl } from '@root/lib/urlUtils';
+import { getCanonicalUrl } from '/lib/urlUtils';
 
 const setCtxStateMiddleware: Middleware = (ctx, next) => {
 	// Properties of ctx.state are available as a globals in pug templates.
-	ctx.state = ctx.state || {};
+	ctx.state = ctx.state ?? {};
 
 	// Expose `ctx`. It has useful information, like current URL.
 	ctx.state.CTX = ctx;

@@ -1,7 +1,7 @@
 import { Person, WebSite, Thing } from 'schema-dts';
-import { OpenGraphMeta } from '@root/lib/types';
-import { SITE_NAME } from '@root/lib/constants';
-import { getImageMeta } from '@root/lib/mediaUtils';
+import { OpenGraphMeta } from '/lib/types';
+import { SITE_NAME } from '/lib/constants';
+import { getImageMeta } from '/lib/mediaUtils';
 import technologies from './technologies';
 
 const description = 'London-based full-stack web developer experienced in creating and maintaining JavaScript applications.';

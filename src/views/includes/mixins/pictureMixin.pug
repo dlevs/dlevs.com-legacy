@@ -1,4 +1,4 @@
-mixin picture({src, alt, className, lazyLoad=true})
+mixin picture({src, alt, className })
 	- const { versions } = HELPERS.getImageMeta(src);
 	- const srcset = HELPERS.createImgSrcset(versions.default, versions.large);
 	- const srcsetWebp = HELPERS.createImgSrcset(versions.defaultWebp, versions.largeWebp);
@@ -6,44 +6,18 @@ mixin picture({src, alt, className, lazyLoad=true})
 
 	div(
 		style=`padding-bottom: ${versions.default.paddingBottom};`
-		class=HELPERS.classnames(className, 'picture', {'picture--lazyload': lazyLoad})
+		class=HELPERS.classnames(className, 'picture')
 	)
-		if lazyLoad
-			+pictureLazyload(args)
-		else
-			+pictureNonLazyload(args)
-
-mixin pictureNonLazyload(args)
-	- const {src, srcset, srcsetWebp, alt} = args;
-	picture
-		source(
-			type="image/webp"
-			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-			srcset=srcsetWebp
-		)
-		img(
-			alt=alt
-			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-			srcset=srcset
-			src=src
-		)
-
-mixin pictureLazyload(args)
-	- const {src, srcset, srcsetWebp, alt} = args;
-	picture.no-js-hide
-		source(
-			type="image/webp"
-			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-			srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
-			data-srcset=srcsetWebp
-		)
-		img.lazyload(
-			alt=alt
-			sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
-			src=CONSTANTS.IMG_SRC_PLACEHOLDER
-			srcset=CONSTANTS.IMG_SRCSET_PLACEHOLDER
-			data-src=src
-			data-srcset=srcset
-		)
-	noscript
-		+pictureNonLazyload(args)
+		picture
+			source(
+				type="image/webp"
+				loading="lazy"
+				sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+				srcset=srcsetWebp
+			)
+			img(
+				alt=alt
+				sizes=CONSTANTS.IMG_FULLWIDTH_SIZES
+				srcset=srcset
+				src=src
+			)

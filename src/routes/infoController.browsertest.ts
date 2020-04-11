@@ -1,7 +1,7 @@
 import { delay } from 'bluebird';
-import { fetch } from '@root/tests/testLib/browserTestUtils';
-import { ORIGIN } from '@root/tests/testLib/browserTestConstants';
-import { version, engines } from '@root/package';
+import { fetch } from '/tests/testLib/browserTestUtils';
+import { ORIGIN } from '/tests/testLib/browserTestConstants';
+import { version, engines } from '/package';
 
 let response;
 let info;

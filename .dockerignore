@@ -1,9 +1,0 @@
-node_modules
-npm-debug.log
-Dockerfile
-.dockerignore
-.git
-.gitignore
-# /public is mounted as a volume
-/public
-/publicSrc

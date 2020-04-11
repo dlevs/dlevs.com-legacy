@@ -1,6 +1,6 @@
 import { Middleware } from 'koa';
-import { getImageMeta } from '@root/lib/mediaUtils';
-import data from '@root/data/home';
+import { getImageMeta } from '/lib/mediaUtils';
+import data from '/data/home';
 
 interface HomeController {
 	index: Middleware;

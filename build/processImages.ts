@@ -3,7 +3,7 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs-extra';
 import readExif from 'exif-reader';
-import { createGoogleMapsLink } from '@root/lib/gpsUtils';
+import { createGoogleMapsLink } from '/lib/gpsUtils';
 import {
 	createOutputPath,
 	createWebPath,

@@ -1,6 +1,6 @@
 import mapValues from 'lodash/mapValues';
-import images from '@root/data/generated/images.json';
-import { getRevvedPath } from '@root/lib/assetUtils';
+import images from '/data/generated/images.json';
+import { getRevvedPath } from '/lib/assetUtils';
 import { MapOf } from './types';
 
 interface ImageMeta {

@@ -6,13 +6,14 @@
  * The cached page will load quicker if the user decides to click.
  */
 
-import { fetch, hasExtension, wasRecentlyTouched } from './utils';
+import { hasExtension, wasRecentlyTouched } from './utils';
 
 const init = () => {
-	let lastLink;
+	let lastLink: HTMLAnchorElement | null = null;
 
 	document.addEventListener('mouseover', ({ target }) => {
 		if (wasRecentlyTouched()) return;
+		if (!(target instanceof Element)) return;
 
 		const link = target.closest('a');
 
@@ -34,8 +35,7 @@ const init = () => {
 
 		lastLink = link;
 
-		// eslint-disable-next-line compat/compat
-		fetch(link.href);
+		window.fetch(link.href);
 	});
 };
 

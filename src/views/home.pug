@@ -30,7 +30,7 @@ block content
 						figure.project__image-wrapper
 							+imageLink(project.img, {'data-caption': project.heading})
 								//- TODO: Check "R.merge" exists / is suitable replacement for "immutableExtends"
-								+media(HELPERS.R.merge(project.img, {
+								+picture(HELPERS.R.merge(project.img, {
 									className: 'project__image',
 									lazyLoad: i > 1
 								}))

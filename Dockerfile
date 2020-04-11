@@ -1,4 +1,4 @@
-FROM node:12.14.0-alpine as build
+FROM node:12.16.1-alpine as build
 RUN mkdir /home/node/build && chown -R node:node /home/node/build
 WORKDIR /home/node/build
 USER node
@@ -8,7 +8,7 @@ COPY src ./src
 RUN npm ci
 RUN npm run build
 
-FROM node:12.14.0-alpine as base-app
+FROM node:12.16.1-alpine as base-app
 RUN mkdir /home/node/app && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 ENV PATH=$PATH:/home/node/app/node_modules/.bin
@@ -25,7 +25,7 @@ CMD [ \
 	"--ext", "js,ts", \
 	"--ignore", "publicSrc/", \
 	"--ignore", "public/", \
-	"-r", "ts-node/register", \
+	"-r", "ts-node/register/transpile-only", \
 	"-r", "tsconfig-paths/register", \
 	"src/index.ts" ]
 

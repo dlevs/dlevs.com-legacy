@@ -38,7 +38,7 @@ export const getLastInputDevice = (() => {
  * milliseconds.
  */
 export const wasRecentlyTouched = (() => {
-	let lastTouched = null;
+	let lastTouched: number | null = null;
 	document.addEventListener('touchstart', () => {
 		lastTouched = Date.now();
 	});
@@ -51,15 +51,6 @@ export const wasRecentlyTouched = (() => {
 })();
 
 /**
- * Fetch a resource. Do nothing with the result.
- */
-export const fetch = (url) => {
-	const req = new window.XMLHttpRequest();
-	req.open('GET', url);
-	req.send();
-};
-
-/**
  * Test a path to see if it has a file extension.
  *
  * @example
@@ -68,7 +59,7 @@ export const fetch = (url) => {
  * hasExtension('/travel/cats.mp4');  // true
  * hasExtension('/travel/cats.json'); // true
  */
-export const hasExtension = pathname => /\.[^/.]+$/.test(pathname);
+export const hasExtension = (pathname: string) => /\.[^/.]+$/.test(pathname);
 
 /**
  * A wrapper around `document.querySelectorAll` that returns a plain array

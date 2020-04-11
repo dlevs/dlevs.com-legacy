@@ -1,6 +1,6 @@
 import { Middleware } from 'koa';
-import { getLastCommit } from '@root/lib/gitUtils';
-import { version } from '@root/../package.json';
+import { getLastCommit } from '/lib/gitUtils';
+import { version } from '/../package.json';
 
 // Get last commit data only once, on server init, so we can be sure that
 // the version of the server which is running is the one that is reported.

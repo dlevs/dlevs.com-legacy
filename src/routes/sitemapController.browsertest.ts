@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import uniqBy from 'lodash/uniqBy';
-import { fetch, eachLimited } from '@root/tests/testLib/browserTestUtils';
-import { ORIGIN, CREDENTIALS } from '@root/tests/testLib/browserTestConstants';
+import { fetch, eachLimited } from '/tests/testLib/browserTestUtils';
+import { ORIGIN, CREDENTIALS } from '/tests/testLib/browserTestConstants';
 
 const imageUrlRegex = /\.(jpg|png)$/;
 
@@ -19,7 +19,7 @@ beforeAll(async (done) => {
 		.from(document.querySelectorAll('loc'))
 		.map(({ prefix, textContent }) => ({
 			url: textContent,
-			type: prefix || 'page',
+			type: prefix ?? 'page',
 		})));
 	await browser.close();
 	done();

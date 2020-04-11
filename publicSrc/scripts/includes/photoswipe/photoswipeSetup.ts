@@ -1,12 +1,9 @@
+// @ts-nocheck
+
 import PhotoSwipe from '@dlevs/photoswipe';
 import queryString from 'query-string';
 import PhotoSwipeUI from './photoswipeUi';
 import { $, getLastInputDevice, focusWithoutScrolling } from '../utils';
-import {
-	trackGalleryOpen,
-	trackGalleryNavigation,
-	trackShare,
-} from '../googleAnalytics';
 
 const SLIDE_SELECTOR = '.js-photoswipe';
 
@@ -20,9 +17,7 @@ const getSlides = (): HTMLAnchorElement[] => $(SLIDE_SELECTOR);
  * array of thumbnail links.
  */
 const getGalleryItems = (slides): HTMLAnchorElement[] => {
-	// Check first thumbnail format. First image is unlikely to be
-	// lazyloaded, so will be populated with webp/ jpg, instead of
-	// placeholder data gif src.
+	// Check first thumbnail format.
 	const firstThumbnail = slides[0].getElementsByTagName('img')[0];
 	const isWebp = /\.webp$/.test(firstThumbnail.currentSrc);
 
@@ -79,29 +74,6 @@ const showAllThumbnails = (gallery) => {
 const hideActiveThumbnail = (gallery) => {
 	showAllThumbnails(gallery);
 	gallery.currItem.thumbnail.classList.add('invisible');
-};
-
-/**
- * Apply tracking events to a new gallery.
- */
-const applyGalleryTracking = (gallery) => {
-	trackGalleryOpen({
-		title: gallery.currItem.title,
-		index: gallery.currItem.pid,
-	});
-	gallery.listen('afterChange', () => {
-		trackGalleryNavigation({
-			title: gallery.currItem.title,
-			index: gallery.currItem.pid,
-		});
-	});
-	gallery.listen('shareLinkClick', (e, target) => {
-		trackShare({
-			content_type: 'image',
-			method: target.getAttribute('data-method'),
-			title: gallery.currItem.title,
-		});
-	});
 };
 
 /**

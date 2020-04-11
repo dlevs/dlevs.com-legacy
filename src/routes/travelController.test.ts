@@ -1,6 +1,6 @@
 'use strict';
 
-import { testControllerSnapshots, getMockControllerParams } from '@root/tests/testLib/testUtils';
+import { testControllerSnapshots, getMockControllerParams } from '/tests/testLib/testUtils';
 import travelController from './travelController'(getMockControllerParams());
 
 const renderPostsForCountryCtx = {

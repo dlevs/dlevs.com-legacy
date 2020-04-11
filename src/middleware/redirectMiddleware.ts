@@ -1,5 +1,5 @@
 import { Middleware } from 'koa';
-import { StringMap } from '@root/lib/types';
+import { StringMap } from '/lib/types';
 
 const redirects: StringMap = {
 	'/coverage': '/coverage/index.html',

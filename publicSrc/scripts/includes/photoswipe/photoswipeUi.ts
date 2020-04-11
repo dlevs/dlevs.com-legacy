@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
 *
 * UI on top of main sliding area (caption, arrows, close button, etc.).

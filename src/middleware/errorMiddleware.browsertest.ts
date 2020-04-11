@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
-import { fetch, testUrls } from '@root/tests/testLib/browserTestUtils';
-import { ORIGIN, CREDENTIALS } from '@root/tests/testLib/browserTestConstants';
+import { fetch, testUrls } from '/tests/testLib/browserTestUtils';
+import { ORIGIN, CREDENTIALS } from '/tests/testLib/browserTestConstants';
 
 let browser;
 beforeAll(async (done) => {

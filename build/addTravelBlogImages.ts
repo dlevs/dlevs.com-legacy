@@ -17,12 +17,13 @@ import { promisify } from 'util';
 import capitalize from 'lodash/capitalize';
 import fs from 'fs-extra';
 import path from 'path';
-const glob = promisify(require('glob'));
 import readExif from 'exif-reader';
 import sharp from 'sharp';
 import moment from 'moment';
 import { createWebPath } from './buildUtils';
+import globRaw from 'glob'
 
+const glob = promisify(globRaw);
 
 // Functions
 //------------------------------------

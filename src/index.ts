@@ -12,13 +12,13 @@ import views from 'koa-views';
 // import slash from 'koa-slash';
 import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
-import errorMiddleware from '@root/middleware/errorMiddleware';
-import redirectMiddleware from '@root/middleware/redirectMiddleware';
-import serverPushMiddleware from '@root/middleware/serverPushMiddleware';
-import securityHeadersMiddleware from '@root/middleware/securityHeadersMiddleware';
-import setCtxStateMiddleware from '@root/middleware/setCtxStateMiddleware';
-import router from '@root/routes';
-import viewGlobals from '@root/lib/viewGlobals';
+import errorMiddleware from '/middleware/errorMiddleware';
+import redirectMiddleware from '/middleware/redirectMiddleware';
+import serverPushMiddleware from '/middleware/serverPushMiddleware';
+import securityHeadersMiddleware from '/middleware/securityHeadersMiddleware';
+import setCtxStateMiddleware from '/middleware/setCtxStateMiddleware';
+import router from '/routes';
+import viewGlobals from '/lib/viewGlobals';
 
 const app = new Koa();
 
@@ -48,7 +48,7 @@ app
 
 // Respond to external request to shut down server,
 // for example on `docker-compose down`.
-// This app has no cleanup to perform so no need to be graceful.
+// TODO: Handle shutdown gracefully
 process.on('SIGTERM', () => {
 	process.exit(0);
 });
